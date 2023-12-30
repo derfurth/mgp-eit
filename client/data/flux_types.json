@@ -1,0 +1,12 @@
+[
+  {"id":"dechets", "nom":"Déchets/Co-produits"},
+  {"id":"energie", "nom":"Energie"},
+  {"id":"eau", "nom":"Eau"},
+  {"id":"equipements", "nom":"Équipements"},
+  {"id":"fournitures", "nom":"Fournitures"},
+  {"id":"infrastructures", "nom":"Infrastructures"},
+  {"id":"matieres", "nom":"Matières premières"},
+  {"id":"mobilite", "nom":"Mobilité/transport"},
+  {"id":"services", "nom":"Services"},
+  {"id":"rh", "nom":"Ressources humaines"}
+]

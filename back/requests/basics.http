@@ -1,0 +1,196 @@
+### Get the swagger 2.0 json
+GET {{api}}/rest/v1/
+apikey: {{anon}}
+
+
+### Authenticate as a user
+POST {{api}}/auth/v1/token?grant_type=password
+apikey: {{anon}}
+Content-Type: application/json
+
+{
+  "email": "{{yolo_mail}}",
+  "password": "{{yolo_pass}}"
+}
+
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+    client.log('token is ' + response.body['access_token']);
+    client.global.set("auth_token", response.body['access_token']);
+%}
+
+### Logout
+POST {{api}}/auth/v1/logout
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 204, "Response status is not 204");
+    });
+%}
+
+
+### My role
+POST {{api}}/rest/v1/rpc/my_role
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+
+### My dcp and my role
+POST {{api}}/rest/v1/rpc/me
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+
+### My animateur ids
+POST {{api}}/rest/v1/rpc/my_animateur_ids
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+
+### My co-animateur ids
+POST {{api}}/rest/v1/rpc/my_co_animateur_ids
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+### My demarche list
+POST {{api}}/rest/v1/rpc/my_demarches
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+
+### Demarche animateur list
+POST {{api}}/rest/v1/rpc/animateur_snippets
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "demarche_id": "2a9d5536-9ec0-c4b5-88a8-ebd9b3815053"
+}
+
+
+### Demarche co animateur list
+POST {{api}}/rest/v1/rpc/co_animateurs
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "demarche_id": "2a9d5536-9ec0-c4b5-88a8-ebd9b3815053"
+}
+
+### co animateur snippet
+POST {{api}}/rest/v1/rpc/co_animateur_snippet
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "co_animateur_id": "e1f27343-d250-2a8d-26cc-d471faf68ccd"
+}
+
+### Demarche co animateur snippet list
+POST {{api}}/rest/v1/rpc/co_animateur_snippets
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "demarche_id": "2a9d5536-9ec0-c4b5-88a8-ebd9b3815053"
+}
+
+### Entreprise snippets
+POST {{api}}/rest/v1/rpc/entreprise_snippet
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "entreprise_id": "9ebff73d-c194-e423-1f1e-3a1bf8b3f6ac"
+}
+
+### Demarche entreprise snippets
+POST {{api}}/rest/v1/rpc/entreprise_snippets
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "demarche_id": "2a9d5536-9ec0-c4b5-88a8-ebd9b3815053"
+}
+
+
+### Demarche contact snippets
+POST {{api}}/rest/v1/rpc/contact_snippets
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "demarche_id": "2a9d5536-9ec0-c4b5-88a8-ebd9b3815053"
+}
+
+
+### Contact snippet
+POST {{api}}/rest/v1/rpc/contact_snippet
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "contact_id": "d1a8f792-9ddb-4fc2-43cf-2ae529b18e30"
+}
+
+
+### Demarche fiche snippet
+POST {{api}}/rest/v1/rpc/fiche_snippet
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "fiche_id": "08016f4e-a9f4-e828-abb5-6fdf7e0c075f"
+}
+
+
+### Flux snippet
+POST {{api}}/rest/v1/rpc/flux_snippet
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "flux_id": "7fe49644-1541-e918-dde5-f26ee1df4b0b"
+}
+
+
+### Atelier snippet
+POST {{api}}/rest/v1/rpc/atelier_snippet
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "atelier_id": "b19cee39-d87d-4272-a3e0-65534938c70d"
+}
+
+### Contact atelier snippet
+POST {{api}}/rest/v1/rpc/etablissement_contact_snippets
+apikey: {{anon}}
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "etablissement_id": "05f8b853-5b7b-c074-52b7-5cfb036e6cdc"
+}

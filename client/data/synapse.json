@@ -1,0 +1,2256 @@
+[
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Eau",
+        "code": "1.1.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Eau naturelle",
+        "code": "1.1.1.",
+        "unite": "m3",
+        "tags": [
+            "souterraine",
+            "de surface"
+        ]
+    },
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Eau traitée (dont eau potable)",
+        "code": "1.1.2.",
+        "unite": "m3",
+        "tags": [
+            "potable",
+            "déminéralisée",
+            "décarbonatée"
+        ]
+    },
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Eaux usées",
+        "code": "1.1.3.",
+        "unite": "m3",
+        "tags": [
+            "domestiques",
+            "pluviales",
+            "industrielles",
+            "mixtes"
+        ]
+    },
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Eau chaude liquide (Chaleur )",
+        "code": "1.1.4.",
+        "unite": "m3",
+        "tags": [
+            "Intervalle de T° : <30°c",
+            "Intervalle de T° : 30-60°c",
+            "Intervalle de T° : 60-100°c",
+            "Intervalle de T° >100°c"
+        ]
+    },
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Froid (glace, eau refroidie)",
+        "code": "1.1.5.",
+        "unite": "m3",
+        "tags": [
+            "froid positif",
+            "froid négatif"
+        ]
+    },
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Electricité",
+        "code": "1.2.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Electricité renouvelable",
+        "code": "1.2.1.",
+        "unite": "kWh",
+        "tags": []
+    },
+    {
+        "categorie": "Eau - Electricité",
+        "sous_categorie": "Electricité non renouvelable",
+        "code": "1.2.2.",
+        "unite": "kWh",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matières | Ressources fossiles | Gaz",
+        "code": "2.1.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Air comprimé",
+        "code": "2.1.1",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Butane et propane",
+        "code": "2.1.2",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Chaleur (air)",
+        "code": "2.1.3",
+        "unite": "MWh",
+        "tags": [
+            "Température < 25°c",
+            "Température entre 25 et 100 °c",
+            "Température > 100°c"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Chaleur (vapeur)",
+        "code": "2.1.4",
+        "unite": "MWh",
+        "tags": [
+            "Température < 25°c",
+            "Température entre 25 et 100 °c",
+            "Température > 100°c"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "CO2 (émis dans l'air)",
+        "code": "2.1.5",
+        "unite": "Tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "CO2 (produit principal)",
+        "code": "2.1.6",
+        "unite": "Tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Carburant pour moteurs",
+        "code": "2.1.7",
+        "unite": "m3",
+        "tags": [
+            "Diesel",
+            "Biocarburant",
+            "Essence sans plomb",
+            "Fioul domestique",
+            "Fioul lourd",
+            "Kérosène"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Froid (air)",
+        "code": "2.1.8",
+        "unite": "m3",
+        "tags": [
+            "froid positif",
+            "froid négatif"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Gaz de l'air (argon, gaz rares, azote, oxygène ; hors hydrogène)",
+        "code": "2.1.9",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Gaz industriels (éthylène, propylène, butylène)",
+        "code": "2.1.10",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Gaz issus de biomasse (méthane)",
+        "code": "2.1.11",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Gaz naturel, liquéfié ou gazeux (hors butane, propane)",
+        "code": "2.1.12",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Houille, charbon et lignite",
+        "code": "2.1.13",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Lubrifiants et huiles",
+        "code": "2.1.14",
+        "unite": "m3",
+        "tags": [
+            "Usagées",
+            "Non usagées"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Pétrole Brut",
+        "code": "2.1.15",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Hydrogène",
+        "code": "2.1.16",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Ressources fossiles | Autre (Tourbe)",
+        "code": "2.1.17",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matières | Animaux vivants",
+        "code": "2.2. ",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Bovins (vaches), vivant",
+        "code": "2.2.1",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Caprins (chèvres), vivants",
+        "code": "2.2.2",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Equidés (Anes et Chevaux), vivants",
+        "code": "2.2.3",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Escargots",
+        "code": "2.2.4",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Insectes",
+        "code": "2.2.5",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Lapins d'élevage et rongeurs, vivants",
+        "code": "2.2.6",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Miel et Apiculture (ruches)",
+        "code": "2.2.7",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Ovins (moutons, brebis), vivants",
+        "code": "2.2.8",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Poissons et Mollusques, vivants",
+        "code": "2.2.9",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Porcins (Cochons), vivants",
+        "code": "2.2.10",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Volailles et oeufs, vivants",
+        "code": "2.2.11",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres élevages (chameaux, visons, ...)",
+        "code": "2.2.12",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matières | Organiques",
+        "code": "2.3.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Alimentation animale (Aliments pour)",
+        "code": "2.3.1",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres Biodéchets | Sous-produits contenant des substances animales",
+        "code": "2.3.2",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres Biodéchets liquides | Sous-produits non alcoolisés",
+        "code": "2.3.3",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres Biodéchets végétaux (fruits, légumes, fleurs en mélange, pelures, marc de café)",
+        "code": "2.3.4",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Bois, grumes et sous-produits du bois traités",
+        "code": "2.3.5",
+        "unite": "tonnes",
+        "tags": [
+            "Bois B",
+            "Bois C"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Bois, grumes et sous-produits du bois non traités",
+        "code": "2.3.6",
+        "unite": "tonnes",
+        "tags": [
+            "sciure",
+            "copeaux",
+            "granulés",
+            "branchage taillé",
+            "branchage non taillé",
+            "souche",
+            "bois infesté interdit de transport"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Boues organiques (non chimiques)",
+        "code": "2.3.7",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Carcasses animales",
+        "code": "2.3.8",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Céréales",
+        "code": "2.3.9",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Condiments et épices (ail, oignon, échalotte, sel, sucre, vinaigre...)",
+        "code": "2.3.10",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Coquilles (escargots, moules, huitres)",
+        "code": "2.3.11",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Déchets verts (tontes, branches et souches)",
+        "code": "2.3.12",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Ecorces",
+        "code": "2.3.13",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Emballage en bois (Caisse, Palette, Cagette, Palox)",
+        "code": "2.3.14",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Engrais végétaux",
+        "code": "2.3.15",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Excréments | Litières et pailles souillées",
+        "code": "2.3.16",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Farines alimentaires (hors alimentation animale)",
+        "code": "2.3.17",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fourrage",
+        "code": "2.3.18",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fruits à coques (dont retraits et sous-produits)",
+        "code": "2.3.19",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fruits à noyaux (dont retraits et sous-produits)",
+        "code": "2.3.20",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fruits hors noyaux et coques (dont retraits et sous-produits)",
+        "code": "2.3.21",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fumiers et lisiers",
+        "code": "2.3.22",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Gommes, lièges et mousses végétales",
+        "code": "2.3.23",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Graisses alimentaires non usagées",
+        "code": "2.3.24",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Graisses alimentaires usagées",
+        "code": "2.3.25",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Huiles alimentaires non usagées",
+        "code": "2.3.26",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Huiles alimentaires usagées",
+        "code": "2.3.27",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Lait (matière première et poudres)",
+        "code": "2.3.28",
+        "unite": "m3",
+        "tags": [
+            "Lactosérum"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Légumes (dont retraits et sous-produits)",
+        "code": "2.3.29",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Noyaux et coques (hors fruits)",
+        "code": "2.3.30",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plants (bulbes, tubercules et rhizomes, champignon, arbres)",
+        "code": "2.3.31",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plumes et duvets",
+        "code": "2.3.32",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Résidus de distillation, alcools",
+        "code": "2.3.33",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Sarments et ceps de vigne",
+        "code": "2.3.34",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Semences",
+        "code": "2.3.35",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Produits organiques en mélange",
+        "code": "2.3.36",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres résidus d'animaux (sang, cornes, poils)",
+        "code": "2.3.37",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres végétaux (coton, riz, fleurs à usage spécifique, pollen)",
+        "code": "2.3.38",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matière | Polymères et Autres plastiques",
+        "code": "2.4.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Caoutchouc",
+        "code": "2.4.1",
+        "unite": "tonnes",
+        "tags": [
+            "Naturel",
+            "Synthétique"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Emballages Plastiques (Caisse, Palette, Cagette, Palox)",
+        "code": "2.4.2",
+        "unite": "Unité (s)",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Mousses | Isolants (polymères)",
+        "code": "2.4.3",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plastiques agricoles (filets, bâches)",
+        "code": "2.4.4",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plastiques Rigides | Propres (Hors emballage)",
+        "code": "2.4.5",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plastiques Rigides |Souillés (non dangereux) (Hors emballage)",
+        "code": "2.4.6",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plastiques Souples | Propres (Hors emballage)",
+        "code": "2.4.7",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plastiques Souples |Souillés (non dangereux) (Hors emballage)",
+        "code": "2.4.8",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plastiques sous forme primaire (Granulés)",
+        "code": "2.4.9",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Pneumatiques Véhicules < 3,5T",
+        "code": "2.4.10",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Pneumatiques Véhicules > 3,5T",
+        "code": "2.4.11",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Polystyrène expansé - PSE",
+        "code": "2.4.12",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres emballages Plastiques Rigides | Propres",
+        "code": "2.4.13",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres emballages Plastiques Rigides | Souillés (non dangereux)",
+        "code": "2.4.14",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres emballages Plastiques Souples | Propres",
+        "code": "2.4.15",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres emballages Plastiques Souples | Souillés (non dangereux)",
+        "code": "2.4.16",
+        "unite": "tonnes",
+        "tags": [
+            "Thermodurcissable (non recyclable)",
+            "Thermoplastique (1-PET, 2-PEHD, 3-PVC, 4-PEBD, 5-PP, 6-PS, 7-PC)"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matières | Matériaux de construction, Travaux Publics",
+        "code": "2.5.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Ardoise",
+        "code": "2.5.1",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Argiles",
+        "code": "2.5.2",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Bitumes, asphaltes et roches asphaltiques",
+        "code": "2.5.3",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Briques, tuiles, céramiques, carrelages",
+        "code": "2.5.4",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Chaux",
+        "code": "2.5.5",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Ciment",
+        "code": "2.5.6",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Bétons, Mortiers et éléments (parpaing)",
+        "code": "2.5.7",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Déchets des travaux publics - voiries en mélange",
+        "code": "2.5.8",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Déchets du bâtiment en mélange",
+        "code": "2.5.9",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Granulats, roche et concassé (Cailloux, Graviers)",
+        "code": "2.5.10",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Gypse et Calcaire",
+        "code": "2.5.11",
+        "unite": "tonnes",
+        "tags": [
+            "Gypse",
+            "Calcaire"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Laves",
+        "code": "2.5.12",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Marbre et Granit",
+        "code": "2.5.13",
+        "unite": "tonnes",
+        "tags": [
+            "Marbre",
+            "Granit"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plâtre",
+        "code": "2.5.14",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Sables",
+        "code": "2.5.15",
+        "unite": "tonnes",
+        "tags": [
+            "Sables naturels",
+            "Autres sables"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Terre non polluée",
+        "code": "2.5.16",
+        "unite": "",
+        "tags": [
+            "Terre végétale",
+            "Autre terre non polluée"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres matériaux de construction | du bâtiment",
+        "code": "2.5.17",
+        "unite": "tonnes",
+        "tags": [
+            "Dalles de faux-plafond",
+            "Moquette",
+            "Cloison",
+            "Menuiserie",
+            "Fenêtre",
+            "Parquet",
+            "Autres matériaux de construction"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres matériaux de travaux publics - voiries",
+        "code": "2.5.18",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matières | Dangereuses",
+        "code": "2.6.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Amalgames dentaires",
+        "code": "2.6.1",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Amiante",
+        "code": "2.6.2",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Batteries",
+        "code": "2.6.3",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Boues d'hydroxydes métalliques",
+        "code": "2.6.4",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Boues et résidus d'hydrocarbures",
+        "code": "2.6.5",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Bouteilles de gaz (vides)",
+        "code": "2.6.6",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Cartes électroniques et composants défectueux",
+        "code": "2.6.7",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Cartouches d'encre et toners",
+        "code": "2.6.8",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Contenants de produits phytosanitaires (EVPP)",
+        "code": "2.6.9",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Emballages souillés par des matières dangereuses",
+        "code": "2.6.10",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Engrais",
+        "code": "2.6.11",
+        "unite": "tonnes",
+        "tags": [
+            "Composition de l'engrais non identifiée,",
+            "Engrais en mélange",
+            "Engrais organique",
+            "Engrais azoté",
+            "Engrais phosphaté",
+            "Engrais potassique",
+            "Engrais organo-minéraux"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Films radiographiques",
+        "code": "2.6.12",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fluides frigorigènes",
+        "code": "2.6.13",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matériel électrique et électronique non fonctionnel (sauf cartes électroniques) - DEEE",
+        "code": "2.6.14",
+        "unite": "tonnes",
+        "tags": [
+            "Electroménager",
+            "Matériel informatique",
+            "Equipement audiovisuel",
+            "Eclairage",
+            "Matériel  électrique et électronique en mélange",
+            "Autre matériel électrique et électronique"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matières radioactives (et effluents)",
+        "code": "2.6.15",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "PCB - PCT - Pyralènes (Polluants Organiques Persistants)",
+        "code": "2.6.16",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Peintures, vernis, colles (hors emballage)",
+        "code": "2.6.17",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Piles et accumulateurs usagés",
+        "code": "2.6.18",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Produits d'entretien | nettoyage et parfums",
+        "code": "2.6.19",
+        "unite": "tonnes",
+        "tags": [
+            "Produits de nettoyage/entretien",
+            "Parfum"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Produits pharmaceutiques et médicaux (et rebuts) non radioactifs",
+        "code": "2.6.20",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Produits Phytosanitaires Non Utilisés - PPNU",
+        "code": "2.6.21",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Résidus d'épuration de fumées d'incinération et cendres volantes",
+        "code": "2.6.22",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Résidus d'incinération (hors fumées) - Machefer et cendres sous-foyer",
+        "code": "2.6.23",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Solvants halogénés (contenant du chlore, du fluor, de l'iode, du brome)",
+        "code": "2.6.24",
+        "unite": "m3",
+        "tags": [
+            "Solvants halogénés contenant du chlore",
+            "Solvants halogénés contenant du fluor",
+            "Solvants halogénés contenant de l'iode",
+            "Solvants halogénés contenant du brome",
+            "Autres solvants halogénés",
+            "Solvants halogénés non identifiés"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Solvants non-halogénés (toluène, acétone)",
+        "code": "2.6.25",
+        "unite": "m3",
+        "tags": [
+            "Acétone",
+            "Toluène",
+            "Autres solvant non-halogéné",
+            "Solvant non-halogéné non identifié"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Terres contenant des substances dangereuses (souillées)",
+        "code": "2.6.26",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Véhicules hors d'usage - VHU",
+        "code": "2.6.27",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres Boues Chimiques",
+        "code": "2.6.28",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres Matières liquides | pâteuses dangereuses ( < 100L)",
+        "code": "2.6.29",
+        "unite": "Litres",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres Matières liquides | pâteuses dangereuses ( > 100 L)",
+        "code": "2.6.30",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres Matières solides dangereuses ( < 100Kg)",
+        "code": "2.6.31",
+        "unite": "Kg",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres Matières solides dangereuses ( > 100Kg)",
+        "code": "2.6.32",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matières | Non Dangereuses",
+        "code": "2.7.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Cartons (dont emballages)",
+        "code": "2.7.1",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Consommables | fournitures de bureau (stylo, classeurs) hors papier et encre",
+        "code": "2.7.2",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Cuirs et peaux non traités",
+        "code": "2.7.3",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Cuirs et peaux traités",
+        "code": "2.7.4",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Encombrants Mobilier | Meubles",
+        "code": "2.7.5",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fibres de textiles",
+        "code": "2.7.6",
+        "unite": "tonnes",
+        "tags": [
+            "Fibres naturelles",
+            "Fibres synthétiques",
+            "Fibres de textiles en mélange",
+            "Fibres de textiles non identifiées"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fils et câbles",
+        "code": "2.7.7",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matériel d'installation électrique",
+        "code": "2.7.8",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Papiers (feuilles et pâte)",
+        "code": "2.7.9",
+        "unite": "tonnes",
+        "tags": [
+            "Papier en feuilles",
+            "Pâte à papier"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Produits en porcelaine et céramique",
+        "code": "2.7.10",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Sacs et emballages papier (Kraft, alvéolé)",
+        "code": "2.7.11",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Sommiers, matelas",
+        "code": "2.7.12",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Textiles (habillements, emballages, chutes et produits finis)",
+        "code": "2.7.13",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Verre alimentaire / creux (bouteilles, bocaux)",
+        "code": "2.7.14",
+        "unite": "tonnes",
+        "tags": [
+            "Verre blanc",
+            "Verre coloré"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Verre plat (cloison, vitrage simple)",
+        "code": "2.7.15",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Verre technique (pare-brise, double vitrage etc.)",
+        "code": "2.7.16",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres produits non dangereux en mélange",
+        "code": "2.7.17",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Matières | Métaux (hors cables)",
+        "code": "2.8.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Aluminium",
+        "code": "2.8.1",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Cuivre et alliages de cuivre (bronze, laiton, etc.)",
+        "code": "2.8.2",
+        "unite": "tonnes",
+        "tags": [
+            "Cuivre",
+            "Bronze",
+            "Laiton",
+            "Autres alliages"
+        ]
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Emballages | contenants métalliques propres",
+        "code": "2.8.3",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Emballages | contenants métalliques souillés (non dangereux)",
+        "code": "2.8.4",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Etain",
+        "code": "2.8.5",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Ferraille en copeaux",
+        "code": "2.8.6",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Fers et aciers",
+        "code": "2.8.7",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Plomb",
+        "code": "2.8.8",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Terres rares",
+        "code": "2.8.9",
+        "unite": "tonnes",
+        "tags": []
+    },
+    {
+        "categorie": "Matières",
+        "sous_categorie": "Autres métaux purs ou en mélange (dont métaux précieux)",
+        "code": "2.8.10",
+        "unite": "tonnes",
+        "tags": [
+            "Argent",
+            "Ferronickel",
+            "Ferrosilicium",
+            "Nickel",
+            "Titane",
+            "Zinc",
+            "Autres métaux",
+            "Métaux non identifiés"
+        ]
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Fonctions Supports",
+        "code": "3.1.",
+        "unite": "",
+        "tags": [
+            "Langues parlées"
+        ]
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Assistants administratif et commercial",
+        "code": "3.1.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Assistants et responsables ressources humaines (RH)",
+        "code": "3.1.5",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Cadres administratif comptables et financiers",
+        "code": "3.1.6",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Cadre dirigeant |Directeur adjoint - site",
+        "code": "3.1.61",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Cadres de la communication et journalistes",
+        "code": "3.1.7",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Graphistes, Web-designers",
+        "code": "3.1.8",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Ingénieurs et développeurs de l'informatique",
+        "code": "3.1.9",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels du marketing",
+        "code": "3.1.10",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Secrétaires et secrétaires de direction",
+        "code": "3.1.11",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Techniciens de la communication et interprètes",
+        "code": "3.1.12",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Techniciens de l'informatique",
+        "code": "3.1.13",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Commerce | Commercial",
+        "code": "3.2.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Agents de banque et assurance",
+        "code": "3.2.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Caissiers et vendeurs",
+        "code": "3.2.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Commerciaux et technico-commercial",
+        "code": "3.2.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Santé | Social",
+        "code": "3.3.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Aides-soignants",
+        "code": "3.3.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Autres professions médicales",
+        "code": "3.3.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Infirmiers",
+        "code": "3.3.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Médecins et assimilés",
+        "code": "3.3.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Professionnels de l'action sociale",
+        "code": "3.3.5",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Bâtiment Travaux Publics",
+        "code": "3.4.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Conducteurs d'engins du bâtiment et des travaux publics",
+        "code": "3.4.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Ouvriers des travaux publics du béton et de l'extraction",
+        "code": "3.4.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Ouvriers du gros oeuvre et du bâtiment",
+        "code": "3.4.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Ouvriers du second oeuvre et du bâtiment",
+        "code": "3.4.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Techniciens et agents de maîtrise du bâtiment et des travaux publics",
+        "code": "3.4.5",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Agriculture et Pêche",
+        "code": "3.5.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Agriculteurs, éleveurs, sylviculteurs, bûcherons",
+        "code": "3.5.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Maraîchers, jardiniers, viticulteurs",
+        "code": "3.5.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Marins, pêcheurs, aquaculteurs",
+        "code": "3.5.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Techniciens et cadres de l'agriculture",
+        "code": "3.5.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Transport  | Logistique",
+        "code": "3.6.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Agents de manutention (magasiniers, caristes)",
+        "code": "3.6.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Chauffeurs, conducteurs de véhicules > 3,5 t",
+        "code": "3.6.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Chauffeurs, conducteurs pour le transport de voyageurs",
+        "code": "3.6.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Livreurs, coursiers, conducteurs de véhicules < 3,5 t",
+        "code": "3.6.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels administratif et commercial des transports et de la logistique",
+        "code": "3.6.5",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Tourisme, Hôtellerie et Restauration",
+        "code": "3.7.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Cadres de l'hôtellerie et de la restauration",
+        "code": "3.7.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Chefs cuisiniers",
+        "code": "3.7.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Cuisiniers et aide-cuisiniers",
+        "code": "3.7.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Employés de l'hôtellerie",
+        "code": "3.7.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Maîtres d'hôtel",
+        "code": "3.7.5",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Serveurs de cafés restaurants",
+        "code": "3.7.6",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Métiers de bouche",
+        "code": "3.8.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Bouchers",
+        "code": "3.8.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Charcutiers, traiteurs",
+        "code": "3.8.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Boulangers, pâtissiers",
+        "code": "3.8.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Services",
+        "code": "3.9.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Agents de gardiennage et de sécurité",
+        "code": "3.9.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Agents d'entretien des locaux, nettoyage",
+        "code": "3.9.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Aides à domicile et aides ménagères",
+        "code": "3.9.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Animateurs d'activités de loisirs",
+        "code": "3.9.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Assistantes maternelles",
+        "code": "3.9.5",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Coiffeurs, esthéticiens",
+        "code": "3.9.6",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Employés des services divers (bien-être, funéraire)",
+        "code": "3.9.7",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Enseignants, formateurs",
+        "code": "3.9.8",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnel de l'entretien des espaces verts, jardiniers",
+        "code": "3.9.9",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | Artisanat et Industrie",
+        "code": "3.10.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de fabrication de matériaux de construction pour le BTP",
+        "code": "3.10.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de la chimie - santé",
+        "code": "3.10.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de la mécanique - métallurgie",
+        "code": "3.10.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de la plasturgie",
+        "code": "3.10.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de l'agroalimentaire",
+        "code": "3.10.5",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels du bois - papier - carton",
+        "code": "3.10.6",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Agents de laboratoire",
+        "code": "3.10.7",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Câbleurs qualifiés, bobiniers qualifiés",
+        "code": "3.10.8",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Cadres de la maintenance",
+        "code": "3.10.9",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Cadres de la production - process",
+        "code": "3.10.10",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Carrossiers, mécaniciens de véhicules",
+        "code": "3.10.11",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Chaudronniers, tuyauteurs, soudeurs",
+        "code": "3.10.12",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Couturière, retouche de vêtements",
+        "code": "3.10.13",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Dessinateurs industriels",
+        "code": "3.10.14",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Electrotechniciens, électromécaniciens",
+        "code": "3.10.15",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Monteurs ajusteurs | Tourneurs fraiseurs",
+        "code": "3.10.16",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de la maintenance (autres)",
+        "code": "3.10.17",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de la maintenance en électricité, électronique",
+        "code": "3.10.18",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de la maintenance en mécanique",
+        "code": "3.10.19",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de l'artisanat (non définis)",
+        "code": "3.10.20",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de l'électricité, électronique",
+        "code": "3.10.21",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels de l'imprimerie",
+        "code": "3.10.22",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels du secteur de l'énergie",
+        "code": "3.10.23",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels du secteur du textile, habillement, biens de consommation",
+        "code": "3.10.24",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Emploi | QHSE | Recherche et Développement",
+        "code": "3.11.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Ingénieurs (autres)",
+        "code": "3.11.1",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels Hygiène - Sécurité - Environnement",
+        "code": "3.11.2",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Personnels, ingénieurs de la recherche et développement",
+        "code": "3.11.3",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Emploi",
+        "sous_categorie": "Qualiticiens",
+        "code": "3.11.4",
+        "unite": "ETP",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Foncier | Partage d’espace",
+        "code": "4.1.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Bureaux",
+        "code": "4.1.1",
+        "unite": "h/semaine",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Entreposage archives papiers",
+        "code": "4.1.2",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Entrepôt en silo",
+        "code": "4.1.3",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Entrepôt extérieur (hors parking de véhicules)",
+        "code": "4.1.4",
+        "unite": "m²",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Entrepôt frigorifique",
+        "code": "4.1.5",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Entrepôt sous abris",
+        "code": "4.1.6",
+        "unite": "m²",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Parking | Stationnement",
+        "code": "4.1.7",
+        "unite": "m²",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Réserve déportée (non frigorifique)",
+        "code": "4.1.8",
+        "unite": "m3",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Routes",
+        "code": "4.1.9",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Salle visio",
+        "code": "4.1.10",
+        "unite": "h/semaine",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Salles de réunion | réception | séminaire",
+        "code": "4.1.11",
+        "unite": "m²",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Serveurs, stockage de données informatiques",
+        "code": "4.1.12",
+        "unite": "Unité (s)",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Terrain (surface à préciser)",
+        "code": "4.1.13",
+        "unite": "m²",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Toitures (autre, antennes relais)",
+        "code": "4.1.14",
+        "unite": "m²",
+        "tags": []
+    },
+    {
+        "categorie": "Foncier",
+        "sous_categorie": "Toitures (pour projet photovoltaïque)",
+        "code": "4.1.15",
+        "unite": "m²",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "",
+        "code": "5",
+        "unite": "Capacité productive (champ libre)",
+        "tags": [
+            "Tags"
+        ]
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements mécaniques",
+        "code": "5.1.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements de tôlerie chaudronnerie",
+        "code": "5.2.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements pour travaux de presse",
+        "code": "5.3",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements de fonderie",
+        "code": "5.4",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements électricité, électronique et automatismes",
+        "code": "5.5.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements de traitements thermiques et de surface",
+        "code": "5.6.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements pour plastiques, caoutchouc, composites, céramtiques et verres",
+        "code": "5.7.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Outillages mécanique moules modèles",
+        "code": "5.8.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements d'étude et conception",
+        "code": "5.9.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements de contrôle",
+        "code": "5.10.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements d'impression, marquage et gravure",
+        "code": "5.11.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements agro-alimentaires",
+        "code": "5.12.",
+        "unite": "",
+        "tags": []
+    },
+    {
+        "categorie": "Équipements et Services mutualisés",
+        "sous_categorie": "Equipements de transport",
+        "code": "5.13.",
+        "unite": "",
+        "tags": []
+    }
+]
