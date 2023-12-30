@@ -103,6 +103,36 @@ class _SnippetSaveBar extends StatelessWidget {
 
     return ButtonBar(
       children: [
+        TextButton(
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Suppression de la démarche'),
+              content: Text(
+                  'Souhaitez-vous supprimer la démarche "${editable.denomination.value}" ?'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Annuler'),
+                  child: const Text('Annuler'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'Supprimer');
+                    blone
+                        .save(editable.value.copyWith(deleted: true))
+                        .then((value) {
+                      ShowMessageCommand()
+                          .execute(const UIMessage.plain('Demarche supprimée'));
+                      chauffeur.chooseDemarche();
+                    });
+                  },
+                  child: const Text('Supprimer'),
+                ),
+              ],
+            ),
+          ),
+          child: const Text('Supprimer'),
+        ),
         ElevatedButton(
           onPressed: () async {
             await blone.save(editable.value);
@@ -111,15 +141,6 @@ class _SnippetSaveBar extends StatelessWidget {
             chauffeur.chooseDemarche();
           },
           child: const Text('Enregistrer'),
-        ),
-        ElevatedButton(
-          onPressed: () async {
-            await blone.save(editable.value.copyWith(deleted: true));
-            ShowMessageCommand()
-                .execute(const UIMessage.save('Demarche supprimée'));
-            chauffeur.chooseDemarche();
-          },
-          child: const Text('Supprimer'),
         ),
       ],
     );
