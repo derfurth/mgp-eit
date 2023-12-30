@@ -63,7 +63,7 @@ void main() {
   group('Insert all faked db data using blones', () {
     test('demarche', () async {
       final blone = app.demarches;
-      final insert = await blone.insert(db.demarches);
+      await blone.insert(db.demarches);
 
       final demarche = await blone.getById(db.demarches.first.id);
       expect(demarche, isA<Demarche>());
@@ -71,7 +71,7 @@ void main() {
 
     test('personne', () async {
       final blone = app.personnes;
-      final insert = await blone.insert(db.personnes);
+      await blone.insert(db.personnes);
 
       final personne = await blone.getById(db.personnes.first.id);
       expect(personne, isA<Personne>());
@@ -79,7 +79,7 @@ void main() {
 
     test('animateur', () async {
       final blone = app.animateurs;
-      final insert = await blone.insert(db.animateurs);
+      await blone.insert(db.animateurs);
 
       final animateur = await blone.getById(db.animateurs.first.id);
       expect(animateur, isA<Animateur>());
@@ -87,7 +87,7 @@ void main() {
 
     test('coAnimateur', () async {
       final blone = app.coAnimateurs;
-      final insert = await blone.insert(db.coAnimateurs);
+      await blone.insert(db.coAnimateurs);
 
       final coAnimateur = await blone.getById(db.coAnimateurs.first.id);
       expect(coAnimateur, isA<CoAnimateur>());
@@ -95,7 +95,7 @@ void main() {
 
     test('entreprise', () async {
       final blone = app.entreprises;
-      final insert = await blone.insert(db.entreprises);
+      await blone.insert(db.entreprises);
 
       final entreprise = await blone.getById(db.entreprises.first.id);
       expect(entreprise, isA<Entreprise>());
@@ -103,7 +103,7 @@ void main() {
 
     test('etablissement', () async {
       final blone = app.etablissements;
-      final insert = await blone.insert(db.etablissements);
+      await blone.insert(db.etablissements);
 
       final etablissement = await blone.getById(db.etablissements.first.id);
       expect(etablissement, isA<Etablissement>());
@@ -111,7 +111,7 @@ void main() {
 
     test('contact', () async {
       final blone = app.contacts;
-      final insert = await blone.insert(db.contacts);
+      await blone.insert(db.contacts);
 
       final contact = await blone.getById(db.contacts.first.id);
       expect(contact, isA<Contact>());
@@ -119,7 +119,7 @@ void main() {
 
     test('atelier', () async {
       final blone = app.ateliers;
-      final insert = await blone.insert(db.ateliers);
+      await blone.insert(db.ateliers);
 
       final atelier = await blone.getById(db.ateliers.first.id);
       expect(atelier, isA<Atelier>());
@@ -127,12 +127,12 @@ void main() {
 
     test('participantMeta', () async {
       final blone = app.participantMeta;
-      final insert = await blone.insert(db.participantMetas);
+      await blone.insert(db.participantMetas);
     });
 
     test('flux', () async {
       final blone = app.flux;
-      final insert = await blone.insert(db.fluxes);
+      await blone.insert(db.fluxes);
 
       final flux = await blone.getById(db.fluxes.first.id);
       expect(flux, isA<Flux>());
@@ -140,7 +140,7 @@ void main() {
 
     test('fiche', () async {
       final blone = app.fiches;
-      final insert = await blone.insert(db.fiches);
+      await blone.insert(db.fiches);
 
       final fiche = await blone.getById(db.fiches.first.id);
       expect(fiche, isA<Fiche>());
@@ -148,7 +148,7 @@ void main() {
 
     test('synergie', () async {
       final blone = app.synergies;
-      final insert = await blone.insert(db.synergies);
+      await blone.insert(db.synergies);
 
       final synergie = await blone.getById(db.synergies.first.id);
       expect(synergie, isA<Synergie>());
