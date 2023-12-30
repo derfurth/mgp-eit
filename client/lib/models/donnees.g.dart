@@ -82,6 +82,7 @@ _$DemarcheImpl _$$DemarcheImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       denomination: json['denomination'] as String? ?? '',
       champLibre: json['champ_libre'] as String? ?? '',
+      deleted: json['deleted'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$DemarcheImplToJson(_$DemarcheImpl instance) =>
@@ -89,6 +90,7 @@ Map<String, dynamic> _$$DemarcheImplToJson(_$DemarcheImpl instance) =>
       'id': instance.id,
       'denomination': instance.denomination,
       'champ_libre': instance.champLibre,
+      'deleted': instance.deleted,
     };
 
 _$AtelierImpl _$$AtelierImplFromJson(Map<String, dynamic> json) =>

@@ -113,7 +113,7 @@ class CoAnimateur with _$CoAnimateur, Storable {
 
 /// Démarche
 ///
-/// `denomination x description x animateurs`
+/// `denomination x description x animateurs x deleted`
 ///
 /// - Démomination
 /// - Champ libre
@@ -124,6 +124,7 @@ class Demarche with _$Demarche, Storable {
     required String id,
     @Default('') String denomination,
     @JsonKey(name: 'champ_libre') @Default('') String champLibre,
+    @Default(false) bool deleted,
   }) = _Demarche;
 
   factory Demarche.fromJson(Map<String, dynamic> json) =>

@@ -930,6 +930,7 @@ mixin _$Demarche {
   String get denomination => throw _privateConstructorUsedError;
   @JsonKey(name: 'champ_libre')
   String get champLibre => throw _privateConstructorUsedError;
+  bool get deleted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -945,7 +946,8 @@ abstract class $DemarcheCopyWith<$Res> {
   $Res call(
       {String id,
       String denomination,
-      @JsonKey(name: 'champ_libre') String champLibre});
+      @JsonKey(name: 'champ_libre') String champLibre,
+      bool deleted});
 }
 
 /// @nodoc
@@ -964,6 +966,7 @@ class _$DemarcheCopyWithImpl<$Res, $Val extends Demarche>
     Object? id = null,
     Object? denomination = null,
     Object? champLibre = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -978,6 +981,10 @@ class _$DemarcheCopyWithImpl<$Res, $Val extends Demarche>
           ? _value.champLibre
           : champLibre // ignore: cast_nullable_to_non_nullable
               as String,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -993,7 +1000,8 @@ abstract class _$$DemarcheImplCopyWith<$Res>
   $Res call(
       {String id,
       String denomination,
-      @JsonKey(name: 'champ_libre') String champLibre});
+      @JsonKey(name: 'champ_libre') String champLibre,
+      bool deleted});
 }
 
 /// @nodoc
@@ -1010,6 +1018,7 @@ class __$$DemarcheImplCopyWithImpl<$Res>
     Object? id = null,
     Object? denomination = null,
     Object? champLibre = null,
+    Object? deleted = null,
   }) {
     return _then(_$DemarcheImpl(
       id: null == id
@@ -1024,6 +1033,10 @@ class __$$DemarcheImplCopyWithImpl<$Res>
           ? _value.champLibre
           : champLibre // ignore: cast_nullable_to_non_nullable
               as String,
+      deleted: null == deleted
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1034,7 +1047,8 @@ class _$DemarcheImpl implements _Demarche {
   const _$DemarcheImpl(
       {required this.id,
       this.denomination = '',
-      @JsonKey(name: 'champ_libre') this.champLibre = ''});
+      @JsonKey(name: 'champ_libre') this.champLibre = '',
+      this.deleted = false});
 
   factory _$DemarcheImpl.fromJson(Map<String, dynamic> json) =>
       _$$DemarcheImplFromJson(json);
@@ -1047,10 +1061,13 @@ class _$DemarcheImpl implements _Demarche {
   @override
   @JsonKey(name: 'champ_libre')
   final String champLibre;
+  @override
+  @JsonKey()
+  final bool deleted;
 
   @override
   String toString() {
-    return 'Demarche(id: $id, denomination: $denomination, champLibre: $champLibre)';
+    return 'Demarche(id: $id, denomination: $denomination, champLibre: $champLibre, deleted: $deleted)';
   }
 
   @override
@@ -1062,12 +1079,14 @@ class _$DemarcheImpl implements _Demarche {
             (identical(other.denomination, denomination) ||
                 other.denomination == denomination) &&
             (identical(other.champLibre, champLibre) ||
-                other.champLibre == champLibre));
+                other.champLibre == champLibre) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, denomination, champLibre);
+  int get hashCode =>
+      Object.hash(runtimeType, id, denomination, champLibre, deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -1087,7 +1106,8 @@ abstract class _Demarche implements Demarche {
   const factory _Demarche(
       {required final String id,
       final String denomination,
-      @JsonKey(name: 'champ_libre') final String champLibre}) = _$DemarcheImpl;
+      @JsonKey(name: 'champ_libre') final String champLibre,
+      final bool deleted}) = _$DemarcheImpl;
 
   factory _Demarche.fromJson(Map<String, dynamic> json) =
       _$DemarcheImpl.fromJson;
@@ -1099,6 +1119,8 @@ abstract class _Demarche implements Demarche {
   @override
   @JsonKey(name: 'champ_libre')
   String get champLibre;
+  @override
+  bool get deleted;
   @override
   @JsonKey(ignore: true)
   _$$DemarcheImplCopyWith<_$DemarcheImpl> get copyWith =>

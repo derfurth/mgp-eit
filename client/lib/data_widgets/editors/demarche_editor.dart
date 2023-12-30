@@ -112,6 +112,15 @@ class _SnippetSaveBar extends StatelessWidget {
           },
           child: const Text('Enregistrer'),
         ),
+        ElevatedButton(
+          onPressed: () async {
+            await blone.save(editable.value.copyWith(deleted: true));
+            ShowMessageCommand()
+                .execute(const UIMessage.save('Demarche supprimée'));
+            chauffeur.chooseDemarche();
+          },
+          child: const Text('Supprimer'),
+        ),
       ],
     );
   }
