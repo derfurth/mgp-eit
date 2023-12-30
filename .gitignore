@@ -1,2 +1,7 @@
 /back/supabase/.branches/
 /back/supabase/.temp/
+/.idea
+!/.idea/modules.xml
+/client/macos
+/postgres
+/notes

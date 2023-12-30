@@ -48,3 +48,5 @@ app.*.map.json
 # Firebase
 .firebase
 
+# Evite de partarger le build MacOS
+/.metadata
