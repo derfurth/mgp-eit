@@ -1855,7 +1855,7 @@ class __$$FicheImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FicheImpl implements _Fiche {
+class _$FicheImpl extends _Fiche {
   const _$FicheImpl(
       {required this.id,
       @JsonKey(name: 'atelier_id') required this.atelierId,
@@ -1866,7 +1866,8 @@ class _$FicheImpl implements _Fiche {
       @JsonKey(name: 'commentaire') this.commentaire = '',
       @JsonKey(name: 'thematique_ids')
       final List<String> thematiqueIds = const []})
-      : _thematiqueIds = thematiqueIds;
+      : _thematiqueIds = thematiqueIds,
+        super._();
 
   factory _$FicheImpl.fromJson(Map<String, dynamic> json) =>
       _$$FicheImplFromJson(json);
@@ -1953,7 +1954,7 @@ class _$FicheImpl implements _Fiche {
   }
 }
 
-abstract class _Fiche implements Fiche {
+abstract class _Fiche extends Fiche {
   const factory _Fiche(
           {required final String id,
           @JsonKey(name: 'atelier_id') required final String atelierId,
@@ -1964,6 +1965,7 @@ abstract class _Fiche implements Fiche {
           @JsonKey(name: 'commentaire') final String commentaire,
           @JsonKey(name: 'thematique_ids') final List<String> thematiqueIds}) =
       _$FicheImpl;
+  const _Fiche._() : super._();
 
   factory _Fiche.fromJson(Map<String, dynamic> json) = _$FicheImpl.fromJson;
 
@@ -3225,7 +3227,7 @@ class __$$FluxImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FluxImpl implements _Flux {
+class _$FluxImpl extends _Flux {
   const _$FluxImpl(
       {required this.id,
       @JsonKey(name: 'resource_nom') this.resourceNom = '',
@@ -3250,7 +3252,8 @@ class _$FluxImpl implements _Flux {
       final List<String> coAnimateurIds = const []})
       : _thematiqueIds = thematiqueIds,
         _animateurIds = animateurIds,
-        _coAnimateurIds = coAnimateurIds;
+        _coAnimateurIds = coAnimateurIds,
+        super._();
 
   factory _$FluxImpl.fromJson(Map<String, dynamic> json) =>
       _$$FluxImplFromJson(json);
@@ -3409,7 +3412,7 @@ class _$FluxImpl implements _Flux {
   }
 }
 
-abstract class _Flux implements Flux {
+abstract class _Flux extends Flux {
   const factory _Flux(
       {required final String id,
       @JsonKey(name: 'resource_nom') final String resourceNom,
@@ -3430,6 +3433,7 @@ abstract class _Flux implements Flux {
       @JsonKey(name: 'animateur_ids') final List<String> animateurIds,
       @JsonKey(name: 'co_animateur_ids')
       final List<String> coAnimateurIds}) = _$FluxImpl;
+  const _Flux._() : super._();
 
   factory _Flux.fromJson(Map<String, dynamic> json) = _$FluxImpl.fromJson;
 

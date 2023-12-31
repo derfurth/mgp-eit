@@ -180,6 +180,7 @@ class ParticipantMeta with _$ParticipantMeta {
 /// Une fiche par participant (_contact_)
 @freezed
 class Fiche with _$Fiche, Storable {
+  const Fiche._();
   const factory Fiche({
     required String id,
     @JsonKey(name: 'atelier_id') required String atelierId,
@@ -192,6 +193,9 @@ class Fiche with _$Fiche, Storable {
   }) = _Fiche;
 
   factory Fiche.fromJson(Map<String, dynamic> json) => _$FicheFromJson(json);
+
+  bool get isEmpty =>
+      designation.isEmpty && commentaire.isEmpty && thematiqueIds.isEmpty;
 }
 
 /// Thématique
@@ -296,6 +300,7 @@ enum FluxNature {
 /// unite peut remplacer celle de la resource.
 @freezed
 class Flux with _$Flux, Storable {
+  const Flux._();
   const factory Flux({
     required String id,
 
@@ -326,6 +331,12 @@ class Flux with _$Flux, Storable {
   }) = _Flux;
 
   factory Flux.fromJson(Map<String, dynamic> json) => _$FluxFromJson(json);
+
+  bool get isEmpty =>
+      designation.isEmpty &&
+      commentaire.isEmpty &&
+      unite.isEmpty &&
+      quantite == 0;
 }
 
 /// L'état de l'avancement d'une synergie.
