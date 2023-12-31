@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:lumberdash/lumberdash.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:supabase/supabase.dart';
 
 import '../../models/donnees.dart';
 import '../../models/snippets.dart';
@@ -61,6 +61,11 @@ class AtelierCollectionBlone extends SupabaseCollection<Atelier>
   Stream<Atelier> subscribe(String atelierId) async* {
     final stream =
         client.from(tableName).stream(primaryKey: ['id']).eq('id', atelierId);
+
+    try {
+      final existing = await getById(atelierId);
+      yield existing;
+    } on PostgrestException catch (_) {}
 
     await for (final list in stream) {
       if (list.isNotEmpty) {
@@ -136,17 +141,17 @@ class ParticipantMetaCollectionBlone extends SupabaseCollection<ParticipantMeta>
     required String atelierId,
     required String contactId,
   }) async {
-    final data = await fromTable
-        .select()
-        .eq('demarche_id', demarcheId)
-        .eq('atelier_id', atelierId)
-        .eq('contact_id', contactId);
+    try {
+      final data = await fromTable
+          .select()
+          .eq('demarche_id', demarcheId)
+          .eq('atelier_id', atelierId)
+          .eq('contact_id', contactId)
+          .single();
 
-    if (data.isNotEmpty) {
-      final result = data.first;
-      final participantMeta = elementFromJson(result);
+      final participantMeta = elementFromJson(data);
       return participantMeta;
-    } else {
+    } on PostgrestException catch (_) {
       final participantMeta = create(
         demarcheId: demarcheId,
         atelierId: atelierId,
@@ -157,24 +162,21 @@ class ParticipantMetaCollectionBlone extends SupabaseCollection<ParticipantMeta>
     }
   }
 
-  final _memo = <String, BehaviorSubject<Iterable<ParticipantMeta>>>{};
-
   Stream<Iterable<ParticipantMeta>> subscribeByAtelier({
     required String atelierId,
-  }) {
-    if (_memo.containsKey(atelierId)) return _memo[atelierId]!;
+  }) async* {
+    try {
+      final existingParticipants =
+          await fromTable.select().eq('atelier_id', atelierId);
+      yield [for (var e in existingParticipants) elementFromJson(e)];
+    } on PostgrestException catch (_) {}
 
-    final subject = BehaviorSubject<Iterable<ParticipantMeta>>();
-    client
-        .from(tableName)
-        .stream(primaryKey: ['atelier_id', 'contact_id'])
-        .eq('atelier_id', atelierId)
-        // We discard the results and get by atelier instead
-        // as we sometimes get duplicates 😭
-        .asyncMap((_) => getByAtelier(atelierId: atelierId))
-        .pipe(subject);
-    _memo[atelierId] = subject;
-    return subject;
+    final changes = fromTable.stream(
+        primaryKey: ['atelier_id', 'contact_id']).eq('atelier_id', atelierId);
+
+    await for (var participants in changes) {
+      yield [for (var e in participants) elementFromJson(e)];
+    }
   }
 
   Future<void> setParticipants({

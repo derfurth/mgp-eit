@@ -334,7 +334,8 @@ void main() {
               .copyWith(champLibre: 'Hello, see you later in the stream');
           app.participantMeta.save(edited);
 
-          final retrieved = await queue.next;
+          var retrieved = await queue.next;
+          retrieved = await queue.next;
           expect(retrieved, contains(edited));
         });
       });
@@ -390,6 +391,7 @@ void main() {
             .copyWith(champLibre: 'Hello dodo');
         app.participantMeta.save(meta);
 
+        metas = await queue.next;
         metas = await queue.next;
         expect(metas.where((m) => m.champLibre == 'Hello dodo'), isNotEmpty);
 
