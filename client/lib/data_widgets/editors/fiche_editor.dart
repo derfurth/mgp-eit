@@ -349,6 +349,35 @@ class _FicheAndFluxSaveBar extends StatelessWidget {
 
     return ButtonBar(
       children: [
+        TextButton.icon(
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Suppression de la fiche'),
+              content: const Text('Souhaitez-vous supprimer cette fiche ?'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Annuler'),
+                  child: const Text('Annuler'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // ferme l'AlertDialog
+                    Navigator.pop(context, 'Supprimer');
+                    // ferme la modale d'édition
+                    Navigator.pop(context, 'Supprimer');
+
+                    // Supprimer le flux entraine la suppression de la fiche.
+                    fluxes.delete(flux.value.id);
+                  },
+                  child: const Text('Supprimer'),
+                ),
+              ],
+            ),
+          ),
+          icon: const Icon(Icons.delete),
+          label: const Text('supprimer'),
+        ),
         OutlinedButton.icon(
           onPressed: () async {
             final RapportBlone rapport = context.read();
