@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:lumberdash/lumberdash.dart';
 import 'package:mgp_client/models/editables.dart';
+import 'package:supabase/supabase.dart';
 
 import '../../models/donnees.dart';
 import '../../models/snippets.dart';
@@ -35,32 +36,40 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
       );
 
   /// Get fiches for a contact in a atelier
-  Future<Iterable<FicheSnippet>> getSnippetsForContactAndAtelier({
+  Stream<Iterable<FicheSnippet>> watchSnippetsForContactAndAtelier({
     required String atelierId,
     required String contactId,
     required String demarcheId,
-  }) async {
-    final fiches = await getForContactAndAtelier(
-      atelierId: atelierId,
-      contactId: contactId,
-      demarcheId: demarcheId,
-    );
-    return Future.wait(fiches.map((f) => getSnippet(ficheId: f.id)));
+  }) async* {
+    final changes = watchForContactAndAtelier(
+        atelierId: atelierId, contactId: contactId, demarcheId: demarcheId);
+    await for (var data in changes) {
+      final snippets = [
+        for (final fiche in data) await getSnippet(ficheId: fiche.id)
+      ];
+      yield snippets.toList(growable: false);
+    }
   }
 
-  Future<Iterable<Fiche>> getForContactAndAtelier({
+  Stream<Iterable<Fiche>> watchForContactAndAtelier({
     required String atelierId,
     required String contactId,
     required String demarcheId,
-  }) async {
-    final data = await fromTable
-        .select()
-        .eq('atelier_id', atelierId)
-        .eq('contact_id', contactId)
-        .eq('demarche_id', demarcheId)
-        .select();
-    final fiches = data.map((e) => elementFromJson(e));
-    return fiches.toList(growable: false);
+  }) async* {
+    final filter = demarcheId + atelierId + contactId;
+    try {
+      final data =
+          await fromTable.select().eq('realtime_contact_filter', filter);
+      final fiches = data.map((e) => elementFromJson(e));
+      yield fiches.toList(growable: false);
+    } on PostgrestException catch (_) {}
+
+    final changes = fromTable
+        .stream(primaryKey: ['id']).eq('realtime_contact_filter', filter);
+    await for (var data in changes) {
+      final fiches = data.map((e) => elementFromJson(e));
+      yield fiches.toList(growable: false);
+    }
   }
 
   Future<FicheSnippet> getSnippet({
