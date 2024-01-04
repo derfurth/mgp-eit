@@ -204,11 +204,42 @@ class SynergieCommentaires extends StatelessWidget {
 class _SynergieSaveBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final SynergieCollectionBlone synergies = context.read();
     final EditableSynergie synergie = context.watch();
     final SynergieCollectionBlone blone = context.watch();
 
     return ButtonBar(
       children: [
+        TextButton.icon(
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Suppression de la synergie'),
+              content: const Text('Souhaitez-vous supprimer cette synergie ?'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Annuler'),
+                  child: const Text('Annuler'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // ferme l'AlertDialog
+                    Navigator.pop(context, 'Supprimer');
+
+                    // ferme la synergie
+                    Navigator.pop(context, 'Supprimer');
+
+                    // Supprimer le flux entraine la suppression de la fiche.
+                    synergies.delete(synergie.value.id);
+                  },
+                  child: const Text('Supprimer'),
+                ),
+              ],
+            ),
+          ),
+          icon: const Icon(Icons.delete),
+          label: const Text('supprimer'),
+        ),
         ElevatedButton(
           onPressed: () async {
             await blone.save(synergie.value);
