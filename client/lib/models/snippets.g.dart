@@ -74,6 +74,9 @@ _$AtelierSnippetImpl _$$AtelierSnippetImplFromJson(Map<String, dynamic> json) =>
       participants: (json['participants'] as List<dynamic>)
           .map((e) => ContactSnippet.fromJson(e as Map<String, dynamic>))
           .toList(),
+      participantsWithFiche: (json['participants_with_fiche'] as List<dynamic>)
+          .map((e) => ContactSnippet.fromJson(e as Map<String, dynamic>))
+          .toList(),
       animateurs: (json['animateurs'] as List<dynamic>)
           .map((e) => AnimateurSnippet.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -87,6 +90,7 @@ Map<String, dynamic> _$$AtelierSnippetImplToJson(
     <String, dynamic>{
       'atelier': instance.atelier,
       'participants': instance.participants,
+      'participants_with_fiche': instance.participantsWithFiche,
       'animateurs': instance.animateurs,
       'co_animateurs': instance.coAnimateurs,
     };

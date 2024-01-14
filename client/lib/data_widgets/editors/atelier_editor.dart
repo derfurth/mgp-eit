@@ -187,17 +187,36 @@ class AtelierDescriptionForm extends StatelessWidget {
               onChanged: field.update,
             ),
           ),
+          Leading.vSmall(),
           Builder(builder: (context) {
             final ValueNotifier<List<String>> participantIds = context.read();
             return ContactAddBox(
-              title: const Text('Participants'),
-              initialSelection: atelier.participants,
+              title: Text(atelier.participantsWithFiche.isNotEmpty
+                  ? 'Participants sans fiche'
+                  : 'Participants'),
+              initialSelection: atelier.participantsWithoutFiche,
               onSelected: (selected) {
                 participantIds.value =
                     selected.map((e) => e.contact.id).toList();
               },
             );
           }),
+          if (atelier.participantsWithFiche.isNotEmpty)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Heading.h5('Participants avec fiche'),
+                Leading.vSmall(),
+                Wrap(
+                  spacing: 5,
+                  children: [
+                    for (var p in atelier.participantsWithFiche)
+                      Chip(label: Text(p.personne.displayName))
+                  ],
+                ),
+              ],
+            ),
+          Leading.vSmall(),
           AnimateurAddBox(
             initialSelection: atelier.animateurs,
             onSelected: (selected) {
@@ -450,6 +469,6 @@ Tuple2<ParticipantMeta, ContactSnippet?> contactFromMeta(
 ) =>
     Tuple2(
       meta,
-      atelier.participants
+      atelier.participantsWithoutFiche
           .firstWhereOrNull((p) => p.contact.id == meta.contactId),
     );

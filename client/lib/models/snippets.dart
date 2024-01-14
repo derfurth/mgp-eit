@@ -62,16 +62,24 @@ class CoAnimateurSnippet with _$CoAnimateurSnippet {
 /// Atelier editor
 @freezed
 class AtelierSnippet with _$AtelierSnippet {
+  const AtelierSnippet._();
+
   factory AtelierSnippet({
     required Atelier atelier,
     required List<ContactSnippet> participants,
+    @JsonKey(name: 'participants_with_fiche')
+    required List<ContactSnippet> participantsWithFiche,
     required List<AnimateurSnippet> animateurs,
     @JsonKey(name: 'co_animateurs')
-        required List<CoAnimateurSnippet> coAnimateurs,
+    required List<CoAnimateurSnippet> coAnimateurs,
   }) = _AtelierSnippet;
 
   factory AtelierSnippet.fromJson(Map<String, dynamic> json) =>
       _$AtelierSnippetFromJson(json);
+
+  List<ContactSnippet> get participantsWithoutFiche => participants
+      .where((participant) => !participantsWithFiche.contains(participant))
+      .toList();
 }
 
 /// Atelier editor ('live' view), Fiche editor
@@ -95,7 +103,7 @@ class FluxSnippet with _$FluxSnippet {
     required ContactSnippet contact,
     required List<AnimateurSnippet> animateurs,
     @JsonKey(name: 'co_animateurs')
-        required List<CoAnimateurSnippet> coAnimateurs,
+    required List<CoAnimateurSnippet> coAnimateurs,
   }) = _FluxSnippet;
 
   factory FluxSnippet.fromJson(Map<String, dynamic> json) =>

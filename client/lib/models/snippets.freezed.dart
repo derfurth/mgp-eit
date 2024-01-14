@@ -785,6 +785,9 @@ AtelierSnippet _$AtelierSnippetFromJson(Map<String, dynamic> json) {
 mixin _$AtelierSnippet {
   Atelier get atelier => throw _privateConstructorUsedError;
   List<ContactSnippet> get participants => throw _privateConstructorUsedError;
+  @JsonKey(name: 'participants_with_fiche')
+  List<ContactSnippet> get participantsWithFiche =>
+      throw _privateConstructorUsedError;
   List<AnimateurSnippet> get animateurs => throw _privateConstructorUsedError;
   @JsonKey(name: 'co_animateurs')
   List<CoAnimateurSnippet> get coAnimateurs =>
@@ -805,6 +808,8 @@ abstract class $AtelierSnippetCopyWith<$Res> {
   $Res call(
       {Atelier atelier,
       List<ContactSnippet> participants,
+      @JsonKey(name: 'participants_with_fiche')
+      List<ContactSnippet> participantsWithFiche,
       List<AnimateurSnippet> animateurs,
       @JsonKey(name: 'co_animateurs') List<CoAnimateurSnippet> coAnimateurs});
 
@@ -826,6 +831,7 @@ class _$AtelierSnippetCopyWithImpl<$Res, $Val extends AtelierSnippet>
   $Res call({
     Object? atelier = null,
     Object? participants = null,
+    Object? participantsWithFiche = null,
     Object? animateurs = null,
     Object? coAnimateurs = null,
   }) {
@@ -837,6 +843,10 @@ class _$AtelierSnippetCopyWithImpl<$Res, $Val extends AtelierSnippet>
       participants: null == participants
           ? _value.participants
           : participants // ignore: cast_nullable_to_non_nullable
+              as List<ContactSnippet>,
+      participantsWithFiche: null == participantsWithFiche
+          ? _value.participantsWithFiche
+          : participantsWithFiche // ignore: cast_nullable_to_non_nullable
               as List<ContactSnippet>,
       animateurs: null == animateurs
           ? _value.animateurs
@@ -869,6 +879,8 @@ abstract class _$$AtelierSnippetImplCopyWith<$Res>
   $Res call(
       {Atelier atelier,
       List<ContactSnippet> participants,
+      @JsonKey(name: 'participants_with_fiche')
+      List<ContactSnippet> participantsWithFiche,
       List<AnimateurSnippet> animateurs,
       @JsonKey(name: 'co_animateurs') List<CoAnimateurSnippet> coAnimateurs});
 
@@ -889,6 +901,7 @@ class __$$AtelierSnippetImplCopyWithImpl<$Res>
   $Res call({
     Object? atelier = null,
     Object? participants = null,
+    Object? participantsWithFiche = null,
     Object? animateurs = null,
     Object? coAnimateurs = null,
   }) {
@@ -900,6 +913,10 @@ class __$$AtelierSnippetImplCopyWithImpl<$Res>
       participants: null == participants
           ? _value._participants
           : participants // ignore: cast_nullable_to_non_nullable
+              as List<ContactSnippet>,
+      participantsWithFiche: null == participantsWithFiche
+          ? _value._participantsWithFiche
+          : participantsWithFiche // ignore: cast_nullable_to_non_nullable
               as List<ContactSnippet>,
       animateurs: null == animateurs
           ? _value._animateurs
@@ -915,16 +932,20 @@ class __$$AtelierSnippetImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AtelierSnippetImpl implements _AtelierSnippet {
+class _$AtelierSnippetImpl extends _AtelierSnippet {
   _$AtelierSnippetImpl(
       {required this.atelier,
       required final List<ContactSnippet> participants,
+      @JsonKey(name: 'participants_with_fiche')
+      required final List<ContactSnippet> participantsWithFiche,
       required final List<AnimateurSnippet> animateurs,
       @JsonKey(name: 'co_animateurs')
       required final List<CoAnimateurSnippet> coAnimateurs})
       : _participants = participants,
+        _participantsWithFiche = participantsWithFiche,
         _animateurs = animateurs,
-        _coAnimateurs = coAnimateurs;
+        _coAnimateurs = coAnimateurs,
+        super._();
 
   factory _$AtelierSnippetImpl.fromJson(Map<String, dynamic> json) =>
       _$$AtelierSnippetImplFromJson(json);
@@ -937,6 +958,16 @@ class _$AtelierSnippetImpl implements _AtelierSnippet {
     if (_participants is EqualUnmodifiableListView) return _participants;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_participants);
+  }
+
+  final List<ContactSnippet> _participantsWithFiche;
+  @override
+  @JsonKey(name: 'participants_with_fiche')
+  List<ContactSnippet> get participantsWithFiche {
+    if (_participantsWithFiche is EqualUnmodifiableListView)
+      return _participantsWithFiche;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_participantsWithFiche);
   }
 
   final List<AnimateurSnippet> _animateurs;
@@ -958,7 +989,7 @@ class _$AtelierSnippetImpl implements _AtelierSnippet {
 
   @override
   String toString() {
-    return 'AtelierSnippet(atelier: $atelier, participants: $participants, animateurs: $animateurs, coAnimateurs: $coAnimateurs)';
+    return 'AtelierSnippet(atelier: $atelier, participants: $participants, participantsWithFiche: $participantsWithFiche, animateurs: $animateurs, coAnimateurs: $coAnimateurs)';
   }
 
   @override
@@ -969,6 +1000,8 @@ class _$AtelierSnippetImpl implements _AtelierSnippet {
             (identical(other.atelier, atelier) || other.atelier == atelier) &&
             const DeepCollectionEquality()
                 .equals(other._participants, _participants) &&
+            const DeepCollectionEquality()
+                .equals(other._participantsWithFiche, _participantsWithFiche) &&
             const DeepCollectionEquality()
                 .equals(other._animateurs, _animateurs) &&
             const DeepCollectionEquality()
@@ -981,6 +1014,7 @@ class _$AtelierSnippetImpl implements _AtelierSnippet {
       runtimeType,
       atelier,
       const DeepCollectionEquality().hash(_participants),
+      const DeepCollectionEquality().hash(_participantsWithFiche),
       const DeepCollectionEquality().hash(_animateurs),
       const DeepCollectionEquality().hash(_coAnimateurs));
 
@@ -999,14 +1033,17 @@ class _$AtelierSnippetImpl implements _AtelierSnippet {
   }
 }
 
-abstract class _AtelierSnippet implements AtelierSnippet {
+abstract class _AtelierSnippet extends AtelierSnippet {
   factory _AtelierSnippet(
           {required final Atelier atelier,
           required final List<ContactSnippet> participants,
+          @JsonKey(name: 'participants_with_fiche')
+          required final List<ContactSnippet> participantsWithFiche,
           required final List<AnimateurSnippet> animateurs,
           @JsonKey(name: 'co_animateurs')
           required final List<CoAnimateurSnippet> coAnimateurs}) =
       _$AtelierSnippetImpl;
+  _AtelierSnippet._() : super._();
 
   factory _AtelierSnippet.fromJson(Map<String, dynamic> json) =
       _$AtelierSnippetImpl.fromJson;
@@ -1015,6 +1052,9 @@ abstract class _AtelierSnippet implements AtelierSnippet {
   Atelier get atelier;
   @override
   List<ContactSnippet> get participants;
+  @override
+  @JsonKey(name: 'participants_with_fiche')
+  List<ContactSnippet> get participantsWithFiche;
   @override
   List<AnimateurSnippet> get animateurs;
   @override

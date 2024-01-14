@@ -1931,14 +1931,14 @@ class MockFicheCollectionBlone extends _i1.Mock
       ) as _i4.Fiche);
 
   @override
-  _i8.Future<Iterable<_i5.FicheSnippet>> getSnippetsForContactAndAtelier({
+  _i8.Stream<Iterable<_i5.FicheSnippet>> watchSnippetsForContactAndAtelier({
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
-          #getSnippetsForContactAndAtelier,
+          #watchSnippetsForContactAndAtelier,
           [],
           {
             #atelierId: atelierId,
@@ -1946,21 +1946,20 @@ class MockFicheCollectionBlone extends _i1.Mock
             #demarcheId: demarcheId,
           },
         ),
-        returnValue:
-            _i8.Future<Iterable<_i5.FicheSnippet>>.value(<_i5.FicheSnippet>[]),
+        returnValue: _i8.Stream<Iterable<_i5.FicheSnippet>>.empty(),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.FicheSnippet>>.value(<_i5.FicheSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.FicheSnippet>>);
+            _i8.Stream<Iterable<_i5.FicheSnippet>>.empty(),
+      ) as _i8.Stream<Iterable<_i5.FicheSnippet>>);
 
   @override
-  _i8.Future<Iterable<_i4.Fiche>> getForContactAndAtelier({
+  _i8.Stream<Iterable<_i4.Fiche>> watchForContactAndAtelier({
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
-          #getForContactAndAtelier,
+          #watchForContactAndAtelier,
           [],
           {
             #atelierId: atelierId,
@@ -1968,10 +1967,9 @@ class MockFicheCollectionBlone extends _i1.Mock
             #demarcheId: demarcheId,
           },
         ),
-        returnValue: _i8.Future<Iterable<_i4.Fiche>>.value(<_i4.Fiche>[]),
-        returnValueForMissingStub:
-            _i8.Future<Iterable<_i4.Fiche>>.value(<_i4.Fiche>[]),
-      ) as _i8.Future<Iterable<_i4.Fiche>>);
+        returnValue: _i8.Stream<Iterable<_i4.Fiche>>.empty(),
+        returnValueForMissingStub: _i8.Stream<Iterable<_i4.Fiche>>.empty(),
+      ) as _i8.Stream<Iterable<_i4.Fiche>>);
 
   @override
   _i8.Future<_i5.FicheSnippet> getSnippet({required String? ficheId}) =>
