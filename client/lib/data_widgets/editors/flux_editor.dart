@@ -167,7 +167,7 @@ class FluxDirectionForm extends StatelessWidget {
             }
           },
         ),
-        const Text('Entrant'),
+        const Text('Besoin'),
         Leading.hSmall(),
         Radio<FluxDirection>(
           value: FluxDirection.sortant,
@@ -178,7 +178,7 @@ class FluxDirectionForm extends StatelessWidget {
             }
           },
         ),
-        const Text('Sortant'),
+        const Text('Offre'),
       ],
     );
   }
