@@ -15,7 +15,6 @@ import '../pages/flux_page.dart';
 import '../pages/invitation_page.dart';
 import '../pages/landing_page.dart';
 import '../pages/profile_page.dart';
-import '../pages/register_page.dart';
 import '../pages/synergie_page.dart';
 import '../pages/synergies_page.dart';
 
@@ -25,8 +24,6 @@ const String creationId = "nouveau";
 final places = [
   // Flow
   landingPlace,
-  registerPlace,
-  signInPlace,
   profilePlace,
   changePasswordPlace,
   demarcheChoicePlace,
@@ -62,20 +59,6 @@ final landingPlace = Place(
   },
 );
 
-final registerPlace = Place(
-  path: '/register',
-  builder: (info) {
-    return const RegisterPage();
-  },
-);
-
-final signInPlace = Place(
-  path: '/sign_in',
-  builder: (info) {
-    return const LandingPage();
-  },
-);
-
 final profilePlace = Place(
   path: '/profile',
   builder: (info) {
@@ -84,7 +67,7 @@ final profilePlace = Place(
 );
 
 final changePasswordPlace = Place(
-  path: '/profile/change_password',
+  path: '/update_password',
   builder: (info) {
     return const ChangePasswordPage();
   },

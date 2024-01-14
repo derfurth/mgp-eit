@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 import '../blones/auth_blone.dart';
 import '../environment.dart';
@@ -54,29 +56,28 @@ class _SignInFormState extends State<SignInForm> {
                   children: [
                     if (Environment.showSpikes)
                       _Spike(onSelect: auth.signInWithPassword),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Email',
-                        filled: true,
-                      ),
-                      onSaved: (value) => email = value ?? '',
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Mot de passe',
-                        filled: true,
-                      ),
-                      onSaved: (value) => password = value ?? '',
-                      obscureText: true,
-                    ),
-                    ButtonBar(
-                      children: [
-                        ElevatedButton(
-                          onPressed: connecting ? null : () => connect(auth),
-                          child: const Text('Se connecter'),
+                    SupaEmailAuth(
+                      redirectTo: kIsWeb ? null : 'io.supabase.flutter://',
+                      onSignInComplete: (response) {
+                        Navigator.of(context).pushReplacementNamed('/');
+                      },
+                      onSignUpComplete: (response) {
+                        Navigator.of(context).pushReplacementNamed('/');
+                      },
+                      metadataFields: [
+                        MetaDataField(
+                          prefixIcon: const Icon(Icons.person),
+                          label: 'Email',
+                          key: 'username',
+                          validator: (val) {
+                            if (val == null || val.isEmpty) {
+                              return 'Please enter something';
+                            }
+                            return null;
+                          },
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

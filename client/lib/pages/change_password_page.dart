@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mgp_client/app_theme.dart';
-import 'package:mgp_client/components/password_change.dart';
-import 'package:mgp_client/components/version.dart';
-import 'package:provider/provider.dart';
-import 'package:styled_widget/styled_widget.dart';
+import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({
@@ -17,41 +13,27 @@ class ChangePasswordPage extends StatefulWidget {
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
   @override
   Widget build(BuildContext context) {
-    final AppTheme theme = context.read();
+    // final AppTheme theme = context.read();
     return Scaffold(
-      body: SizedBox.expand(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
           children: [
-            Expanded(
-              child: Text(
-                'MOT DE PASSE',
-                style: Theme.of(context)
-                    .textTheme
-                    .displayLarge!
-                    .copyWith(color: theme.accentTxt),
-              ).padding(all: 50).fittedBox().center().backgroundLinearGradient(
-                colors: [
-                  theme.accent2,
-                  theme.accent1,
-                ],
-              ),
+            SupaResetPassword(
+              accessToken:
+                  Supabase.instance.client.auth.currentSession!.accessToken,
+              onSuccess: (response) {
+                Navigator.of(context).pushReplacementNamed('/');
+              },
             ),
-            SizedBox(
-              width: 300,
-              child: Container(
-                color: Colors.white70,
-                child: Stack(
-                  children: [
-                    const Center(
-                      child: PasswordChange(),
-                    ),
-                    const Version()
-                        .padding(all: theme.grid * 2)
-                        .alignment(AlignmentDirectional.bottomEnd),
-                  ],
-                ),
+            TextButton(
+              child: const Text(
+                "Revenir à l'accueil",
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
             ),
           ],
         ),

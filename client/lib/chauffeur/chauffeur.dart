@@ -17,8 +17,6 @@ class Chauffeur {
   // --------------------------------------------
 
   NavigationResult land() => routeMaster.push(landingPlace.path);
-  NavigationResult register() => routeMaster.push(registerPlace.path);
-  NavigationResult signIn() => routeMaster.push(signInPlace.path);
   NavigationResult profile() => routeMaster.push(profilePlace.path);
   NavigationResult changePassword() =>
       routeMaster.push(changePasswordPlace.path);

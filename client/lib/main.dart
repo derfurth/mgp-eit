@@ -9,6 +9,7 @@ import 'package:routemaster/routemaster.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'app_theme.dart';
+import 'chauffeur/chauffeur.dart';
 import 'chauffeur/routemaster.dart';
 
 void main() async {
@@ -19,6 +20,15 @@ void main() async {
     anonKey: supabaseAnnonKey,
     debug: true,
   );
+
+  supabase.client.auth.onAuthStateChange.listen((data) {
+    final AuthChangeEvent event = data.event;
+
+    if (event == AuthChangeEvent.passwordRecovery) {
+      chauffeur.changePassword();
+    }
+  });
+
   final app = AppBlone(
     supabaseClient: supabase.client,
     showMessage: ShowMessageCommand().execute,
@@ -64,6 +74,7 @@ class _MainAppState extends State<MainApp> {
       ],
       child: Builder(builder: (context) {
         final AppTheme appTheme = context.watch();
+
         return MaterialApp.router(
           // debugShowCheckedModeBanner: false,
           title: "Synergies",
