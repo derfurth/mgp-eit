@@ -103,4 +103,50 @@ begin
 end
 $$;
 
+
+alter table participant_meta
+    add column latest_fiche_modified_at timestamptz;
+alter table atelier
+    add column latest_fiche_modified_at timestamptz;
+
+create or replace function
+    update_atelier_and_meta()
+    returns trigger
+as
+$$
+begin
+    if new is not null
+    then
+        update participant_meta pm
+        set latest_fiche_modified_at = now()
+        where pm.atelier_id = new.atelier_id
+          and pm.contact_id = new.contact_id;
+
+        update atelier a
+        set latest_fiche_modified_at = now()
+        where a.id = new.atelier_id;
+
+        return new;
+    elsif old is not null
+    then
+        update participant_meta pm
+        set latest_fiche_modified_at = now()
+        where pm.atelier_id = old.atelier_id
+          and pm.contact_id = old.contact_id;
+
+        update atelier a
+        set latest_fiche_modified_at = now()
+        where a.id = old.atelier_id;
+
+        return old;
+    end if;
+end;
+$$ language plpgsql;
+
+create trigger update_meta_and_atelier_on_fiche_change
+    after insert or update or delete
+    on fiche
+    for each row execute procedure update_atelier_and_meta();
+
+
 commit;

@@ -256,11 +256,9 @@ class AtelierParticipantLiveView extends StatelessWidget {
     final Demarche demarche = context.watch();
     final ParticipantMetaCollectionBlone participantMetas = context.watch();
     final ContactCollectionBlone contacts = context.watch();
-    final stream =
-        participantMetas.subscribeByAtelier(atelierId: atelier.atelier.id);
 
-    return StreamBuilder<Iterable<ParticipantMeta>>(
-        stream: stream,
+    return FutureBuilder<Iterable<ParticipantMeta>>(
+        future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
         builder: (context, snapshot) {
           final metas = snapshot.data;
           if (metas == null) return const CircularProgressIndicator.adaptive();
@@ -323,13 +321,11 @@ class AtelierThematiqueLiveView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ParticipantMetaCollectionBlone participantMetas = context.watch();
-    final stream =
-        participantMetas.subscribeByAtelier(atelierId: atelier.atelier.id);
     final Thematiques thematiques = context.watch();
     final Demarche demarche = context.watch();
 
-    return StreamBuilder<Iterable<ParticipantMeta>>(
-      stream: stream,
+    return FutureBuilder<Iterable<ParticipantMeta>>(
+      future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
       builder: (context, snapshot) {
         final metas = snapshot.data;
         if (metas == null) return const CircularProgressIndicator.adaptive();
