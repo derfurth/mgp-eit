@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:lumberdash/lumberdash.dart';
 import 'package:supabase/supabase.dart';
@@ -184,16 +183,14 @@ class ParticipantMetaCollectionBlone extends SupabaseCollection<ParticipantMeta>
     required String atelierId,
     required List<String> participantIds,
   }) async {
-    final metas =
-        participantIds.map((contactId) => parent.participantMeta.create(
-              demarcheId: demarcheId,
-              atelierId: atelierId,
-              contactId: contactId,
-            ));
-    final results = await Future.wait(metas.map((meta) => insert([meta])));
-
-    print(
-        '${results.whereNot((success) => success)} on ${results.length} where not inserted');
+    await client.rpc(
+      'set_atelier_participants',
+      params: {
+        'demarche_id': demarcheId,
+        'atelier_id': atelierId,
+        'new_participants': participantIds,
+      },
+    ).select();
   }
 
   Future<ParticipantMeta> getByAtelierAndContact({
