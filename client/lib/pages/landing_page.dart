@@ -87,7 +87,7 @@ class Credits extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('Avec le soutient de'),
+                  const Text('Avec le soutien de'),
                   const Image(image: AssetImage('logos/ademe.png'))
                       .constrained(maxHeight: 50),
                 ],
