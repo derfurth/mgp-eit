@@ -44,7 +44,10 @@ class VerticalNavigation extends StatelessWidget {
           child: FittedBox(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: theme.grid * 8),
-              child: const NavigationLogo(),
+              child: InkWell(
+                onTap: () => chauffeur.land(),
+                child: const NavigationLogo(),
+              ),
             ),
           ),
         ),

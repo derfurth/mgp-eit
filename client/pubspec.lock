@@ -282,7 +282,7 @@ packages:
     source: hosted
     version: "0.3.1"
   email_validator:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: email_validator
       sha256: e9a90f27ab2b915a27d7f9c2a7ddda5dd752d6942616ee83529b686fc086221b
@@ -413,14 +413,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  font_awesome_flutter:
-    dependency: transitive
-    description:
-      name: font_awesome_flutter
-      sha256: "52671aea66da73b58d42ec6d0912b727a42248dd9a7c76d6c20f275783c48c08"
-      url: "https://pub.dev"
-    source: hosted
-    version: "10.6.0"
   form_field_validator:
     dependency: "direct main"
     description:
@@ -1108,14 +1100,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.4"
-  supabase_auth_ui:
-    dependency: "direct main"
-    description:
-      name: supabase_auth_ui
-      sha256: "3008453147632031de4ec37fe8507a149a085a11bedc1a4a666480df817343e5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.0+1"
   supabase_flutter:
     dependency: "direct main"
     description:
