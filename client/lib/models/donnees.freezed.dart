@@ -316,8 +316,8 @@ mixin _$Administrateur {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   String? get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'personne_id')
-  String get personneId => throw _privateConstructorUsedError;
+  String get nom => throw _privateConstructorUsedError;
+  String get prenom => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -334,7 +334,8 @@ abstract class $AdministrateurCopyWith<$Res> {
   $Res call(
       {String id,
       @JsonKey(name: 'user_id') String? userId,
-      @JsonKey(name: 'personne_id') String personneId});
+      String nom,
+      String prenom});
 }
 
 /// @nodoc
@@ -352,7 +353,8 @@ class _$AdministrateurCopyWithImpl<$Res, $Val extends Administrateur>
   $Res call({
     Object? id = null,
     Object? userId = freezed,
-    Object? personneId = null,
+    Object? nom = null,
+    Object? prenom = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -363,9 +365,13 @@ class _$AdministrateurCopyWithImpl<$Res, $Val extends Administrateur>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      personneId: null == personneId
-          ? _value.personneId
-          : personneId // ignore: cast_nullable_to_non_nullable
+      nom: null == nom
+          ? _value.nom
+          : nom // ignore: cast_nullable_to_non_nullable
+              as String,
+      prenom: null == prenom
+          ? _value.prenom
+          : prenom // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -382,7 +388,8 @@ abstract class _$$AdministrateurImplCopyWith<$Res>
   $Res call(
       {String id,
       @JsonKey(name: 'user_id') String? userId,
-      @JsonKey(name: 'personne_id') String personneId});
+      String nom,
+      String prenom});
 }
 
 /// @nodoc
@@ -398,7 +405,8 @@ class __$$AdministrateurImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? userId = freezed,
-    Object? personneId = null,
+    Object? nom = null,
+    Object? prenom = null,
   }) {
     return _then(_$AdministrateurImpl(
       id: null == id
@@ -409,9 +417,13 @@ class __$$AdministrateurImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      personneId: null == personneId
-          ? _value.personneId
-          : personneId // ignore: cast_nullable_to_non_nullable
+      nom: null == nom
+          ? _value.nom
+          : nom // ignore: cast_nullable_to_non_nullable
+              as String,
+      prenom: null == prenom
+          ? _value.prenom
+          : prenom // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -419,11 +431,13 @@ class __$$AdministrateurImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AdministrateurImpl implements _Administrateur {
+class _$AdministrateurImpl extends _Administrateur {
   const _$AdministrateurImpl(
       {required this.id,
       @JsonKey(name: 'user_id') this.userId,
-      @JsonKey(name: 'personne_id') this.personneId = ''});
+      this.nom = '',
+      this.prenom = ''})
+      : super._();
 
   factory _$AdministrateurImpl.fromJson(Map<String, dynamic> json) =>
       _$$AdministrateurImplFromJson(json);
@@ -434,12 +448,15 @@ class _$AdministrateurImpl implements _Administrateur {
   @JsonKey(name: 'user_id')
   final String? userId;
   @override
-  @JsonKey(name: 'personne_id')
-  final String personneId;
+  @JsonKey()
+  final String nom;
+  @override
+  @JsonKey()
+  final String prenom;
 
   @override
   String toString() {
-    return 'Administrateur(id: $id, userId: $userId, personneId: $personneId)';
+    return 'Administrateur(id: $id, userId: $userId, nom: $nom, prenom: $prenom)';
   }
 
   @override
@@ -449,13 +466,13 @@ class _$AdministrateurImpl implements _Administrateur {
             other is _$AdministrateurImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.personneId, personneId) ||
-                other.personneId == personneId));
+            (identical(other.nom, nom) || other.nom == nom) &&
+            (identical(other.prenom, prenom) || other.prenom == prenom));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, personneId);
+  int get hashCode => Object.hash(runtimeType, id, userId, nom, prenom);
 
   @JsonKey(ignore: true)
   @override
@@ -472,12 +489,13 @@ class _$AdministrateurImpl implements _Administrateur {
   }
 }
 
-abstract class _Administrateur implements Administrateur {
+abstract class _Administrateur extends Administrateur {
   const factory _Administrateur(
-          {required final String id,
-          @JsonKey(name: 'user_id') final String? userId,
-          @JsonKey(name: 'personne_id') final String personneId}) =
-      _$AdministrateurImpl;
+      {required final String id,
+      @JsonKey(name: 'user_id') final String? userId,
+      final String nom,
+      final String prenom}) = _$AdministrateurImpl;
+  const _Administrateur._() : super._();
 
   factory _Administrateur.fromJson(Map<String, dynamic> json) =
       _$AdministrateurImpl.fromJson;
@@ -488,8 +506,9 @@ abstract class _Administrateur implements Administrateur {
   @JsonKey(name: 'user_id')
   String? get userId;
   @override
-  @JsonKey(name: 'personne_id')
-  String get personneId;
+  String get nom;
+  @override
+  String get prenom;
   @override
   @JsonKey(ignore: true)
   _$$AdministrateurImplCopyWith<_$AdministrateurImpl> get copyWith =>

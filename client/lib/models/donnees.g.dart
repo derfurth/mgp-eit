@@ -34,7 +34,8 @@ _$AdministrateurImpl _$$AdministrateurImplFromJson(Map<String, dynamic> json) =>
     _$AdministrateurImpl(
       id: json['id'] as String,
       userId: json['user_id'] as String?,
-      personneId: json['personne_id'] as String? ?? '',
+      nom: json['nom'] as String? ?? '',
+      prenom: json['prenom'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$AdministrateurImplToJson(
@@ -42,7 +43,8 @@ Map<String, dynamic> _$$AdministrateurImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'user_id': instance.userId,
-      'personne_id': instance.personneId,
+      'nom': instance.nom,
+      'prenom': instance.prenom,
     };
 
 _$AnimateurImpl _$$AnimateurImplFromJson(Map<String, dynamic> json) =>

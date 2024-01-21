@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mgp_client/blones/collection/administrateur_collection_blone.dart';
 import 'package:provider/provider.dart';
 
 import '../app_theme.dart';
@@ -11,6 +12,7 @@ import '../components/sign_in_form.dart';
 import '../components/sign_up_form.dart';
 import '../models/authentication.dart';
 import '../models/donnees.dart';
+import '../models/invitation.dart';
 import '../styled_widgets/heading.dart';
 import '../styled_widgets/leading.dart';
 import '../styled_widgets/page_header.dart';
@@ -31,10 +33,16 @@ class InvitationPage extends StatelessWidget {
     return Layout(
       navigation: Container(),
       body: user.maybeMap(
-        connected: (user) => InvitationClaim(
-          user: user,
-          invitation: invitation,
-        ),
+        connected: (user) {
+          return switch (invitation) {
+            AdministrateurInvitation() => AdminInvitationClaim(
+                user: user, invitation: invitation as AdministrateurInvitation),
+            AnimateurInvitation() => DemarcheInvitationClaim(
+                user: user, invitation: invitation as DemarcheInvitation),
+            CoAnimateurInvitation() => DemarcheInvitationClaim(
+                user: user, invitation: invitation as DemarcheInvitation)
+          };
+        },
         orElse: () => const Sign(),
       ),
     );
@@ -62,6 +70,7 @@ class Sign extends StatelessWidget {
           padding: EdgeInsets.all(16.0),
           child: TabBarView(
             children: [
+              // todo update those forms
               SignInForm(),
               SignUpForm(),
             ],
@@ -72,11 +81,11 @@ class Sign extends StatelessWidget {
   }
 }
 
-class InvitationClaim extends StatelessWidget {
+class DemarcheInvitationClaim extends StatelessWidget {
   final User user;
-  final Invitation invitation;
+  final DemarcheInvitation invitation;
 
-  const InvitationClaim({
+  const DemarcheInvitationClaim({
     super.key,
     required this.user,
     required this.invitation,
@@ -107,11 +116,7 @@ class InvitationClaim extends StatelessWidget {
                 Leading.vMedium(),
                 Text(
                   'Rejoindre la démarche ${demarche.denomination} '
-                  'en tant ${invitation.map(
-                    animateur: (_) => "qu'animateur",
-                    coAnimateur: (_) => 'que co-animateur',
-                  )}'
-                  '.',
+                  'en tant ${invitation is AnimateurInvitation ? "qu'animateur" : "que co-animateur"}.',
                 ),
                 Leading.vSmall(),
                 ElevatedButton(
@@ -125,6 +130,55 @@ class InvitationClaim extends StatelessWidget {
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+class AdminInvitationClaim extends StatelessWidget {
+  final User user;
+  final AdministrateurInvitation invitation;
+
+  const AdminInvitationClaim({
+    super.key,
+    required this.user,
+    required this.invitation,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final AppTheme theme = context.read();
+
+    return Body(
+      header: Padding(
+        padding: EdgeInsets.only(
+          bottom: theme.grid * 4,
+          right: theme.grid,
+        ),
+        child: Heading.h3('Invitation'),
+      ),
+      child: Builder(
+        builder: (BuildContext context) {
+          final AdministrateurCollectionBlone administrateurs = context.read();
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Leading.vMedium(),
+              const Text('Devenir administrateur.'),
+              Leading.vSmall(),
+              ElevatedButton(
+                onPressed: () async {
+                  await administrateurs.claim(
+                    administrateurId: invitation.administrateurId,
+                  );
+                  chauffeur.land();
+                },
+                child: const Text('Ok'),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

@@ -1,5 +1,7 @@
+import 'package:mgp_client/models/invitation.dart';
+import 'package:mgp_client/pages/administrateur_page.dart';
+
 import '../chauffeur/place.dart';
-import '../models/authentication.dart';
 import '../pages/acteurs_page.dart';
 import '../pages/admin_demarche_page.dart';
 import '../pages/animateur_page.dart';
@@ -29,9 +31,11 @@ final places = [
   demarcheChoicePlace,
   invitationAnimateurPlace,
   invitationCoAnimateurPlace,
+  invitationAdministrateurPlace,
   // Administration
   demarcheEditorPlace,
   // Animation
+  administrateurEditorPlace,
   animateurEditorPlace,
   coAnimateurEditorPlace,
   ateliers,
@@ -84,10 +88,22 @@ final invitationAnimateurPlace = Place(
   path: '/invitation/demarche/:demarcheId/animateur/:animateurId',
   builder: (info) {
     final params = info.pathParameters;
-    final invitation = Invitation.animateur(
-      demarcheId: params['demarcheId']!,
-      animateurId: params['animateurId']!,
+    final invitation = AnimateurInvitation()
+      ..demarcheId = params['demarcheId']!
+      ..animateurId = params['animateurId']!;
+
+    return InvitationPage(
+      invitation: invitation,
     );
+  },
+);
+
+final invitationAdministrateurPlace = Place(
+  path: '/invitation/administrateur/:administrateurId',
+  builder: (info) {
+    final params = info.pathParameters;
+    final invitation = AdministrateurInvitation()
+      ..administrateurId = params['administrateurId']!;
 
     return InvitationPage(
       invitation: invitation,
@@ -99,10 +115,9 @@ final invitationCoAnimateurPlace = Place(
   path: '/invitation/demarche/:demarcheId/co_animateur/:coAnimateurId',
   builder: (info) {
     final params = info.pathParameters;
-    final invitation = Invitation.coAnimateur(
-      demarcheId: params['demarcheId']!,
-      coAnimateurId: params['coAnimateurId']!,
-    );
+    final invitation = CoAnimateurInvitation()
+      ..demarcheId = params['demarcheId']!
+      ..coAnimateurId = params['coAnimateurId']!;
 
     return InvitationPage(
       invitation: invitation,
@@ -140,6 +155,20 @@ final animateurEditorPlace = Place(
       demarcheId: params['demarcheId']!,
       animateurId:
           params['animateurId'] == creationId ? null : params['animateurId'],
+    );
+  },
+);
+
+/// AdministrateurEditor
+final administrateurEditorPlace = Place(
+  path: '/demarche/:demarcheId/administrateur/:administrateurId',
+  builder: (info) {
+    final params = info.pathParameters;
+
+    return AdministrateurPage(
+      administrateurId: params['administrateurId'] == creationId
+          ? null
+          : params['administrateurId'],
     );
   },
 );

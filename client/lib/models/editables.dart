@@ -83,6 +83,31 @@ class EditableDemarche extends Editable<Demarche> {
   );
 }
 
+/// Un administrateur
+class EditableAdministrateur extends Editable<Administrateur> {
+  EditableAdministrateur(super.administrateur);
+
+  late final nom = Field<String?>(
+    label: 'Nom',
+    validator: MaxLengthValidator(
+      64,
+      errorText: 'le nom doit faire moins de 64 caractères.',
+    ),
+    get: () => value.nom,
+    update: (fieldValue) => update(value.copyWith(nom: fieldValue ?? '')),
+  );
+
+  late final prenom = Field<String?>(
+    label: 'Prenom',
+    validator: MaxLengthValidator(
+      64,
+      errorText: 'le prénom doit faire moins de 64 caractères.',
+    ),
+    get: () => value.prenom,
+    update: (fieldValue) => update(value.copyWith(prenom: fieldValue ?? '')),
+  );
+}
+
 /// Un animateur
 ///
 /// - éditeur d'animateur pour les DCPs

@@ -17,9 +17,12 @@ class Chauffeur {
   // --------------------------------------------
 
   NavigationResult land() => routeMaster.push(landingPlace.path);
+
   NavigationResult profile() => routeMaster.push(profilePlace.path);
+
   NavigationResult changePassword() =>
       routeMaster.push(changePasswordPlace.path);
+
   NavigationResult chooseDemarche() =>
       routeMaster.push(demarcheChoicePlace.path);
 
@@ -30,6 +33,14 @@ class Chauffeur {
     final path = invitationAnimateurPlace.path
         .replaceAll(':demarcheId', demarcheId)
         .replaceAll(':animateurId', animateurId);
+    return routeMaster.push(path);
+  }
+
+  NavigationResult openAdministrateurInvitation(
+    String administrateurId,
+  ) {
+    final path = invitationAdministrateurPlace.path
+        .replaceAll(':administrateurId', administrateurId);
     return routeMaster.push(path);
   }
 
@@ -60,6 +71,18 @@ class Chauffeur {
   // --------------------------------------------
   // Animation
   // --------------------------------------------
+
+  NavigationResult editAdministrateur(String administrateurId) {
+    final path = administrateurEditorPlace.path
+        .replaceAll(':administrateurId', administrateurId);
+    return routeMaster.push(path);
+  }
+
+  NavigationResult createAdministrateur() {
+    final path = administrateurEditorPlace.path
+        .replaceAll(':administrateurId', creationId);
+    return routeMaster.push(path);
+  }
 
   NavigationResult editAnimateur(String demarcheId, String animateurId) {
     final path = animateurEditorPlace.path

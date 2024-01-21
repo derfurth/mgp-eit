@@ -1,6 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../models/ui_message.dart';
 import '../app_blone.dart';
 import '../blone.dart';
 
@@ -35,7 +36,8 @@ abstract class SupabaseCollection<T> implements ChildBlone<AppBlone> {
     final serialized = elementToJson(value);
     try {
       await fromTable.upsert(serialized);
-    } on PostgrestException catch (_) {
+    } on PostgrestException catch (e) {
+      parent.showMessage(UIMessage.error("Erreur : ${e.message}"));
       return false;
     }
     return true;

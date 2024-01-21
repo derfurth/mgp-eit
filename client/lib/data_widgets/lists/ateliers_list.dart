@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../app_theme.dart';
 import '../../blones/collection/animation_collection_blones.dart';
 import '../../blones/collection/atelier_collection_blones.dart';
 import '../../chauffeur/chauffeur.dart';
@@ -28,7 +27,6 @@ class AteliersList extends StatelessWidget {
     final AtelierCollectionBlone ateliers = context.watch();
     final CoAnimateurCollectionBlone coAnimateurs = context.watch();
     final AnimateurCollectionBlone animateurs = context.watch();
-    final AppTheme theme = context.watch();
 
     return DefaultTabController(
       length: 3,

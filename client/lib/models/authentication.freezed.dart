@@ -18,8 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$User {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)
+    required TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)
         connected,
     required TResult Function() disconnected,
     required TResult Function() connecting,
@@ -28,8 +32,12 @@ mixin _$User {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult? Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult? Function()? disconnected,
     TResult? Function()? connecting,
@@ -38,8 +46,12 @@ mixin _$User {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult Function()? disconnected,
     TResult Function()? connecting,
@@ -99,6 +111,7 @@ abstract class _$$ConnectedImplCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isAdministrateur,
+      bool isSuperAdministrateur,
       String email,
       Iterable<String> animateurIds,
       Iterable<String> coAnimateurIds});
@@ -116,6 +129,7 @@ class __$$ConnectedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isAdministrateur = null,
+    Object? isSuperAdministrateur = null,
     Object? email = null,
     Object? animateurIds = null,
     Object? coAnimateurIds = null,
@@ -124,6 +138,10 @@ class __$$ConnectedImplCopyWithImpl<$Res>
       isAdministrateur: null == isAdministrateur
           ? _value.isAdministrateur
           : isAdministrateur // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSuperAdministrateur: null == isSuperAdministrateur
+          ? _value.isSuperAdministrateur
+          : isSuperAdministrateur // ignore: cast_nullable_to_non_nullable
               as bool,
       email: null == email
           ? _value.email
@@ -146,12 +164,15 @@ class __$$ConnectedImplCopyWithImpl<$Res>
 class _$ConnectedImpl implements Connected {
   _$ConnectedImpl(
       {required this.isAdministrateur,
+      required this.isSuperAdministrateur,
       required this.email,
       required this.animateurIds,
       required this.coAnimateurIds});
 
   @override
   final bool isAdministrateur;
+  @override
+  final bool isSuperAdministrateur;
   @override
   final String email;
   @override
@@ -161,7 +182,7 @@ class _$ConnectedImpl implements Connected {
 
   @override
   String toString() {
-    return 'User.connected(isAdministrateur: $isAdministrateur, email: $email, animateurIds: $animateurIds, coAnimateurIds: $coAnimateurIds)';
+    return 'User.connected(isAdministrateur: $isAdministrateur, isSuperAdministrateur: $isSuperAdministrateur, email: $email, animateurIds: $animateurIds, coAnimateurIds: $coAnimateurIds)';
   }
 
   @override
@@ -171,6 +192,8 @@ class _$ConnectedImpl implements Connected {
             other is _$ConnectedImpl &&
             (identical(other.isAdministrateur, isAdministrateur) ||
                 other.isAdministrateur == isAdministrateur) &&
+            (identical(other.isSuperAdministrateur, isSuperAdministrateur) ||
+                other.isSuperAdministrateur == isSuperAdministrateur) &&
             (identical(other.email, email) || other.email == email) &&
             const DeepCollectionEquality()
                 .equals(other.animateurIds, animateurIds) &&
@@ -182,6 +205,7 @@ class _$ConnectedImpl implements Connected {
   int get hashCode => Object.hash(
       runtimeType,
       isAdministrateur,
+      isSuperAdministrateur,
       email,
       const DeepCollectionEquality().hash(animateurIds),
       const DeepCollectionEquality().hash(coAnimateurIds));
@@ -195,35 +219,48 @@ class _$ConnectedImpl implements Connected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)
+    required TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)
         connected,
     required TResult Function() disconnected,
     required TResult Function() connecting,
     required TResult Function() unknown,
   }) {
-    return connected(isAdministrateur, email, animateurIds, coAnimateurIds);
+    return connected(isAdministrateur, isSuperAdministrateur, email,
+        animateurIds, coAnimateurIds);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult? Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult? Function()? disconnected,
     TResult? Function()? connecting,
     TResult? Function()? unknown,
   }) {
-    return connected?.call(
-        isAdministrateur, email, animateurIds, coAnimateurIds);
+    return connected?.call(isAdministrateur, isSuperAdministrateur, email,
+        animateurIds, coAnimateurIds);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult Function()? disconnected,
     TResult Function()? connecting,
@@ -231,7 +268,8 @@ class _$ConnectedImpl implements Connected {
     required TResult orElse(),
   }) {
     if (connected != null) {
-      return connected(isAdministrateur, email, animateurIds, coAnimateurIds);
+      return connected(isAdministrateur, isSuperAdministrateur, email,
+          animateurIds, coAnimateurIds);
     }
     return orElse();
   }
@@ -277,11 +315,13 @@ class _$ConnectedImpl implements Connected {
 abstract class Connected implements User {
   factory Connected(
       {required final bool isAdministrateur,
+      required final bool isSuperAdministrateur,
       required final String email,
       required final Iterable<String> animateurIds,
       required final Iterable<String> coAnimateurIds}) = _$ConnectedImpl;
 
   bool get isAdministrateur;
+  bool get isSuperAdministrateur;
   String get email;
   Iterable<String> get animateurIds;
   Iterable<String> get coAnimateurIds;
@@ -328,8 +368,12 @@ class _$DisconnectedImpl implements Disconnected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)
+    required TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)
         connected,
     required TResult Function() disconnected,
     required TResult Function() connecting,
@@ -341,8 +385,12 @@ class _$DisconnectedImpl implements Disconnected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult? Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult? Function()? disconnected,
     TResult? Function()? connecting,
@@ -354,8 +402,12 @@ class _$DisconnectedImpl implements Disconnected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult Function()? disconnected,
     TResult Function()? connecting,
@@ -448,8 +500,12 @@ class _$ConnectingImpl implements Connecting {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)
+    required TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)
         connected,
     required TResult Function() disconnected,
     required TResult Function() connecting,
@@ -461,8 +517,12 @@ class _$ConnectingImpl implements Connecting {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult? Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult? Function()? disconnected,
     TResult? Function()? connecting,
@@ -474,8 +534,12 @@ class _$ConnectingImpl implements Connecting {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult Function()? disconnected,
     TResult Function()? connecting,
@@ -568,8 +632,12 @@ class _$UnknownImpl implements Unknown {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)
+    required TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)
         connected,
     required TResult Function() disconnected,
     required TResult Function() connecting,
@@ -581,8 +649,12 @@ class _$UnknownImpl implements Unknown {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult? Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult? Function()? disconnected,
     TResult? Function()? connecting,
@@ -594,8 +666,12 @@ class _$UnknownImpl implements Unknown {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isAdministrateur, String email,
-            Iterable<String> animateurIds, Iterable<String> coAnimateurIds)?
+    TResult Function(
+            bool isAdministrateur,
+            bool isSuperAdministrateur,
+            String email,
+            Iterable<String> animateurIds,
+            Iterable<String> coAnimateurIds)?
         connected,
     TResult Function()? disconnected,
     TResult Function()? connecting,
@@ -648,387 +724,4 @@ class _$UnknownImpl implements Unknown {
 
 abstract class Unknown implements User {
   factory Unknown() = _$UnknownImpl;
-}
-
-/// @nodoc
-mixin _$Invitation {
-  String get demarcheId => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String animateurId, String demarcheId) animateur,
-    required TResult Function(String coAnimateurId, String demarcheId)
-        coAnimateur,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String animateurId, String demarcheId)? animateur,
-    TResult? Function(String coAnimateurId, String demarcheId)? coAnimateur,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String animateurId, String demarcheId)? animateur,
-    TResult Function(String coAnimateurId, String demarcheId)? coAnimateur,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Animateur value) animateur,
-    required TResult Function(CoAnimateur value) coAnimateur,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Animateur value)? animateur,
-    TResult? Function(CoAnimateur value)? coAnimateur,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Animateur value)? animateur,
-    TResult Function(CoAnimateur value)? coAnimateur,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $InvitationCopyWith<Invitation> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $InvitationCopyWith<$Res> {
-  factory $InvitationCopyWith(
-          Invitation value, $Res Function(Invitation) then) =
-      _$InvitationCopyWithImpl<$Res, Invitation>;
-  @useResult
-  $Res call({String demarcheId});
-}
-
-/// @nodoc
-class _$InvitationCopyWithImpl<$Res, $Val extends Invitation>
-    implements $InvitationCopyWith<$Res> {
-  _$InvitationCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? demarcheId = null,
-  }) {
-    return _then(_value.copyWith(
-      demarcheId: null == demarcheId
-          ? _value.demarcheId
-          : demarcheId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$AnimateurImplCopyWith<$Res>
-    implements $InvitationCopyWith<$Res> {
-  factory _$$AnimateurImplCopyWith(
-          _$AnimateurImpl value, $Res Function(_$AnimateurImpl) then) =
-      __$$AnimateurImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String animateurId, String demarcheId});
-}
-
-/// @nodoc
-class __$$AnimateurImplCopyWithImpl<$Res>
-    extends _$InvitationCopyWithImpl<$Res, _$AnimateurImpl>
-    implements _$$AnimateurImplCopyWith<$Res> {
-  __$$AnimateurImplCopyWithImpl(
-      _$AnimateurImpl _value, $Res Function(_$AnimateurImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? animateurId = null,
-    Object? demarcheId = null,
-  }) {
-    return _then(_$AnimateurImpl(
-      animateurId: null == animateurId
-          ? _value.animateurId
-          : animateurId // ignore: cast_nullable_to_non_nullable
-              as String,
-      demarcheId: null == demarcheId
-          ? _value.demarcheId
-          : demarcheId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AnimateurImpl implements Animateur {
-  _$AnimateurImpl({required this.animateurId, required this.demarcheId});
-
-  @override
-  final String animateurId;
-  @override
-  final String demarcheId;
-
-  @override
-  String toString() {
-    return 'Invitation.animateur(animateurId: $animateurId, demarcheId: $demarcheId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AnimateurImpl &&
-            (identical(other.animateurId, animateurId) ||
-                other.animateurId == animateurId) &&
-            (identical(other.demarcheId, demarcheId) ||
-                other.demarcheId == demarcheId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, animateurId, demarcheId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AnimateurImplCopyWith<_$AnimateurImpl> get copyWith =>
-      __$$AnimateurImplCopyWithImpl<_$AnimateurImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String animateurId, String demarcheId) animateur,
-    required TResult Function(String coAnimateurId, String demarcheId)
-        coAnimateur,
-  }) {
-    return animateur(animateurId, demarcheId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String animateurId, String demarcheId)? animateur,
-    TResult? Function(String coAnimateurId, String demarcheId)? coAnimateur,
-  }) {
-    return animateur?.call(animateurId, demarcheId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String animateurId, String demarcheId)? animateur,
-    TResult Function(String coAnimateurId, String demarcheId)? coAnimateur,
-    required TResult orElse(),
-  }) {
-    if (animateur != null) {
-      return animateur(animateurId, demarcheId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Animateur value) animateur,
-    required TResult Function(CoAnimateur value) coAnimateur,
-  }) {
-    return animateur(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Animateur value)? animateur,
-    TResult? Function(CoAnimateur value)? coAnimateur,
-  }) {
-    return animateur?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Animateur value)? animateur,
-    TResult Function(CoAnimateur value)? coAnimateur,
-    required TResult orElse(),
-  }) {
-    if (animateur != null) {
-      return animateur(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Animateur implements Invitation {
-  factory Animateur(
-      {required final String animateurId,
-      required final String demarcheId}) = _$AnimateurImpl;
-
-  String get animateurId;
-  @override
-  String get demarcheId;
-  @override
-  @JsonKey(ignore: true)
-  _$$AnimateurImplCopyWith<_$AnimateurImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$CoAnimateurImplCopyWith<$Res>
-    implements $InvitationCopyWith<$Res> {
-  factory _$$CoAnimateurImplCopyWith(
-          _$CoAnimateurImpl value, $Res Function(_$CoAnimateurImpl) then) =
-      __$$CoAnimateurImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String coAnimateurId, String demarcheId});
-}
-
-/// @nodoc
-class __$$CoAnimateurImplCopyWithImpl<$Res>
-    extends _$InvitationCopyWithImpl<$Res, _$CoAnimateurImpl>
-    implements _$$CoAnimateurImplCopyWith<$Res> {
-  __$$CoAnimateurImplCopyWithImpl(
-      _$CoAnimateurImpl _value, $Res Function(_$CoAnimateurImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? coAnimateurId = null,
-    Object? demarcheId = null,
-  }) {
-    return _then(_$CoAnimateurImpl(
-      coAnimateurId: null == coAnimateurId
-          ? _value.coAnimateurId
-          : coAnimateurId // ignore: cast_nullable_to_non_nullable
-              as String,
-      demarcheId: null == demarcheId
-          ? _value.demarcheId
-          : demarcheId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$CoAnimateurImpl implements CoAnimateur {
-  _$CoAnimateurImpl({required this.coAnimateurId, required this.demarcheId});
-
-  @override
-  final String coAnimateurId;
-  @override
-  final String demarcheId;
-
-  @override
-  String toString() {
-    return 'Invitation.coAnimateur(coAnimateurId: $coAnimateurId, demarcheId: $demarcheId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CoAnimateurImpl &&
-            (identical(other.coAnimateurId, coAnimateurId) ||
-                other.coAnimateurId == coAnimateurId) &&
-            (identical(other.demarcheId, demarcheId) ||
-                other.demarcheId == demarcheId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, coAnimateurId, demarcheId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CoAnimateurImplCopyWith<_$CoAnimateurImpl> get copyWith =>
-      __$$CoAnimateurImplCopyWithImpl<_$CoAnimateurImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String animateurId, String demarcheId) animateur,
-    required TResult Function(String coAnimateurId, String demarcheId)
-        coAnimateur,
-  }) {
-    return coAnimateur(coAnimateurId, demarcheId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String animateurId, String demarcheId)? animateur,
-    TResult? Function(String coAnimateurId, String demarcheId)? coAnimateur,
-  }) {
-    return coAnimateur?.call(coAnimateurId, demarcheId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String animateurId, String demarcheId)? animateur,
-    TResult Function(String coAnimateurId, String demarcheId)? coAnimateur,
-    required TResult orElse(),
-  }) {
-    if (coAnimateur != null) {
-      return coAnimateur(coAnimateurId, demarcheId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Animateur value) animateur,
-    required TResult Function(CoAnimateur value) coAnimateur,
-  }) {
-    return coAnimateur(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Animateur value)? animateur,
-    TResult? Function(CoAnimateur value)? coAnimateur,
-  }) {
-    return coAnimateur?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Animateur value)? animateur,
-    TResult Function(CoAnimateur value)? coAnimateur,
-    required TResult orElse(),
-  }) {
-    if (coAnimateur != null) {
-      return coAnimateur(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CoAnimateur implements Invitation {
-  factory CoAnimateur(
-      {required final String coAnimateurId,
-      required final String demarcheId}) = _$CoAnimateurImpl;
-
-  String get coAnimateurId;
-  @override
-  String get demarcheId;
-  @override
-  @JsonKey(ignore: true)
-  _$$CoAnimateurImplCopyWith<_$CoAnimateurImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }

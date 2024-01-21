@@ -54,17 +54,23 @@ class Personne with _$Personne, Storable {
 
 /// Administrateur
 ///
-/// Peut creer des démarches et asssigner des animateurs
+/// Peut créer des démarches et assigner des animateurs
 @freezed
 class Administrateur with _$Administrateur, Storable {
+  const Administrateur._();
   const factory Administrateur({
     required String id,
     @JsonKey(name: 'user_id') String? userId,
-    @JsonKey(name: 'personne_id') @Default('') String personneId,
+    @Default('') String nom,
+    @Default('') String prenom,
   }) = _Administrateur;
 
   factory Administrateur.fromJson(Map<String, dynamic> json) =>
       _$AdministrateurFromJson(json);
+
+  String get displayName {
+    return '$prenom $nom';
+  }
 }
 
 /// Animateur de démarche.

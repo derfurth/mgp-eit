@@ -23,9 +23,9 @@ import 'package:mgp_client/blones/collection/personne_collection_blone.dart'
     as _i6;
 import 'package:mgp_client/blones/collection/synergie_collection_blone.dart'
     as _i18;
-import 'package:mgp_client/models/authentication.dart' as _i11;
 import 'package:mgp_client/models/donnees.dart' as _i4;
 import 'package:mgp_client/models/editables.dart' as _i15;
+import 'package:mgp_client/models/invitation.dart' as _i11;
 import 'package:mgp_client/models/snippets.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
@@ -663,7 +663,7 @@ class MockDemarcheCollectionBlone extends _i1.Mock
       ) as _i8.Future<Iterable<_i4.Demarche>>);
 
   @override
-  _i8.Future<bool> acceptInvitation(_i11.Invitation? invitation) =>
+  _i8.Future<bool> acceptInvitation(_i11.DemarcheInvitation? invitation) =>
       (super.noSuchMethod(
         Invocation.method(
           #acceptInvitation,

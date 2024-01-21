@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:mgp_client/models/authentication.dart';
 
 import '../../models/donnees.dart';
+import '../../models/invitation.dart';
 import '../app_blone.dart';
 import '../blone.dart';
 import 'collection_blone.dart';
@@ -24,12 +24,12 @@ class DemarcheCollectionBlone extends SupabaseCollection<Demarche>
     return data.map((e) => elementFromJson(e));
   }
 
-  Future<bool> acceptInvitation(Invitation invitation) {
-    return invitation.when(
-      animateur: (animateurId, _) =>
-          parent.animateurs.claim(animateurId: animateurId),
-      coAnimateur: (coAnimateurId, _) =>
-          parent.coAnimateurs.claim(coAnimateurId: coAnimateurId),
-    );
+  Future<bool> acceptInvitation(DemarcheInvitation invitation) {
+    return switch (invitation) {
+      AnimateurInvitation() =>
+        parent.animateurs.claim(animateurId: invitation.animateurId),
+      CoAnimateurInvitation() =>
+        parent.animateurs.claim(animateurId: invitation.coAnimateurId),
+    };
   }
 }

@@ -58,6 +58,7 @@ class _MainAppState extends State<MainApp> {
         ChangeNotifierProvider(create: (_) => AppTheme()),
         ChangeNotifierProvider.value(value: widget.app),
         ChangeNotifierProvider.value(value: widget.app.personnes),
+        ChangeNotifierProvider.value(value: widget.app.administrateurs),
         ChangeNotifierProvider.value(value: widget.app.demarches),
         ChangeNotifierProvider.value(value: widget.app.animateurs),
         ChangeNotifierProvider.value(value: widget.app.coAnimateurs),

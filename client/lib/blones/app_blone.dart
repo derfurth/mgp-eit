@@ -6,6 +6,7 @@ import 'package:supabase/supabase.dart';
 import '../models/ui_message.dart';
 import 'auth_blone.dart';
 import 'blone.dart';
+import 'collection/administrateur_collection_blone.dart';
 import 'collection/animation_collection_blones.dart';
 import 'collection/atelier_collection_blones.dart';
 import 'collection/demarche_collection_blone.dart';
@@ -27,6 +28,9 @@ class AppBlone extends ChangeNotifier with ParentBlone {
 
   // DCPs
   final personnes = PersonneCollectionBlone();
+
+  // Admin
+  final administrateurs = AdministrateurCollectionBlone();
 
   // Animation
   final demarches = DemarcheCollectionBlone();
@@ -63,6 +67,7 @@ class AppBlone extends ChangeNotifier with ParentBlone {
     initialize([
       personnes,
       demarches,
+      administrateurs,
       animateurs,
       coAnimateurs,
       ateliers,

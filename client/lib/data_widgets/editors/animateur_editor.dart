@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -118,7 +119,7 @@ class _AnimateurInvitation extends StatelessWidget {
     final EditableAnimateur animateur = context.watch();
     final Demarche demarche = context.watch();
 
-    final fullPath = Environment.webUrl +
+    final fullPath = (kIsWeb ? Environment.webUrl : 'not-web') +
         invitationAnimateurPlace.path
             .replaceAll(':demarcheId', demarche.id)
             .replaceAll(':animateurId', animateur.value.id);

@@ -27,6 +27,11 @@ abstract class AuthBlone extends ChangeNotifier with ChildBlone<AppBlone> {
         connected: (user) => user.isAdministrateur,
         orElse: () => false,
       );
+
+  bool get isSuperAdministrateur => user.maybeMap(
+        connected: (user) => user.isSuperAdministrateur,
+        orElse: () => false,
+      );
 }
 
 class SupabaseAuthBlone extends AuthBlone {
@@ -92,6 +97,7 @@ class SupabaseAuthBlone extends AuthBlone {
     user = User.connected(
       email: supabaseUser.email ?? '',
       isAdministrateur: await _isAdministrateur(),
+      isSuperAdministrateur: await _isSuperAdministrateur(),
       animateurIds: await _myAnimateurIds(),
       coAnimateurIds: await _myCoAnimateurIds(),
     );
@@ -110,6 +116,11 @@ class SupabaseAuthBlone extends AuthBlone {
 
   Future<bool> _isAdministrateur() async {
     final data = await client.rpc('is_administrateur');
+    return data as bool;
+  }
+
+  Future<bool> _isSuperAdministrateur() async {
+    final data = await client.rpc('is_super_administrateur');
     return data as bool;
   }
 }

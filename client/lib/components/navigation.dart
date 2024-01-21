@@ -15,7 +15,7 @@ class Navigation extends StatelessWidget {
   Widget build(BuildContext context) {
     // final size = appSize(context.widthPx);
     return const SafeArea(
-      child: VerticalNavigation(),
+      child: VerticalDemarcheNavigation(),
     );
   }
 }
@@ -29,8 +29,8 @@ class HorizontalNavigation extends StatelessWidget {
   }
 }
 
-class VerticalNavigation extends StatelessWidget {
-  const VerticalNavigation({super.key});
+class VerticalDemarcheNavigation extends StatelessWidget {
+  const VerticalDemarcheNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +101,36 @@ class VerticalNavigation extends StatelessWidget {
           onTap: () {
             chauffeur.contactsAndEntreprises(demarche.id);
           },
+        ),
+        const Version()
+            .padding(all: theme.grid * 2)
+            .alignment(AlignmentDirectional.bottomCenter)
+            .opacity(.5),
+      ],
+    );
+  }
+}
+
+class VerticalAdminNavigation extends StatelessWidget {
+  const VerticalAdminNavigation({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final AppTheme theme = context.watch();
+
+    return ListView(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: theme.grid * 7),
+          child: FittedBox(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: theme.grid * 8),
+              child: InkWell(
+                onTap: () => chauffeur.land(),
+                child: const NavigationLogo(),
+              ),
+            ),
+          ),
         ),
         const Version()
             .padding(all: theme.grid * 2)
