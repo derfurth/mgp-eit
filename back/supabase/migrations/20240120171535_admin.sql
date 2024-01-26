@@ -106,9 +106,13 @@ create policy "Enable update for super-administrateurs" on administrateur
     for update
     using (is_super_administrateur());
 
--- todo fix all policies
 drop policy "Enable all for administrateurs" on animateur;
 create policy "Enable all for administrateurs" on animateur
+    for all
+    using (is_administrateur());
+
+drop policy "Enable all for administrateurs" on co_animateur;
+create policy "Enable all for administrateurs" on co_animateur
     for all
     using (is_administrateur());
 
