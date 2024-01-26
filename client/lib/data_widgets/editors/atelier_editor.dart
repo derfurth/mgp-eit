@@ -25,6 +25,7 @@ import '../../models/snippets.dart';
 import '../../styled_widgets/heading.dart';
 import '../../styled_widgets/leading.dart';
 import '../../styled_widgets/padded_single_child_scrollable.dart';
+import '../../styled_widgets/page_header.dart';
 import '../../styled_widgets/wrapper.dart';
 import '../../utils/time_utils.dart';
 import 'fiche_editor.dart';
@@ -76,33 +77,12 @@ class AtelierEditor extends StatelessWidget {
       child: DefaultTabController(
         length: 3,
         child: Body(
-          header: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: theme.grid * 4,
-                  right: theme.grid,
-                ),
-                child: Heading.h3(
-                  mode == EditorMode.create ? 'Nouvel atelier' : 'Atelier',
-                ),
-              ),
-              SizedBox(
-                height: theme.grid * 5,
-                child: const TabBar(
-                  isScrollable: true,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicator: UnderlineTabIndicator(
-                      borderSide:
-                          BorderSide(width: 2.0, color: Colors.black87)),
-                  tabs: [
-                    Tab(text: 'Description'),
-                    Tab(text: 'Fiches ressources'),
-                    Tab(text: 'Thematiques'),
-                  ],
-                ),
-              ),
+          header: const PageHeader(
+            title: 'Ateliers',
+            tabs: [
+              Tab(text: 'Description'),
+              Tab(text: 'Fiches ressources'),
+              Tab(text: 'Thematiques'),
             ],
           ),
           child: Center(
