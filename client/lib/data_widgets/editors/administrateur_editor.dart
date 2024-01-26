@@ -163,7 +163,7 @@ class _AdministrateurSaveBar extends StatelessWidget {
 }
 
 class _AdministrateurForm extends StatelessWidget {
-  const _AdministrateurForm({super.key});
+  const _AdministrateurForm();
 
   @override
   Widget build(BuildContext context) {
