@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mgp_client/styled_widgets/leading.dart';
 import 'package:provider/provider.dart';
 
 import '../blones/auth_blone.dart';
@@ -34,9 +35,14 @@ class ConnectedInfo extends StatelessWidget {
         ButtonBar(
           children: [
             TextButton(
+              onPressed: () => chauffeur.changePassword(),
+              child: const Text('Changer de mot de passe'),
+            ),
+            TextButton(
               onPressed: () => auth.signOut(),
               child: const Text('Se déconnecter'),
             ),
+            Leading.vSmall(),
             ElevatedButton(
               onPressed: () => chauffeur.chooseDemarche(),
               child: const Text('Continuer'),

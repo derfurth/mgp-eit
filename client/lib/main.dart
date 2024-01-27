@@ -23,7 +23,6 @@ void main() async {
 
   supabase.client.auth.onAuthStateChange.listen((data) {
     final AuthChangeEvent event = data.event;
-    print(event);
 
     if (event == AuthChangeEvent.passwordRecovery) {
       chauffeur.changePassword();

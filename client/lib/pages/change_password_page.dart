@@ -27,7 +27,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                Heading.h3('Nouveau mot de passe'),
+                Heading.h3('Changer de mot de passe'),
                 Leading.vSmall(),
                 SupabaseResetPassword(
                   accessToken:
@@ -100,14 +100,14 @@ class _SupabaseResetPasswordState extends State<SupabaseResetPassword> {
             },
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.lock),
-              label: Text('Votre mot de passe'),
+              label: Text('Votre nouveau mot de passe'),
             ),
             controller: _password,
           ),
           Leading.vSmall(),
           ElevatedButton(
             child: const Text(
-              'Changer de mot de passe',
+              'Enregistrer le mot de passe',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             onPressed: () async {
