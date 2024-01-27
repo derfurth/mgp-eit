@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mgp_client/chauffeur/chauffeur.dart';
+import 'package:mgp_client/styled_widgets/heading.dart';
 import 'package:mgp_client/utils/show_snack_bar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -19,23 +20,31 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   Widget build(BuildContext context) {
     // final AppTheme theme = context.read();
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          children: [
-            SupabaseResetPassword(
-              accessToken:
-                  Supabase.instance.client.auth.currentSession!.accessToken,
-              onSuccess: (response) => chauffeur.land(),
+      body: Center(
+        child: SizedBox(
+          width: 500,
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Heading.h3('Nouveau mot de passe'),
+                Leading.vSmall(),
+                SupabaseResetPassword(
+                  accessToken:
+                      Supabase.instance.client.auth.currentSession!.accessToken,
+                  onSuccess: (response) => chauffeur.land(),
+                ),
+                Leading.vSmall(),
+                TextButton(
+                  child: const Text(
+                    "Revenir à l'accueil",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () => chauffeur.land(),
+                ),
+              ],
             ),
-            TextButton(
-              child: const Text(
-                "Revenir à l'accueil",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              onPressed: () => chauffeur.land(),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -95,7 +104,7 @@ class _SupabaseResetPasswordState extends State<SupabaseResetPassword> {
             ),
             controller: _password,
           ),
-          Leading.hMedium(),
+          Leading.vSmall(),
           ElevatedButton(
             child: const Text(
               'Changer de mot de passe',

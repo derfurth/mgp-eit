@@ -68,6 +68,7 @@ class _SignInFormState extends State<SignInForm> {
                       onSignUpComplete: (response) {
                         chauffeur.land();
                       },
+                      onPasswordResetEmailSent: () => chauffeur.land(),
                     ),
                   ],
                 ),
@@ -263,7 +264,7 @@ class _SupabaseEmailAuthState extends State<SupabaseEmailAuth> {
             // ),
           ],
           if (_isSigningIn && _forgotPassword) ...[
-            Leading.vHair(),
+            Leading.vSmall(),
             ElevatedButton(
               onPressed: () async {
                 try {
