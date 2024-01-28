@@ -68,7 +68,9 @@ class _SignInFormState extends State<SignInForm> {
                       onSignUpComplete: (response) {
                         chauffeur.land();
                       },
-                      onPasswordResetEmailSent: () => chauffeur.land(),
+                      onPasswordResetEmailSent: () => context.showSnackBar(
+                        'Email de "Mot de passe oublié" envoyé',
+                      ),
                     ),
                   ],
                 ),
@@ -278,6 +280,10 @@ class _SupabaseEmailAuthState extends State<SupabaseEmailAuth> {
                   final email = _emailController.text.trim();
                   await supabase.auth.resetPasswordForEmail(email);
                   widget.onPasswordResetEmailSent?.call();
+
+                  setState(() {
+                    _forgotPassword = false;
+                  });
                 } on AuthException catch (error) {
                   widget.onError?.call(error);
                 } catch (error) {
