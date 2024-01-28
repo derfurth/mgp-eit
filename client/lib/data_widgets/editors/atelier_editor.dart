@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:tuple/tuple.dart';
 
-import '../../app_theme.dart';
 import '../../blones/auth_blone.dart';
 import '../../blones/collection/atelier_collection_blones.dart';
 import '../../blones/rapport_blone.dart';
@@ -45,7 +44,6 @@ class AtelierEditor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppTheme theme = context.watch();
     final AtelierCollectionBlone ateliers = context.read();
 
     final mode = atelierId != null ? EditorMode.update : EditorMode.create;
@@ -233,6 +231,10 @@ class AtelierParticipantLiveView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (atelier.participants.isEmpty) {
+      return Center(child: Heading.h5("L'atelier n'a pas de participants"));
+    }
+
     final Demarche demarche = context.watch();
     final ParticipantMetaCollectionBlone participantMetas = context.watch();
     final ContactCollectionBlone contacts = context.watch();
@@ -241,6 +243,7 @@ class AtelierParticipantLiveView extends StatelessWidget {
         future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
         builder: (context, snapshot) {
           final metas = snapshot.data;
+
           if (metas == null) return const CircularProgressIndicator.adaptive();
 
           return Stack(
@@ -300,6 +303,10 @@ class AtelierThematiqueLiveView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (atelier.participants.isEmpty) {
+      return Center(child: Heading.h5("L'atelier n'a pas de participants"));
+    }
+
     final ParticipantMetaCollectionBlone participantMetas = context.watch();
     final Thematiques thematiques = context.watch();
     final Demarche demarche = context.watch();
