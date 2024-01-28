@@ -42,12 +42,16 @@ class ChipAddBox<T> extends AddBox<T> {
         ),
         Leading.vSmall(),
         Wrapper(
-          size: 0.5,
+          size: 2,
           children: list.value
               .map(
                 (contact) => InputChip(
                   label: chipText(contact),
-                  deleteIcon: const Icon(Icons.remove_circle),
+                  padding: const EdgeInsets.all(4.0),
+                  deleteIcon: Icon(
+                    Icons.delete,
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                  ),
                   onDeleted: () => list.value =
                       list.value.where((c) => c != contact).toList(),
                 ),
