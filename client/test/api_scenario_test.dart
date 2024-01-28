@@ -336,6 +336,7 @@ void main() {
 
           var retrieved = await queue.next;
           retrieved = await queue.next;
+          retrieved = await queue.next;
           expect(retrieved, contains(edited));
         });
       });
