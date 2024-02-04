@@ -32,8 +32,7 @@ class RapportBlone with ChildBlone<AppBlone> {
   }
 
   Future<Iterable<FicheSnippet>> _fiches(String atelierId) async {
-    final fiches =
-        await parent.fiches.subscribeByAtelier(atelierId: atelierId).first;
+    final fiches = await parent.fiches.getByAtelier(atelierId: atelierId);
     return Future.wait(
         fiches.map((f) => parent.fiches.getSnippet(ficheId: f.id)));
   }

@@ -177,12 +177,11 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
     }
   }
 
-  Stream<Iterable<Fiche>> subscribeByAtelier({
+  Future<Iterable<Fiche>> getByAtelier({
     required String atelierId,
-  }) {
-    return client
-        .from('$tableName:atelier_id=eq.$atelierId')
-        .stream(primaryKey: ['id']).map((list) => list.map(elementFromJson));
+  }) async {
+    final data = await fromTable.select().eq('atelier_id', atelierId);
+    return data.map(elementFromJson);
   }
 
   Future<void> saveEditables({
