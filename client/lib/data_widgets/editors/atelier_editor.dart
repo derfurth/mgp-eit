@@ -452,6 +452,6 @@ Tuple2<ParticipantMeta, ContactSnippet?> contactFromMeta(
 ) =>
     Tuple2(
       meta,
-      atelier.participantsWithoutFiche
+      atelier.participants
           .firstWhereOrNull((p) => p.contact.id == meta.contactId),
     );
