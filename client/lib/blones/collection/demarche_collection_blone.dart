@@ -29,7 +29,7 @@ class DemarcheCollectionBlone extends SupabaseCollection<Demarche>
       AnimateurInvitation() =>
         parent.animateurs.claim(animateurId: invitation.animateurId),
       CoAnimateurInvitation() =>
-        parent.animateurs.claim(animateurId: invitation.coAnimateurId),
+        parent.coAnimateurs.claim(coAnimateurId: invitation.coAnimateurId),
     };
   }
 }
