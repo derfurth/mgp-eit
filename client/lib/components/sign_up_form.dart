@@ -65,7 +65,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       onSaved: (value) => password = value ?? '',
                       obscureText: true,
                     ),
-                    ButtonBar(
+                    OverflowBar(
                       children: [
                         ElevatedButton(
                           onPressed: connecting ? null : () => connect(auth),

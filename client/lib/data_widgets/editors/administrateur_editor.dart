@@ -110,7 +110,7 @@ class _AdministrateurInvitation extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(fullPath),
-        ButtonBar(
+        OverflowBar(
           children: [
             TextButton.icon(
               icon: const Icon(Icons.copy),
@@ -137,7 +137,7 @@ class _AdministrateurSaveBar extends StatelessWidget {
     final EditableAdministrateur administrateur = context.watch();
     final AdministrateurCollectionBlone administrateurs = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         ElevatedButton(
           onPressed: () => Navigator.pop(context, 'Annuler'),

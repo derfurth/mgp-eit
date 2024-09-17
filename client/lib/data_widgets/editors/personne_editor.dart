@@ -44,7 +44,7 @@ class _PersonneSaveBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final EditablePersonne personne = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         ElevatedButton(
           onPressed: () {},

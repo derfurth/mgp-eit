@@ -87,7 +87,7 @@ class _Spike extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonBar(
+    return OverflowBar(
       children: [yolododo, yulududu, yilididi, yaladada]
           .map(
             (u) => OutlinedButton(

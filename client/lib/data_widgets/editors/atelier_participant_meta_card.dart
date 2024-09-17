@@ -167,7 +167,7 @@ class _FormState extends State<_Form> {
                 editable: editable,
                 showFiche: widget.showFiche,
               ),
-              ButtonBar(
+              OverflowBar(
                 children: [
                   TextButton.icon(
                     onPressed: () => widget.showFiche(

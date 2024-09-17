@@ -190,7 +190,7 @@ class _SnippetSaveBar extends StatelessWidget {
     final EditableFlux editable = context.watch();
     final FluxCollectionBlone blone = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         ElevatedButton(
           onPressed: () async {

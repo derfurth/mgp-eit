@@ -270,7 +270,7 @@ class AtelierParticipantLiveView extends StatelessWidget {
                     ),
                 ],
                 Leading.vMedium(),
-                ButtonBar(
+                OverflowBar(
                   children: [
                     OutlinedButton.icon(
                       onPressed: () async {
@@ -354,7 +354,7 @@ class AtelierThematiqueLiveView extends StatelessWidget {
                           tuple.item2!.contact,
                         ),
                       ),
-                  ButtonBar(
+                  OverflowBar(
                     children: [
                       OutlinedButton.icon(
                         onPressed: () async {
@@ -390,7 +390,7 @@ class _AtelierSaveBar extends StatelessWidget {
     final ValueNotifier<List<String>> participantIds = context.watch();
     final ParticipantMetaCollectionBlone metas = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         ElevatedButton(
           onPressed: () {

@@ -16,7 +16,7 @@ class AddBoxPlaceholder extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         DefaultTextStyle(
-          style: Theme.of(context).textTheme.headline4 ?? const TextStyle(),
+          style: Theme.of(context).textTheme.headlineSmall ?? const TextStyle(),
           child: title,
         ),
         Leading.vSmall(),

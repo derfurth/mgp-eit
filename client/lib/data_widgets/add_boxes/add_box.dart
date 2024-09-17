@@ -58,7 +58,7 @@ class ChipAddBox<T> extends AddBox<T> {
               )
               .toList(),
         ),
-        ButtonBar(
+        OverflowBar(
           children: [
             TextButton.icon(
               label: const Text('Ajouter'),
@@ -107,7 +107,7 @@ class CardAddBox<T> extends AddBox<T> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     selectedtemBuilder(selected),
-                    ButtonBar(
+                    OverflowBar(
                       children: [
                         TextButton.icon(
                           onPressed: () => list.value =
@@ -122,7 +122,7 @@ class CardAddBox<T> extends AddBox<T> {
               ),
           ],
         ),
-        ButtonBar(
+        OverflowBar(
           children: [
             TextButton.icon(
               label: const Text('Ajouter'),

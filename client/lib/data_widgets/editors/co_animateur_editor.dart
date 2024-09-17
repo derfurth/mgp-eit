@@ -128,7 +128,7 @@ class _CoAnimateurInvitation extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(fullPath),
-        ButtonBar(
+        OverflowBar(
           children: [
             TextButton.icon(
               icon: const Icon(Icons.copy),
@@ -158,7 +158,7 @@ class _CoAnimateurSaveBar extends StatelessWidget {
     final PersonneCollectionBlone personnes = context.watch();
     final CoAnimateurCollectionBlone coAnimateurs = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         ElevatedButton(
           onPressed: () {},

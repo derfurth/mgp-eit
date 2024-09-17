@@ -3,9 +3,7 @@
 import 'dart:io';
 
 import 'package:async/async.dart';
-import 'package:colorize_lumberdash/colorize_lumberdash.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lumberdash/lumberdash.dart';
 import 'package:mgp_client/blones/app_blone.dart';
 import 'package:mgp_client/environment.dart';
 import 'package:mgp_client/models/donnees.dart';
@@ -15,8 +13,6 @@ import 'package:supabase/supabase.dart';
 /// Beware tests are *order-dependent* as we populate supabase
 /// with the fake contents and then run queries against it.
 void main() {
-  putLumberdashToWork(withClients: [ColorizeLumberdash()]);
-
   final client = SupabaseClient(
     Environment.supabaseUrl,
     Environment.supabaseKey,

@@ -190,7 +190,7 @@ class _ContactSaveBar extends StatelessWidget {
     final PersonneCollectionBlone personnes = context.watch();
     final ContactCollectionBlone contacts = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         ElevatedButton(
           onPressed: chauffeur.routeMaster.history.back,

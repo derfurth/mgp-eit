@@ -123,7 +123,7 @@ class AdminDemarcheItem extends StatelessWidget {
         ListTile(
             title: Text(demarche.denomination),
             subtitle: Text(demarche.champLibre)),
-        ButtonBar(
+        OverflowBar(
           children: [
             TextButton(
               onPressed: () => chauffeur.editDemarche(demarche.id),

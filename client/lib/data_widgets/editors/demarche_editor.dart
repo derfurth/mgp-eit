@@ -101,7 +101,7 @@ class _SnippetSaveBar extends StatelessWidget {
     final EditableDemarche editable = context.watch();
     final DemarcheCollectionBlone blone = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         TextButton(
           onPressed: () => showDialog<String>(

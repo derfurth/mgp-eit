@@ -252,7 +252,7 @@ class _EnterpriseSaveBarState extends State<_EnterpriseSaveBar> {
     final EtablissementCollectionBlone etablissements = context.watch();
     final Demarche demarche = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         ElevatedButton(
           onPressed: () => chauffeur.contactsAndEntreprises(demarche.id),

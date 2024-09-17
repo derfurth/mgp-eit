@@ -347,7 +347,7 @@ class _FicheAndFluxSaveBar extends StatelessWidget {
     final FicheCollectionBlone fiches = context.watch();
     final FluxCollectionBlone fluxes = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         TextButton.icon(
           onPressed: () => showDialog<String>(

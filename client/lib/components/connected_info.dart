@@ -32,7 +32,7 @@ class ConnectedInfo extends StatelessWidget {
           readOnly: true,
           initialValue: email,
         ),
-        ButtonBar(
+        OverflowBar(
           children: [
             TextButton(
               onPressed: () => chauffeur.changePassword(),

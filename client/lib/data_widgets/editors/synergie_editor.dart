@@ -208,7 +208,7 @@ class _SynergieSaveBar extends StatelessWidget {
     final EditableSynergie synergie = context.watch();
     final SynergieCollectionBlone blone = context.watch();
 
-    return ButtonBar(
+    return OverflowBar(
       children: [
         TextButton.icon(
           onPressed: () => showDialog<String>(
