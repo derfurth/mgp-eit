@@ -61,6 +61,8 @@ dependencies:
   mockito: ^5.4.4
   email_validator: ^3.0.0
   async: ^2.11.0
+  quiver: ^3.2.2
+  collection_providers: ^0.2.2
 
 dev_dependencies:
   flutter_test:
