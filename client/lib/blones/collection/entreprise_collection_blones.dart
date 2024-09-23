@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:quiver/cache.dart';
 
 import '../../models/donnees.dart';
 import '../../models/snippets.dart';
@@ -166,13 +167,18 @@ class ContactCollectionBlone extends SupabaseCollection<Contact>
             .contains(needle));
   }
 
+  final snippetCache = MapCache<String, ContactSnippet>.lru(maximumSize: 100);
   Future<ContactSnippet> getSnippet({
     required String contactId,
   }) async {
-    final data = await client.rpc('contact_snippet', params: {
-      'contact_id': contactId,
-    }).single();
-    return ContactSnippet.fromJson(data);
+    final snippet = await snippetCache.get(contactId, ifAbsent: (contactId) async {
+      final data = await client.rpc('contact_snippet', params: {
+        'contact_id': contactId,
+      }).single();
+      return ContactSnippet.fromJson(data);
+    });
+
+    return snippet!;
   }
 
   Future<ContactSnippet> createSnippet({
