@@ -15,11 +15,10 @@ class PageHeader extends StatelessWidget {
     final AppTheme theme = context.watch();
 
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
           padding: EdgeInsets.only(
-            bottom: theme.grid * 4,
+            bottom: theme.grid * 2,
             right: theme.grid,
           ),
           child: Heading.h3(title),
@@ -29,6 +28,7 @@ class PageHeader extends StatelessWidget {
           child: tabs == null
               ? null
               : TabBar(
+                  dividerHeight: 0,
                   labelColor: theme.txt,
                   isScrollable: true,
                   indicatorSize: TabBarIndicatorSize.label,
