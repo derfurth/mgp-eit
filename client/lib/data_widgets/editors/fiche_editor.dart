@@ -1,6 +1,5 @@
-import 'dart:collection';
-
-import 'package:expandable/expandable.dart';
+import 'package:collection/collection.dart';
+import 'package:collection_providers/collection_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:mgp_client/blones/rapport_blone.dart';
 import 'package:mgp_client/commands/download_command.dart';
@@ -10,6 +9,7 @@ import 'package:styled_widget/styled_widget.dart';
 import '../../app_theme.dart';
 import '../../blones/collection/fiche_collection_blone.dart';
 import '../../blones/collection/flux_collection_blone.dart';
+import '../../blones/collection/lien_fiche_collection_blone.dart';
 import '../../components/future_loader.dart';
 import '../../components/synapse_dropdown.dart';
 import '../../models/build_in.dart';
@@ -21,9 +21,6 @@ import '../../models/snippets.dart';
 import '../../styled_widgets/heading.dart';
 import '../../styled_widgets/leading.dart';
 import '../../styled_widgets/wrapper.dart';
-
-/// Hold contacts for creating 'mirrors fiches'
-typedef ContactListNotifier = ValueNotifier<List<ContactSnippet>>;
 
 /// Fiche Editor
 ///
@@ -46,6 +43,7 @@ class FicheEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FluxCollectionBlone flux = context.read();
+    final LienFicheCollectionBlone liens = context.read();
     final FicheCollectionBlone fiches = context.read();
     final Demarche demarche = context.watch();
     final mode = ficheId != null ? EditorMode.update : EditorMode.create;
@@ -54,7 +52,7 @@ class FicheEditor extends StatelessWidget {
     ///
     /// New snippets will pop here as the firebase collection is updated by
     /// widgets down the tree.
-    Stream<FicheSnippet> snippets() {
+    Future<FicheSnippet> snippets() {
       if (mode == EditorMode.create) {
         final AtelierSnippet atelier = context.read();
         final Contact participant = context.read();
@@ -65,20 +63,17 @@ class FicheEditor extends StatelessWidget {
           etablissementId: participant.etablissementId,
         );
       } else {
-        return fiches.subscribeToSnippet(ficheId!);
+        return fiches.getSnippet(ficheId: ficheId!);
       }
     }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        StreamBuilder<FicheSnippet>(
-            stream: snippets(),
+        FutureLoader<FicheSnippet>(
+            future: snippets(),
             builder: (context, snapshot) {
               final snippet = snapshot.data;
-              if (snippet == null) {
-                return const CircularProgressIndicator();
-              }
               return MultiProvider(
                 providers: [
                   ChangeNotifierProvider<EditableFiche>(
@@ -93,43 +88,61 @@ class FicheEditor extends StatelessWidget {
                     initialData:
                         UnmodifiableListView<ClassificationSynapse>([]),
                   ),
-                  ChangeNotifierProvider<ContactListNotifier>(
-                    create: (_) => ContactListNotifier([]),
-                  ),
                 ],
-                child: FutureLoader<Flux>(
-                  future: flux.getById(snippet.fiche.fluxId),
-                  builder: (context, snapshot) {
-                    final flux = snapshot.data;
-                    final EditableFiche fiche = context.watch();
+                child: FutureLoader<List<LienFiche>>(
+                    future: liens.getForFiche(
+                      demarcheId: demarche.id,
+                      ficheId: snippet.fiche.id,
+                    ),
+                    builder: (context, snapshot) {
+                      final liens = snapshot.data;
 
-                    return ChangeNotifierProvider(
-                      create: (_) => EditableFlux(flux, fiche: fiche),
-                      child: Wrapper(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: mode == EditorMode.create
-                                    ? Heading.h4('Nouvelle fiche')
-                                    : Heading.h4('Fiche'),
-                              ),
-                              const FluxDirectionForm(),
+                      return FutureLoader<Flux>(
+                        future: flux.getById(snippet.fiche.fluxId),
+                        builder: (context, snapshot) {
+                          final flux = snapshot.data;
+                          final EditableFiche fiche = context.watch();
+
+                          return MultiProvider(
+                            providers: [
+                              ChangeNotifierProvider(
+                                  create: (_) =>
+                                      EditableFlux(flux, fiche: fiche)),
+                              CollectionProvider(
+                                  create: (_) =>
+                                      ListChangeNotifier<EditableLienFiche>([
+                                        for (final lien in liens)
+                                          EditableLienFiche(lien)
+                                      ])),
                             ],
-                          ),
-                          const FicheForm(),
-                          const Divider(height: 32),
-                          FluxInlineForm(flux: flux),
-                          const Divider(height: 32),
-                          _MirrorContactSelector(),
-                          _FicheAndFluxSaveBar(editableMeta: editableMeta),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                            child: Wrapper(
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: mode == EditorMode.create
+                                          ? Heading.h4('Nouvelle fiche')
+                                          : Heading.h4('Fiche'),
+                                    ),
+                                    const FluxDirectionForm(),
+                                  ],
+                                ),
+                                const FicheForm(),
+                                Leading.vSmall(),
+                                FluxInlineForm(flux: flux),
+                                // _MirrorContactSelector(),
+                                Leading.vSmall(),
+                                const LienFichesEditor(),
+                                _FicheAndFluxSaveBar(
+                                    editableMeta: editableMeta),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }),
               );
             }),
       ],
@@ -272,59 +285,200 @@ class _FluxInlineFormState extends State<FluxInlineForm> {
   }
 }
 
-/// Allow the creation of mirrors.
-class _MirrorContactSelector extends StatelessWidget {
+/// Allow the creation of linked fiches.
+class LienFichesEditor extends StatefulWidget {
+  const LienFichesEditor({super.key});
+
+  @override
+  State<LienFichesEditor> createState() => _LienFichesEditorState();
+}
+
+class _LienFichesEditorState extends State<LienFichesEditor> {
+  ListChangeNotifier<EditableLienFiche>? liens;
+
+  void onEditableChange() {
+    liens?.notifyListeners();
+  }
+
+  void listen(ListChangeNotifier<EditableLienFiche> liens) {
+    stopListen();
+    this.liens = liens;
+    for (final editable in liens) {
+      editable.addListener(onEditableChange);
+    }
+  }
+
+  void stopListen() {
+    if (liens != null) {
+      for (final editable in liens!) {
+        editable.removeListener(onEditableChange);
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final LienFicheCollectionBlone blone = context.read();
     final FicheSnippet fiche = context.read();
-    final ContactListNotifier selection = context.watch();
     final AtelierSnippet atelier = context.watch();
-    final EditableFlux flux = context.watch();
+    final liens = CollectionProvider.of<ListChangeNotifier<EditableLienFiche>>(
+      context,
+      listen: true,
+    );
+    listen(liens);
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ExpandablePanel(
-        header: Heading.h6('Création de fiche miroir'),
-        collapsed: Container(),
-        expanded: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return Wrapper.form(
+      children: [
+        Heading.h6('Fiche liées'),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            if (selection.value.isNotEmpty)
-              Text('${selection.value.length} nouvelles'
-                      ' fiches ${flux.value.direction == FluxDirection.entrant ? 'Offre' : 'Besoin'}'
-                      ' seront crées pour ces participants.')
-                  .padding(bottom: 5),
-            Wrapper(
-              size: .5,
-              children: [
-                for (final contact in atelier.participants
-                    .where((p) => p.contact != fiche.contact.contact))
-                  ChoiceChip(
-                    label: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(contact.personne.displayName)
-                            .bold()
-                            .padding(right: 3),
-                        Text(contact.entreprise.entreprise.denomination),
-                      ],
-                    ),
-                    selected: selection.value.contains(contact),
-                    onSelected: (bool selected) {
-                      final choices = selection.value.toList();
-                      if (choices.contains(contact)) {
-                        choices.remove(contact);
-                      } else {
-                        choices.add(contact);
-                      }
-                      selection.value = choices;
-                    },
-                  ),
-              ],
-            )
+            // Create a ListView.builder to display existing linked fiches
+            for (final lien in liens)
+              ChangeNotifierProvider.value(
+                value: lien,
+                child: LienFicheForm(
+                  onDelete: () {
+                    final ficheAId = lien.value.ficheAId;
+                    final ficheBId = lien.value.ficheBId;
+                    if (ficheBId != null) {
+                      blone.deleteForFiches(ficheAId, ficheBId);
+                    }
+                    liens.remove(lien);
+                  },
+                ),
+              ),
+            // Create a button to add a new LinkedFicheForm
+            ElevatedButton(
+              onPressed: () {
+                liens.add(EditableLienFiche(LienFiche(
+                  ficheAId: fiche.fiche.id,
+                  contactAId: fiche.contact.contact.id,
+                  demarcheId: atelier.atelier.demarcheId,
+                  directionA: fiche.flux.direction,
+                  quantiteA: fiche.flux.quantite,
+                  // Placeholders
+                  ficheBId: null,
+                  contactBId: null,
+                  directionB: null,
+                  quantiteB: null,
+                  nature: '',
+                )));
+              },
+              child: const Text('Ajouter une fiche liée'),
+            ).alignment(AlignmentDirectional.bottomStart),
           ],
         ),
-      ),
+      ],
+    );
+  }
+}
+
+class LienFicheForm extends StatelessWidget {
+  final VoidCallback onDelete;
+
+  const LienFicheForm({
+    super.key,
+    required this.onDelete,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final AtelierSnippet atelier = context.watch();
+    final AppTheme theme = context.watch();
+    final EditableLienFiche editable = context.watch();
+    final FicheSnippet ficheSnippet = context.watch();
+
+    final items = [
+      for (final participant in atelier.participants)
+        DropdownMenuEntry<ContactSnippet>(
+          value: participant,
+          label: participant.personne.displayName,
+        )
+    ];
+
+    final List<DropdownMenuEntry<ContactSnippet?>> dropdownMenuEntries =
+        items.isNotEmpty
+            ? items
+            : [
+                const DropdownMenuEntry(
+                    value: null, label: "No participants available")
+              ];
+
+    // True if the current fiche is A.
+    final editingA = editable.value.ficheAId == ficheSnippet.fiche.id;
+
+    final updateDirection = editingA
+        ? editable.updateFluxDirectionB
+        : editable.updateFluxDirectionA;
+
+    final initialDirection =
+        editingA ? editable.value.directionB : editable.value.directionA;
+
+    final updateContact =
+        editingA ? editable.updateContactBId : editable.updateContactAId;
+    final initialContactId =
+        editingA ? editable.value.contactBId : editable.value.contactAId;
+
+    final readOnly = editable.value.ficheBId != null;
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        DropdownMenu<ContactSnippet?>(
+          enableFilter: true,
+          requestFocusOnTap: true,
+          leadingIcon: const Icon(Icons.person),
+          label: const Text('Participant'),
+          initialSelection: atelier.participants.firstWhereOrNull(
+              (participant) => participant.contact.id == initialContactId),
+          inputDecorationTheme: const InputDecorationTheme(
+            filled: true,
+            contentPadding: EdgeInsets.symmetric(vertical: 5.0),
+          ),
+          onSelected: readOnly ? null : (ContactSnippet? contact) {
+            if (contact != null) updateContact(contact.contact.id);
+          },
+          dropdownMenuEntries: dropdownMenuEntries,
+        ).padding(right: theme.grid * 2).flexible(flex: 2),
+        editable.nature
+            .toTextFormField(maxLines: 1, enabled: !readOnly)
+            .padding(right: theme.grid * 2)
+            .flexible(flex: 2),
+        (editingA ? editable.quantiteB : editable.quantiteA)
+            .toTextFormField(maxLines: 1, enabled: !readOnly)
+            .padding(right: theme.grid * 2)
+            .flexible(flex: 1),
+        DropdownMenu<FluxDirection?>(
+          enableFilter: false,
+          enableSearch: false,
+          requestFocusOnTap: true,
+          label: const Icon(Icons.compare_arrows),
+          inputDecorationTheme: const InputDecorationTheme(
+            filled: true,
+            contentPadding: EdgeInsets.symmetric(vertical: 5.0),
+          ),
+          initialSelection: initialDirection,
+          onSelected: readOnly ? null : (FluxDirection? direction) {
+            if (direction != null) {
+              updateDirection(direction);
+            }
+          },
+          dropdownMenuEntries: const [
+            DropdownMenuEntry(value: FluxDirection.entrant, label: 'Besoin'),
+            DropdownMenuEntry(value: FluxDirection.sortant, label: 'Offre'),
+          ],
+        ).padding(right: theme.grid * 2).flexible(flex: 1),
+        IconButton(
+          onPressed: onDelete,
+          icon: const Icon(Icons.delete),
+        ),
+      ],
     );
   }
 }
@@ -339,15 +493,21 @@ class _FicheAndFluxSaveBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AtelierSnippet atelier = context.read();
     final FicheSnippet snippet = context.watch();
-
     final EditableFiche fiche = context.watch();
     final EditableFlux flux = context.watch();
-    final ContactListNotifier participants = context.watch();
     final FicheCollectionBlone fiches = context.watch();
     final FluxCollectionBlone fluxes = context.watch();
 
+    final liens = CollectionProvider.of<ListChangeNotifier<EditableLienFiche>>(
+      context,
+      listen: true,
+    );
+
     return OverflowBar(
+      alignment: MainAxisAlignment.end,
+      spacing: 8,
       children: [
         TextButton.icon(
           onPressed: () => showDialog<String>(
@@ -378,7 +538,7 @@ class _FicheAndFluxSaveBar extends StatelessWidget {
           icon: const Icon(Icons.delete),
           label: const Text('supprimer'),
         ),
-        OutlinedButton.icon(
+        TextButton.icon(
           onPressed: () async {
             final RapportBlone rapport = context.read();
             final csv = await rapport.fiche(fiche.value.id);
@@ -396,10 +556,11 @@ class _FicheAndFluxSaveBar extends StatelessWidget {
         ElevatedButton(
           onPressed: () async {
             fiches.saveEditables(
+              atelier: atelier,
               fiche: fiche,
               flux: flux,
               contact: snippet.contact,
-              mirrorParticipants: participants.value,
+              liens: liens,
               meta: editableMeta,
             );
 
