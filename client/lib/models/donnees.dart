@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 part 'donnees.freezed.dart';
+
 part 'donnees.g.dart';
 
 const uuid = Uuid();
@@ -58,6 +59,7 @@ class Personne with _$Personne, Storable {
 @freezed
 class Administrateur with _$Administrateur, Storable {
   const Administrateur._();
+
   const factory Administrateur({
     required String id,
     @JsonKey(name: 'user_id') String? userId,
@@ -187,6 +189,7 @@ class ParticipantMeta with _$ParticipantMeta {
 @freezed
 class Fiche with _$Fiche, Storable {
   const Fiche._();
+
   const factory Fiche({
     required String id,
     @JsonKey(name: 'atelier_id') required String atelierId,
@@ -202,6 +205,34 @@ class Fiche with _$Fiche, Storable {
 
   bool get isEmpty =>
       designation.isEmpty && commentaire.isEmpty && thematiqueIds.isEmpty;
+}
+
+/// Lien entre deux fiches
+///
+/// Permet de lier des fiches entre elles.
+@freezed
+class LienFiche with _$LienFiche {
+  const LienFiche._();
+
+  const factory LienFiche({
+    @JsonKey(name: 'demarche_id') required String demarcheId,
+    @JsonKey(name: 'nature') @Default('') String nature,
+    @JsonKey(name: 'fiche_a_id') required String ficheAId,
+    @JsonKey(name: 'contact_a_id') required String contactAId,
+    @Default(FluxDirection.entrant)
+    @JsonKey(name: 'flux_direction_a')
+    required FluxDirection directionA,
+    @JsonKey(name: 'quantite_a') required num quantiteA,
+    @JsonKey(name: 'fiche_b_id') String? ficheBId,
+    @JsonKey(name: 'contact_b_id') String? contactBId,
+    @Default(FluxDirection.entrant)
+    @JsonKey(name: 'flux_direction_b')
+    FluxDirection? directionB,
+    @JsonKey(name: 'quantite_b') num? quantiteB,
+  }) = _LienFiche;
+
+  factory LienFiche.fromJson(Map<String, dynamic> json) =>
+      _$LienFicheFromJson(json);
 }
 
 /// Thématique
@@ -307,6 +338,7 @@ enum FluxNature {
 @freezed
 class Flux with _$Flux, Storable {
   const Flux._();
+
   const factory Flux({
     required String id,
 

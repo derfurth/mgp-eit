@@ -172,6 +172,43 @@ Map<String, dynamic> _$$FicheImplToJson(_$FicheImpl instance) =>
       'thematique_ids': instance.thematiqueIds,
     };
 
+_$LienFicheImpl _$$LienFicheImplFromJson(Map<String, dynamic> json) =>
+    _$LienFicheImpl(
+      demarcheId: json['demarche_id'] as String,
+      nature: json['nature'] as String? ?? '',
+      ficheAId: json['fiche_a_id'] as String,
+      contactAId: json['contact_a_id'] as String,
+      directionA: $enumDecodeNullable(
+              _$FluxDirectionEnumMap, json['flux_direction_a']) ??
+          FluxDirection.entrant,
+      quantiteA: json['quantite_a'] as num,
+      ficheBId: json['fiche_b_id'] as String?,
+      contactBId: json['contact_b_id'] as String?,
+      directionB: $enumDecodeNullable(
+              _$FluxDirectionEnumMap, json['flux_direction_b']) ??
+          FluxDirection.entrant,
+      quantiteB: json['quantite_b'] as num?,
+    );
+
+Map<String, dynamic> _$$LienFicheImplToJson(_$LienFicheImpl instance) =>
+    <String, dynamic>{
+      'demarche_id': instance.demarcheId,
+      'nature': instance.nature,
+      'fiche_a_id': instance.ficheAId,
+      'contact_a_id': instance.contactAId,
+      'flux_direction_a': _$FluxDirectionEnumMap[instance.directionA]!,
+      'quantite_a': instance.quantiteA,
+      'fiche_b_id': instance.ficheBId,
+      'contact_b_id': instance.contactBId,
+      'flux_direction_b': _$FluxDirectionEnumMap[instance.directionB],
+      'quantite_b': instance.quantiteB,
+    };
+
+const _$FluxDirectionEnumMap = {
+  FluxDirection.entrant: 'entrant',
+  FluxDirection.sortant: 'sortant',
+};
+
 _$ThematiqueImpl _$$ThematiqueImplFromJson(Map<String, dynamic> json) =>
     _$ThematiqueImpl(
       id: json['id'] as String,
@@ -298,11 +335,6 @@ Map<String, dynamic> _$$FluxImplToJson(_$FluxImpl instance) =>
       'animateur_ids': instance.animateurIds,
       'co_animateur_ids': instance.coAnimateurIds,
     };
-
-const _$FluxDirectionEnumMap = {
-  FluxDirection.entrant: 'entrant',
-  FluxDirection.sortant: 'sortant',
-};
 
 const _$FluxNatureEnumMap = {
   FluxNature.continu: 'continu',
