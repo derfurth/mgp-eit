@@ -207,6 +207,58 @@ class EditableFiche extends Editable<Fiche> {
   void updateFluxId(String id) => update(value.copyWith(fluxId: id));
 }
 
+/// Lien Fiche
+///
+/// - éditeur de fiche
+class EditableLienFiche extends Editable<LienFiche> {
+  EditableLienFiche(super.lien);
+
+  /// The comment explaining the nature of the link.
+  late final nature = Field<String?>(
+    label: 'La nature du lien',
+    validator: MaxLengthValidator(
+      256,
+      errorText: 'Le nature doit faire moins de 256 caractères.',
+    ),
+    get: () => value.nature,
+    update: (fieldValue) => update(value.copyWith(nature: fieldValue ?? '')),
+  );
+
+  late final quantiteA = Field<String?>(
+    label: 'quantité',
+    validator: NumericValidator(
+      errorText: 'la quantité doit être un nombre.',
+    ),
+    get: () => value.quantiteA.toString(),
+    update: (fieldValue) => update(value.copyWith(
+        quantiteA: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final quantiteB = Field<String?>(
+    label: 'quantité',
+    validator: NumericValidator(
+      errorText: 'la quantité doit être un nombre.',
+    ),
+    get: () => value.quantiteB.toString(),
+    update: (fieldValue) => update(value.copyWith(
+        quantiteB: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  void updateFicheAId(String id) => update(value.copyWith(ficheAId: id));
+
+  void updateContactAId(String id) => update(value.copyWith(contactAId: id));
+
+  void updateFluxDirectionA(FluxDirection direction) =>
+      update(value.copyWith(directionA: direction));
+
+  void updateFicheBId(String? id) => update(value.copyWith(ficheBId: id));
+
+  void updateContactBId(String? id) => update(value.copyWith(contactBId: id));
+
+  void updateFluxDirectionB(FluxDirection direction) =>
+      update(value.copyWith(directionB: direction));
+}
+
 /// Participant meta
 ///
 /// Editeur d'atelier.
