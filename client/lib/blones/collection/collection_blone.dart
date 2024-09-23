@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
+import 'package:quiver/cache.dart';
 
 import '../../models/ui_message.dart';
 import '../app_blone.dart';
@@ -11,6 +12,7 @@ enum Intent { get, post, patch, delete, rpc }
 
 abstract class SupabaseCollection<T> implements ChildBlone<AppBlone> {
   static const uuid = Uuid();
+  final cache = MapCache<String, T>();
 
   String get tableName;
 
@@ -36,6 +38,7 @@ abstract class SupabaseCollection<T> implements ChildBlone<AppBlone> {
     final serialized = elementToJson(value);
     try {
       await fromTable.upsert(serialized);
+      if (serialized.containsKey('id')) cache.set(serialized['id'], value);
     } on PostgrestException catch (e) {
       parent.showMessage(UIMessage.error("Erreur : ${e.message}"));
       return false;
@@ -44,6 +47,11 @@ abstract class SupabaseCollection<T> implements ChildBlone<AppBlone> {
   }
 
   Future<T> getById(String id) async {
+    final element = await cache.get(id, ifAbsent: _getById);
+    return element!;
+  }
+
+  Future<T> _getById(String id) async {
     final data = await fromTable.select().match({'id': id}).single();
     return elementFromJson(data);
   }
@@ -51,6 +59,7 @@ abstract class SupabaseCollection<T> implements ChildBlone<AppBlone> {
   Future<bool> delete(String id) async {
     try {
       await fromTable.delete().match({'id': id});
+      await cache.invalidate(id);
     } catch (e) {
       return false;
     }
