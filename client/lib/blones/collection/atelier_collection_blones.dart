@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:lumberdash/lumberdash.dart';
+import 'package:quiver/cache.dart';
 import 'package:supabase/supabase.dart';
 
 import '../../models/donnees.dart';
@@ -31,13 +32,19 @@ class AtelierCollectionBlone extends SupabaseCollection<Atelier>
         dateMs: DateTime.now().millisecondsSinceEpoch,
       );
 
+  final snippetCache = MapCache<String, AtelierSnippet>.lru(maximumSize: 10);
   Future<AtelierSnippet> getSnippet({
     required String atelierId,
   }) async {
-    final data = await client.rpc('atelier_snippet', params: {
-      'atelier_id': atelierId,
-    }).single();
-    return AtelierSnippet.fromJson(data);
+    final snippet =
+        await snippetCache.get(atelierId, ifAbsent: (atelierId) async {
+      final data = await client.rpc('atelier_snippet', params: {
+        'atelier_id': atelierId,
+      }).single();
+      return AtelierSnippet.fromJson(data);
+    });
+
+    return snippet!;
   }
 
   Stream<AtelierSnippet> createSnippet({
@@ -46,13 +53,13 @@ class AtelierCollectionBlone extends SupabaseCollection<Atelier>
   }) async* {
     final atelier = create(demarcheId: demarcheId, animateurId: animateurId);
     await save(atelier);
-
     yield* subscribeToSnippet(atelier.id);
   }
 
   Stream<AtelierSnippet> subscribeToSnippet(String atelierId) async* {
     await for (final _ in subscribe(atelierId)) {
       logMessage('Atelier have changed');
+      snippetCache.invalidate(atelierId);
       yield await getSnippet(atelierId: atelierId);
     }
   }
@@ -107,6 +114,7 @@ class AtelierCollectionBlone extends SupabaseCollection<Atelier>
           const UIMessage.error("L'atelier n'a pas été enregistré."));
     }
 
+    snippetCache.invalidate(value.id);
     return success;
   }
 }
