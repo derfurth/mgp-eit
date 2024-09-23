@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:mgp_client/components/future_loader.dart';
 import 'package:mgp_client/models/donnees.dart';
 import 'package:mgp_client/models/editable.dart';
 import 'package:mgp_client/models/editables.dart';
@@ -208,22 +209,21 @@ class FicheChipList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Demarche demarche = context.watch();
-    final FicheCollectionBlone fiches = context.watch();
+    final Demarche demarche = context.read();
+    final FicheCollectionBlone fiches = context.read();
     return Column(
       children: [
-        StreamBuilder<Iterable<FicheSnippet>>(
-          stream: fiches.watchSnippetsForContactAndAtelier(
+        FutureLoader<Iterable<FicheSnippet>>(
+          future: fiches.getSnippetsForContactAndAtelier(
             atelierId: atelier.atelier.id,
             contactId: contact.contact.id,
             demarcheId: demarche.id,
           ),
           builder: (
-            BuildContext context,
-            AsyncSnapshot<Iterable<FicheSnippet>> snapshot,
+             context,
+            snapshot
           ) {
             final snippets = snapshot.data;
-            if (snippets == null) return const CircularProgressIndicator();
 
             return Wrapper(size: .5, children: [
               for (final snippet in snippets)
