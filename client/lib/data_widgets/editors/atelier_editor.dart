@@ -80,7 +80,7 @@ class AtelierEditor extends StatelessWidget {
             tabs: [
               Tab(text: 'Description'),
               Tab(text: 'Fiches ressources'),
-              Tab(text: 'Thematiques'),
+              Tab(text: 'Thématiques'),
             ],
           ),
           child: Center(
@@ -239,19 +239,14 @@ class AtelierParticipantLiveView extends StatelessWidget {
     final ParticipantMetaCollectionBlone participantMetas = context.watch();
     final ContactCollectionBlone contacts = context.watch();
 
-    return FutureBuilder<Iterable<ParticipantMeta>>(
+    return FutureLoader<Iterable<ParticipantMeta>>(
         future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
         builder: (context, snapshot) {
           final metas = snapshot.data;
-
-          if (metas == null) return const CircularProgressIndicator.adaptive();
-
           return Stack(
             children: [
               Column(children: [
                 Leading.vMedium(),
-                // Text('${metas.length} metas: ${metas.map((e) => e.contactId)}'),
-                ...[
                   for (final meta in metas)
                     FutureLoader<ContactSnippet>(
                       key: Key(meta.contactId),
@@ -268,7 +263,7 @@ class AtelierParticipantLiveView extends StatelessWidget {
                         ),
                       ),
                     ),
-                ],
+
                 Leading.vMedium(),
                 OverflowBar(
                   children: [
@@ -430,8 +425,12 @@ ShowFiche showFicheFunction(
             Provider.value(value: demarche),
           ],
           child: Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 600),
+              constraints: const BoxConstraints(maxWidth: 800),
               child: PaddedSingleChildScrollable(
                 child: FicheEditor(
                   ficheId: ficheId,
