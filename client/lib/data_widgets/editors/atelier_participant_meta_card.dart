@@ -123,23 +123,20 @@ class _FormState extends State<_Form> {
               ),
             ],
           ),
-          collapsed: InkWell(
-            onTap: () => controller.expanded = true,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Leading.vHair(),
-                Wrapper(
-                  size: .5,
-                  children: [
-                    ...thematiques
-                        .where((t) => widget.meta.thematiqueIds.contains(t.id))
-                        .map((t) => Chip(label: Text(t.nom)))
-                  ],
-                ),
-                Leading.vHair(),
-              ],
-            ),
+          collapsed: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Leading.vHair(),
+              Wrapper(
+                size: .5,
+                children: [
+                  ...thematiques
+                      .where((t) => widget.meta.thematiqueIds.contains(t.id))
+                      .map((t) => Chip(label: Text(t.nom)))
+                ],
+              ),
+              Leading.vHair(),
+            ],
           ),
           expanded: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,10 +216,7 @@ class FicheChipList extends StatelessWidget {
             contactId: contact.contact.id,
             demarcheId: demarche.id,
           ),
-          builder: (
-             context,
-            snapshot
-          ) {
+          builder: (context, snapshot) {
             final snippets = snapshot.data;
 
             return Wrapper(size: .5, children: [
