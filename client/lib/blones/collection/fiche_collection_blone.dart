@@ -165,6 +165,13 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
           ficheBId: mirrorFiche.id,
         );
         await parent.liensFiches.save(value);
+
+        await invalidate(
+          demarcheId: fiche.demarcheId,
+          atelierId: fiche.atelierId,
+          contactId: contactB.contact.id,
+          notify: false,
+        );
       }
 
       // Else we update the quantité
@@ -174,12 +181,28 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
             .update({'quantite_a': flux.quantite})
             .eq('fiche_a_id', fiche.id)
             .eq('demarche_id', fiche.demarcheId);
+        await invalidate(
+          demarcheId: fiche.demarcheId,
+          atelierId: fiche.atelierId,
+          contactId: lien.value.contactAId,
+          ficheId: lien.value.ficheAId,
+          notify: false,
+        );
       } else if (lien.value.ficheBId == fiche.id) {
         // update fiche B quantité
         await parent.liensFiches.fromTable
             .update({'quantite_b': flux.quantite})
             .eq('fiche_b_id', fiche.id)
             .eq('demarche_id', fiche.demarcheId);
+        if (lien.value.contactBId != null) {
+          await invalidate(
+            demarcheId: fiche.demarcheId,
+            atelierId: fiche.atelierId,
+            contactId: lien.value.contactBId!,
+            ficheId: lien.value.ficheBId,
+            notify: false,
+          );
+        }
       }
     }
   }
@@ -235,9 +258,26 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
         atelier.participants,
       ),
     ]);
-    await snippetCache.invalidate(fiche.value.id);
-    await contactFicheCache.invalidate(
-        fiche.value.demarcheId + fiche.value.atelierId + fiche.value.contactId);
-    notifyListeners();
+    await invalidate(
+      demarcheId: fiche.value.demarcheId,
+      atelierId: fiche.value.atelierId,
+      contactId: fiche.value.contactId,
+      ficheId: fiche.value.id,
+    );
+  }
+
+  Future<void> invalidate({
+    required String demarcheId,
+    required String atelierId,
+    required String contactId,
+    String? ficheId,
+    bool notify = true,
+  }) async {
+    if (ficheId != null) {
+      await cache.invalidate(ficheId);
+      await snippetCache.invalidate(ficheId);
+    }
+    await contactFicheCache.invalidate(demarcheId + atelierId + contactId);
+    if (notify) notifyListeners();
   }
 }
