@@ -5,8 +5,13 @@ import 'package:mgp_client/models/validators.dart';
 import 'package:mgp_client/styled_widgets/wrapper.dart';
 
 extension ToFormField on Field<String?> {
-  TextFormField toTextFormField({maxLines = 1}) => TextFormField(
+  TextFormField toTextFormField({
+    maxLines = 1,
+    enabled = true,
+  }) =>
+      TextFormField(
         decoration: InputDecoration(
+          enabled: enabled,
           labelText: label,
           filled: true,
         ),
