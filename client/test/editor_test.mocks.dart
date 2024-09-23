@@ -3,33 +3,34 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i8;
-import 'dart:ui' as _i9;
+import 'dart:async' as _i9;
+import 'dart:ui' as _i10;
 
-import 'package:mgp_client/blones/app_blone.dart' as _i3;
+import 'package:mgp_client/blones/app_blone.dart' as _i4;
 import 'package:mgp_client/blones/collection/animation_collection_blones.dart'
-    as _i12;
-import 'package:mgp_client/blones/collection/atelier_collection_blones.dart'
     as _i13;
-import 'package:mgp_client/blones/collection/demarche_collection_blone.dart'
-    as _i10;
-import 'package:mgp_client/blones/collection/entreprise_collection_blones.dart'
-    as _i16;
-import 'package:mgp_client/blones/collection/fiche_collection_blone.dart'
+import 'package:mgp_client/blones/collection/atelier_collection_blones.dart'
     as _i14;
-import 'package:mgp_client/blones/collection/flux_collection_blone.dart'
+import 'package:mgp_client/blones/collection/demarche_collection_blone.dart'
+    as _i11;
+import 'package:mgp_client/blones/collection/entreprise_collection_blones.dart'
     as _i17;
-import 'package:mgp_client/blones/collection/personne_collection_blone.dart'
-    as _i6;
-import 'package:mgp_client/blones/collection/synergie_collection_blone.dart'
+import 'package:mgp_client/blones/collection/fiche_collection_blone.dart'
+    as _i15;
+import 'package:mgp_client/blones/collection/flux_collection_blone.dart'
     as _i18;
-import 'package:mgp_client/models/donnees.dart' as _i4;
-import 'package:mgp_client/models/editables.dart' as _i15;
-import 'package:mgp_client/models/invitation.dart' as _i11;
-import 'package:mgp_client/models/snippets.dart' as _i5;
+import 'package:mgp_client/blones/collection/personne_collection_blone.dart'
+    as _i7;
+import 'package:mgp_client/blones/collection/synergie_collection_blone.dart'
+    as _i19;
+import 'package:mgp_client/models/donnees.dart' as _i5;
+import 'package:mgp_client/models/editables.dart' as _i16;
+import 'package:mgp_client/models/invitation.dart' as _i12;
+import 'package:mgp_client/models/snippets.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i7;
-import 'package:supabase_flutter/supabase_flutter.dart' as _i2;
+import 'package:mockito/src/dummies.dart' as _i8;
+import 'package:quiver/cache.dart' as _i2;
+import 'package:supabase_flutter/supabase_flutter.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -44,9 +45,9 @@ import 'package:supabase_flutter/supabase_flutter.dart' as _i2;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeSupabaseClient_0 extends _i1.SmartFake
-    implements _i2.SupabaseClient {
-  _FakeSupabaseClient_0(
+class _FakeMapCache_0<K, V> extends _i1.SmartFake
+    implements _i2.MapCache<K, V> {
+  _FakeMapCache_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -55,9 +56,9 @@ class _FakeSupabaseClient_0 extends _i1.SmartFake
         );
 }
 
-class _FakeSupabaseQueryBuilder_1 extends _i1.SmartFake
-    implements _i2.SupabaseQueryBuilder {
-  _FakeSupabaseQueryBuilder_1(
+class _FakeSupabaseClient_1 extends _i1.SmartFake
+    implements _i3.SupabaseClient {
+  _FakeSupabaseClient_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -66,8 +67,9 @@ class _FakeSupabaseQueryBuilder_1 extends _i1.SmartFake
         );
 }
 
-class _FakeAppBlone_2 extends _i1.SmartFake implements _i3.AppBlone {
-  _FakeAppBlone_2(
+class _FakeSupabaseQueryBuilder_2 extends _i1.SmartFake
+    implements _i3.SupabaseQueryBuilder {
+  _FakeSupabaseQueryBuilder_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -76,8 +78,8 @@ class _FakeAppBlone_2 extends _i1.SmartFake implements _i3.AppBlone {
         );
 }
 
-class _FakePersonne_3 extends _i1.SmartFake implements _i4.Personne {
-  _FakePersonne_3(
+class _FakeAppBlone_3 extends _i1.SmartFake implements _i4.AppBlone {
+  _FakeAppBlone_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -86,8 +88,8 @@ class _FakePersonne_3 extends _i1.SmartFake implements _i4.Personne {
         );
 }
 
-class _FakeDemarche_4 extends _i1.SmartFake implements _i4.Demarche {
-  _FakeDemarche_4(
+class _FakePersonne_4 extends _i1.SmartFake implements _i5.Personne {
+  _FakePersonne_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -96,8 +98,8 @@ class _FakeDemarche_4 extends _i1.SmartFake implements _i4.Demarche {
         );
 }
 
-class _FakeAnimateur_5 extends _i1.SmartFake implements _i4.Animateur {
-  _FakeAnimateur_5(
+class _FakeDemarche_5 extends _i1.SmartFake implements _i5.Demarche {
+  _FakeDemarche_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -106,9 +108,8 @@ class _FakeAnimateur_5 extends _i1.SmartFake implements _i4.Animateur {
         );
 }
 
-class _FakeAnimateurSnippet_6 extends _i1.SmartFake
-    implements _i5.AnimateurSnippet {
-  _FakeAnimateurSnippet_6(
+class _FakeAnimateur_6 extends _i1.SmartFake implements _i5.Animateur {
+  _FakeAnimateur_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -117,8 +118,9 @@ class _FakeAnimateurSnippet_6 extends _i1.SmartFake
         );
 }
 
-class _FakeCoAnimateur_7 extends _i1.SmartFake implements _i4.CoAnimateur {
-  _FakeCoAnimateur_7(
+class _FakeAnimateurSnippet_7 extends _i1.SmartFake
+    implements _i6.AnimateurSnippet {
+  _FakeAnimateurSnippet_7(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -127,9 +129,8 @@ class _FakeCoAnimateur_7 extends _i1.SmartFake implements _i4.CoAnimateur {
         );
 }
 
-class _FakeCoAnimateurSnippet_8 extends _i1.SmartFake
-    implements _i5.CoAnimateurSnippet {
-  _FakeCoAnimateurSnippet_8(
+class _FakeCoAnimateur_8 extends _i1.SmartFake implements _i5.CoAnimateur {
+  _FakeCoAnimateur_8(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -138,8 +139,9 @@ class _FakeCoAnimateurSnippet_8 extends _i1.SmartFake
         );
 }
 
-class _FakeAtelier_9 extends _i1.SmartFake implements _i4.Atelier {
-  _FakeAtelier_9(
+class _FakeCoAnimateurSnippet_9 extends _i1.SmartFake
+    implements _i6.CoAnimateurSnippet {
+  _FakeCoAnimateurSnippet_9(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -148,9 +150,8 @@ class _FakeAtelier_9 extends _i1.SmartFake implements _i4.Atelier {
         );
 }
 
-class _FakeAtelierSnippet_10 extends _i1.SmartFake
-    implements _i5.AtelierSnippet {
-  _FakeAtelierSnippet_10(
+class _FakeAtelier_10 extends _i1.SmartFake implements _i5.Atelier {
+  _FakeAtelier_10(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -159,8 +160,9 @@ class _FakeAtelierSnippet_10 extends _i1.SmartFake
         );
 }
 
-class _FakeFiche_11 extends _i1.SmartFake implements _i4.Fiche {
-  _FakeFiche_11(
+class _FakeAtelierSnippet_11 extends _i1.SmartFake
+    implements _i6.AtelierSnippet {
+  _FakeAtelierSnippet_11(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -169,8 +171,8 @@ class _FakeFiche_11 extends _i1.SmartFake implements _i4.Fiche {
         );
 }
 
-class _FakeFicheSnippet_12 extends _i1.SmartFake implements _i5.FicheSnippet {
-  _FakeFicheSnippet_12(
+class _FakeFiche_12 extends _i1.SmartFake implements _i5.Fiche {
+  _FakeFiche_12(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -179,8 +181,8 @@ class _FakeFicheSnippet_12 extends _i1.SmartFake implements _i5.FicheSnippet {
         );
 }
 
-class _FakeEntreprise_13 extends _i1.SmartFake implements _i4.Entreprise {
-  _FakeEntreprise_13(
+class _FakeFicheSnippet_13 extends _i1.SmartFake implements _i6.FicheSnippet {
+  _FakeFicheSnippet_13(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -189,9 +191,8 @@ class _FakeEntreprise_13 extends _i1.SmartFake implements _i4.Entreprise {
         );
 }
 
-class _FakeEntrepriseSnippet_14 extends _i1.SmartFake
-    implements _i5.EntrepriseSnippet {
-  _FakeEntrepriseSnippet_14(
+class _FakeEntreprise_14 extends _i1.SmartFake implements _i5.Entreprise {
+  _FakeEntreprise_14(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -200,8 +201,9 @@ class _FakeEntrepriseSnippet_14 extends _i1.SmartFake
         );
 }
 
-class _FakeEtablissement_15 extends _i1.SmartFake implements _i4.Etablissement {
-  _FakeEtablissement_15(
+class _FakeEntrepriseSnippet_15 extends _i1.SmartFake
+    implements _i6.EntrepriseSnippet {
+  _FakeEntrepriseSnippet_15(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -210,8 +212,8 @@ class _FakeEtablissement_15 extends _i1.SmartFake implements _i4.Etablissement {
         );
 }
 
-class _FakeContact_16 extends _i1.SmartFake implements _i4.Contact {
-  _FakeContact_16(
+class _FakeEtablissement_16 extends _i1.SmartFake implements _i5.Etablissement {
+  _FakeEtablissement_16(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -220,9 +222,8 @@ class _FakeContact_16 extends _i1.SmartFake implements _i4.Contact {
         );
 }
 
-class _FakeContactSnippet_17 extends _i1.SmartFake
-    implements _i5.ContactSnippet {
-  _FakeContactSnippet_17(
+class _FakeContact_17 extends _i1.SmartFake implements _i5.Contact {
+  _FakeContact_17(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -231,8 +232,9 @@ class _FakeContactSnippet_17 extends _i1.SmartFake
         );
 }
 
-class _FakeFlux_18 extends _i1.SmartFake implements _i4.Flux {
-  _FakeFlux_18(
+class _FakeContactSnippet_18 extends _i1.SmartFake
+    implements _i6.ContactSnippet {
+  _FakeContactSnippet_18(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -241,8 +243,8 @@ class _FakeFlux_18 extends _i1.SmartFake implements _i4.Flux {
         );
 }
 
-class _FakeFluxSnippet_19 extends _i1.SmartFake implements _i5.FluxSnippet {
-  _FakeFluxSnippet_19(
+class _FakeFlux_19 extends _i1.SmartFake implements _i5.Flux {
+  _FakeFlux_19(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -251,8 +253,8 @@ class _FakeFluxSnippet_19 extends _i1.SmartFake implements _i5.FluxSnippet {
         );
 }
 
-class _FakeSynergie_20 extends _i1.SmartFake implements _i4.Synergie {
-  _FakeSynergie_20(
+class _FakeFluxSnippet_20 extends _i1.SmartFake implements _i6.FluxSnippet {
+  _FakeFluxSnippet_20(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -261,9 +263,19 @@ class _FakeSynergie_20 extends _i1.SmartFake implements _i4.Synergie {
         );
 }
 
-class _FakeSynergieSnippet_21 extends _i1.SmartFake
-    implements _i5.SynergieSnippet {
-  _FakeSynergieSnippet_21(
+class _FakeSynergie_21 extends _i1.SmartFake implements _i5.Synergie {
+  _FakeSynergie_21(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeSynergieSnippet_22 extends _i1.SmartFake
+    implements _i6.SynergieSnippet {
+  _FakeSynergieSnippet_22(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -276,61 +288,74 @@ class _FakeSynergieSnippet_21 extends _i1.SmartFake
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockPersonneCollectionBlone extends _i1.Mock
-    implements _i6.PersonneCollectionBlone {
+    implements _i7.PersonneCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Personne> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Personne>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Personne>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Personne>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -346,30 +371,30 @@ class MockPersonneCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Personne elementFromJson(Map<String, dynamic>? json) =>
+  _i5.Personne elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakePersonne_3(
+        returnValue: _FakePersonne_4(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakePersonne_3(
+        returnValueForMissingStub: _FakePersonne_4(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Personne);
+      ) as _i5.Personne);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Personne? value) =>
+  Map<String, dynamic> elementToJson(_i5.Personne? value) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
@@ -380,13 +405,13 @@ class MockPersonneCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Personne create({required String? demarcheId}) => (super.noSuchMethod(
+  _i5.Personne create({required String? demarcheId}) => (super.noSuchMethod(
         Invocation.method(
           #create,
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _FakePersonne_3(
+        returnValue: _FakePersonne_4(
           this,
           Invocation.method(
             #create,
@@ -394,7 +419,7 @@ class MockPersonneCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-        returnValueForMissingStub: _FakePersonne_3(
+        returnValueForMissingStub: _FakePersonne_4(
           this,
           Invocation.method(
             #create,
@@ -402,35 +427,35 @@ class MockPersonneCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-      ) as _i4.Personne);
+      ) as _i5.Personne);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Personne>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Personne>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Personne? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Personne? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Personne> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Personne> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Personne>.value(_FakePersonne_3(
+        returnValue: _i9.Future<_i5.Personne>.value(_FakePersonne_4(
           this,
           Invocation.method(
             #getById,
@@ -438,24 +463,24 @@ class MockPersonneCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.Personne>.value(_FakePersonne_3(
+            _i9.Future<_i5.Personne>.value(_FakePersonne_4(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Personne>);
+      ) as _i9.Future<_i5.Personne>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -467,14 +492,14 @@ class MockPersonneCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -495,7 +520,7 @@ class MockPersonneCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -504,7 +529,7 @@ class MockPersonneCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -526,61 +551,74 @@ class MockPersonneCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockDemarcheCollectionBlone extends _i1.Mock
-    implements _i10.DemarcheCollectionBlone {
+    implements _i11.DemarcheCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Demarche> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Demarche>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Demarche>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Demarche>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -596,30 +634,30 @@ class MockDemarcheCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Demarche elementFromJson(Map<String, dynamic>? json) =>
+  _i5.Demarche elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeDemarche_4(
+        returnValue: _FakeDemarche_5(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeDemarche_4(
+        returnValueForMissingStub: _FakeDemarche_5(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Demarche);
+      ) as _i5.Demarche);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Demarche? value) =>
+  Map<String, dynamic> elementToJson(_i5.Demarche? value) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
@@ -630,76 +668,76 @@ class MockDemarcheCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Demarche create() => (super.noSuchMethod(
+  _i5.Demarche create() => (super.noSuchMethod(
         Invocation.method(
           #create,
           [],
         ),
-        returnValue: _FakeDemarche_4(
+        returnValue: _FakeDemarche_5(
           this,
           Invocation.method(
             #create,
             [],
           ),
         ),
-        returnValueForMissingStub: _FakeDemarche_4(
+        returnValueForMissingStub: _FakeDemarche_5(
           this,
           Invocation.method(
             #create,
             [],
           ),
         ),
-      ) as _i4.Demarche);
+      ) as _i5.Demarche);
 
   @override
-  _i8.Future<Iterable<_i4.Demarche>> getMine() => (super.noSuchMethod(
+  _i9.Future<Iterable<_i5.Demarche>> getMine() => (super.noSuchMethod(
         Invocation.method(
           #getMine,
           [],
         ),
-        returnValue: _i8.Future<Iterable<_i4.Demarche>>.value(<_i4.Demarche>[]),
+        returnValue: _i9.Future<Iterable<_i5.Demarche>>.value(<_i5.Demarche>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i4.Demarche>>.value(<_i4.Demarche>[]),
-      ) as _i8.Future<Iterable<_i4.Demarche>>);
+            _i9.Future<Iterable<_i5.Demarche>>.value(<_i5.Demarche>[]),
+      ) as _i9.Future<Iterable<_i5.Demarche>>);
 
   @override
-  _i8.Future<bool> acceptInvitation(_i11.DemarcheInvitation? invitation) =>
+  _i9.Future<bool> acceptInvitation(_i12.DemarcheInvitation? invitation) =>
       (super.noSuchMethod(
         Invocation.method(
           #acceptInvitation,
           [invitation],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Demarche>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Demarche>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Demarche? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Demarche? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Demarche> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Demarche> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Demarche>.value(_FakeDemarche_4(
+        returnValue: _i9.Future<_i5.Demarche>.value(_FakeDemarche_5(
           this,
           Invocation.method(
             #getById,
@@ -707,24 +745,24 @@ class MockDemarcheCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.Demarche>.value(_FakeDemarche_4(
+            _i9.Future<_i5.Demarche>.value(_FakeDemarche_5(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Demarche>);
+      ) as _i9.Future<_i5.Demarche>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -736,14 +774,14 @@ class MockDemarcheCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -764,7 +802,7 @@ class MockDemarcheCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -773,7 +811,7 @@ class MockDemarcheCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -795,61 +833,74 @@ class MockDemarcheCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAnimateurCollectionBlone extends _i1.Mock
-    implements _i12.AnimateurCollectionBlone {
+    implements _i13.AnimateurCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Animateur> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Animateur>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Animateur>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Animateur>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -865,30 +916,30 @@ class MockAnimateurCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Animateur elementFromJson(Map<String, dynamic>? json) =>
+  _i5.Animateur elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeAnimateur_5(
+        returnValue: _FakeAnimateur_6(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeAnimateur_5(
+        returnValueForMissingStub: _FakeAnimateur_6(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Animateur);
+      ) as _i5.Animateur);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Animateur? value) =>
+  Map<String, dynamic> elementToJson(_i5.Animateur? value) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
@@ -899,13 +950,13 @@ class MockAnimateurCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Animateur create({required String? demarcheId}) => (super.noSuchMethod(
+  _i5.Animateur create({required String? demarcheId}) => (super.noSuchMethod(
         Invocation.method(
           #create,
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _FakeAnimateur_5(
+        returnValue: _FakeAnimateur_6(
           this,
           Invocation.method(
             #create,
@@ -913,7 +964,7 @@ class MockAnimateurCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-        returnValueForMissingStub: _FakeAnimateur_5(
+        returnValueForMissingStub: _FakeAnimateur_6(
           this,
           Invocation.method(
             #create,
@@ -921,17 +972,17 @@ class MockAnimateurCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-      ) as _i4.Animateur);
+      ) as _i5.Animateur);
 
   @override
-  _i8.Future<_i5.AnimateurSnippet> getSnippet(String? id) =>
+  _i9.Future<_i6.AnimateurSnippet> getSnippet(String? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSnippet,
           [id],
         ),
         returnValue:
-            _i8.Future<_i5.AnimateurSnippet>.value(_FakeAnimateurSnippet_6(
+            _i9.Future<_i6.AnimateurSnippet>.value(_FakeAnimateurSnippet_7(
           this,
           Invocation.method(
             #getSnippet,
@@ -939,17 +990,17 @@ class MockAnimateurCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.AnimateurSnippet>.value(_FakeAnimateurSnippet_6(
+            _i9.Future<_i6.AnimateurSnippet>.value(_FakeAnimateurSnippet_7(
           this,
           Invocation.method(
             #getSnippet,
             [id],
           ),
         )),
-      ) as _i8.Future<_i5.AnimateurSnippet>);
+      ) as _i9.Future<_i6.AnimateurSnippet>);
 
   @override
-  _i8.Future<Iterable<_i5.AnimateurSnippet>> search({
+  _i9.Future<Iterable<_i6.AnimateurSnippet>> search({
     required String? demarcheId,
     String? needle = r'',
   }) =>
@@ -962,15 +1013,15 @@ class MockAnimateurCollectionBlone extends _i1.Mock
             #needle: needle,
           },
         ),
-        returnValue: _i8.Future<Iterable<_i5.AnimateurSnippet>>.value(
-            <_i5.AnimateurSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.AnimateurSnippet>>.value(
+            <_i6.AnimateurSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.AnimateurSnippet>>.value(
-                <_i5.AnimateurSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.AnimateurSnippet>>);
+            _i9.Future<Iterable<_i6.AnimateurSnippet>>.value(
+                <_i6.AnimateurSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.AnimateurSnippet>>);
 
   @override
-  _i8.Future<Iterable<_i5.AnimateurSnippet>> getSnippets(
+  _i9.Future<Iterable<_i6.AnimateurSnippet>> getSnippets(
           {required String? demarcheId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -978,51 +1029,51 @@ class MockAnimateurCollectionBlone extends _i1.Mock
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _i8.Future<Iterable<_i5.AnimateurSnippet>>.value(
-            <_i5.AnimateurSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.AnimateurSnippet>>.value(
+            <_i6.AnimateurSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.AnimateurSnippet>>.value(
-                <_i5.AnimateurSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.AnimateurSnippet>>);
+            _i9.Future<Iterable<_i6.AnimateurSnippet>>.value(
+                <_i6.AnimateurSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.AnimateurSnippet>>);
 
   @override
-  _i8.Future<bool> claim({required String? animateurId}) => (super.noSuchMethod(
+  _i9.Future<bool> claim({required String? animateurId}) => (super.noSuchMethod(
         Invocation.method(
           #claim,
           [],
           {#animateurId: animateurId},
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Animateur>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Animateur>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Animateur? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Animateur? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Animateur> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Animateur> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Animateur>.value(_FakeAnimateur_5(
+        returnValue: _i9.Future<_i5.Animateur>.value(_FakeAnimateur_6(
           this,
           Invocation.method(
             #getById,
@@ -1030,24 +1081,24 @@ class MockAnimateurCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.Animateur>.value(_FakeAnimateur_5(
+            _i9.Future<_i5.Animateur>.value(_FakeAnimateur_6(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Animateur>);
+      ) as _i9.Future<_i5.Animateur>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -1059,14 +1110,14 @@ class MockAnimateurCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -1087,7 +1138,7 @@ class MockAnimateurCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -1096,7 +1147,7 @@ class MockAnimateurCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -1118,61 +1169,74 @@ class MockAnimateurCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockCoAnimateurCollectionBlone extends _i1.Mock
-    implements _i12.CoAnimateurCollectionBlone {
+    implements _i13.CoAnimateurCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.CoAnimateur> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.CoAnimateur>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.CoAnimateur>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.CoAnimateur>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -1188,30 +1252,30 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.CoAnimateur elementFromJson(Map<String, dynamic>? json) =>
+  _i5.CoAnimateur elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeCoAnimateur_7(
+        returnValue: _FakeCoAnimateur_8(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeCoAnimateur_7(
+        returnValueForMissingStub: _FakeCoAnimateur_8(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.CoAnimateur);
+      ) as _i5.CoAnimateur);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.CoAnimateur? value) =>
+  Map<String, dynamic> elementToJson(_i5.CoAnimateur? value) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
@@ -1222,13 +1286,13 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.CoAnimateur create({required String? demarcheId}) => (super.noSuchMethod(
+  _i5.CoAnimateur create({required String? demarcheId}) => (super.noSuchMethod(
         Invocation.method(
           #create,
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _FakeCoAnimateur_7(
+        returnValue: _FakeCoAnimateur_8(
           this,
           Invocation.method(
             #create,
@@ -1236,7 +1300,7 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-        returnValueForMissingStub: _FakeCoAnimateur_7(
+        returnValueForMissingStub: _FakeCoAnimateur_8(
           this,
           Invocation.method(
             #create,
@@ -1244,17 +1308,17 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-      ) as _i4.CoAnimateur);
+      ) as _i5.CoAnimateur);
 
   @override
-  _i8.Future<_i5.CoAnimateurSnippet> getSnippet(String? id) =>
+  _i9.Future<_i6.CoAnimateurSnippet> getSnippet(String? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSnippet,
           [id],
         ),
         returnValue:
-            _i8.Future<_i5.CoAnimateurSnippet>.value(_FakeCoAnimateurSnippet_8(
+            _i9.Future<_i6.CoAnimateurSnippet>.value(_FakeCoAnimateurSnippet_9(
           this,
           Invocation.method(
             #getSnippet,
@@ -1262,17 +1326,17 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.CoAnimateurSnippet>.value(_FakeCoAnimateurSnippet_8(
+            _i9.Future<_i6.CoAnimateurSnippet>.value(_FakeCoAnimateurSnippet_9(
           this,
           Invocation.method(
             #getSnippet,
             [id],
           ),
         )),
-      ) as _i8.Future<_i5.CoAnimateurSnippet>);
+      ) as _i9.Future<_i6.CoAnimateurSnippet>);
 
   @override
-  _i8.Future<Iterable<_i5.CoAnimateurSnippet>> search({
+  _i9.Future<Iterable<_i6.CoAnimateurSnippet>> search({
     required String? demarcheId,
     String? needle = r'',
   }) =>
@@ -1285,15 +1349,15 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
             #needle: needle,
           },
         ),
-        returnValue: _i8.Future<Iterable<_i5.CoAnimateurSnippet>>.value(
-            <_i5.CoAnimateurSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.CoAnimateurSnippet>>.value(
+            <_i6.CoAnimateurSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.CoAnimateurSnippet>>.value(
-                <_i5.CoAnimateurSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.CoAnimateurSnippet>>);
+            _i9.Future<Iterable<_i6.CoAnimateurSnippet>>.value(
+                <_i6.CoAnimateurSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.CoAnimateurSnippet>>);
 
   @override
-  _i8.Future<Iterable<_i5.CoAnimateurSnippet>> getSnippets(
+  _i9.Future<Iterable<_i6.CoAnimateurSnippet>> getSnippets(
           {required String? demarcheId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1301,52 +1365,52 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _i8.Future<Iterable<_i5.CoAnimateurSnippet>>.value(
-            <_i5.CoAnimateurSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.CoAnimateurSnippet>>.value(
+            <_i6.CoAnimateurSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.CoAnimateurSnippet>>.value(
-                <_i5.CoAnimateurSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.CoAnimateurSnippet>>);
+            _i9.Future<Iterable<_i6.CoAnimateurSnippet>>.value(
+                <_i6.CoAnimateurSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.CoAnimateurSnippet>>);
 
   @override
-  _i8.Future<bool> claim({required String? coAnimateurId}) =>
+  _i9.Future<bool> claim({required String? coAnimateurId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #claim,
           [],
           {#coAnimateurId: coAnimateurId},
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.CoAnimateur>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.CoAnimateur>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.CoAnimateur? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.CoAnimateur? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.CoAnimateur> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.CoAnimateur> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.CoAnimateur>.value(_FakeCoAnimateur_7(
+        returnValue: _i9.Future<_i5.CoAnimateur>.value(_FakeCoAnimateur_8(
           this,
           Invocation.method(
             #getById,
@@ -1354,24 +1418,24 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.CoAnimateur>.value(_FakeCoAnimateur_7(
+            _i9.Future<_i5.CoAnimateur>.value(_FakeCoAnimateur_8(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.CoAnimateur>);
+      ) as _i9.Future<_i5.CoAnimateur>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -1383,14 +1447,14 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -1411,7 +1475,7 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -1420,7 +1484,7 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -1442,61 +1506,74 @@ class MockCoAnimateurCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAtelierCollectionBlone extends _i1.Mock
-    implements _i13.AtelierCollectionBlone {
+    implements _i14.AtelierCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Atelier> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Atelier>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Atelier>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Atelier>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -1512,30 +1589,30 @@ class MockAtelierCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Atelier elementFromJson(Map<String, dynamic>? json) =>
+  _i5.Atelier elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeAtelier_9(
+        returnValue: _FakeAtelier_10(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeAtelier_9(
+        returnValueForMissingStub: _FakeAtelier_10(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Atelier);
+      ) as _i5.Atelier);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Atelier? value) => (super.noSuchMethod(
+  Map<String, dynamic> elementToJson(_i5.Atelier? value) => (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
           [value],
@@ -1545,7 +1622,7 @@ class MockAtelierCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Atelier create({
+  _i5.Atelier create({
     required String? demarcheId,
     String? animateurId,
   }) =>
@@ -1558,7 +1635,7 @@ class MockAtelierCollectionBlone extends _i1.Mock
             #animateurId: animateurId,
           },
         ),
-        returnValue: _FakeAtelier_9(
+        returnValue: _FakeAtelier_10(
           this,
           Invocation.method(
             #create,
@@ -1569,7 +1646,7 @@ class MockAtelierCollectionBlone extends _i1.Mock
             },
           ),
         ),
-        returnValueForMissingStub: _FakeAtelier_9(
+        returnValueForMissingStub: _FakeAtelier_10(
           this,
           Invocation.method(
             #create,
@@ -1580,10 +1657,10 @@ class MockAtelierCollectionBlone extends _i1.Mock
             },
           ),
         ),
-      ) as _i4.Atelier);
+      ) as _i5.Atelier);
 
   @override
-  _i8.Future<_i5.AtelierSnippet> getSnippet({required String? atelierId}) =>
+  _i9.Future<_i6.AtelierSnippet> getSnippet({required String? atelierId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSnippet,
@@ -1591,7 +1668,7 @@ class MockAtelierCollectionBlone extends _i1.Mock
           {#atelierId: atelierId},
         ),
         returnValue:
-            _i8.Future<_i5.AtelierSnippet>.value(_FakeAtelierSnippet_10(
+            _i9.Future<_i6.AtelierSnippet>.value(_FakeAtelierSnippet_11(
           this,
           Invocation.method(
             #getSnippet,
@@ -1600,7 +1677,7 @@ class MockAtelierCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.AtelierSnippet>.value(_FakeAtelierSnippet_10(
+            _i9.Future<_i6.AtelierSnippet>.value(_FakeAtelierSnippet_11(
           this,
           Invocation.method(
             #getSnippet,
@@ -1608,10 +1685,10 @@ class MockAtelierCollectionBlone extends _i1.Mock
             {#atelierId: atelierId},
           ),
         )),
-      ) as _i8.Future<_i5.AtelierSnippet>);
+      ) as _i9.Future<_i6.AtelierSnippet>);
 
   @override
-  _i8.Stream<_i5.AtelierSnippet> createSnippet({
+  _i9.Stream<_i6.AtelierSnippet> createSnippet({
     required String? demarcheId,
     String? animateurId,
   }) =>
@@ -1624,95 +1701,96 @@ class MockAtelierCollectionBlone extends _i1.Mock
             #animateurId: animateurId,
           },
         ),
-        returnValue: _i8.Stream<_i5.AtelierSnippet>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i5.AtelierSnippet>.empty(),
-      ) as _i8.Stream<_i5.AtelierSnippet>);
+        returnValue: _i9.Stream<_i6.AtelierSnippet>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i6.AtelierSnippet>.empty(),
+      ) as _i9.Stream<_i6.AtelierSnippet>);
 
   @override
-  _i8.Stream<_i5.AtelierSnippet> subscribeToSnippet(String? atelierId) =>
+  _i9.Stream<_i6.AtelierSnippet> subscribeToSnippet(String? atelierId) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeToSnippet,
           [atelierId],
         ),
-        returnValue: _i8.Stream<_i5.AtelierSnippet>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i5.AtelierSnippet>.empty(),
-      ) as _i8.Stream<_i5.AtelierSnippet>);
+        returnValue: _i9.Stream<_i6.AtelierSnippet>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i6.AtelierSnippet>.empty(),
+      ) as _i9.Stream<_i6.AtelierSnippet>);
 
   @override
-  _i8.Stream<_i4.Atelier> subscribe(String? atelierId) => (super.noSuchMethod(
+  _i9.Stream<_i5.Atelier> subscribe(String? atelierId) => (super.noSuchMethod(
         Invocation.method(
           #subscribe,
           [atelierId],
         ),
-        returnValue: _i8.Stream<_i4.Atelier>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i4.Atelier>.empty(),
-      ) as _i8.Stream<_i4.Atelier>);
+        returnValue: _i9.Stream<_i5.Atelier>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i5.Atelier>.empty(),
+      ) as _i9.Stream<_i5.Atelier>);
 
   @override
-  _i8.Future<List<_i4.Atelier>> getAll({required String? demarcheId}) =>
+  _i9.Future<List<_i5.Atelier>> getAll({required String? demarcheId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAll,
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _i8.Future<List<_i4.Atelier>>.value(<_i4.Atelier>[]),
+        returnValue: _i9.Future<List<_i5.Atelier>>.value(<_i5.Atelier>[]),
         returnValueForMissingStub:
-            _i8.Future<List<_i4.Atelier>>.value(<_i4.Atelier>[]),
-      ) as _i8.Future<List<_i4.Atelier>>);
+            _i9.Future<List<_i5.Atelier>>.value(<_i5.Atelier>[]),
+      ) as _i9.Future<List<_i5.Atelier>>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Atelier? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Atelier? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Atelier>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Atelier>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Atelier> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Atelier> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Atelier>.value(_FakeAtelier_9(
+        returnValue: _i9.Future<_i5.Atelier>.value(_FakeAtelier_10(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-        returnValueForMissingStub: _i8.Future<_i4.Atelier>.value(_FakeAtelier_9(
+        returnValueForMissingStub:
+            _i9.Future<_i5.Atelier>.value(_FakeAtelier_10(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Atelier>);
+      ) as _i9.Future<_i5.Atelier>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -1724,14 +1802,14 @@ class MockAtelierCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -1752,7 +1830,7 @@ class MockAtelierCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -1761,7 +1839,7 @@ class MockAtelierCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -1783,61 +1861,74 @@ class MockAtelierCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFicheCollectionBlone extends _i1.Mock
-    implements _i14.FicheCollectionBlone {
+    implements _i15.FicheCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Fiche> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Fiche>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Fiche>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Fiche>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -1853,29 +1944,29 @@ class MockFicheCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Fiche elementFromJson(Map<String, dynamic>? json) => (super.noSuchMethod(
+  _i5.Fiche elementFromJson(Map<String, dynamic>? json) => (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeFiche_11(
+        returnValue: _FakeFiche_12(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeFiche_11(
+        returnValueForMissingStub: _FakeFiche_12(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Fiche);
+      ) as _i5.Fiche);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Fiche? value) => (super.noSuchMethod(
+  Map<String, dynamic> elementToJson(_i5.Fiche? value) => (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
           [value],
@@ -1885,7 +1976,7 @@ class MockFicheCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Fiche create({
+  _i5.Fiche create({
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
@@ -1902,7 +1993,7 @@ class MockFicheCollectionBlone extends _i1.Mock
             #fluxId: fluxId,
           },
         ),
-        returnValue: _FakeFiche_11(
+        returnValue: _FakeFiche_12(
           this,
           Invocation.method(
             #create,
@@ -1915,7 +2006,7 @@ class MockFicheCollectionBlone extends _i1.Mock
             },
           ),
         ),
-        returnValueForMissingStub: _FakeFiche_11(
+        returnValueForMissingStub: _FakeFiche_12(
           this,
           Invocation.method(
             #create,
@@ -1928,10 +2019,10 @@ class MockFicheCollectionBlone extends _i1.Mock
             },
           ),
         ),
-      ) as _i4.Fiche);
+      ) as _i5.Fiche);
 
   @override
-  _i8.Stream<Iterable<_i5.FicheSnippet>> watchSnippetsForContactAndAtelier({
+  _i9.Stream<Iterable<_i6.FicheSnippet>> watchSnippetsForContactAndAtelier({
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
@@ -1946,13 +2037,13 @@ class MockFicheCollectionBlone extends _i1.Mock
             #demarcheId: demarcheId,
           },
         ),
-        returnValue: _i8.Stream<Iterable<_i5.FicheSnippet>>.empty(),
+        returnValue: _i9.Stream<Iterable<_i6.FicheSnippet>>.empty(),
         returnValueForMissingStub:
-            _i8.Stream<Iterable<_i5.FicheSnippet>>.empty(),
-      ) as _i8.Stream<Iterable<_i5.FicheSnippet>>);
+            _i9.Stream<Iterable<_i6.FicheSnippet>>.empty(),
+      ) as _i9.Stream<Iterable<_i6.FicheSnippet>>);
 
   @override
-  _i8.Stream<Iterable<_i4.Fiche>> watchForContactAndAtelier({
+  _i9.Stream<Iterable<_i5.Fiche>> watchForContactAndAtelier({
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
@@ -1967,19 +2058,19 @@ class MockFicheCollectionBlone extends _i1.Mock
             #demarcheId: demarcheId,
           },
         ),
-        returnValue: _i8.Stream<Iterable<_i4.Fiche>>.empty(),
-        returnValueForMissingStub: _i8.Stream<Iterable<_i4.Fiche>>.empty(),
-      ) as _i8.Stream<Iterable<_i4.Fiche>>);
+        returnValue: _i9.Stream<Iterable<_i5.Fiche>>.empty(),
+        returnValueForMissingStub: _i9.Stream<Iterable<_i5.Fiche>>.empty(),
+      ) as _i9.Stream<Iterable<_i5.Fiche>>);
 
   @override
-  _i8.Future<_i5.FicheSnippet> getSnippet({required String? ficheId}) =>
+  _i9.Future<_i6.FicheSnippet> getSnippet({required String? ficheId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSnippet,
           [],
           {#ficheId: ficheId},
         ),
-        returnValue: _i8.Future<_i5.FicheSnippet>.value(_FakeFicheSnippet_12(
+        returnValue: _i9.Future<_i6.FicheSnippet>.value(_FakeFicheSnippet_13(
           this,
           Invocation.method(
             #getSnippet,
@@ -1988,7 +2079,7 @@ class MockFicheCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.FicheSnippet>.value(_FakeFicheSnippet_12(
+            _i9.Future<_i6.FicheSnippet>.value(_FakeFicheSnippet_13(
           this,
           Invocation.method(
             #getSnippet,
@@ -1996,10 +2087,10 @@ class MockFicheCollectionBlone extends _i1.Mock
             {#ficheId: ficheId},
           ),
         )),
-      ) as _i8.Future<_i5.FicheSnippet>);
+      ) as _i9.Future<_i6.FicheSnippet>);
 
   @override
-  _i8.Stream<_i5.FicheSnippet> createSnippet({
+  _i9.Stream<_i6.FicheSnippet> createSnippet({
     required String? demarcheId,
     required String? atelierId,
     required String? contactId,
@@ -2016,16 +2107,16 @@ class MockFicheCollectionBlone extends _i1.Mock
             #etablissementId: etablissementId,
           },
         ),
-        returnValue: _i8.Stream<_i5.FicheSnippet>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i5.FicheSnippet>.empty(),
-      ) as _i8.Stream<_i5.FicheSnippet>);
+        returnValue: _i9.Stream<_i6.FicheSnippet>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i6.FicheSnippet>.empty(),
+      ) as _i9.Stream<_i6.FicheSnippet>);
 
   @override
-  _i8.Future<void> createMirrors(
-    _i4.Fiche? fiche,
-    _i4.Flux? flux,
-    _i5.ContactSnippet? contact,
-    List<_i5.ContactSnippet>? participants,
+  _i9.Future<void> createMirrors(
+    _i5.Fiche? fiche,
+    _i5.Flux? flux,
+    _i6.ContactSnippet? contact,
+    List<_i6.ContactSnippet>? participants,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -2037,119 +2128,142 @@ class MockFicheCollectionBlone extends _i1.Mock
             participants,
           ],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
-  _i8.Stream<_i5.FicheSnippet> subscribeToSnippet(String? ficheId) =>
+  _i9.Future<void> saveLiens(
+    _i5.Fiche? fiche,
+    _i5.Flux? flux,
+    Iterable<_i16.EditableLienFiche>? liens,
+    Iterable<_i6.ContactSnippet>? participants,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveLiens,
+          [
+            fiche,
+            flux,
+            liens,
+            participants,
+          ],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Stream<_i6.FicheSnippet> subscribeToSnippet(String? ficheId) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeToSnippet,
           [ficheId],
         ),
-        returnValue: _i8.Stream<_i5.FicheSnippet>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i5.FicheSnippet>.empty(),
-      ) as _i8.Stream<_i5.FicheSnippet>);
+        returnValue: _i9.Stream<_i6.FicheSnippet>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i6.FicheSnippet>.empty(),
+      ) as _i9.Stream<_i6.FicheSnippet>);
 
   @override
-  _i8.Stream<_i4.Fiche> subscribe(String? ficheId) => (super.noSuchMethod(
+  _i9.Stream<_i5.Fiche> subscribe(String? ficheId) => (super.noSuchMethod(
         Invocation.method(
           #subscribe,
           [ficheId],
         ),
-        returnValue: _i8.Stream<_i4.Fiche>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i4.Fiche>.empty(),
-      ) as _i8.Stream<_i4.Fiche>);
+        returnValue: _i9.Stream<_i5.Fiche>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i5.Fiche>.empty(),
+      ) as _i9.Stream<_i5.Fiche>);
 
   @override
-  _i8.Stream<Iterable<_i4.Fiche>> subscribeByAtelier(
-          {required String? atelierId}) =>
+  _i9.Future<Iterable<_i5.Fiche>> getByAtelier({required String? atelierId}) =>
       (super.noSuchMethod(
         Invocation.method(
-          #subscribeByAtelier,
+          #getByAtelier,
           [],
           {#atelierId: atelierId},
         ),
-        returnValue: _i8.Stream<Iterable<_i4.Fiche>>.empty(),
-        returnValueForMissingStub: _i8.Stream<Iterable<_i4.Fiche>>.empty(),
-      ) as _i8.Stream<Iterable<_i4.Fiche>>);
+        returnValue: _i9.Future<Iterable<_i5.Fiche>>.value(<_i5.Fiche>[]),
+        returnValueForMissingStub:
+            _i9.Future<Iterable<_i5.Fiche>>.value(<_i5.Fiche>[]),
+      ) as _i9.Future<Iterable<_i5.Fiche>>);
 
   @override
-  _i8.Future<void> saveEditables({
-    required _i15.EditableFiche? fiche,
-    required _i15.EditableFlux? flux,
-    required _i5.ContactSnippet? contact,
-    required List<_i5.ContactSnippet>? mirrorParticipants,
-    _i15.EditableParticipantMeta? meta,
+  _i9.Future<void> saveEditables({
+    required _i6.AtelierSnippet? atelier,
+    required _i16.EditableFiche? fiche,
+    required _i16.EditableFlux? flux,
+    required _i6.ContactSnippet? contact,
+    required Iterable<_i16.EditableLienFiche>? liens,
+    _i16.EditableParticipantMeta? meta,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveEditables,
           [],
           {
+            #atelier: atelier,
             #fiche: fiche,
             #flux: flux,
             #contact: contact,
-            #mirrorParticipants: mirrorParticipants,
+            #liens: liens,
             #meta: meta,
           },
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Fiche>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Fiche>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Fiche? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Fiche? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Fiche> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Fiche> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Fiche>.value(_FakeFiche_11(
+        returnValue: _i9.Future<_i5.Fiche>.value(_FakeFiche_12(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-        returnValueForMissingStub: _i8.Future<_i4.Fiche>.value(_FakeFiche_11(
+        returnValueForMissingStub: _i9.Future<_i5.Fiche>.value(_FakeFiche_12(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Fiche>);
+      ) as _i9.Future<_i5.Fiche>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -2161,14 +2275,14 @@ class MockFicheCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -2189,7 +2303,7 @@ class MockFicheCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -2198,7 +2312,7 @@ class MockFicheCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -2220,61 +2334,74 @@ class MockFicheCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockEntrepriseCollectionBlone extends _i1.Mock
-    implements _i16.EntrepriseCollectionBlone {
+    implements _i17.EntrepriseCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Entreprise> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Entreprise>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Entreprise>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Entreprise>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -2290,13 +2417,13 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Entreprise create({required String? demarcheId}) => (super.noSuchMethod(
+  _i5.Entreprise create({required String? demarcheId}) => (super.noSuchMethod(
         Invocation.method(
           #create,
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _FakeEntreprise_13(
+        returnValue: _FakeEntreprise_14(
           this,
           Invocation.method(
             #create,
@@ -2304,7 +2431,7 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-        returnValueForMissingStub: _FakeEntreprise_13(
+        returnValueForMissingStub: _FakeEntreprise_14(
           this,
           Invocation.method(
             #create,
@@ -2312,33 +2439,33 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-      ) as _i4.Entreprise);
+      ) as _i5.Entreprise);
 
   @override
-  _i4.Entreprise elementFromJson(Map<String, dynamic>? json) =>
+  _i5.Entreprise elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeEntreprise_13(
+        returnValue: _FakeEntreprise_14(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeEntreprise_13(
+        returnValueForMissingStub: _FakeEntreprise_14(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Entreprise);
+      ) as _i5.Entreprise);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Entreprise? value) =>
+  Map<String, dynamic> elementToJson(_i5.Entreprise? value) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
@@ -2349,7 +2476,7 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i8.Future<_i5.EntrepriseSnippet> getSnippet(
+  _i9.Future<_i6.EntrepriseSnippet> getSnippet(
           {required String? entrepriseId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -2358,7 +2485,7 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
           {#entrepriseId: entrepriseId},
         ),
         returnValue:
-            _i8.Future<_i5.EntrepriseSnippet>.value(_FakeEntrepriseSnippet_14(
+            _i9.Future<_i6.EntrepriseSnippet>.value(_FakeEntrepriseSnippet_15(
           this,
           Invocation.method(
             #getSnippet,
@@ -2367,7 +2494,7 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.EntrepriseSnippet>.value(_FakeEntrepriseSnippet_14(
+            _i9.Future<_i6.EntrepriseSnippet>.value(_FakeEntrepriseSnippet_15(
           this,
           Invocation.method(
             #getSnippet,
@@ -2375,16 +2502,16 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
             {#entrepriseId: entrepriseId},
           ),
         )),
-      ) as _i8.Future<_i5.EntrepriseSnippet>);
+      ) as _i9.Future<_i6.EntrepriseSnippet>);
 
   @override
-  _i8.Future<_i4.Entreprise> getByEtablissementId(String? etablissementId) =>
+  _i9.Future<_i5.Entreprise> getByEtablissementId(String? etablissementId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getByEtablissementId,
           [etablissementId],
         ),
-        returnValue: _i8.Future<_i4.Entreprise>.value(_FakeEntreprise_13(
+        returnValue: _i9.Future<_i5.Entreprise>.value(_FakeEntreprise_14(
           this,
           Invocation.method(
             #getByEtablissementId,
@@ -2392,17 +2519,17 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.Entreprise>.value(_FakeEntreprise_13(
+            _i9.Future<_i5.Entreprise>.value(_FakeEntreprise_14(
           this,
           Invocation.method(
             #getByEtablissementId,
             [etablissementId],
           ),
         )),
-      ) as _i8.Future<_i4.Entreprise>);
+      ) as _i9.Future<_i5.Entreprise>);
 
   @override
-  _i8.Future<Iterable<_i5.EntrepriseSnippet>> getSnippets(
+  _i9.Future<Iterable<_i6.EntrepriseSnippet>> getSnippets(
           {required String? demarcheId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -2410,15 +2537,15 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _i8.Future<Iterable<_i5.EntrepriseSnippet>>.value(
-            <_i5.EntrepriseSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.EntrepriseSnippet>>.value(
+            <_i6.EntrepriseSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.EntrepriseSnippet>>.value(
-                <_i5.EntrepriseSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.EntrepriseSnippet>>);
+            _i9.Future<Iterable<_i6.EntrepriseSnippet>>.value(
+                <_i6.EntrepriseSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.EntrepriseSnippet>>);
 
   @override
-  _i8.Future<Iterable<_i5.EntrepriseSnippet>> search({
+  _i9.Future<Iterable<_i6.EntrepriseSnippet>> search({
     required String? demarcheId,
     required String? needle,
   }) =>
@@ -2431,40 +2558,40 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
             #needle: needle,
           },
         ),
-        returnValue: _i8.Future<Iterable<_i5.EntrepriseSnippet>>.value(
-            <_i5.EntrepriseSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.EntrepriseSnippet>>.value(
+            <_i6.EntrepriseSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.EntrepriseSnippet>>.value(
-                <_i5.EntrepriseSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.EntrepriseSnippet>>);
+            _i9.Future<Iterable<_i6.EntrepriseSnippet>>.value(
+                <_i6.EntrepriseSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.EntrepriseSnippet>>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Entreprise>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Entreprise>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Entreprise? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Entreprise? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Entreprise> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Entreprise> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Entreprise>.value(_FakeEntreprise_13(
+        returnValue: _i9.Future<_i5.Entreprise>.value(_FakeEntreprise_14(
           this,
           Invocation.method(
             #getById,
@@ -2472,24 +2599,24 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.Entreprise>.value(_FakeEntreprise_13(
+            _i9.Future<_i5.Entreprise>.value(_FakeEntreprise_14(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Entreprise>);
+      ) as _i9.Future<_i5.Entreprise>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -2501,14 +2628,14 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -2529,7 +2656,7 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -2538,7 +2665,7 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -2560,61 +2687,74 @@ class MockEntrepriseCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockEtablissementCollectionBlone extends _i1.Mock
-    implements _i16.EtablissementCollectionBlone {
+    implements _i17.EtablissementCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Etablissement> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Etablissement>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Etablissement>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Etablissement>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -2630,30 +2770,30 @@ class MockEtablissementCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Etablissement elementFromJson(Map<String, dynamic>? json) =>
+  _i5.Etablissement elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeEtablissement_15(
+        returnValue: _FakeEtablissement_16(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeEtablissement_15(
+        returnValueForMissingStub: _FakeEtablissement_16(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Etablissement);
+      ) as _i5.Etablissement);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Etablissement? value) =>
+  Map<String, dynamic> elementToJson(_i5.Etablissement? value) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
@@ -2664,7 +2804,7 @@ class MockEtablissementCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Etablissement create({
+  _i5.Etablissement create({
     required String? demarcheId,
     required String? entrepriseId,
   }) =>
@@ -2677,7 +2817,7 @@ class MockEtablissementCollectionBlone extends _i1.Mock
             #entrepriseId: entrepriseId,
           },
         ),
-        returnValue: _FakeEtablissement_15(
+        returnValue: _FakeEtablissement_16(
           this,
           Invocation.method(
             #create,
@@ -2688,7 +2828,7 @@ class MockEtablissementCollectionBlone extends _i1.Mock
             },
           ),
         ),
-        returnValueForMissingStub: _FakeEtablissement_15(
+        returnValueForMissingStub: _FakeEtablissement_16(
           this,
           Invocation.method(
             #create,
@@ -2699,10 +2839,10 @@ class MockEtablissementCollectionBlone extends _i1.Mock
             },
           ),
         ),
-      ) as _i4.Etablissement);
+      ) as _i5.Etablissement);
 
   @override
-  _i8.Future<Iterable<_i4.Etablissement>> getOrCreateByEntrepriseId({
+  _i9.Future<Iterable<_i5.Etablissement>> getOrCreateByEntrepriseId({
     required String? demarcheId,
     required String? entrepriseId,
   }) =>
@@ -2715,41 +2855,41 @@ class MockEtablissementCollectionBlone extends _i1.Mock
             #entrepriseId: entrepriseId,
           },
         ),
-        returnValue: _i8.Future<Iterable<_i4.Etablissement>>.value(
-            <_i4.Etablissement>[]),
+        returnValue: _i9.Future<Iterable<_i5.Etablissement>>.value(
+            <_i5.Etablissement>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i4.Etablissement>>.value(
-                <_i4.Etablissement>[]),
-      ) as _i8.Future<Iterable<_i4.Etablissement>>);
+            _i9.Future<Iterable<_i5.Etablissement>>.value(
+                <_i5.Etablissement>[]),
+      ) as _i9.Future<Iterable<_i5.Etablissement>>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Etablissement>? values) =>
+  _i9.Future<bool> insert(List<_i5.Etablissement>? values) =>
       (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Etablissement? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Etablissement? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Etablissement> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Etablissement> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Etablissement>.value(_FakeEtablissement_15(
+        returnValue: _i9.Future<_i5.Etablissement>.value(_FakeEtablissement_16(
           this,
           Invocation.method(
             #getById,
@@ -2757,24 +2897,24 @@ class MockEtablissementCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.Etablissement>.value(_FakeEtablissement_15(
+            _i9.Future<_i5.Etablissement>.value(_FakeEtablissement_16(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Etablissement>);
+      ) as _i9.Future<_i5.Etablissement>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -2786,14 +2926,14 @@ class MockEtablissementCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -2814,7 +2954,7 @@ class MockEtablissementCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -2823,7 +2963,7 @@ class MockEtablissementCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -2845,61 +2985,74 @@ class MockEtablissementCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockContactCollectionBlone extends _i1.Mock
-    implements _i16.ContactCollectionBlone {
+    implements _i17.ContactCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Contact> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Contact>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Contact>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Contact>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -2915,30 +3068,30 @@ class MockContactCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Contact elementFromJson(Map<String, dynamic>? json) =>
+  _i5.Contact elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeContact_16(
+        returnValue: _FakeContact_17(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeContact_16(
+        returnValueForMissingStub: _FakeContact_17(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Contact);
+      ) as _i5.Contact);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Contact? value) => (super.noSuchMethod(
+  Map<String, dynamic> elementToJson(_i5.Contact? value) => (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
           [value],
@@ -2948,7 +3101,7 @@ class MockContactCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Contact create({
+  _i5.Contact create({
     required String? personneId,
     required dynamic demarcheId,
     required dynamic etablissementId,
@@ -2963,7 +3116,7 @@ class MockContactCollectionBlone extends _i1.Mock
             #etablissementId: etablissementId,
           },
         ),
-        returnValue: _FakeContact_16(
+        returnValue: _FakeContact_17(
           this,
           Invocation.method(
             #create,
@@ -2975,7 +3128,7 @@ class MockContactCollectionBlone extends _i1.Mock
             },
           ),
         ),
-        returnValueForMissingStub: _FakeContact_16(
+        returnValueForMissingStub: _FakeContact_17(
           this,
           Invocation.method(
             #create,
@@ -2987,10 +3140,10 @@ class MockContactCollectionBlone extends _i1.Mock
             },
           ),
         ),
-      ) as _i4.Contact);
+      ) as _i5.Contact);
 
   @override
-  _i8.Future<Iterable<_i5.ContactSnippet>> getSnippets(
+  _i9.Future<Iterable<_i6.ContactSnippet>> getSnippets(
           {required dynamic demarcheId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -2998,15 +3151,15 @@ class MockContactCollectionBlone extends _i1.Mock
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _i8.Future<Iterable<_i5.ContactSnippet>>.value(
-            <_i5.ContactSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.ContactSnippet>>.value(
+            <_i6.ContactSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.ContactSnippet>>.value(
-                <_i5.ContactSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.ContactSnippet>>);
+            _i9.Future<Iterable<_i6.ContactSnippet>>.value(
+                <_i6.ContactSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.ContactSnippet>>);
 
   @override
-  _i8.Future<Iterable<_i5.ContactSnippet>> getSnippetsForEtablissement(
+  _i9.Future<Iterable<_i6.ContactSnippet>> getSnippetsForEtablissement(
           {required dynamic etablissementId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -3014,15 +3167,15 @@ class MockContactCollectionBlone extends _i1.Mock
           [],
           {#etablissementId: etablissementId},
         ),
-        returnValue: _i8.Future<Iterable<_i5.ContactSnippet>>.value(
-            <_i5.ContactSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.ContactSnippet>>.value(
+            <_i6.ContactSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.ContactSnippet>>.value(
-                <_i5.ContactSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.ContactSnippet>>);
+            _i9.Future<Iterable<_i6.ContactSnippet>>.value(
+                <_i6.ContactSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.ContactSnippet>>);
 
   @override
-  _i8.Future<Iterable<_i5.ContactSnippet>> search({
+  _i9.Future<Iterable<_i6.ContactSnippet>> search({
     required dynamic demarcheId,
     required String? needle,
   }) =>
@@ -3035,15 +3188,15 @@ class MockContactCollectionBlone extends _i1.Mock
             #needle: needle,
           },
         ),
-        returnValue: _i8.Future<Iterable<_i5.ContactSnippet>>.value(
-            <_i5.ContactSnippet>[]),
+        returnValue: _i9.Future<Iterable<_i6.ContactSnippet>>.value(
+            <_i6.ContactSnippet>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i5.ContactSnippet>>.value(
-                <_i5.ContactSnippet>[]),
-      ) as _i8.Future<Iterable<_i5.ContactSnippet>>);
+            _i9.Future<Iterable<_i6.ContactSnippet>>.value(
+                <_i6.ContactSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.ContactSnippet>>);
 
   @override
-  _i8.Future<_i5.ContactSnippet> getSnippet({required String? contactId}) =>
+  _i9.Future<_i6.ContactSnippet> getSnippet({required String? contactId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSnippet,
@@ -3051,7 +3204,7 @@ class MockContactCollectionBlone extends _i1.Mock
           {#contactId: contactId},
         ),
         returnValue:
-            _i8.Future<_i5.ContactSnippet>.value(_FakeContactSnippet_17(
+            _i9.Future<_i6.ContactSnippet>.value(_FakeContactSnippet_18(
           this,
           Invocation.method(
             #getSnippet,
@@ -3060,7 +3213,7 @@ class MockContactCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.ContactSnippet>.value(_FakeContactSnippet_17(
+            _i9.Future<_i6.ContactSnippet>.value(_FakeContactSnippet_18(
           this,
           Invocation.method(
             #getSnippet,
@@ -3068,10 +3221,10 @@ class MockContactCollectionBlone extends _i1.Mock
             {#contactId: contactId},
           ),
         )),
-      ) as _i8.Future<_i5.ContactSnippet>);
+      ) as _i9.Future<_i6.ContactSnippet>);
 
   @override
-  _i8.Future<_i5.ContactSnippet> createSnippet({
+  _i9.Future<_i6.ContactSnippet> createSnippet({
     required String? demarcheId,
     required String? etablissementId,
   }) =>
@@ -3085,7 +3238,7 @@ class MockContactCollectionBlone extends _i1.Mock
           },
         ),
         returnValue:
-            _i8.Future<_i5.ContactSnippet>.value(_FakeContactSnippet_17(
+            _i9.Future<_i6.ContactSnippet>.value(_FakeContactSnippet_18(
           this,
           Invocation.method(
             #createSnippet,
@@ -3097,7 +3250,7 @@ class MockContactCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.ContactSnippet>.value(_FakeContactSnippet_17(
+            _i9.Future<_i6.ContactSnippet>.value(_FakeContactSnippet_18(
           this,
           Invocation.method(
             #createSnippet,
@@ -3108,35 +3261,35 @@ class MockContactCollectionBlone extends _i1.Mock
             },
           ),
         )),
-      ) as _i8.Future<_i5.ContactSnippet>);
+      ) as _i9.Future<_i6.ContactSnippet>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Contact>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Contact>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Contact? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Contact? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Contact> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Contact> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Contact>.value(_FakeContact_16(
+        returnValue: _i9.Future<_i5.Contact>.value(_FakeContact_17(
           this,
           Invocation.method(
             #getById,
@@ -3144,24 +3297,24 @@ class MockContactCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.Contact>.value(_FakeContact_16(
+            _i9.Future<_i5.Contact>.value(_FakeContact_17(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Contact>);
+      ) as _i9.Future<_i5.Contact>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -3173,14 +3326,14 @@ class MockContactCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -3201,7 +3354,7 @@ class MockContactCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -3210,7 +3363,7 @@ class MockContactCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -3232,61 +3385,74 @@ class MockContactCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFluxCollectionBlone extends _i1.Mock
-    implements _i17.FluxCollectionBlone {
+    implements _i18.FluxCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Flux> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Flux>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Flux>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Flux>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -3302,29 +3468,29 @@ class MockFluxCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Flux elementFromJson(Map<String, dynamic>? json) => (super.noSuchMethod(
+  _i5.Flux elementFromJson(Map<String, dynamic>? json) => (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeFlux_18(
+        returnValue: _FakeFlux_19(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeFlux_18(
+        returnValueForMissingStub: _FakeFlux_19(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Flux);
+      ) as _i5.Flux);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Flux? value) => (super.noSuchMethod(
+  Map<String, dynamic> elementToJson(_i5.Flux? value) => (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
           [value],
@@ -3334,7 +3500,7 @@ class MockFluxCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Flux create({
+  _i5.Flux create({
     required String? demarcheId,
     required String? contactId,
     required String? atelierId,
@@ -3351,7 +3517,7 @@ class MockFluxCollectionBlone extends _i1.Mock
             #etablissementId: etablissementId,
           },
         ),
-        returnValue: _FakeFlux_18(
+        returnValue: _FakeFlux_19(
           this,
           Invocation.method(
             #create,
@@ -3364,7 +3530,7 @@ class MockFluxCollectionBlone extends _i1.Mock
             },
           ),
         ),
-        returnValueForMissingStub: _FakeFlux_18(
+        returnValueForMissingStub: _FakeFlux_19(
           this,
           Invocation.method(
             #create,
@@ -3377,23 +3543,23 @@ class MockFluxCollectionBlone extends _i1.Mock
             },
           ),
         ),
-      ) as _i4.Flux);
+      ) as _i5.Flux);
 
   @override
-  _i8.Future<List<_i4.Flux>> getAll({required String? demarcheId}) =>
+  _i9.Future<List<_i5.Flux>> getAll({required String? demarcheId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAll,
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _i8.Future<List<_i4.Flux>>.value(<_i4.Flux>[]),
+        returnValue: _i9.Future<List<_i5.Flux>>.value(<_i5.Flux>[]),
         returnValueForMissingStub:
-            _i8.Future<List<_i4.Flux>>.value(<_i4.Flux>[]),
-      ) as _i8.Future<List<_i4.Flux>>);
+            _i9.Future<List<_i5.Flux>>.value(<_i5.Flux>[]),
+      ) as _i9.Future<List<_i5.Flux>>);
 
   @override
-  _i8.Future<Iterable<_i4.Flux>> search({
+  _i9.Future<Iterable<_i5.Flux>> search({
     required dynamic demarcheId,
     required String? needle,
   }) =>
@@ -3406,20 +3572,20 @@ class MockFluxCollectionBlone extends _i1.Mock
             #needle: needle,
           },
         ),
-        returnValue: _i8.Future<Iterable<_i4.Flux>>.value(<_i4.Flux>[]),
+        returnValue: _i9.Future<Iterable<_i5.Flux>>.value(<_i5.Flux>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i4.Flux>>.value(<_i4.Flux>[]),
-      ) as _i8.Future<Iterable<_i4.Flux>>);
+            _i9.Future<Iterable<_i5.Flux>>.value(<_i5.Flux>[]),
+      ) as _i9.Future<Iterable<_i5.Flux>>);
 
   @override
-  _i8.Future<_i5.FluxSnippet> getSnippet({required String? fluxId}) =>
+  _i9.Future<_i6.FluxSnippet> getSnippet({required String? fluxId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSnippet,
           [],
           {#fluxId: fluxId},
         ),
-        returnValue: _i8.Future<_i5.FluxSnippet>.value(_FakeFluxSnippet_19(
+        returnValue: _i9.Future<_i6.FluxSnippet>.value(_FakeFluxSnippet_20(
           this,
           Invocation.method(
             #getSnippet,
@@ -3428,7 +3594,7 @@ class MockFluxCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.FluxSnippet>.value(_FakeFluxSnippet_19(
+            _i9.Future<_i6.FluxSnippet>.value(_FakeFluxSnippet_20(
           this,
           Invocation.method(
             #getSnippet,
@@ -3436,10 +3602,10 @@ class MockFluxCollectionBlone extends _i1.Mock
             {#fluxId: fluxId},
           ),
         )),
-      ) as _i8.Future<_i5.FluxSnippet>);
+      ) as _i9.Future<_i6.FluxSnippet>);
 
   @override
-  _i8.Future<_i5.FluxSnippet> createSnippet({
+  _i9.Future<_i6.FluxSnippet> createSnippet({
     required String? demarcheId,
     required String? contactId,
     required String? atelierId,
@@ -3456,7 +3622,7 @@ class MockFluxCollectionBlone extends _i1.Mock
             #etablissementId: etablissementId,
           },
         ),
-        returnValue: _i8.Future<_i5.FluxSnippet>.value(_FakeFluxSnippet_19(
+        returnValue: _i9.Future<_i6.FluxSnippet>.value(_FakeFluxSnippet_20(
           this,
           Invocation.method(
             #createSnippet,
@@ -3470,7 +3636,7 @@ class MockFluxCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.FluxSnippet>.value(_FakeFluxSnippet_19(
+            _i9.Future<_i6.FluxSnippet>.value(_FakeFluxSnippet_20(
           this,
           Invocation.method(
             #createSnippet,
@@ -3483,59 +3649,59 @@ class MockFluxCollectionBlone extends _i1.Mock
             },
           ),
         )),
-      ) as _i8.Future<_i5.FluxSnippet>);
+      ) as _i9.Future<_i6.FluxSnippet>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Flux>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Flux>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Flux? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Flux? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Flux> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Flux> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Flux>.value(_FakeFlux_18(
+        returnValue: _i9.Future<_i5.Flux>.value(_FakeFlux_19(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-        returnValueForMissingStub: _i8.Future<_i4.Flux>.value(_FakeFlux_18(
+        returnValueForMissingStub: _i9.Future<_i5.Flux>.value(_FakeFlux_19(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Flux>);
+      ) as _i9.Future<_i5.Flux>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -3547,14 +3713,14 @@ class MockFluxCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -3575,7 +3741,7 @@ class MockFluxCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -3584,7 +3750,7 @@ class MockFluxCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
@@ -3606,61 +3772,74 @@ class MockFluxCollectionBlone extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSynergieCollectionBlone extends _i1.Mock
-    implements _i18.SynergieCollectionBlone {
+    implements _i19.SynergieCollectionBlone {
   @override
   String get tableName => (super.noSuchMethod(
         Invocation.getter(#tableName),
-        returnValue: _i7.dummyValue<String>(
+        returnValue: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
-        returnValueForMissingStub: _i7.dummyValue<String>(
+        returnValueForMissingStub: _i8.dummyValue<String>(
           this,
           Invocation.getter(#tableName),
         ),
       ) as String);
 
   @override
-  _i2.SupabaseClient get client => (super.noSuchMethod(
+  _i2.MapCache<String, _i5.Synergie> get cache => (super.noSuchMethod(
+        Invocation.getter(#cache),
+        returnValue: _FakeMapCache_0<String, _i5.Synergie>(
+          this,
+          Invocation.getter(#cache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i5.Synergie>(
+          this,
+          Invocation.getter(#cache),
+        ),
+      ) as _i2.MapCache<String, _i5.Synergie>);
+
+  @override
+  _i3.SupabaseClient get client => (super.noSuchMethod(
         Invocation.getter(#client),
-        returnValue: _FakeSupabaseClient_0(
+        returnValue: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-        returnValueForMissingStub: _FakeSupabaseClient_0(
+        returnValueForMissingStub: _FakeSupabaseClient_1(
           this,
           Invocation.getter(#client),
         ),
-      ) as _i2.SupabaseClient);
+      ) as _i3.SupabaseClient);
 
   @override
-  _i2.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
+  _i3.SupabaseQueryBuilder get fromTable => (super.noSuchMethod(
         Invocation.getter(#fromTable),
-        returnValue: _FakeSupabaseQueryBuilder_1(
+        returnValue: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-        returnValueForMissingStub: _FakeSupabaseQueryBuilder_1(
+        returnValueForMissingStub: _FakeSupabaseQueryBuilder_2(
           this,
           Invocation.getter(#fromTable),
         ),
-      ) as _i2.SupabaseQueryBuilder);
+      ) as _i3.SupabaseQueryBuilder);
 
   @override
-  _i3.AppBlone get parent => (super.noSuchMethod(
+  _i4.AppBlone get parent => (super.noSuchMethod(
         Invocation.getter(#parent),
-        returnValue: _FakeAppBlone_2(
+        returnValue: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-        returnValueForMissingStub: _FakeAppBlone_2(
+        returnValueForMissingStub: _FakeAppBlone_3(
           this,
           Invocation.getter(#parent),
         ),
-      ) as _i3.AppBlone);
+      ) as _i4.AppBlone);
 
   @override
-  set parent(_i3.AppBlone? _parent) => super.noSuchMethod(
+  set parent(_i4.AppBlone? _parent) => super.noSuchMethod(
         Invocation.setter(
           #parent,
           _parent,
@@ -3676,30 +3855,30 @@ class MockSynergieCollectionBlone extends _i1.Mock
       ) as bool);
 
   @override
-  _i4.Synergie elementFromJson(Map<String, dynamic>? json) =>
+  _i5.Synergie elementFromJson(Map<String, dynamic>? json) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementFromJson,
           [json],
         ),
-        returnValue: _FakeSynergie_20(
+        returnValue: _FakeSynergie_21(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-        returnValueForMissingStub: _FakeSynergie_20(
+        returnValueForMissingStub: _FakeSynergie_21(
           this,
           Invocation.method(
             #elementFromJson,
             [json],
           ),
         ),
-      ) as _i4.Synergie);
+      ) as _i5.Synergie);
 
   @override
-  Map<String, dynamic> elementToJson(_i4.Synergie? value) =>
+  Map<String, dynamic> elementToJson(_i5.Synergie? value) =>
       (super.noSuchMethod(
         Invocation.method(
           #elementToJson,
@@ -3710,13 +3889,13 @@ class MockSynergieCollectionBlone extends _i1.Mock
       ) as Map<String, dynamic>);
 
   @override
-  _i4.Synergie create({required String? demarcheId}) => (super.noSuchMethod(
+  _i5.Synergie create({required String? demarcheId}) => (super.noSuchMethod(
         Invocation.method(
           #create,
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _FakeSynergie_20(
+        returnValue: _FakeSynergie_21(
           this,
           Invocation.method(
             #create,
@@ -3724,7 +3903,7 @@ class MockSynergieCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-        returnValueForMissingStub: _FakeSynergie_20(
+        returnValueForMissingStub: _FakeSynergie_21(
           this,
           Invocation.method(
             #create,
@@ -3732,23 +3911,23 @@ class MockSynergieCollectionBlone extends _i1.Mock
             {#demarcheId: demarcheId},
           ),
         ),
-      ) as _i4.Synergie);
+      ) as _i5.Synergie);
 
   @override
-  _i8.Future<List<_i4.Synergie>> getAll({required String? demarcheId}) =>
+  _i9.Future<List<_i5.Synergie>> getAll({required String? demarcheId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAll,
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _i8.Future<List<_i4.Synergie>>.value(<_i4.Synergie>[]),
+        returnValue: _i9.Future<List<_i5.Synergie>>.value(<_i5.Synergie>[]),
         returnValueForMissingStub:
-            _i8.Future<List<_i4.Synergie>>.value(<_i4.Synergie>[]),
-      ) as _i8.Future<List<_i4.Synergie>>);
+            _i9.Future<List<_i5.Synergie>>.value(<_i5.Synergie>[]),
+      ) as _i9.Future<List<_i5.Synergie>>);
 
   @override
-  _i8.Future<Iterable<_i4.Synergie>> search({
+  _i9.Future<Iterable<_i5.Synergie>> search({
     required String? demarcheId,
     required String? needle,
   }) =>
@@ -3761,13 +3940,13 @@ class MockSynergieCollectionBlone extends _i1.Mock
             #needle: needle,
           },
         ),
-        returnValue: _i8.Future<Iterable<_i4.Synergie>>.value(<_i4.Synergie>[]),
+        returnValue: _i9.Future<Iterable<_i5.Synergie>>.value(<_i5.Synergie>[]),
         returnValueForMissingStub:
-            _i8.Future<Iterable<_i4.Synergie>>.value(<_i4.Synergie>[]),
-      ) as _i8.Future<Iterable<_i4.Synergie>>);
+            _i9.Future<Iterable<_i5.Synergie>>.value(<_i5.Synergie>[]),
+      ) as _i9.Future<Iterable<_i5.Synergie>>);
 
   @override
-  _i8.Future<_i5.SynergieSnippet> getSnippet({required String? fluxId}) =>
+  _i9.Future<_i6.SynergieSnippet> getSnippet({required String? fluxId}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSnippet,
@@ -3775,7 +3954,7 @@ class MockSynergieCollectionBlone extends _i1.Mock
           {#fluxId: fluxId},
         ),
         returnValue:
-            _i8.Future<_i5.SynergieSnippet>.value(_FakeSynergieSnippet_21(
+            _i9.Future<_i6.SynergieSnippet>.value(_FakeSynergieSnippet_22(
           this,
           Invocation.method(
             #getSnippet,
@@ -3784,7 +3963,7 @@ class MockSynergieCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i5.SynergieSnippet>.value(_FakeSynergieSnippet_21(
+            _i9.Future<_i6.SynergieSnippet>.value(_FakeSynergieSnippet_22(
           this,
           Invocation.method(
             #getSnippet,
@@ -3792,31 +3971,31 @@ class MockSynergieCollectionBlone extends _i1.Mock
             {#fluxId: fluxId},
           ),
         )),
-      ) as _i8.Future<_i5.SynergieSnippet>);
+      ) as _i9.Future<_i6.SynergieSnippet>);
 
   @override
-  _i8.Stream<_i4.Synergie> subscribe(String? synergieId) => (super.noSuchMethod(
+  _i9.Stream<_i5.Synergie> subscribe(String? synergieId) => (super.noSuchMethod(
         Invocation.method(
           #subscribe,
           [synergieId],
         ),
-        returnValue: _i8.Stream<_i4.Synergie>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i4.Synergie>.empty(),
-      ) as _i8.Stream<_i4.Synergie>);
+        returnValue: _i9.Stream<_i5.Synergie>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i5.Synergie>.empty(),
+      ) as _i9.Stream<_i5.Synergie>);
 
   @override
-  _i8.Stream<_i5.SynergieSnippet> subscribeToSnippet(String? synergieId) =>
+  _i9.Stream<_i6.SynergieSnippet> subscribeToSnippet(String? synergieId) =>
       (super.noSuchMethod(
         Invocation.method(
           #subscribeToSnippet,
           [synergieId],
         ),
-        returnValue: _i8.Stream<_i5.SynergieSnippet>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i5.SynergieSnippet>.empty(),
-      ) as _i8.Stream<_i5.SynergieSnippet>);
+        returnValue: _i9.Stream<_i6.SynergieSnippet>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i6.SynergieSnippet>.empty(),
+      ) as _i9.Stream<_i6.SynergieSnippet>);
 
   @override
-  _i8.Stream<_i5.SynergieSnippet> createSnippet(
+  _i9.Stream<_i6.SynergieSnippet> createSnippet(
           {required String? demarcheId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -3824,37 +4003,37 @@ class MockSynergieCollectionBlone extends _i1.Mock
           [],
           {#demarcheId: demarcheId},
         ),
-        returnValue: _i8.Stream<_i5.SynergieSnippet>.empty(),
-        returnValueForMissingStub: _i8.Stream<_i5.SynergieSnippet>.empty(),
-      ) as _i8.Stream<_i5.SynergieSnippet>);
+        returnValue: _i9.Stream<_i6.SynergieSnippet>.empty(),
+        returnValueForMissingStub: _i9.Stream<_i6.SynergieSnippet>.empty(),
+      ) as _i9.Stream<_i6.SynergieSnippet>);
 
   @override
-  _i8.Future<bool> insert(List<_i4.Synergie>? values) => (super.noSuchMethod(
+  _i9.Future<bool> insert(List<_i5.Synergie>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
           [values],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<bool> save(_i4.Synergie? value) => (super.noSuchMethod(
+  _i9.Future<bool> save(_i5.Synergie? value) => (super.noSuchMethod(
         Invocation.method(
           #save,
           [value],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
-  _i8.Future<_i4.Synergie> getById(String? id) => (super.noSuchMethod(
+  _i9.Future<_i5.Synergie> getById(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getById,
           [id],
         ),
-        returnValue: _i8.Future<_i4.Synergie>.value(_FakeSynergie_20(
+        returnValue: _i9.Future<_i5.Synergie>.value(_FakeSynergie_21(
           this,
           Invocation.method(
             #getById,
@@ -3862,24 +4041,24 @@ class MockSynergieCollectionBlone extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i8.Future<_i4.Synergie>.value(_FakeSynergie_20(
+            _i9.Future<_i5.Synergie>.value(_FakeSynergie_21(
           this,
           Invocation.method(
             #getById,
             [id],
           ),
         )),
-      ) as _i8.Future<_i4.Synergie>);
+      ) as _i9.Future<_i5.Synergie>);
 
   @override
-  _i8.Future<bool> delete(String? id) => (super.noSuchMethod(
+  _i9.Future<bool> delete(String? id) => (super.noSuchMethod(
         Invocation.method(
           #delete,
           [id],
         ),
-        returnValue: _i8.Future<bool>.value(false),
-        returnValueForMissingStub: _i8.Future<bool>.value(false),
-      ) as _i8.Future<bool>);
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
 
   @override
   void onInit() => super.noSuchMethod(
@@ -3891,14 +4070,14 @@ class MockSynergieCollectionBlone extends _i1.Mock
       );
 
   @override
-  _i8.Future<void> mount() => (super.noSuchMethod(
+  _i9.Future<void> mount() => (super.noSuchMethod(
         Invocation.method(
           #mount,
           [],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void seed() => super.noSuchMethod(
@@ -3919,7 +4098,7 @@ class MockSynergieCollectionBlone extends _i1.Mock
       );
 
   @override
-  void addListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -3928,7 +4107,7 @@ class MockSynergieCollectionBlone extends _i1.Mock
       );
 
   @override
-  void removeListener(_i9.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],

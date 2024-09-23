@@ -12,7 +12,7 @@ part of 'snippets.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 EntrepriseSnippet _$EntrepriseSnippetFromJson(Map<String, dynamic> json) {
   return _EntrepriseSnippet.fromJson(json);
@@ -23,8 +23,12 @@ mixin _$EntrepriseSnippet {
   Entreprise get entreprise => throw _privateConstructorUsedError;
   List<Etablissement> get etablissements => throw _privateConstructorUsedError;
 
+  /// Serializes this EntrepriseSnippet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EntrepriseSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EntrepriseSnippetCopyWith<EntrepriseSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$EntrepriseSnippetCopyWithImpl<$Res, $Val extends EntrepriseSnippet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EntrepriseSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -68,6 +74,8 @@ class _$EntrepriseSnippetCopyWithImpl<$Res, $Val extends EntrepriseSnippet>
     ) as $Val);
   }
 
+  /// Create a copy of EntrepriseSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $EntrepriseCopyWith<$Res> get entreprise {
@@ -99,6 +107,8 @@ class __$$EntrepriseSnippetImplCopyWithImpl<$Res>
       $Res Function(_$EntrepriseSnippetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EntrepriseSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,12 +165,14 @@ class _$EntrepriseSnippetImpl implements _EntrepriseSnippet {
                 .equals(other._etablissements, _etablissements));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, entreprise,
       const DeepCollectionEquality().hash(_etablissements));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EntrepriseSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EntrepriseSnippetImplCopyWith<_$EntrepriseSnippetImpl> get copyWith =>
@@ -188,8 +200,11 @@ abstract class _EntrepriseSnippet implements EntrepriseSnippet {
   Entreprise get entreprise;
   @override
   List<Etablissement> get etablissements;
+
+  /// Create a copy of EntrepriseSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EntrepriseSnippetImplCopyWith<_$EntrepriseSnippetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -204,8 +219,12 @@ mixin _$ContactSnippet {
   Personne get personne => throw _privateConstructorUsedError;
   EntrepriseSnippet get entreprise => throw _privateConstructorUsedError;
 
+  /// Serializes this ContactSnippet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ContactSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ContactSnippetCopyWith<ContactSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -233,6 +252,8 @@ class _$ContactSnippetCopyWithImpl<$Res, $Val extends ContactSnippet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ContactSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -256,6 +277,8 @@ class _$ContactSnippetCopyWithImpl<$Res, $Val extends ContactSnippet>
     ) as $Val);
   }
 
+  /// Create a copy of ContactSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ContactCopyWith<$Res> get contact {
@@ -264,6 +287,8 @@ class _$ContactSnippetCopyWithImpl<$Res, $Val extends ContactSnippet>
     });
   }
 
+  /// Create a copy of ContactSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PersonneCopyWith<$Res> get personne {
@@ -272,6 +297,8 @@ class _$ContactSnippetCopyWithImpl<$Res, $Val extends ContactSnippet>
     });
   }
 
+  /// Create a copy of ContactSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $EntrepriseSnippetCopyWith<$Res> get entreprise {
@@ -307,6 +334,8 @@ class __$$ContactSnippetImplCopyWithImpl<$Res>
       _$ContactSnippetImpl _value, $Res Function(_$ContactSnippetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ContactSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -366,11 +395,13 @@ class _$ContactSnippetImpl implements _ContactSnippet {
                 other.entreprise == entreprise));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, contact, personne, entreprise);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ContactSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ContactSnippetImplCopyWith<_$ContactSnippetImpl> get copyWith =>
@@ -400,8 +431,11 @@ abstract class _ContactSnippet implements ContactSnippet {
   Personne get personne;
   @override
   EntrepriseSnippet get entreprise;
+
+  /// Create a copy of ContactSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ContactSnippetImplCopyWith<_$ContactSnippetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -415,8 +449,12 @@ mixin _$AnimateurSnippet {
   Animateur get animateur => throw _privateConstructorUsedError;
   Personne get personne => throw _privateConstructorUsedError;
 
+  /// Serializes this AnimateurSnippet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnimateurSnippetCopyWith<AnimateurSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -443,6 +481,8 @@ class _$AnimateurSnippetCopyWithImpl<$Res, $Val extends AnimateurSnippet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -461,6 +501,8 @@ class _$AnimateurSnippetCopyWithImpl<$Res, $Val extends AnimateurSnippet>
     ) as $Val);
   }
 
+  /// Create a copy of AnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AnimateurCopyWith<$Res> get animateur {
@@ -469,6 +511,8 @@ class _$AnimateurSnippetCopyWithImpl<$Res, $Val extends AnimateurSnippet>
     });
   }
 
+  /// Create a copy of AnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PersonneCopyWith<$Res> get personne {
@@ -502,6 +546,8 @@ class __$$AnimateurSnippetImplCopyWithImpl<$Res>
       $Res Function(_$AnimateurSnippetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -550,11 +596,13 @@ class _$AnimateurSnippetImpl implements _AnimateurSnippet {
                 other.personne == personne));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, animateur, personne);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnimateurSnippetImplCopyWith<_$AnimateurSnippetImpl> get copyWith =>
@@ -581,8 +629,11 @@ abstract class _AnimateurSnippet implements AnimateurSnippet {
   Animateur get animateur;
   @override
   Personne get personne;
+
+  /// Create a copy of AnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnimateurSnippetImplCopyWith<_$AnimateurSnippetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -597,8 +648,12 @@ mixin _$CoAnimateurSnippet {
   CoAnimateur get coAnimateur => throw _privateConstructorUsedError;
   Personne get personne => throw _privateConstructorUsedError;
 
+  /// Serializes this CoAnimateurSnippet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CoAnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CoAnimateurSnippetCopyWith<CoAnimateurSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -627,6 +682,8 @@ class _$CoAnimateurSnippetCopyWithImpl<$Res, $Val extends CoAnimateurSnippet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CoAnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -645,6 +702,8 @@ class _$CoAnimateurSnippetCopyWithImpl<$Res, $Val extends CoAnimateurSnippet>
     ) as $Val);
   }
 
+  /// Create a copy of CoAnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CoAnimateurCopyWith<$Res> get coAnimateur {
@@ -653,6 +712,8 @@ class _$CoAnimateurSnippetCopyWithImpl<$Res, $Val extends CoAnimateurSnippet>
     });
   }
 
+  /// Create a copy of CoAnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PersonneCopyWith<$Res> get personne {
@@ -688,6 +749,8 @@ class __$$CoAnimateurSnippetImplCopyWithImpl<$Res>
       $Res Function(_$CoAnimateurSnippetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CoAnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -739,11 +802,13 @@ class _$CoAnimateurSnippetImpl implements _CoAnimateurSnippet {
                 other.personne == personne));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, coAnimateur, personne);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CoAnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CoAnimateurSnippetImplCopyWith<_$CoAnimateurSnippetImpl> get copyWith =>
@@ -771,8 +836,11 @@ abstract class _CoAnimateurSnippet implements CoAnimateurSnippet {
   CoAnimateur get coAnimateur;
   @override
   Personne get personne;
+
+  /// Create a copy of CoAnimateurSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CoAnimateurSnippetImplCopyWith<_$CoAnimateurSnippetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -793,8 +861,12 @@ mixin _$AtelierSnippet {
   List<CoAnimateurSnippet> get coAnimateurs =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this AtelierSnippet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AtelierSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AtelierSnippetCopyWith<AtelierSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -826,6 +898,8 @@ class _$AtelierSnippetCopyWithImpl<$Res, $Val extends AtelierSnippet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AtelierSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -859,6 +933,8 @@ class _$AtelierSnippetCopyWithImpl<$Res, $Val extends AtelierSnippet>
     ) as $Val);
   }
 
+  /// Create a copy of AtelierSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AtelierCopyWith<$Res> get atelier {
@@ -896,6 +972,8 @@ class __$$AtelierSnippetImplCopyWithImpl<$Res>
       _$AtelierSnippetImpl _value, $Res Function(_$AtelierSnippetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AtelierSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1008,7 +1086,7 @@ class _$AtelierSnippetImpl extends _AtelierSnippet {
                 .equals(other._coAnimateurs, _coAnimateurs));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1018,7 +1096,9 @@ class _$AtelierSnippetImpl extends _AtelierSnippet {
       const DeepCollectionEquality().hash(_animateurs),
       const DeepCollectionEquality().hash(_coAnimateurs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AtelierSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AtelierSnippetImplCopyWith<_$AtelierSnippetImpl> get copyWith =>
@@ -1060,8 +1140,11 @@ abstract class _AtelierSnippet extends AtelierSnippet {
   @override
   @JsonKey(name: 'co_animateurs')
   List<CoAnimateurSnippet> get coAnimateurs;
+
+  /// Create a copy of AtelierSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AtelierSnippetImplCopyWith<_$AtelierSnippetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1076,8 +1159,12 @@ mixin _$FicheSnippet {
   ContactSnippet get contact => throw _privateConstructorUsedError;
   Flux get flux => throw _privateConstructorUsedError;
 
+  /// Serializes this FicheSnippet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FicheSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FicheSnippetCopyWith<FicheSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1105,6 +1192,8 @@ class _$FicheSnippetCopyWithImpl<$Res, $Val extends FicheSnippet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FicheSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1128,6 +1217,8 @@ class _$FicheSnippetCopyWithImpl<$Res, $Val extends FicheSnippet>
     ) as $Val);
   }
 
+  /// Create a copy of FicheSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FicheCopyWith<$Res> get fiche {
@@ -1136,6 +1227,8 @@ class _$FicheSnippetCopyWithImpl<$Res, $Val extends FicheSnippet>
     });
   }
 
+  /// Create a copy of FicheSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ContactSnippetCopyWith<$Res> get contact {
@@ -1144,6 +1237,8 @@ class _$FicheSnippetCopyWithImpl<$Res, $Val extends FicheSnippet>
     });
   }
 
+  /// Create a copy of FicheSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FluxCopyWith<$Res> get flux {
@@ -1179,6 +1274,8 @@ class __$$FicheSnippetImplCopyWithImpl<$Res>
       _$FicheSnippetImpl _value, $Res Function(_$FicheSnippetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FicheSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1234,11 +1331,13 @@ class _$FicheSnippetImpl implements _FicheSnippet {
             (identical(other.flux, flux) || other.flux == flux));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, fiche, contact, flux);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FicheSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FicheSnippetImplCopyWith<_$FicheSnippetImpl> get copyWith =>
@@ -1267,8 +1366,11 @@ abstract class _FicheSnippet implements FicheSnippet {
   ContactSnippet get contact;
   @override
   Flux get flux;
+
+  /// Create a copy of FicheSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FicheSnippetImplCopyWith<_$FicheSnippetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1286,8 +1388,12 @@ mixin _$FluxSnippet {
   List<CoAnimateurSnippet> get coAnimateurs =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this FluxSnippet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FluxSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FluxSnippetCopyWith<FluxSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1318,6 +1424,8 @@ class _$FluxSnippetCopyWithImpl<$Res, $Val extends FluxSnippet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FluxSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1346,6 +1454,8 @@ class _$FluxSnippetCopyWithImpl<$Res, $Val extends FluxSnippet>
     ) as $Val);
   }
 
+  /// Create a copy of FluxSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FluxCopyWith<$Res> get flux {
@@ -1354,6 +1464,8 @@ class _$FluxSnippetCopyWithImpl<$Res, $Val extends FluxSnippet>
     });
   }
 
+  /// Create a copy of FluxSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ContactSnippetCopyWith<$Res> get contact {
@@ -1391,6 +1503,8 @@ class __$$FluxSnippetImplCopyWithImpl<$Res>
       _$FluxSnippetImpl _value, $Res Function(_$FluxSnippetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FluxSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1474,7 +1588,7 @@ class _$FluxSnippetImpl implements _FluxSnippet {
                 .equals(other._coAnimateurs, _coAnimateurs));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1483,7 +1597,9 @@ class _$FluxSnippetImpl implements _FluxSnippet {
       const DeepCollectionEquality().hash(_animateurs),
       const DeepCollectionEquality().hash(_coAnimateurs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FluxSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FluxSnippetImplCopyWith<_$FluxSnippetImpl> get copyWith =>
@@ -1518,8 +1634,11 @@ abstract class _FluxSnippet implements FluxSnippet {
   @override
   @JsonKey(name: 'co_animateurs')
   List<CoAnimateurSnippet> get coAnimateurs;
+
+  /// Create a copy of FluxSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FluxSnippetImplCopyWith<_$FluxSnippetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1533,8 +1652,12 @@ mixin _$SynergieSnippet {
   Synergie get synergie => throw _privateConstructorUsedError;
   List<Flux> get flux => throw _privateConstructorUsedError;
 
+  /// Serializes this SynergieSnippet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SynergieSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SynergieSnippetCopyWith<SynergieSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1560,6 +1683,8 @@ class _$SynergieSnippetCopyWithImpl<$Res, $Val extends SynergieSnippet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SynergieSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1578,6 +1703,8 @@ class _$SynergieSnippetCopyWithImpl<$Res, $Val extends SynergieSnippet>
     ) as $Val);
   }
 
+  /// Create a copy of SynergieSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SynergieCopyWith<$Res> get synergie {
@@ -1609,6 +1736,8 @@ class __$$SynergieSnippetImplCopyWithImpl<$Res>
       _$SynergieSnippetImpl _value, $Res Function(_$SynergieSnippetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SynergieSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1663,12 +1792,14 @@ class _$SynergieSnippetImpl implements _SynergieSnippet {
             const DeepCollectionEquality().equals(other._flux, _flux));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, synergie, const DeepCollectionEquality().hash(_flux));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SynergieSnippet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SynergieSnippetImplCopyWith<_$SynergieSnippetImpl> get copyWith =>
@@ -1695,8 +1826,11 @@ abstract class _SynergieSnippet implements SynergieSnippet {
   Synergie get synergie;
   @override
   List<Flux> get flux;
+
+  /// Create a copy of SynergieSnippet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SynergieSnippetImplCopyWith<_$SynergieSnippetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'authentication.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$User {
@@ -101,6 +101,9 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -125,6 +128,8 @@ class __$$ConnectedImplCopyWithImpl<$Res>
       _$ConnectedImpl _value, $Res Function(_$ConnectedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -210,7 +215,9 @@ class _$ConnectedImpl implements Connected {
       const DeepCollectionEquality().hash(animateurIds),
       const DeepCollectionEquality().hash(coAnimateurIds));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
@@ -325,7 +332,10 @@ abstract class Connected implements User {
   String get email;
   Iterable<String> get animateurIds;
   Iterable<String> get coAnimateurIds;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -344,6 +354,9 @@ class __$$DisconnectedImplCopyWithImpl<$Res>
   __$$DisconnectedImplCopyWithImpl(
       _$DisconnectedImpl _value, $Res Function(_$DisconnectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -476,6 +489,9 @@ class __$$ConnectingImplCopyWithImpl<$Res>
   __$$ConnectingImplCopyWithImpl(
       _$ConnectingImpl _value, $Res Function(_$ConnectingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -608,6 +624,9 @@ class __$$UnknownImplCopyWithImpl<$Res>
   __$$UnknownImplCopyWithImpl(
       _$UnknownImpl _value, $Res Function(_$UnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

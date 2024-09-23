@@ -12,7 +12,7 @@ part of 'ui_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UIMessage {
@@ -113,6 +113,9 @@ class _$UIMessageCopyWithImpl<$Res, $Val extends UIMessage>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -129,6 +132,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -276,6 +282,8 @@ class __$$DownloadImplCopyWithImpl<$Res>
       _$DownloadImpl _value, $Res Function(_$DownloadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -314,7 +322,9 @@ class _$DownloadImpl implements Download {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DownloadImplCopyWith<_$DownloadImpl> get copyWith =>
@@ -429,7 +439,10 @@ abstract class Download implements UIMessage {
   const factory Download(final String message) = _$DownloadImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DownloadImplCopyWith<_$DownloadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -450,6 +463,8 @@ class __$$SaveImplCopyWithImpl<$Res>
   __$$SaveImplCopyWithImpl(_$SaveImpl _value, $Res Function(_$SaveImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -488,7 +503,9 @@ class _$SaveImpl implements Save {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SaveImplCopyWith<_$SaveImpl> get copyWith =>
@@ -603,7 +620,10 @@ abstract class Save implements UIMessage {
   const factory Save(final String message) = _$SaveImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SaveImplCopyWith<_$SaveImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -625,6 +645,8 @@ class __$$SaveErrorImplCopyWithImpl<$Res>
       _$SaveErrorImpl _value, $Res Function(_$SaveErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -663,7 +685,9 @@ class _$SaveErrorImpl implements SaveError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SaveErrorImplCopyWith<_$SaveErrorImpl> get copyWith =>
@@ -778,7 +802,10 @@ abstract class SaveError implements UIMessage {
   const factory SaveError(final String message) = _$SaveErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SaveErrorImplCopyWith<_$SaveErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -799,6 +826,8 @@ class __$$AuthImplCopyWithImpl<$Res>
   __$$AuthImplCopyWithImpl(_$AuthImpl _value, $Res Function(_$AuthImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -837,7 +866,9 @@ class _$AuthImpl implements Auth {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthImplCopyWith<_$AuthImpl> get copyWith =>
@@ -952,7 +983,10 @@ abstract class Auth implements UIMessage {
   const factory Auth(final String message) = _$AuthImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthImplCopyWith<_$AuthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -974,6 +1008,8 @@ class __$$AuthErrorImplCopyWithImpl<$Res>
       _$AuthErrorImpl _value, $Res Function(_$AuthErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1012,7 +1048,9 @@ class _$AuthErrorImpl implements AuthError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthErrorImplCopyWith<_$AuthErrorImpl> get copyWith =>
@@ -1127,7 +1165,10 @@ abstract class AuthError implements UIMessage {
   const factory AuthError(final String message) = _$AuthErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthErrorImplCopyWith<_$AuthErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1149,6 +1190,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1187,7 +1230,9 @@ class _$ErrorImpl implements Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -1302,7 +1347,10 @@ abstract class Error implements UIMessage {
   const factory Error(final String message) = _$ErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1324,6 +1372,8 @@ class __$$PlainImplCopyWithImpl<$Res>
       _$PlainImpl _value, $Res Function(_$PlainImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1362,7 +1412,9 @@ class _$PlainImpl implements Plain {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlainImplCopyWith<_$PlainImpl> get copyWith =>
@@ -1477,7 +1529,10 @@ abstract class Plain implements UIMessage {
   const factory Plain(final String message) = _$PlainImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlainImplCopyWith<_$PlainImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1495,6 +1550,9 @@ class __$$NoneImplCopyWithImpl<$Res>
     implements _$$NoneImplCopyWith<$Res> {
   __$$NoneImplCopyWithImpl(_$NoneImpl _value, $Res Function(_$NoneImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UIMessage
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
