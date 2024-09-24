@@ -5,10 +5,13 @@ class FutureLoader<T> extends StatelessWidget {
 
   final AsyncWidgetBuilderWithData<T> builder;
 
+  final bool showIndicator;
+
   const FutureLoader({
     super.key,
     required this.future,
     required this.builder,
+    this.showIndicator = true,
   });
 
   @override
@@ -19,7 +22,10 @@ class FutureLoader<T> extends StatelessWidget {
         if (snapshot.hasData) {
           return builder(context, AsyncSnapshotWithData<T>(snapshot));
         }
-        return loader(context, snapshot);
+        if (showIndicator) {
+          return loader(context, snapshot);
+        }
+        return const SizedBox.shrink();
       },
     );
   }
