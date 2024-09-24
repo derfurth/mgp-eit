@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:lumberdash/lumberdash.dart';
 import 'package:mgp_client/blones/collection/entreprise_collection_blones.dart';
+import 'package:mgp_client/blones/collection/fiche_collection_blone.dart';
 import 'package:mgp_client/components/future_loader.dart';
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
@@ -9,6 +12,7 @@ import 'package:tuple/tuple.dart';
 
 import '../../blones/auth_blone.dart';
 import '../../blones/collection/atelier_collection_blones.dart';
+import '../../blones/collection/lien_fiche_collection_blone.dart';
 import '../../blones/rapport_blone.dart';
 import '../../commands/download_command.dart';
 import '../../components/layout.dart';
@@ -73,15 +77,19 @@ class AtelierEditor extends StatelessWidget {
       value: BuildIn.thematiques,
       initialData: UnmodifiableListView<Thematique>([]),
       child: DefaultTabController(
-        length: 3,
+        length: 4,
         child: Body(
-          header: const PageHeader(
-            title: 'Ateliers',
-            tabs: [
-              Tab(text: 'Description'),
-              Tab(text: 'Fiches ressources'),
-              Tab(text: 'Thématiques'),
-            ],
+          header: const SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: PageHeader(
+              title: 'Ateliers',
+              tabs: [
+                Tab(text: 'Description'),
+                Tab(text: 'Fiches ressources'),
+                Tab(text: 'Fiches liées'),
+                Tab(text: 'Thématiques'),
+              ],
+            ),
           ),
           child: Center(
             child: StreamBuilder<AtelierSnippet>(
@@ -99,6 +107,9 @@ class AtelierEditor extends StatelessWidget {
                       ),
                       PaddedSingleChildScrollable(
                         child: AtelierParticipantLiveView(atelier: atelier),
+                      ),
+                      PaddedSingleChildScrollable(
+                        child: AtelierFicheLieesLiveView(atelier: atelier),
                       ),
                       PaddedSingleChildScrollable(
                         child: AtelierThematiqueLiveView(atelier: atelier),
@@ -240,48 +251,199 @@ class AtelierParticipantLiveView extends StatelessWidget {
     final ContactCollectionBlone contacts = context.watch();
 
     return FutureLoader<Iterable<ParticipantMeta>>(
-        future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
-        builder: (context, snapshot) {
-          final metas = snapshot.data;
-          return Stack(
-            children: [
-              Column(children: [
-                Leading.vMedium(),
-                  for (final meta in metas)
-                    FutureLoader<ContactSnippet>(
-                      key: Key(meta.contactId),
-                      future: contacts.getSnippet(contactId: meta.contactId),
-                      builder: (_, snapshot) => AtelierParticipantMetaCard(
-                        key: Key(meta.contactId),
-                        meta: meta,
-                        contact: snapshot.data,
-                        atelier: atelier,
-                        showFiche: showFicheFunction(
-                          demarche,
-                          atelier,
-                          snapshot.data.contact,
-                        ),
-                      ),
+      future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
+      builder: (context, snapshot) {
+        final metas = snapshot.data;
+        return Stack(
+          children: [
+            Column(children: [
+              Leading.vMedium(),
+              for (final meta in metas)
+                FutureLoader<ContactSnippet>(
+                  key: Key(meta.contactId),
+                  future: contacts.getSnippet(contactId: meta.contactId),
+                  builder: (_, snapshot) => AtelierParticipantMetaCard(
+                    key: Key(meta.contactId),
+                    meta: meta,
+                    contact: snapshot.data,
+                    atelier: atelier,
+                    showFiche: showFicheFunction(
+                      demarche,
+                      atelier,
+                      snapshot.data.contact,
                     ),
-
-                Leading.vMedium(),
-                OverflowBar(
-                  children: [
-                    OutlinedButton.icon(
-                      onPressed: () async {
-                        final RapportBlone rapport = context.read();
-                        final csv = await rapport.fiches(atelier.atelier.id);
-                        DownloadCommand().execute(data: csv);
-                      },
-                      icon: const Icon(Icons.download),
-                      label: const Text('Fiches ressources'),
-                    ),
-                  ],
+                  ),
                 ),
-              ]),
-            ],
-          );
-        });
+              Leading.vMedium(),
+              OverflowBar(
+                children: [
+                  OutlinedButton.icon(
+                    onPressed: () async {
+                      final RapportBlone rapport = context.read();
+                      final csv = await rapport.fiches(atelier.atelier.id);
+                      DownloadCommand().execute(data: csv);
+                    },
+                    icon: const Icon(Icons.download),
+                    label: const Text('Fiches ressources'),
+                  ),
+                ],
+              ),
+            ]),
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Fiche liées
+///
+/// Shows Fiches snippet by lien.
+class AtelierFicheLieesLiveView extends StatelessWidget {
+  final AtelierSnippet atelier;
+
+  const AtelierFicheLieesLiveView({
+    super.key,
+    required this.atelier,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final LienFicheCollectionBlone blone = context.watch();
+    final ParticipantMetaCollectionBlone participantMetas = context.watch();
+
+    if (atelier.participants.isEmpty) {
+      return Center(child: Heading.h5("L'atelier n'a pas de participants"));
+    }
+
+    return FutureLoader<Iterable<LienFiche>>(
+      future: blone.getForAtelier(
+        demarcheId: atelier.atelier.demarcheId,
+        atelierId: atelier.atelier.id,
+      ),
+      builder: (context, snapshot) {
+        final liens = snapshot.data;
+
+        if (liens.isEmpty) {
+          return Heading.h4("Pas de fiches liées pour l'instant");
+        }
+
+        final sortedLiens = liens
+            .sortedBy((lien) => atelier.participants
+                .firstWhere(
+                    (participant) => participant.contact.id == lien.contactAId)
+                .personne
+                .displayName)
+            .toList();
+
+        return FutureLoader(
+          future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
+          builder: (context, snapshot) {
+            return Column(
+              children: [
+                for (final (i, lien) in sortedLiens.indexed)
+                  Row(
+                    children: [
+                      Card(
+                        elevation: 2,
+                        child: LienFicheSide(
+                            atelier: atelier, lien: lien, showA: true),
+                      ).flexible(),
+                      Card(
+                        elevation: 2,
+                        child: LienFicheSide(
+                            atelier: atelier, lien: lien, showA: false),
+                      ).flexible(),
+                    ],
+                  ).padding(
+                    bottom: sortedLiens[min(i + 1, sortedLiens.length - 1)]
+                                .contactAId ==
+                            lien.contactAId
+                        ? 0
+                        : 32,
+                  ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+/// One side of the lien, that is A or B.
+class LienFicheSide extends StatelessWidget {
+  final AtelierSnippet atelier;
+  final LienFiche lien;
+  final bool showA;
+
+  const LienFicheSide({
+    super.key,
+    required this.atelier,
+    required this.lien,
+    required this.showA,
+  });
+
+  ContactSnippet getContactSnippetById(String id) {
+    return atelier.participants
+        .firstWhere((snippet) => snippet.contact.id == id);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Demarche demarche = context.read();
+    final FicheCollectionBlone fiches = context.watch();
+    final ParticipantMetaCollectionBlone participantMetas = context.watch();
+
+    final contactId = showA ? lien.contactAId : lien.contactBId!;
+    final contactSnippet = getContactSnippetById(contactId);
+    final ficheId = showA ? lien.ficheAId : lien.ficheBId!;
+
+    return ListTile(
+      title: Text.rich(
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        TextSpan(
+          style: DefaultTextStyle.of(context).style,
+          children: <TextSpan>[
+            TextSpan(
+              text: contactSnippet.personne.displayName,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const TextSpan(text: '  '),
+            TextSpan(text: contactSnippet.entreprise.entreprise.denomination),
+          ],
+        ),
+      ),
+      subtitle: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FutureLoader(
+          showIndicator: false,
+          future: participantMetas.getByAtelierAndContact(
+            atelierId: atelier.atelier.id,
+            contactId: contactSnippet.contact.id,
+          ),
+          builder: (context, snapshot) {
+            return InkWell(
+              onTap: () => showFicheFunction(
+                demarche,
+                atelier,
+                contactSnippet.contact,
+              ).call(
+                  context: context,
+                  editableMeta: EditableParticipantMeta(snapshot.data),
+                  ficheId: ficheId),
+              child: FutureLoader(
+                showIndicator: false,
+                future: fiches.getSnippet(ficheId: ficheId),
+                builder: (builder, snapshot) =>
+                    Chip(label: Text(shortDescription(snapshot.data))),
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }
 
@@ -428,7 +590,6 @@ ShowFiche showFicheFunction(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
-
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 800),
               child: PaddedSingleChildScrollable(
