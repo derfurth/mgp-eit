@@ -357,9 +357,10 @@ class _LienFichesEditorState extends State<LienFichesEditor> {
             ElevatedButton(
               onPressed: () {
                 liens.add(EditableLienFiche(LienFiche(
+                  demarcheId: atelier.atelier.demarcheId,
+                  atelierId: atelier.atelier.id,
                   ficheAId: fiche.fiche.id,
                   contactAId: fiche.contact.contact.id,
-                  demarcheId: atelier.atelier.demarcheId,
                   directionA: fiche.flux.direction,
                   quantiteA: fiche.flux.quantite,
                   // Placeholders

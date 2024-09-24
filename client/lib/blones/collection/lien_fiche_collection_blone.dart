@@ -17,8 +17,7 @@ class LienFicheCollectionBlone extends SupabaseCollection<LienFiche>
   JsonMap elementToJson(LienFiche value) => value.toJson();
 
   Future<List<LienFiche>> getAll({required String demarcheId}) async {
-    final data =
-        await fromTable.select().eq('demarche_id', demarcheId);
+    final data = await fromTable.select().eq('demarche_id', demarcheId);
     final lienFiches = data.map((e) => elementFromJson(e)).toList();
     return lienFiches;
   }
@@ -35,9 +34,22 @@ class LienFicheCollectionBlone extends SupabaseCollection<LienFiche>
     return lienFiches;
   }
 
-  Future<void> deleteForFiches(String ficheAId, String ficheBId ) async {
-    await fromTable.delete()
+  Future<void> deleteForFiches(String ficheAId, String ficheBId) async {
+    await fromTable
+        .delete()
         .eq('fiche_a_id', ficheAId)
         .eq('fiche_b_id', ficheBId);
+  }
+
+  Future<Iterable<LienFiche>> getForAtelier({
+    required String demarcheId,
+    required String atelierId,
+  }) async {
+    final data = await fromTable
+        .select()
+        .eq('demarche_id', demarcheId)
+        .eq('atelier_id', atelierId);
+    final lienFiches = data.map((e) => elementFromJson(e)).toList();
+    return lienFiches;
   }
 }

@@ -216,6 +216,7 @@ class LienFiche with _$LienFiche {
 
   const factory LienFiche({
     @JsonKey(name: 'demarche_id') required String demarcheId,
+    @JsonKey(name: 'atelier_id') required String atelierId,
     @JsonKey(name: 'nature') @Default('') String nature,
     @JsonKey(name: 'fiche_a_id') required String ficheAId,
     @JsonKey(name: 'contact_a_id') required String contactAId,

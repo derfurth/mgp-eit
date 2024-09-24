@@ -4,6 +4,7 @@ create table lien_fiche
 (
     id               uuid generated always as (md5(fiche_a_id::text || fiche_b_id::text)::uuid) stored,
     demarche_id      uuid              not null references demarche on delete cascade,
+    atelier_id       uuid              not null references atelier on delete cascade,
     nature           text              not null,
 
 

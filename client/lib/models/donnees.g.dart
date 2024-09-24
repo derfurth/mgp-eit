@@ -175,6 +175,7 @@ Map<String, dynamic> _$$FicheImplToJson(_$FicheImpl instance) =>
 _$LienFicheImpl _$$LienFicheImplFromJson(Map<String, dynamic> json) =>
     _$LienFicheImpl(
       demarcheId: json['demarche_id'] as String,
+      atelierId: json['atelier_id'] as String,
       nature: json['nature'] as String? ?? '',
       ficheAId: json['fiche_a_id'] as String,
       contactAId: json['contact_a_id'] as String,
@@ -193,6 +194,7 @@ _$LienFicheImpl _$$LienFicheImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$LienFicheImplToJson(_$LienFicheImpl instance) =>
     <String, dynamic>{
       'demarche_id': instance.demarcheId,
+      'atelier_id': instance.atelierId,
       'nature': instance.nature,
       'fiche_a_id': instance.ficheAId,
       'contact_a_id': instance.contactAId,

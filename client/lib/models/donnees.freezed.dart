@@ -2129,6 +2129,8 @@ LienFiche _$LienFicheFromJson(Map<String, dynamic> json) {
 mixin _$LienFiche {
   @JsonKey(name: 'demarche_id')
   String get demarcheId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'atelier_id')
+  String get atelierId => throw _privateConstructorUsedError;
   @JsonKey(name: 'nature')
   String get nature => throw _privateConstructorUsedError;
   @JsonKey(name: 'fiche_a_id')
@@ -2165,6 +2167,7 @@ abstract class $LienFicheCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'demarche_id') String demarcheId,
+      @JsonKey(name: 'atelier_id') String atelierId,
       @JsonKey(name: 'nature') String nature,
       @JsonKey(name: 'fiche_a_id') String ficheAId,
       @JsonKey(name: 'contact_a_id') String contactAId,
@@ -2192,6 +2195,7 @@ class _$LienFicheCopyWithImpl<$Res, $Val extends LienFiche>
   @override
   $Res call({
     Object? demarcheId = null,
+    Object? atelierId = null,
     Object? nature = null,
     Object? ficheAId = null,
     Object? contactAId = null,
@@ -2206,6 +2210,10 @@ class _$LienFicheCopyWithImpl<$Res, $Val extends LienFiche>
       demarcheId: null == demarcheId
           ? _value.demarcheId
           : demarcheId // ignore: cast_nullable_to_non_nullable
+              as String,
+      atelierId: null == atelierId
+          ? _value.atelierId
+          : atelierId // ignore: cast_nullable_to_non_nullable
               as String,
       nature: null == nature
           ? _value.nature
@@ -2257,6 +2265,7 @@ abstract class _$$LienFicheImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'demarche_id') String demarcheId,
+      @JsonKey(name: 'atelier_id') String atelierId,
       @JsonKey(name: 'nature') String nature,
       @JsonKey(name: 'fiche_a_id') String ficheAId,
       @JsonKey(name: 'contact_a_id') String contactAId,
@@ -2282,6 +2291,7 @@ class __$$LienFicheImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? demarcheId = null,
+    Object? atelierId = null,
     Object? nature = null,
     Object? ficheAId = null,
     Object? contactAId = null,
@@ -2296,6 +2306,10 @@ class __$$LienFicheImplCopyWithImpl<$Res>
       demarcheId: null == demarcheId
           ? _value.demarcheId
           : demarcheId // ignore: cast_nullable_to_non_nullable
+              as String,
+      atelierId: null == atelierId
+          ? _value.atelierId
+          : atelierId // ignore: cast_nullable_to_non_nullable
               as String,
       nature: null == nature
           ? _value.nature
@@ -2342,11 +2356,12 @@ class __$$LienFicheImplCopyWithImpl<$Res>
 class _$LienFicheImpl extends _LienFiche {
   const _$LienFicheImpl(
       {@JsonKey(name: 'demarche_id') required this.demarcheId,
+      @JsonKey(name: 'atelier_id') required this.atelierId,
       @JsonKey(name: 'nature') this.nature = '',
       @JsonKey(name: 'fiche_a_id') required this.ficheAId,
       @JsonKey(name: 'contact_a_id') required this.contactAId,
       @JsonKey(name: 'flux_direction_a')
-      required this.directionA,
+      this.directionA = FluxDirection.entrant,
       @JsonKey(name: 'quantite_a') required this.quantiteA,
       @JsonKey(name: 'fiche_b_id') this.ficheBId,
       @JsonKey(name: 'contact_b_id') this.contactBId,
@@ -2361,6 +2376,9 @@ class _$LienFicheImpl extends _LienFiche {
   @override
   @JsonKey(name: 'demarche_id')
   final String demarcheId;
+  @override
+  @JsonKey(name: 'atelier_id')
+  final String atelierId;
   @override
   @JsonKey(name: 'nature')
   final String nature;
@@ -2391,7 +2409,7 @@ class _$LienFicheImpl extends _LienFiche {
 
   @override
   String toString() {
-    return 'LienFiche(demarcheId: $demarcheId, nature: $nature, ficheAId: $ficheAId, contactAId: $contactAId, directionA: $directionA, quantiteA: $quantiteA, ficheBId: $ficheBId, contactBId: $contactBId, directionB: $directionB, quantiteB: $quantiteB)';
+    return 'LienFiche(demarcheId: $demarcheId, atelierId: $atelierId, nature: $nature, ficheAId: $ficheAId, contactAId: $contactAId, directionA: $directionA, quantiteA: $quantiteA, ficheBId: $ficheBId, contactBId: $contactBId, directionB: $directionB, quantiteB: $quantiteB)';
   }
 
   @override
@@ -2401,6 +2419,8 @@ class _$LienFicheImpl extends _LienFiche {
             other is _$LienFicheImpl &&
             (identical(other.demarcheId, demarcheId) ||
                 other.demarcheId == demarcheId) &&
+            (identical(other.atelierId, atelierId) ||
+                other.atelierId == atelierId) &&
             (identical(other.nature, nature) || other.nature == nature) &&
             (identical(other.ficheAId, ficheAId) ||
                 other.ficheAId == ficheAId) &&
@@ -2425,6 +2445,7 @@ class _$LienFicheImpl extends _LienFiche {
   int get hashCode => Object.hash(
       runtimeType,
       demarcheId,
+      atelierId,
       nature,
       ficheAId,
       contactAId,
@@ -2454,6 +2475,7 @@ class _$LienFicheImpl extends _LienFiche {
 abstract class _LienFiche extends LienFiche {
   const factory _LienFiche(
       {@JsonKey(name: 'demarche_id') required final String demarcheId,
+      @JsonKey(name: 'atelier_id') required final String atelierId,
       @JsonKey(name: 'nature') final String nature,
       @JsonKey(name: 'fiche_a_id') required final String ficheAId,
       @JsonKey(name: 'contact_a_id') required final String contactAId,
@@ -2472,6 +2494,9 @@ abstract class _LienFiche extends LienFiche {
   @override
   @JsonKey(name: 'demarche_id')
   String get demarcheId;
+  @override
+  @JsonKey(name: 'atelier_id')
+  String get atelierId;
   @override
   @JsonKey(name: 'nature')
   String get nature;
