@@ -125,6 +125,8 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
     Iterable<ContactSnippet> participants,
   ) async {
     for (final lien in liens) {
+      // B contact wasn't set.
+      if (lien.value.contactBId == null) continue;
       // if Fiche B is null, we insert.
       if (lien.value.ficheBId == null) {
         final contactB = participants.firstWhere(

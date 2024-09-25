@@ -366,8 +366,8 @@ class _LienFichesEditorState extends State<LienFichesEditor> {
                   // Placeholders
                   ficheBId: null,
                   contactBId: null,
-                  directionB: null,
-                  quantiteB: null,
+                  directionB: FluxDirection.sortant,
+                  quantiteB: 0,
                   nature: '',
                 )));
               },
