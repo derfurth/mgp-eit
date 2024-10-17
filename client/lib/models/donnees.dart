@@ -256,7 +256,7 @@ typedef Thematiques = UnmodifiableListView<Thematique>;
 // Entreprises
 // --------------------------------------------
 
-/// Établissement
+/// Entreprise
 @freezed
 class Entreprise with _$Entreprise, Storable {
   const factory Entreprise({
@@ -271,7 +271,7 @@ class Entreprise with _$Entreprise, Storable {
       _$EntrepriseFromJson(json);
 }
 
-/// Etablissement
+/// Établissement
 ///
 /// Un établissement est typiquement une entreprise, un site de prod.
 /// Un établissement peut avoir plusieurs _contacts_ associés

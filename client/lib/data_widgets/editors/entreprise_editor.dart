@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:mgp_client/app_theme.dart';
@@ -18,7 +20,6 @@ import 'package:mgp_client/styled_widgets/leading.dart';
 import 'package:mgp_client/styled_widgets/padded_single_child_scrollable.dart';
 import 'package:mgp_client/styled_widgets/wrapper.dart';
 import 'package:provider/provider.dart';
-
 import '../items/contact_item.dart';
 
 class EntrepriseEditor extends StatelessWidget {
