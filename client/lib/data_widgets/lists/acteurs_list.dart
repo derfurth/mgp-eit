@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mgp_client/app_theme.dart';
 import 'package:mgp_client/blones/collection/entreprise_collection_blones.dart';
+import 'package:mgp_client/components/entreprise_search_dialog.dart';
 import 'package:mgp_client/components/future_loader.dart';
 import 'package:mgp_client/components/layout.dart';
 import 'package:mgp_client/data_widgets/items/contact_item.dart';
@@ -103,20 +104,17 @@ class _EntrepriseListState extends State<EntrepriseList> {
               builder: (context, snapshot) {
                 final entreprises = snapshot.data.toList();
                 return Expanded(
-                  child: Scrollbar(
-                    thumbVisibility: true,
-                    controller: controller,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListView.builder(
-                        itemCount: entreprises.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return EntrepriseItem(
-                            snippet: entreprises[index],
-                            demarcheId: demarche.id,
-                          );
-                        },
-                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                      controller: controller,
+                      itemCount: entreprises.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return EntrepriseItem(
+                          snippet: entreprises[index],
+                          demarcheId: demarche.id,
+                        );
+                      },
                     ),
                   ),
                 );
@@ -125,7 +123,7 @@ class _EntrepriseListState extends State<EntrepriseList> {
           ],
         ),
         FloatingActionButton(
-          onPressed: () => chauffeur.createEntreprise(demarche.id),
+          onPressed: () => showEntrepriseSearchDialog(context, demarcheId: demarche.id),
           child: const Icon(Icons.add),
         )
             .alignment(AlignmentDirectional.bottomEnd)
