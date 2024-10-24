@@ -345,27 +345,15 @@ void main() {
         expect(snippet.fiche, fiche);
       });
 
-      test('create and subscribe to a snippet', () async {
-        final stream = app.fiches.createSnippet(
+      test('create a snippet', () async {
+        final snippet = await app.fiches.createSnippet(
           demarcheId: db.demarches.first.id,
           atelierId: db.ateliers.first.id,
           contactId: db.contacts.first.id,
           etablissementId: db.contacts.first.etablissementId,
         );
-        final queue = StreamQueue(stream);
-
-        // first snippet
-        final snippet = await queue.next;
         final fiche = snippet.fiche;
         expect(fiche.atelierId, db.ateliers.first.id);
-
-        // update fiche
-        final updated = fiche.copyWith(commentaire: 'tellement inspiré');
-        await app.fiches.save(updated);
-
-        // second snippet
-        final retrieved = await queue.next;
-        expect(retrieved.fiche, updated);
       });
     });
 
