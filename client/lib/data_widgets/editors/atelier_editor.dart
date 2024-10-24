@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:collection/collection.dart';
+import 'package:collection_providers/collection_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:lumberdash/lumberdash.dart';
 import 'package:mgp_client/blones/collection/entreprise_collection_blones.dart';
@@ -16,6 +17,7 @@ import '../../blones/collection/lien_fiche_collection_blone.dart';
 import '../../blones/rapport_blone.dart';
 import '../../commands/download_command.dart';
 import '../../components/layout.dart';
+import '../../components/synergie_creation_dialog.dart';
 import '../../data_widgets/add_boxes/animateur_add_box.dart';
 import '../../data_widgets/add_boxes/coanimateur_add_box.dart';
 import '../../data_widgets/add_boxes/contact_add_box.dart';
@@ -108,9 +110,7 @@ class AtelierEditor extends StatelessWidget {
                       PaddedSingleChildScrollable(
                         child: AtelierParticipantLiveView(atelier: atelier),
                       ),
-                      PaddedSingleChildScrollable(
-                        child: AtelierFicheLieesLiveView(atelier: atelier),
-                      ),
+                      AtelierFicheLieesLiveView(atelier: atelier),
                       PaddedSingleChildScrollable(
                         child: AtelierThematiqueLiveView(atelier: atelier),
                       ),
@@ -311,62 +311,96 @@ class AtelierFicheLieesLiveView extends StatelessWidget {
   Widget build(BuildContext context) {
     final LienFicheCollectionBlone blone = context.watch();
     final ParticipantMetaCollectionBlone participantMetas = context.watch();
+    final Demarche demarche = context.read();
 
     if (atelier.participants.isEmpty) {
       return Center(child: Heading.h5("L'atelier n'a pas de participants"));
     }
 
-    return FutureLoader<Iterable<LienFiche>>(
-      future: blone.getForAtelier(
-        demarcheId: atelier.atelier.demarcheId,
-        atelierId: atelier.atelier.id,
-      ),
-      builder: (context, snapshot) {
-        final liens = snapshot.data;
+    return CollectionProvider(
+      create: (_) => SetChangeNotifier<FicheSnippet>({}),
+      child: Stack(
+        children: [
+          PaddedSingleChildScrollable(
+            child: FutureLoader<Iterable<LienFiche>>(
+              future: blone.getForAtelier(
+                demarcheId: atelier.atelier.demarcheId,
+                atelierId: atelier.atelier.id,
+              ),
+              builder: (context, snapshot) {
+                final liens = snapshot.data;
 
-        if (liens.isEmpty) {
-          return Heading.h4("Pas de fiches liées pour l'instant");
-        }
+                if (liens.isEmpty) {
+                  return Heading.h4("Pas de fiches liées pour l'instant");
+                }
 
-        final sortedLiens = liens
-            .sortedBy((lien) => atelier.participants
-                .firstWhere(
-                    (participant) => participant.contact.id == lien.contactAId)
-                .personne
-                .displayName)
-            .toList();
+                final sortedLiens = liens
+                    .sortedBy((lien) => atelier.participants
+                        .firstWhere((participant) =>
+                            participant.contact.id == lien.contactAId)
+                        .personne
+                        .displayName)
+                    .toList();
 
-        return FutureLoader(
-          future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
-          builder: (context, snapshot) {
-            return Column(
-              children: [
-                for (final (i, lien) in sortedLiens.indexed)
-                  Row(
-                    children: [
-                      Card(
-                        elevation: 2,
-                        child: LienFicheSide(
-                            atelier: atelier, lien: lien, showA: true),
-                      ).flexible(),
-                      Card(
-                        elevation: 2,
-                        child: LienFicheSide(
-                            atelier: atelier, lien: lien, showA: false),
-                      ).flexible(),
-                    ],
-                  ).padding(
-                    bottom: sortedLiens[min(i + 1, sortedLiens.length - 1)]
-                                .contactAId ==
-                            lien.contactAId
-                        ? 0
-                        : 32,
-                  ),
-              ],
+                return FutureLoader(
+                  future: participantMetas.getByAtelier(
+                      atelierId: atelier.atelier.id),
+                  builder: (context, snapshot) {
+                    return Column(
+                      children: [
+                        for (final (i, lien) in sortedLiens.indexed)
+                          Row(
+                            children: [
+                              Card(
+                                elevation: 2,
+                                child: LienFicheSide(
+                                    atelier: atelier, lien: lien, showA: true),
+                              ).flexible(),
+                              Card(
+                                elevation: 2,
+                                child: LienFicheSide(
+                                    atelier: atelier, lien: lien, showA: false),
+                              ).flexible(),
+                            ],
+                          ).padding(
+                            bottom:
+                                sortedLiens[min(i + 1, sortedLiens.length - 1)]
+                                            .contactAId ==
+                                        lien.contactAId
+                                    ? 0
+                                    : 32,
+                          ),
+                      ],
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+          Builder(builder: (context) {
+            final selection =
+                CollectionProvider.of<SetChangeNotifier<FicheSnippet>>(context,
+                    listen: true);
+
+            return Align(
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton(
+                elevation: selection.isEmpty ? 0 : 4,
+                backgroundColor: selection.isEmpty ? Colors.grey : null,
+                onPressed: selection.isEmpty
+                    ? null
+                    : () async {
+                        await
+                        showNewSynergieUsingSelectionDialog(
+                            context, demarche, selection.toList());
+                        selection.clear();
+                      },
+                child: const Icon(Icons.add),
+              ).padding(all: 8 * 2),
             );
-          },
-        );
-      },
+          }),
+        ],
+      ),
     );
   }
 }
@@ -424,21 +458,38 @@ class LienFicheSide extends StatelessWidget {
             contactId: contactSnippet.contact.id,
           ),
           builder: (context, snapshot) {
-            return InkWell(
-              onTap: () => showFicheFunction(
-                demarche,
-                atelier,
-                contactSnippet.contact,
-              ).call(
-                  context: context,
-                  editableMeta: EditableParticipantMeta(snapshot.data),
-                  ficheId: ficheId),
-              child: FutureLoader(
-                showIndicator: false,
-                future: fiches.getSnippet(ficheId: ficheId),
-                builder: (builder, snapshot) =>
-                    Chip(label: Text(shortDescription(snapshot.data))),
-              ),
+            final participantMeta = snapshot.data;
+            return FutureLoader(
+              showIndicator: false,
+              future: fiches.getSnippet(ficheId: ficheId),
+              builder: (builder, snapshot) {
+                final snippet = snapshot.data;
+                final selection =
+                    CollectionProvider.of<SetChangeNotifier<FicheSnippet>>(
+                        context,
+                        listen: true);
+                return Row(
+                  children: [
+                    InkWell(
+                        onTap: () => showFicheFunction(
+                              demarche,
+                              atelier,
+                              contactSnippet.contact,
+                            ).call(
+                                context: context,
+                                editableMeta:
+                                    EditableParticipantMeta(participantMeta),
+                                ficheId: ficheId),
+                        child: Chip(label: Text(shortDescription(snippet)))),
+                    Checkbox(
+                      value: selection.contains(snippet),
+                      onChanged: (selected) => selected == true
+                          ? selection.add(snippet)
+                          : selection.remove(snippet),
+                    )
+                  ],
+                );
+              },
             );
           },
         ),

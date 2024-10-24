@@ -209,6 +209,7 @@ class _SynergieSaveBar extends StatelessWidget {
     final SynergieCollectionBlone blone = context.watch();
 
     return OverflowBar(
+      alignment: MainAxisAlignment.end,
       children: [
         TextButton.icon(
           onPressed: () => showDialog<String>(
