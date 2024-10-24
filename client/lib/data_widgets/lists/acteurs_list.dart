@@ -12,7 +12,6 @@ import 'package:mgp_client/styled_widgets/page_header.dart';
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
 
-import '../../chauffeur/chauffeur.dart';
 
 class ActeursList extends StatelessWidget {
   const ActeursList({
