@@ -7,6 +7,7 @@ import 'package:lumberdash/lumberdash.dart';
 import 'package:mgp_client/blones/collection/entreprise_collection_blones.dart';
 import 'package:mgp_client/blones/collection/fiche_collection_blone.dart';
 import 'package:mgp_client/components/future_loader.dart';
+import 'package:mgp_client/models/schedule.dart';
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:tuple/tuple.dart';
@@ -79,7 +80,7 @@ class AtelierEditor extends StatelessWidget {
       value: BuildIn.thematiques,
       initialData: UnmodifiableListView<Thematique>([]),
       child: DefaultTabController(
-        length: 4,
+        length: 5,
         child: Body(
           header: const SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -90,6 +91,7 @@ class AtelierEditor extends StatelessWidget {
                 Tab(text: 'Fiches ressources'),
                 Tab(text: 'Fiches liées'),
                 Tab(text: 'Thématiques'),
+                Tab(text: 'Rencontres'),
               ],
             ),
           ),
@@ -113,6 +115,9 @@ class AtelierEditor extends StatelessWidget {
                       AtelierFicheLieesLiveView(atelier: atelier),
                       PaddedSingleChildScrollable(
                         child: AtelierThematiqueLiveView(atelier: atelier),
+                      ),
+                      PaddedSingleChildScrollable(
+                        child: ScheduleEditor(atelier: atelier),
                       ),
                     ],
                   ),
@@ -390,8 +395,7 @@ class AtelierFicheLieesLiveView extends StatelessWidget {
                 onPressed: selection.isEmpty
                     ? null
                     : () async {
-                        await
-                        showNewSynergieUsingSelectionDialog(
+                        await showNewSynergieUsingSelectionDialog(
                             context, demarche, selection.toList());
                         selection.clear();
                       },
@@ -666,3 +670,39 @@ Tuple2<ParticipantMeta, ContactSnippet?> contactFromMeta(
       atelier.participants
           .firstWhereOrNull((p) => p.contact.id == meta.contactId),
     );
+
+class ScheduleEditor extends StatelessWidget {
+  final AtelierSnippet atelier;
+
+  const ScheduleEditor({super.key, required this.atelier});
+
+  @override
+  Widget build(BuildContext context) {
+    final FicheCollectionBlone fiches = context.watch();
+    final configuration =
+        ScheduleConfiguration(turnCount: 10, tableCount: 4, tableSeatCount: 4);
+
+    return FutureLoader(
+      future: fiches.getSnippetsForAtelier(atelierId: atelier.atelier.id),
+      builder: (context, snapshot) {
+        final fiches = snapshot.data;
+        final cards = [
+          for (final fiche in fiches)
+            ScheduleCard(
+              participant: fiche.contact.personne.displayName,
+              ressource: fiche.flux.resourceNom,
+              offre: fiche.flux.direction == FluxDirection.sortant,
+            )
+        ];
+        final schedule = Schedule(configuration: configuration, cards: cards);
+
+        return FutureLoader(
+          future: schedule.compute(),
+          builder: (context, snapshot) {
+            return Text('$configuration\n\n$schedule');
+          },
+        );
+      },
+    );
+  }
+}

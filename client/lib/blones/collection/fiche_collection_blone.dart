@@ -55,6 +55,17 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
     return snippets;
   }
 
+  Future<Iterable<FicheSnippet>> getSnippetsForAtelier({
+    required String atelierId,
+  }) async {
+    final fiches = await getByAtelier(atelierId: atelierId);
+
+    final snippets = [
+      for (final fiche in fiches) await getSnippet(ficheId: fiche.id)
+    ];
+    return snippets;
+  }
+
   final contactFicheCache = MapCache<String, Iterable<Fiche>>();
 
   Future<Iterable<Fiche>> getFichesForContactAndAtelier({

@@ -17,6 +17,10 @@ class ScheduleConfiguration {
     required this.tableCount,
     required this.tableSeatCount,
   });
+
+  @override
+  String toString() =>
+      'Configuration: tours: $turnCount, tables: $tableCount, sièges: $tableSeatCount';
 }
 
 /// A simplified card, with the necessary information to build a schedule.
@@ -56,7 +60,7 @@ class Table {
 
   @override
   String toString() =>
-      '${participants.length} participants: ${participants.join(', ')} on ${ressources.join(', ')}';
+      '${participants.length} participants au sujet de ${ressources.join(', ')}: ${participants.join(', ')}';
 }
 
 /// The turn is a list of [tables] where [participants] will discuss.
@@ -86,7 +90,7 @@ class Schedule {
     ressources = cards.map((s) => s.ressource).toSet().toList();
   }
 
-  Future<void> compute() async {
+  Future<List<Turn>> compute() async {
     // Group participants by resource.
     for (final ressource in ressources) {
       final participants = cards
@@ -94,12 +98,14 @@ class Schedule {
           .map((card) => card.participant)
           .toSet();
 
+      // A table should have at least one participant.
+      if (participants.length <= 1) {
+        continue;
+      }
       // Our participants can all fit around a table.
-      if (participants.length > 1 &&
-          participants.length <= configuration.tableSeatCount) {
+      else if (participants.length <= configuration.tableSeatCount) {
         tables.add(Table(participants: participants, ressources: {ressource}));
       }
-
       // They do not fit around a table so we need to split them around.
       else {
         int seatCount = configuration.tableSeatCount;
@@ -148,9 +154,12 @@ class Schedule {
     }
 
     // Keep the turns with the most tables.
-    this.turns.addAll(turns.take(configuration.tableCount));
+    this.turns
+      ..clear()
+      ..addAll(turns.take(configuration.tableCount));
+    return this.turns;
   }
 
   @override
-  String toString() => '${turns.length} turns:\n${turns.join('\n\n')}';
+  String toString() => '${turns.length} tours:\n${turns.join('\n\n')}';
 }
