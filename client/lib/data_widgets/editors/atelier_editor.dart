@@ -285,7 +285,7 @@ class AtelierParticipantLiveView extends StatelessWidget {
                   OutlinedButton.icon(
                     onPressed: () async {
                       final RapportBlone rapport = context.read();
-                      final csv = await rapport.fiches(atelier.atelier.id);
+                      final csv = await rapport.fiches(demarche.id, atelier.atelier.id);
                       DownloadCommand().execute(data: csv);
                     },
                     icon: const Icon(Icons.download),
