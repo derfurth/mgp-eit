@@ -179,9 +179,7 @@ _$LienFicheImpl _$$LienFicheImplFromJson(Map<String, dynamic> json) =>
       nature: json['nature'] as String? ?? '',
       ficheAId: json['fiche_a_id'] as String,
       contactAId: json['contact_a_id'] as String,
-      directionA: $enumDecodeNullable(
-              _$FluxDirectionEnumMap, json['flux_direction_a']) ??
-          FluxDirection.entrant,
+      directionA: $enumDecode(_$FluxDirectionEnumMap, json['flux_direction_a']),
       quantiteA: json['quantite_a'] as num,
       ficheBId: json['fiche_b_id'] as String?,
       contactBId: json['contact_b_id'] as String?,
@@ -390,6 +388,54 @@ const _$SynergieTypeEnumMap = {
   SynergieType.achat: 'achat',
   SynergieType.cooperation: 'cooperation',
 };
+
+_$SynergieIndicateurImpl _$$SynergieIndicateurImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SynergieIndicateurImpl(
+      demarcheId: json['demarcheId'] as String,
+      reductionDeLaConsommationMatiere:
+          json['reduction_de_la_consommation_matiere'] as num? ?? 0,
+      reductionDesDechets: json['amelioration_des_dechets'] as num? ?? 0,
+      reductionDesConsommationsDEnergieHorsCarburant:
+          json['reduction_des_consommations_d_energie_hors_carburant']
+                  as num? ??
+              0,
+      productionDEnergieRenouvelable:
+          json['production_d_energie_renouvelable'] as num? ?? 0,
+      reductionDesConsommationsDEau:
+          json['reduction_des_consommations_d_eau'] as num? ?? 0,
+      reductionDesEmissionsDeGes:
+          json['reduction_des_emissions_de_ges'] as num? ?? 0,
+      realisationDEconomiesFinancieres:
+          json['realisation_d_economies_financieres'] as num? ?? 0,
+      developpementDeNouvellesActivitesEtEntreprises:
+          json['developpement_de_nouvelles_activites_et_entreprises'] as num? ??
+              0,
+      developpementEtMaintienDeLEmploi:
+          json['developpement_et_maintien_de_l_emploi'] as num? ?? 0,
+    );
+
+Map<String, dynamic> _$$SynergieIndicateurImplToJson(
+        _$SynergieIndicateurImpl instance) =>
+    <String, dynamic>{
+      'demarcheId': instance.demarcheId,
+      'reduction_de_la_consommation_matiere':
+          instance.reductionDeLaConsommationMatiere,
+      'amelioration_des_dechets': instance.reductionDesDechets,
+      'reduction_des_consommations_d_energie_hors_carburant':
+          instance.reductionDesConsommationsDEnergieHorsCarburant,
+      'production_d_energie_renouvelable':
+          instance.productionDEnergieRenouvelable,
+      'reduction_des_consommations_d_eau':
+          instance.reductionDesConsommationsDEau,
+      'reduction_des_emissions_de_ges': instance.reductionDesEmissionsDeGes,
+      'realisation_d_economies_financieres':
+          instance.realisationDEconomiesFinancieres,
+      'developpement_de_nouvelles_activites_et_entreprises':
+          instance.developpementDeNouvellesActivitesEtEntreprises,
+      'developpement_et_maintien_de_l_emploi':
+          instance.developpementEtMaintienDeLEmploi,
+    };
 
 _$ClassificationSynapseImpl _$$ClassificationSynapseImplFromJson(
         Map<String, dynamic> json) =>

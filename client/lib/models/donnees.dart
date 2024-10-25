@@ -220,7 +220,6 @@ class LienFiche with _$LienFiche {
     @JsonKey(name: 'nature') @Default('') String nature,
     @JsonKey(name: 'fiche_a_id') required String ficheAId,
     @JsonKey(name: 'contact_a_id') required String contactAId,
-    @Default(FluxDirection.entrant)
     @JsonKey(name: 'flux_direction_a')
     required FluxDirection directionA,
     @JsonKey(name: 'quantite_a') required num quantiteA,
@@ -459,6 +458,29 @@ class Synergie with _$Synergie, Storable {
 
   factory Synergie.fromJson(Map<String, dynamic> json) =>
       _$SynergieFromJson(json);
+}
+
+/// Synergie indicateurs
+///
+/// todo merge with synergie
+/// https://www.reseau-synapse.org/library/h/fiche-zoom-n-4-reporting-eit-et-indicateurs-synergies.html
+@freezed
+class SynergieIndicateur with _$SynergieIndicateur {
+  const factory SynergieIndicateur({
+    required String demarcheId,
+    @JsonKey(name: 'reduction_de_la_consommation_matiere') @Default(0) num reductionDeLaConsommationMatiere,
+    @JsonKey(name: 'amelioration_des_dechets') @Default(0) num reductionDesDechets,
+    @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant') @Default(0) num reductionDesConsommationsDEnergieHorsCarburant,
+    @JsonKey(name: 'production_d_energie_renouvelable') @Default(0) num productionDEnergieRenouvelable,
+    @JsonKey(name: 'reduction_des_consommations_d_eau') @Default(0) num reductionDesConsommationsDEau,
+    @JsonKey(name: 'reduction_des_emissions_de_ges') @Default(0) num reductionDesEmissionsDeGes,
+    @JsonKey(name: 'realisation_d_economies_financieres') @Default(0) num realisationDEconomiesFinancieres,
+    @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises') @Default(0) num developpementDeNouvellesActivitesEtEntreprises,
+    @JsonKey(name: 'developpement_et_maintien_de_l_emploi') @Default(0) num developpementEtMaintienDeLEmploi,
+  }) = _SynergieIndicateur;
+
+  factory SynergieIndicateur.fromJson(Map<String, dynamic> json) =>
+      _$SynergieIndicateurFromJson(json);
 }
 
 /// class Classification(BaseModel):
