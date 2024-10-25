@@ -504,7 +504,7 @@ class LienFicheSide extends StatelessWidget {
 
 /// Atelier 'live' view
 ///
-/// Shows Fiches, by thematique.
+/// Shows Fiches, by thématique.
 class AtelierThematiqueLiveView extends StatelessWidget {
   final AtelierSnippet atelier;
 

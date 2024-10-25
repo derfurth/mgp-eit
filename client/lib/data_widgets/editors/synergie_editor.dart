@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:mgp_client/models/editable.dart';
 import 'package:mgp_client/utils/time_utils.dart';
@@ -154,7 +155,7 @@ class SynergieForm extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              editable.commentaire.toTextFormField(maxLines: 5).flexible(),
+              editable.commentaire.toTextFormField(maxLines: 3).flexible(),
               // Leading.hSmall(),
               // OutlinedButton(
               //   onPressed: () async {
@@ -173,6 +174,7 @@ class SynergieForm extends StatelessWidget {
               // ),
             ],
           ),
+          SynergieIndicators(),
           FluxAddBox(
             initialSelection: synergie.flux,
             onSelected: (fluxes) {
@@ -186,18 +188,49 @@ class SynergieForm extends StatelessWidget {
   }
 }
 
-/// Synergie commentaires.
-class SynergieCommentaires extends StatelessWidget {
-  final SynergieSnippet synergie;
-
-  const SynergieCommentaires({
-    super.key,
-    required this.synergie,
-  });
+class SynergieIndicators extends StatelessWidget {
+  const SynergieIndicators({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('todo'));
+    final indicateur = SynergieIndicateur(demarcheId: 'x');
+    final editable = EditableSynergieIndicateur(indicateur);
+
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ExpandablePanel(
+          header: Text(
+            'Indicateurs',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          collapsed: const Text('Matière, GES, emplois...'),
+          expanded: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              editable.reductionDeLaConsommationMatiere.toTextFormField(),
+              Leading.vHair(),
+              editable.reductionDesDechets.toTextFormField(),
+              Leading.vHair(),
+              editable.reductionDesConsommationsDEnergieHorsCarburant
+                  .toTextFormField(),
+              Leading.vHair(),
+              editable.productionDEnergieRenouvelable.toTextFormField(),
+              Leading.vHair(),
+              editable.reductionDesConsommationsDEau.toTextFormField(),
+              Leading.vHair(),
+              editable.realisationDEconomiesFinancieres.toTextFormField(),
+              Leading.vHair(),
+              editable.developpementDeNouvellesActivitesEtEntreprises
+                  .toTextFormField(),
+              Leading.vHair(),
+              editable.developpementEtMaintienDeLEmploi.toTextFormField(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
