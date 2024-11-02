@@ -154,7 +154,7 @@ class SynergieForm extends StatelessWidget {
             ],
           ),
           editable.commentaire.toTextFormField(maxLines: 3).flexible(),
-          SynergieIndicators(),
+          const SynergieIndicators(),
           FluxAddBox(
             initialSelection: synergie.flux,
             onSelected: (fluxes) {
@@ -168,8 +168,64 @@ class SynergieForm extends StatelessWidget {
   }
 }
 
+class SynergieIndicatorsPreview extends StatelessWidget {
+  const SynergieIndicatorsPreview({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final EditableSynergie editable = context.watch();
+
+    final indicateurs = [
+      editable.reductionTotaleDeLaConsommationMatiere,
+      editable.reductionDeLaConsommationMatiereHorsInerte,
+      editable.reductionTotaleDesDechets,
+      editable.reductionDesDechetsNonInertes,
+      editable.ameliorationDeLaValorisationDesDechets,
+      editable.reductionDesConsommationsDenergie,
+      editable.productionDenergieRenouvelable,
+      editable.reductionDesConsommationsDeau,
+      editable.reductionDesEmissionsDeGES,
+      editable.realisationDeconomiesFinancieres,
+      editable.chiffreDaffairesGenere,
+      editable.investissementsRealises,
+      editable.developpementDeNouvellesActivitesEtEntreprises,
+      editable.creationDemplois,
+      editable.maintienDeLemploi,
+    ];
+
+    final isEmpty = indicateurs.every((field) => field.value == '0');
+    if (isEmpty) return const Text('Aucun indicateur de synergie rempli');
+    final nonZeroIndicateurs = indicateurs.where((field) => field.value != '0');
+    return DataTable(
+      columns: const [
+        DataColumn(
+          label: Expanded(
+            child: Text('Indicateur',
+                style: TextStyle(fontStyle: FontStyle.italic)),
+          ),
+        ),
+        DataColumn(
+          label: Expanded(
+            child:
+                Text('Valeur', style: TextStyle(fontStyle: FontStyle.italic)),
+          ),
+        ),
+      ],
+      rows: [
+        for (var field in nonZeroIndicateurs)
+          DataRow(
+            cells: <DataCell>[
+              DataCell(Text(field.label)),
+              DataCell(Text(field.value!)),
+            ],
+          )
+      ],
+    );
+  }
+}
+
 class SynergieIndicators extends StatelessWidget {
-  const SynergieIndicators({Key? key}) : super(key: key);
+  const SynergieIndicators({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -181,10 +237,11 @@ class SynergieIndicators extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
         child: ExpandablePanel(
           header: Heading.h5('Indicateurs'),
-          collapsed: const Text('Matière, GES, emplois...'),
+          collapsed: const SynergieIndicatorsPreview(),
           expanded: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Leading.vSmall(),
               Heading.h6('Réduction de la consommation matière'),
               Leading.vHair(),
               editable.reductionTotaleDeLaConsommationMatiere.toTextFormField(),
