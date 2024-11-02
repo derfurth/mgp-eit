@@ -454,34 +454,30 @@ class Synergie with _$Synergie, Storable {
     @JsonKey(name: 'flux_ids') @Default(<String>[]) List<String> fluxIds,
     @JsonKey(name: 'created_at') @Default(null) String? createdAt,
     @JsonKey(name: 'modified_at') @Default(null) String? modifiedAt,
+
+    // Synergie indicateurs
+    // https://www.reseau-synapse.org/library/h/fiche-zoom-n-4-reporting-eit-et-indicateurs-synergies.html
+    @JsonKey(name: 'reduction_totale_de_la_consommation_matiere') @Default(0) num reductionTotaleDeLaConsommationMatiere,
+    @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte') @Default(0) num reductionDeLaConsommationMatiereHorsInerte,
+    @JsonKey(name: 'reduction_totale_des_dechets') @Default(0) num reductionTotaleDesDechets,
+    @JsonKey(name: 'reduction_des_dechets_non_inertes') @Default(0) num reductionDesDechetsNonInertes,
+    @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets') @Default(0) num ameliorationDeLaValorisationDesDechets,
+    @JsonKey(name: 'reduction_des_consommations_d_energie') @Default(0) num reductionDesConsommationsDenergie,
+    @JsonKey(name: 'production_d_energie_renouvelable') @Default(0) num productionDenergieRenouvelable,
+    @JsonKey(name: 'reduction_des_consommations_d_eau') @Default(0) num reductionDesConsommationsDeau,
+    @JsonKey(name: 'reduction_des_emissions_de_ges') @Default(0) num reductionDesEmissionsDeGES,
+    @JsonKey(name: 'realisation_d_economies_financieres') @Default(0) num realisationDeconomiesFinancieres,
+    @JsonKey(name: 'chiffre_d_affaires_genere') @Default(0) num chiffreDaffairesGenere,
+    @JsonKey(name: 'investissements_realises') @Default(0) num investissementsRealises,
+    @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises') @Default(0) num developpementDeNouvellesActivitesEtEntreprises,
+    @JsonKey(name: 'creation_d_emplois') @Default(0) num creationDemplois,
+    @JsonKey(name: 'maintien_de_l_emploi') @Default(0) num maintienDeLemploi,
   }) = _Synergie;
 
   factory Synergie.fromJson(Map<String, dynamic> json) =>
       _$SynergieFromJson(json);
 }
 
-/// Synergie indicateurs
-///
-/// todo merge with synergie
-/// https://www.reseau-synapse.org/library/h/fiche-zoom-n-4-reporting-eit-et-indicateurs-synergies.html
-@freezed
-class SynergieIndicateur with _$SynergieIndicateur {
-  const factory SynergieIndicateur({
-    required String demarcheId,
-    @JsonKey(name: 'reduction_de_la_consommation_matiere') @Default(0) num reductionDeLaConsommationMatiere,
-    @JsonKey(name: 'amelioration_des_dechets') @Default(0) num reductionDesDechets,
-    @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant') @Default(0) num reductionDesConsommationsDEnergieHorsCarburant,
-    @JsonKey(name: 'production_d_energie_renouvelable') @Default(0) num productionDEnergieRenouvelable,
-    @JsonKey(name: 'reduction_des_consommations_d_eau') @Default(0) num reductionDesConsommationsDEau,
-    @JsonKey(name: 'reduction_des_emissions_de_ges') @Default(0) num reductionDesEmissionsDeGes,
-    @JsonKey(name: 'realisation_d_economies_financieres') @Default(0) num realisationDEconomiesFinancieres,
-    @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises') @Default(0) num developpementDeNouvellesActivitesEtEntreprises,
-    @JsonKey(name: 'developpement_et_maintien_de_l_emploi') @Default(0) num developpementEtMaintienDeLEmploi,
-  }) = _SynergieIndicateur;
-
-  factory SynergieIndicateur.fromJson(Map<String, dynamic> json) =>
-      _$SynergieIndicateurFromJson(json);
-}
 
 /// class Classification(BaseModel):
 ///     categorie: str

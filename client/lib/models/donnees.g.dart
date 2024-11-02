@@ -358,6 +358,33 @@ _$SynergieImpl _$$SynergieImplFromJson(Map<String, dynamic> json) =>
           const <String>[],
       createdAt: json['created_at'] as String? ?? null,
       modifiedAt: json['modified_at'] as String? ?? null,
+      reductionTotaleDeLaConsommationMatiere:
+          json['reduction_totale_de_la_consommation_matiere'] as num? ?? 0,
+      reductionDeLaConsommationMatiereHorsInerte:
+          json['reduction_de_la_consommation_matiere_hors_inerte'] as num? ?? 0,
+      reductionTotaleDesDechets:
+          json['reduction_totale_des_dechets'] as num? ?? 0,
+      reductionDesDechetsNonInertes:
+          json['reduction_des_dechets_non_inertes'] as num? ?? 0,
+      ameliorationDeLaValorisationDesDechets:
+          json['amelioration_de_la_valorisation_des_dechets'] as num? ?? 0,
+      reductionDesConsommationsDenergie:
+          json['reduction_des_consommations_d_energie'] as num? ?? 0,
+      productionDenergieRenouvelable:
+          json['production_d_energie_renouvelable'] as num? ?? 0,
+      reductionDesConsommationsDeau:
+          json['reduction_des_consommations_d_eau'] as num? ?? 0,
+      reductionDesEmissionsDeGES:
+          json['reduction_des_emissions_de_ges'] as num? ?? 0,
+      realisationDeconomiesFinancieres:
+          json['realisation_d_economies_financieres'] as num? ?? 0,
+      chiffreDaffairesGenere: json['chiffre_d_affaires_genere'] as num? ?? 0,
+      investissementsRealises: json['investissements_realises'] as num? ?? 0,
+      developpementDeNouvellesActivitesEtEntreprises:
+          json['developpement_de_nouvelles_activites_et_entreprises'] as num? ??
+              0,
+      creationDemplois: json['creation_d_emplois'] as num? ?? 0,
+      maintienDeLemploi: json['maintien_de_l_emploi'] as num? ?? 0,
     );
 
 Map<String, dynamic> _$$SynergieImplToJson(_$SynergieImpl instance) =>
@@ -372,6 +399,30 @@ Map<String, dynamic> _$$SynergieImplToJson(_$SynergieImpl instance) =>
       'flux_ids': instance.fluxIds,
       'created_at': instance.createdAt,
       'modified_at': instance.modifiedAt,
+      'reduction_totale_de_la_consommation_matiere':
+          instance.reductionTotaleDeLaConsommationMatiere,
+      'reduction_de_la_consommation_matiere_hors_inerte':
+          instance.reductionDeLaConsommationMatiereHorsInerte,
+      'reduction_totale_des_dechets': instance.reductionTotaleDesDechets,
+      'reduction_des_dechets_non_inertes':
+          instance.reductionDesDechetsNonInertes,
+      'amelioration_de_la_valorisation_des_dechets':
+          instance.ameliorationDeLaValorisationDesDechets,
+      'reduction_des_consommations_d_energie':
+          instance.reductionDesConsommationsDenergie,
+      'production_d_energie_renouvelable':
+          instance.productionDenergieRenouvelable,
+      'reduction_des_consommations_d_eau':
+          instance.reductionDesConsommationsDeau,
+      'reduction_des_emissions_de_ges': instance.reductionDesEmissionsDeGES,
+      'realisation_d_economies_financieres':
+          instance.realisationDeconomiesFinancieres,
+      'chiffre_d_affaires_genere': instance.chiffreDaffairesGenere,
+      'investissements_realises': instance.investissementsRealises,
+      'developpement_de_nouvelles_activites_et_entreprises':
+          instance.developpementDeNouvellesActivitesEtEntreprises,
+      'creation_d_emplois': instance.creationDemplois,
+      'maintien_de_l_emploi': instance.maintienDeLemploi,
     };
 
 const _$SynergieStatutEnumMap = {
@@ -388,54 +439,6 @@ const _$SynergieTypeEnumMap = {
   SynergieType.achat: 'achat',
   SynergieType.cooperation: 'cooperation',
 };
-
-_$SynergieIndicateurImpl _$$SynergieIndicateurImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SynergieIndicateurImpl(
-      demarcheId: json['demarcheId'] as String,
-      reductionDeLaConsommationMatiere:
-          json['reduction_de_la_consommation_matiere'] as num? ?? 0,
-      reductionDesDechets: json['amelioration_des_dechets'] as num? ?? 0,
-      reductionDesConsommationsDEnergieHorsCarburant:
-          json['reduction_des_consommations_d_energie_hors_carburant']
-                  as num? ??
-              0,
-      productionDEnergieRenouvelable:
-          json['production_d_energie_renouvelable'] as num? ?? 0,
-      reductionDesConsommationsDEau:
-          json['reduction_des_consommations_d_eau'] as num? ?? 0,
-      reductionDesEmissionsDeGes:
-          json['reduction_des_emissions_de_ges'] as num? ?? 0,
-      realisationDEconomiesFinancieres:
-          json['realisation_d_economies_financieres'] as num? ?? 0,
-      developpementDeNouvellesActivitesEtEntreprises:
-          json['developpement_de_nouvelles_activites_et_entreprises'] as num? ??
-              0,
-      developpementEtMaintienDeLEmploi:
-          json['developpement_et_maintien_de_l_emploi'] as num? ?? 0,
-    );
-
-Map<String, dynamic> _$$SynergieIndicateurImplToJson(
-        _$SynergieIndicateurImpl instance) =>
-    <String, dynamic>{
-      'demarcheId': instance.demarcheId,
-      'reduction_de_la_consommation_matiere':
-          instance.reductionDeLaConsommationMatiere,
-      'amelioration_des_dechets': instance.reductionDesDechets,
-      'reduction_des_consommations_d_energie_hors_carburant':
-          instance.reductionDesConsommationsDEnergieHorsCarburant,
-      'production_d_energie_renouvelable':
-          instance.productionDEnergieRenouvelable,
-      'reduction_des_consommations_d_eau':
-          instance.reductionDesConsommationsDEau,
-      'reduction_des_emissions_de_ges': instance.reductionDesEmissionsDeGes,
-      'realisation_d_economies_financieres':
-          instance.realisationDEconomiesFinancieres,
-      'developpement_de_nouvelles_activites_et_entreprises':
-          instance.developpementDeNouvellesActivitesEtEntreprises,
-      'developpement_et_maintien_de_l_emploi':
-          instance.developpementEtMaintienDeLEmploi,
-    };
 
 _$ClassificationSynapseImpl _$$ClassificationSynapseImplFromJson(
         Map<String, dynamic> json) =>

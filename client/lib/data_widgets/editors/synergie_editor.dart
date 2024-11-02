@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:mgp_client/models/editable.dart';
+import 'package:mgp_client/styled_widgets/heading.dart';
 import 'package:mgp_client/utils/time_utils.dart';
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
@@ -152,28 +153,7 @@ class SynergieForm extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              editable.commentaire.toTextFormField(maxLines: 3).flexible(),
-              // Leading.hSmall(),
-              // OutlinedButton(
-              //   onPressed: () async {
-              //     final picked = await showDatePicker(
-              //       context: context,
-              //       firstDate: DateTime(1970),
-              //       lastDate: DateTime.now().add(const Duration(days: 365 * 3)),
-              //       initialDate: editable.value.commentaireDate == null
-              //           ? DateTime.now()
-              //           : DateTime.parse(editable.value.commentaireDate!),
-              //     );
-              //     editable.dateCommentaire.update(picked);
-              //   },
-              //   child: Text(TimeUtils.timestampToFrench(
-              //       editable.value.commentaireDate)),
-              // ),
-            ],
-          ),
+          editable.commentaire.toTextFormField(maxLines: 3).flexible(),
           SynergieIndicators(),
           FluxAddBox(
             initialSelection: synergie.flux,
@@ -193,39 +173,68 @@ class SynergieIndicators extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final indicateur = SynergieIndicateur(demarcheId: 'x');
-    final editable = EditableSynergieIndicateur(indicateur);
+    final EditableSynergie editable = context.watch();
 
     return Card(
       elevation: 2,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
         child: ExpandablePanel(
-          header: Text(
-            'Indicateurs',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
+          header: Heading.h5('Indicateurs'),
           collapsed: const Text('Matière, GES, emplois...'),
           expanded: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              editable.reductionDeLaConsommationMatiere.toTextFormField(),
+              Heading.h6('Réduction de la consommation matière'),
               Leading.vHair(),
-              editable.reductionDesDechets.toTextFormField(),
+              editable.reductionTotaleDeLaConsommationMatiere.toTextFormField(),
               Leading.vHair(),
-              editable.reductionDesConsommationsDEnergieHorsCarburant
+              editable.reductionDeLaConsommationMatiereHorsInerte
                   .toTextFormField(),
+              Leading.vMedium(),
+              Heading.h6(
+                  'Amélioration des modes de gestion et de traitement des déchets'),
               Leading.vHair(),
-              editable.productionDEnergieRenouvelable.toTextFormField(),
+              editable.reductionTotaleDesDechets.toTextFormField(),
               Leading.vHair(),
-              editable.reductionDesConsommationsDEau.toTextFormField(),
+              editable.reductionDesDechetsNonInertes.toTextFormField(),
               Leading.vHair(),
-              editable.realisationDEconomiesFinancieres.toTextFormField(),
+              editable.ameliorationDeLaValorisationDesDechets.toTextFormField(),
+              Leading.vMedium(),
+              Heading.h6('Énergie'),
+              Leading.vHair(),
+              editable.reductionDesConsommationsDenergie.toTextFormField(),
+              Leading.vHair(),
+              editable.productionDenergieRenouvelable.toTextFormField(),
+              Leading.vMedium(),
+              Heading.h6('Ressources en eau'),
+              Leading.vHair(),
+              editable.reductionDesConsommationsDeau.toTextFormField(),
+              Leading.vMedium(),
+              Heading.h6('Gaz à effet de serre'),
+              Leading.vHair(),
+              editable.reductionDesEmissionsDeGES.toTextFormField(),
+              Leading.vMedium(),
+              Heading.h6('Économies'),
+              Leading.vHair(),
+              editable.realisationDeconomiesFinancieres.toTextFormField(),
+              Leading.vMedium(),
+              Heading.h6(
+                  'Retours bénéfiques pour les entreprises et le territoire'),
+              Leading.vHair(),
+              editable.chiffreDaffairesGenere.toTextFormField(),
+              Leading.vHair(),
+              editable.investissementsRealises.toTextFormField(),
               Leading.vHair(),
               editable.developpementDeNouvellesActivitesEtEntreprises
                   .toTextFormField(),
+              Leading.vMedium(),
+              Heading.h6(
+                  'Retours bénéfiques pour les entreprises et le territoire'),
               Leading.vHair(),
-              editable.developpementEtMaintienDeLEmploi.toTextFormField(),
+              editable.creationDemplois.toTextFormField(),
+              Leading.vHair(),
+              editable.maintienDeLemploi.toTextFormField(),
             ],
           ),
         ),

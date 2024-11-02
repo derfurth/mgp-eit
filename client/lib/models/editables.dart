@@ -597,98 +597,157 @@ class EditableSynergie extends Editable<Synergie> {
     update: (fieldValue) =>
         update(value.copyWith(commentaireDate: fieldValue?.toString())),
   );
-}
 
-class EditableSynergieIndicateur extends Editable<SynergieIndicateur> {
-  EditableSynergieIndicateur(super.indicateur);
+  // Indicateurs
+  // ------
 
-  late final reductionDeLaConsommationMatiere = Field<String?>(
-    label: 'Réduction de la consommation matière t / 1 an',
+  late final reductionTotaleDeLaConsommationMatiere = Field<String?>(
+    label: 'Réduction totale de la consommation matière (tonnes / an)',
     validator: NumericValidator(
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
-    get: () => value.reductionDeLaConsommationMatiere.toString(),
+    get: () => value.reductionTotaleDeLaConsommationMatiere.toString(),
     update: (fieldValue) =>
-        update(value.copyWith(reductionDeLaConsommationMatiere: fieldValue == null ? 0 : num.parse(fieldValue))),
+        update(value.copyWith(reductionTotaleDeLaConsommationMatiere: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
-  late final reductionDesDechets = Field<String?>(
-    label: "Amélioration des modes de gestion et de traitement des déchets  t / 1 an",
+  late final reductionDeLaConsommationMatiereHorsInerte = Field<String?>(
+    label: 'Réduction de la consommation matière hors inerte (tonnes / an)',
     validator: NumericValidator(
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
-    get: () => value.reductionDeLaConsommationMatiere.toString(),
+    get: () => value.reductionDeLaConsommationMatiereHorsInerte.toString(),
     update: (fieldValue) =>
-        update(value.copyWith(reductionDeLaConsommationMatiere: fieldValue == null ? 0 : num.parse(fieldValue))),
+        update(value.copyWith(reductionDeLaConsommationMatiereHorsInerte: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
-  late final reductionDesConsommationsDEnergieHorsCarburant = Field<String?>(
-    label: "Réduction des consommations d'énergie (hors carburant) MWh / 1 an",
+  late final reductionTotaleDesDechets = Field<String?>(
+    label: 'Réduction totale des déchets (tonnes / an)',
     validator: NumericValidator(
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
-    get: () => value.reductionDesConsommationsDEnergieHorsCarburant.toString(),
-    update: (fieldValue) => update(value.copyWith(
-        reductionDesConsommationsDEnergieHorsCarburant: fieldValue == null ? 0 : num.parse(fieldValue))),
+    get: () => value.reductionTotaleDesDechets.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(reductionTotaleDesDechets: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
-  late final productionDEnergieRenouvelable = Field<String?>(
-    label: "Production d'énergie renouvelable MWh / 1 an",
+  late final reductionDesDechetsNonInertes = Field<String?>(
+    label: 'Réduction des déchets non inertes (tonnes / an)',
     validator: NumericValidator(
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
-    get: () => value.productionDEnergieRenouvelable.toString(),
+    get: () => value.reductionDesDechetsNonInertes.toString(),
     update: (fieldValue) =>
-        update(value.copyWith(productionDEnergieRenouvelable: fieldValue == null ? 0 : num.parse(fieldValue))),
+        update(value.copyWith(reductionDesDechetsNonInertes: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
-  late final reductionDesConsommationsDEau = Field<String?>(
-    label: 'Réduction des consommations d’eau m3 / 1 an',
+  late final ameliorationDeLaValorisationDesDechets = Field<String?>(
+    label: 'Amélioration de la valorisation des déchets (tonnes / an)',
     validator: NumericValidator(
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
-    get: () => value.reductionDesConsommationsDEau.toString(),
+    get: () => value.ameliorationDeLaValorisationDesDechets.toString(),
     update: (fieldValue) =>
-        update(value.copyWith(reductionDesConsommationsDEau: fieldValue == null ? 0 : num.parse(fieldValue))),
+        update(value.copyWith(ameliorationDeLaValorisationDesDechets: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
-  late final reductionDesEmissionsDeGes = Field<String?>(
-    label: 'Réduction des émissions de GES eqC02',
+  late final reductionDesConsommationsDenergie = Field<String?>(
+    label: 'Réduction des consommations d’énergie (MWh / an)',
     validator: NumericValidator(
-      errorText: 'la quantité doit être un nombre de tonnes / an.',
+      errorText: 'la quantité doit être un nombre de MWh / an.',
     ),
-    get: () => value.reductionDesEmissionsDeGes.toString(),
+    get: () => value.reductionDesConsommationsDenergie.toString(),
     update: (fieldValue) =>
-        update(value.copyWith(reductionDesEmissionsDeGes: fieldValue == null ? 0 : num.parse(fieldValue))),
+        update(value.copyWith(reductionDesConsommationsDenergie: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
-  late final realisationDEconomiesFinancieres = Field<String?>(
-    label: 'Réalisation d’économies financières k€ / 1 an',
+  late final productionDenergieRenouvelable = Field<String?>(
+    label: 'Production d’énergie renouvelable (MWh / an)',
     validator: NumericValidator(
-      errorText: 'la quantité doit être un nombre de tonnes / an.',
+      errorText: 'la quantité doit être un nombre de MWh / an.',
     ),
-    get: () => value.realisationDEconomiesFinancieres.toString(),
+    get: () => value.productionDenergieRenouvelable.toString(),
     update: (fieldValue) =>
-        update(value.copyWith(realisationDEconomiesFinancieres: fieldValue == null ? 0 : num.parse(fieldValue))),
+        update(value.copyWith(productionDenergieRenouvelable: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final reductionDesConsommationsDeau = Field<String?>(
+    label: 'Réduction des consommations d’eau (m3 / an)',
+    validator: NumericValidator(
+      errorText: 'la quantité doit être un nombre de m3 / an.',
+    ),
+    get: () => value.reductionDesConsommationsDeau.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(reductionDesConsommationsDeau: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final reductionDesEmissionsDeGES = Field<String?>(
+    label: 'Réduction des émissions de GES (eqC02)',
+    validator: NumericValidator(
+      errorText: 'la quantité doit être un nombre de eqC02.',
+    ),
+    get: () => value.reductionDesEmissionsDeGES.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(reductionDesEmissionsDeGES: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final realisationDeconomiesFinancieres = Field<String?>(
+    label: 'Réalisation d’économies financières (k€ / an)',
+    validator: NumericValidator(
+      errorText: 'la quantité doit être un nombre de k€ / an.',
+    ),
+    get: () => value.realisationDeconomiesFinancieres.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(realisationDeconomiesFinancieres: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final chiffreDaffairesGenere = Field<String?>(
+    label: 'Chiffre d\'affaires généré (k€ / an)',
+    validator: NumericValidator(
+      errorText: 'la quantité doit être un nombre de k€ / an.',
+    ),
+    get: () => value.chiffreDaffairesGenere.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(chiffreDaffairesGenere: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final investissementsRealises = Field<String?>(
+    label: 'Investissements réalisés (k€ / an)',
+    validator: NumericValidator(
+      errorText: 'la quantité doit être un nombre de k€ / an.',
+    ),
+    get: () => value.investissementsRealises.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(investissementsRealises: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final developpementDeNouvellesActivitesEtEntreprises = Field<String?>(
-    label: 'Développement de nouvelles activités et entreprises k€ / 1 an',
+    label: 'Développement de nouvelles activités et entreprises (Nouvelles activités)',
     validator: NumericValidator(
-      errorText: 'la quantité doit être un nombre de tonnes / an.',
+      errorText: 'la quantité doit être un nombre de nouveautés.',
     ),
     get: () => value.developpementDeNouvellesActivitesEtEntreprises.toString(),
-    update: (fieldValue) => update(value.copyWith(
-        developpementDeNouvellesActivitesEtEntreprises: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) =>
+        update(value.copyWith(developpementDeNouvellesActivitesEtEntreprises: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
-  late final developpementEtMaintienDeLEmploi = Field<String?>(
-    label: 'Développement et maintien de l’emploi ETP',
+  late final creationDemplois = Field<String?>(
+    label: 'Création d\'emplois (ETP)',
     validator: NumericValidator(
-      errorText: 'la quantité doit être un nombre de tonnes / an.',
+      errorText: 'la quantité doit être un nombre d\'ETP.',
     ),
-    get: () => value.developpementEtMaintienDeLEmploi.toString(),
+    get: () => value.creationDemplois.toString(),
     update: (fieldValue) =>
-        update(value.copyWith(developpementEtMaintienDeLEmploi: fieldValue == null ? 0 : num.parse(fieldValue))),
+        update(value.copyWith(creationDemplois: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final maintienDeLemploi = Field<String?>(
+    label: 'Maintien de l\'emploi (ETP)',
+    validator: NumericValidator(
+      errorText: 'la quantité doit être un nombre d\'ETP.',
+    ),
+    get: () => value.maintienDeLemploi.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(maintienDeLemploi: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 }

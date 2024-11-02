@@ -4111,7 +4111,45 @@ mixin _$Synergie {
   @JsonKey(name: 'created_at')
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'modified_at')
-  String? get modifiedAt => throw _privateConstructorUsedError;
+  String? get modifiedAt =>
+      throw _privateConstructorUsedError; // Synergie indicateurs
+// https://www.reseau-synapse.org/library/h/fiche-zoom-n-4-reporting-eit-et-indicateurs-synergies.html
+  @JsonKey(name: 'reduction_totale_de_la_consommation_matiere')
+  num get reductionTotaleDeLaConsommationMatiere =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte')
+  num get reductionDeLaConsommationMatiereHorsInerte =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'reduction_totale_des_dechets')
+  num get reductionTotaleDesDechets => throw _privateConstructorUsedError;
+  @JsonKey(name: 'reduction_des_dechets_non_inertes')
+  num get reductionDesDechetsNonInertes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets')
+  num get ameliorationDeLaValorisationDesDechets =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'reduction_des_consommations_d_energie')
+  num get reductionDesConsommationsDenergie =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'production_d_energie_renouvelable')
+  num get productionDenergieRenouvelable => throw _privateConstructorUsedError;
+  @JsonKey(name: 'reduction_des_consommations_d_eau')
+  num get reductionDesConsommationsDeau => throw _privateConstructorUsedError;
+  @JsonKey(name: 'reduction_des_emissions_de_ges')
+  num get reductionDesEmissionsDeGES => throw _privateConstructorUsedError;
+  @JsonKey(name: 'realisation_d_economies_financieres')
+  num get realisationDeconomiesFinancieres =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'chiffre_d_affaires_genere')
+  num get chiffreDaffairesGenere => throw _privateConstructorUsedError;
+  @JsonKey(name: 'investissements_realises')
+  num get investissementsRealises => throw _privateConstructorUsedError;
+  @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
+  num get developpementDeNouvellesActivitesEtEntreprises =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'creation_d_emplois')
+  num get creationDemplois => throw _privateConstructorUsedError;
+  @JsonKey(name: 'maintien_de_l_emploi')
+  num get maintienDeLemploi => throw _privateConstructorUsedError;
 
   /// Serializes this Synergie to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -4138,7 +4176,33 @@ abstract class $SynergieCopyWith<$Res> {
       SynergieType type,
       @JsonKey(name: 'flux_ids') List<String> fluxIds,
       @JsonKey(name: 'created_at') String? createdAt,
-      @JsonKey(name: 'modified_at') String? modifiedAt});
+      @JsonKey(name: 'modified_at') String? modifiedAt,
+      @JsonKey(name: 'reduction_totale_de_la_consommation_matiere')
+      num reductionTotaleDeLaConsommationMatiere,
+      @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte')
+      num reductionDeLaConsommationMatiereHorsInerte,
+      @JsonKey(name: 'reduction_totale_des_dechets')
+      num reductionTotaleDesDechets,
+      @JsonKey(name: 'reduction_des_dechets_non_inertes')
+      num reductionDesDechetsNonInertes,
+      @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets')
+      num ameliorationDeLaValorisationDesDechets,
+      @JsonKey(name: 'reduction_des_consommations_d_energie')
+      num reductionDesConsommationsDenergie,
+      @JsonKey(name: 'production_d_energie_renouvelable')
+      num productionDenergieRenouvelable,
+      @JsonKey(name: 'reduction_des_consommations_d_eau')
+      num reductionDesConsommationsDeau,
+      @JsonKey(name: 'reduction_des_emissions_de_ges')
+      num reductionDesEmissionsDeGES,
+      @JsonKey(name: 'realisation_d_economies_financieres')
+      num realisationDeconomiesFinancieres,
+      @JsonKey(name: 'chiffre_d_affaires_genere') num chiffreDaffairesGenere,
+      @JsonKey(name: 'investissements_realises') num investissementsRealises,
+      @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
+      num developpementDeNouvellesActivitesEtEntreprises,
+      @JsonKey(name: 'creation_d_emplois') num creationDemplois,
+      @JsonKey(name: 'maintien_de_l_emploi') num maintienDeLemploi});
 }
 
 /// @nodoc
@@ -4166,6 +4230,21 @@ class _$SynergieCopyWithImpl<$Res, $Val extends Synergie>
     Object? fluxIds = null,
     Object? createdAt = freezed,
     Object? modifiedAt = freezed,
+    Object? reductionTotaleDeLaConsommationMatiere = null,
+    Object? reductionDeLaConsommationMatiereHorsInerte = null,
+    Object? reductionTotaleDesDechets = null,
+    Object? reductionDesDechetsNonInertes = null,
+    Object? ameliorationDeLaValorisationDesDechets = null,
+    Object? reductionDesConsommationsDenergie = null,
+    Object? productionDenergieRenouvelable = null,
+    Object? reductionDesConsommationsDeau = null,
+    Object? reductionDesEmissionsDeGES = null,
+    Object? realisationDeconomiesFinancieres = null,
+    Object? chiffreDaffairesGenere = null,
+    Object? investissementsRealises = null,
+    Object? developpementDeNouvellesActivitesEtEntreprises = null,
+    Object? creationDemplois = null,
+    Object? maintienDeLemploi = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -4208,6 +4287,71 @@ class _$SynergieCopyWithImpl<$Res, $Val extends Synergie>
           ? _value.modifiedAt
           : modifiedAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      reductionTotaleDeLaConsommationMatiere: null ==
+              reductionTotaleDeLaConsommationMatiere
+          ? _value.reductionTotaleDeLaConsommationMatiere
+          : reductionTotaleDeLaConsommationMatiere // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDeLaConsommationMatiereHorsInerte: null ==
+              reductionDeLaConsommationMatiereHorsInerte
+          ? _value.reductionDeLaConsommationMatiereHorsInerte
+          : reductionDeLaConsommationMatiereHorsInerte // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionTotaleDesDechets: null == reductionTotaleDesDechets
+          ? _value.reductionTotaleDesDechets
+          : reductionTotaleDesDechets // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDesDechetsNonInertes: null == reductionDesDechetsNonInertes
+          ? _value.reductionDesDechetsNonInertes
+          : reductionDesDechetsNonInertes // ignore: cast_nullable_to_non_nullable
+              as num,
+      ameliorationDeLaValorisationDesDechets: null ==
+              ameliorationDeLaValorisationDesDechets
+          ? _value.ameliorationDeLaValorisationDesDechets
+          : ameliorationDeLaValorisationDesDechets // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDesConsommationsDenergie: null ==
+              reductionDesConsommationsDenergie
+          ? _value.reductionDesConsommationsDenergie
+          : reductionDesConsommationsDenergie // ignore: cast_nullable_to_non_nullable
+              as num,
+      productionDenergieRenouvelable: null == productionDenergieRenouvelable
+          ? _value.productionDenergieRenouvelable
+          : productionDenergieRenouvelable // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDesConsommationsDeau: null == reductionDesConsommationsDeau
+          ? _value.reductionDesConsommationsDeau
+          : reductionDesConsommationsDeau // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDesEmissionsDeGES: null == reductionDesEmissionsDeGES
+          ? _value.reductionDesEmissionsDeGES
+          : reductionDesEmissionsDeGES // ignore: cast_nullable_to_non_nullable
+              as num,
+      realisationDeconomiesFinancieres: null == realisationDeconomiesFinancieres
+          ? _value.realisationDeconomiesFinancieres
+          : realisationDeconomiesFinancieres // ignore: cast_nullable_to_non_nullable
+              as num,
+      chiffreDaffairesGenere: null == chiffreDaffairesGenere
+          ? _value.chiffreDaffairesGenere
+          : chiffreDaffairesGenere // ignore: cast_nullable_to_non_nullable
+              as num,
+      investissementsRealises: null == investissementsRealises
+          ? _value.investissementsRealises
+          : investissementsRealises // ignore: cast_nullable_to_non_nullable
+              as num,
+      developpementDeNouvellesActivitesEtEntreprises: null ==
+              developpementDeNouvellesActivitesEtEntreprises
+          ? _value.developpementDeNouvellesActivitesEtEntreprises
+          : developpementDeNouvellesActivitesEtEntreprises // ignore: cast_nullable_to_non_nullable
+              as num,
+      creationDemplois: null == creationDemplois
+          ? _value.creationDemplois
+          : creationDemplois // ignore: cast_nullable_to_non_nullable
+              as num,
+      maintienDeLemploi: null == maintienDeLemploi
+          ? _value.maintienDeLemploi
+          : maintienDeLemploi // ignore: cast_nullable_to_non_nullable
+              as num,
     ) as $Val);
   }
 }
@@ -4230,7 +4374,33 @@ abstract class _$$SynergieImplCopyWith<$Res>
       SynergieType type,
       @JsonKey(name: 'flux_ids') List<String> fluxIds,
       @JsonKey(name: 'created_at') String? createdAt,
-      @JsonKey(name: 'modified_at') String? modifiedAt});
+      @JsonKey(name: 'modified_at') String? modifiedAt,
+      @JsonKey(name: 'reduction_totale_de_la_consommation_matiere')
+      num reductionTotaleDeLaConsommationMatiere,
+      @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte')
+      num reductionDeLaConsommationMatiereHorsInerte,
+      @JsonKey(name: 'reduction_totale_des_dechets')
+      num reductionTotaleDesDechets,
+      @JsonKey(name: 'reduction_des_dechets_non_inertes')
+      num reductionDesDechetsNonInertes,
+      @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets')
+      num ameliorationDeLaValorisationDesDechets,
+      @JsonKey(name: 'reduction_des_consommations_d_energie')
+      num reductionDesConsommationsDenergie,
+      @JsonKey(name: 'production_d_energie_renouvelable')
+      num productionDenergieRenouvelable,
+      @JsonKey(name: 'reduction_des_consommations_d_eau')
+      num reductionDesConsommationsDeau,
+      @JsonKey(name: 'reduction_des_emissions_de_ges')
+      num reductionDesEmissionsDeGES,
+      @JsonKey(name: 'realisation_d_economies_financieres')
+      num realisationDeconomiesFinancieres,
+      @JsonKey(name: 'chiffre_d_affaires_genere') num chiffreDaffairesGenere,
+      @JsonKey(name: 'investissements_realises') num investissementsRealises,
+      @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
+      num developpementDeNouvellesActivitesEtEntreprises,
+      @JsonKey(name: 'creation_d_emplois') num creationDemplois,
+      @JsonKey(name: 'maintien_de_l_emploi') num maintienDeLemploi});
 }
 
 /// @nodoc
@@ -4256,6 +4426,21 @@ class __$$SynergieImplCopyWithImpl<$Res>
     Object? fluxIds = null,
     Object? createdAt = freezed,
     Object? modifiedAt = freezed,
+    Object? reductionTotaleDeLaConsommationMatiere = null,
+    Object? reductionDeLaConsommationMatiereHorsInerte = null,
+    Object? reductionTotaleDesDechets = null,
+    Object? reductionDesDechetsNonInertes = null,
+    Object? ameliorationDeLaValorisationDesDechets = null,
+    Object? reductionDesConsommationsDenergie = null,
+    Object? productionDenergieRenouvelable = null,
+    Object? reductionDesConsommationsDeau = null,
+    Object? reductionDesEmissionsDeGES = null,
+    Object? realisationDeconomiesFinancieres = null,
+    Object? chiffreDaffairesGenere = null,
+    Object? investissementsRealises = null,
+    Object? developpementDeNouvellesActivitesEtEntreprises = null,
+    Object? creationDemplois = null,
+    Object? maintienDeLemploi = null,
   }) {
     return _then(_$SynergieImpl(
       id: null == id
@@ -4298,6 +4483,71 @@ class __$$SynergieImplCopyWithImpl<$Res>
           ? _value.modifiedAt
           : modifiedAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      reductionTotaleDeLaConsommationMatiere: null ==
+              reductionTotaleDeLaConsommationMatiere
+          ? _value.reductionTotaleDeLaConsommationMatiere
+          : reductionTotaleDeLaConsommationMatiere // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDeLaConsommationMatiereHorsInerte: null ==
+              reductionDeLaConsommationMatiereHorsInerte
+          ? _value.reductionDeLaConsommationMatiereHorsInerte
+          : reductionDeLaConsommationMatiereHorsInerte // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionTotaleDesDechets: null == reductionTotaleDesDechets
+          ? _value.reductionTotaleDesDechets
+          : reductionTotaleDesDechets // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDesDechetsNonInertes: null == reductionDesDechetsNonInertes
+          ? _value.reductionDesDechetsNonInertes
+          : reductionDesDechetsNonInertes // ignore: cast_nullable_to_non_nullable
+              as num,
+      ameliorationDeLaValorisationDesDechets: null ==
+              ameliorationDeLaValorisationDesDechets
+          ? _value.ameliorationDeLaValorisationDesDechets
+          : ameliorationDeLaValorisationDesDechets // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDesConsommationsDenergie: null ==
+              reductionDesConsommationsDenergie
+          ? _value.reductionDesConsommationsDenergie
+          : reductionDesConsommationsDenergie // ignore: cast_nullable_to_non_nullable
+              as num,
+      productionDenergieRenouvelable: null == productionDenergieRenouvelable
+          ? _value.productionDenergieRenouvelable
+          : productionDenergieRenouvelable // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDesConsommationsDeau: null == reductionDesConsommationsDeau
+          ? _value.reductionDesConsommationsDeau
+          : reductionDesConsommationsDeau // ignore: cast_nullable_to_non_nullable
+              as num,
+      reductionDesEmissionsDeGES: null == reductionDesEmissionsDeGES
+          ? _value.reductionDesEmissionsDeGES
+          : reductionDesEmissionsDeGES // ignore: cast_nullable_to_non_nullable
+              as num,
+      realisationDeconomiesFinancieres: null == realisationDeconomiesFinancieres
+          ? _value.realisationDeconomiesFinancieres
+          : realisationDeconomiesFinancieres // ignore: cast_nullable_to_non_nullable
+              as num,
+      chiffreDaffairesGenere: null == chiffreDaffairesGenere
+          ? _value.chiffreDaffairesGenere
+          : chiffreDaffairesGenere // ignore: cast_nullable_to_non_nullable
+              as num,
+      investissementsRealises: null == investissementsRealises
+          ? _value.investissementsRealises
+          : investissementsRealises // ignore: cast_nullable_to_non_nullable
+              as num,
+      developpementDeNouvellesActivitesEtEntreprises: null ==
+              developpementDeNouvellesActivitesEtEntreprises
+          ? _value.developpementDeNouvellesActivitesEtEntreprises
+          : developpementDeNouvellesActivitesEtEntreprises // ignore: cast_nullable_to_non_nullable
+              as num,
+      creationDemplois: null == creationDemplois
+          ? _value.creationDemplois
+          : creationDemplois // ignore: cast_nullable_to_non_nullable
+              as num,
+      maintienDeLemploi: null == maintienDeLemploi
+          ? _value.maintienDeLemploi
+          : maintienDeLemploi // ignore: cast_nullable_to_non_nullable
+              as num,
     ));
   }
 }
@@ -4315,7 +4565,35 @@ class _$SynergieImpl implements _Synergie {
       this.type = SynergieType.mutualisation,
       @JsonKey(name: 'flux_ids') final List<String> fluxIds = const <String>[],
       @JsonKey(name: 'created_at') this.createdAt = null,
-      @JsonKey(name: 'modified_at') this.modifiedAt = null})
+      @JsonKey(name: 'modified_at') this.modifiedAt = null,
+      @JsonKey(name: 'reduction_totale_de_la_consommation_matiere')
+      this.reductionTotaleDeLaConsommationMatiere = 0,
+      @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte')
+      this.reductionDeLaConsommationMatiereHorsInerte = 0,
+      @JsonKey(name: 'reduction_totale_des_dechets')
+      this.reductionTotaleDesDechets = 0,
+      @JsonKey(name: 'reduction_des_dechets_non_inertes')
+      this.reductionDesDechetsNonInertes = 0,
+      @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets')
+      this.ameliorationDeLaValorisationDesDechets = 0,
+      @JsonKey(name: 'reduction_des_consommations_d_energie')
+      this.reductionDesConsommationsDenergie = 0,
+      @JsonKey(name: 'production_d_energie_renouvelable')
+      this.productionDenergieRenouvelable = 0,
+      @JsonKey(name: 'reduction_des_consommations_d_eau')
+      this.reductionDesConsommationsDeau = 0,
+      @JsonKey(name: 'reduction_des_emissions_de_ges')
+      this.reductionDesEmissionsDeGES = 0,
+      @JsonKey(name: 'realisation_d_economies_financieres')
+      this.realisationDeconomiesFinancieres = 0,
+      @JsonKey(name: 'chiffre_d_affaires_genere')
+      this.chiffreDaffairesGenere = 0,
+      @JsonKey(name: 'investissements_realises')
+      this.investissementsRealises = 0,
+      @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
+      this.developpementDeNouvellesActivitesEtEntreprises = 0,
+      @JsonKey(name: 'creation_d_emplois') this.creationDemplois = 0,
+      @JsonKey(name: 'maintien_de_l_emploi') this.maintienDeLemploi = 0})
       : _fluxIds = fluxIds;
 
   factory _$SynergieImpl.fromJson(Map<String, dynamic> json) =>
@@ -4356,10 +4634,57 @@ class _$SynergieImpl implements _Synergie {
   @override
   @JsonKey(name: 'modified_at')
   final String? modifiedAt;
+// Synergie indicateurs
+// https://www.reseau-synapse.org/library/h/fiche-zoom-n-4-reporting-eit-et-indicateurs-synergies.html
+  @override
+  @JsonKey(name: 'reduction_totale_de_la_consommation_matiere')
+  final num reductionTotaleDeLaConsommationMatiere;
+  @override
+  @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte')
+  final num reductionDeLaConsommationMatiereHorsInerte;
+  @override
+  @JsonKey(name: 'reduction_totale_des_dechets')
+  final num reductionTotaleDesDechets;
+  @override
+  @JsonKey(name: 'reduction_des_dechets_non_inertes')
+  final num reductionDesDechetsNonInertes;
+  @override
+  @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets')
+  final num ameliorationDeLaValorisationDesDechets;
+  @override
+  @JsonKey(name: 'reduction_des_consommations_d_energie')
+  final num reductionDesConsommationsDenergie;
+  @override
+  @JsonKey(name: 'production_d_energie_renouvelable')
+  final num productionDenergieRenouvelable;
+  @override
+  @JsonKey(name: 'reduction_des_consommations_d_eau')
+  final num reductionDesConsommationsDeau;
+  @override
+  @JsonKey(name: 'reduction_des_emissions_de_ges')
+  final num reductionDesEmissionsDeGES;
+  @override
+  @JsonKey(name: 'realisation_d_economies_financieres')
+  final num realisationDeconomiesFinancieres;
+  @override
+  @JsonKey(name: 'chiffre_d_affaires_genere')
+  final num chiffreDaffairesGenere;
+  @override
+  @JsonKey(name: 'investissements_realises')
+  final num investissementsRealises;
+  @override
+  @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
+  final num developpementDeNouvellesActivitesEtEntreprises;
+  @override
+  @JsonKey(name: 'creation_d_emplois')
+  final num creationDemplois;
+  @override
+  @JsonKey(name: 'maintien_de_l_emploi')
+  final num maintienDeLemploi;
 
   @override
   String toString() {
-    return 'Synergie(id: $id, demarcheId: $demarcheId, nom: $nom, commentaire: $commentaire, commentaireDate: $commentaireDate, statut: $statut, type: $type, fluxIds: $fluxIds, createdAt: $createdAt, modifiedAt: $modifiedAt)';
+    return 'Synergie(id: $id, demarcheId: $demarcheId, nom: $nom, commentaire: $commentaire, commentaireDate: $commentaireDate, statut: $statut, type: $type, fluxIds: $fluxIds, createdAt: $createdAt, modifiedAt: $modifiedAt, reductionTotaleDeLaConsommationMatiere: $reductionTotaleDeLaConsommationMatiere, reductionDeLaConsommationMatiereHorsInerte: $reductionDeLaConsommationMatiereHorsInerte, reductionTotaleDesDechets: $reductionTotaleDesDechets, reductionDesDechetsNonInertes: $reductionDesDechetsNonInertes, ameliorationDeLaValorisationDesDechets: $ameliorationDeLaValorisationDesDechets, reductionDesConsommationsDenergie: $reductionDesConsommationsDenergie, productionDenergieRenouvelable: $productionDenergieRenouvelable, reductionDesConsommationsDeau: $reductionDesConsommationsDeau, reductionDesEmissionsDeGES: $reductionDesEmissionsDeGES, realisationDeconomiesFinancieres: $realisationDeconomiesFinancieres, chiffreDaffairesGenere: $chiffreDaffairesGenere, investissementsRealises: $investissementsRealises, developpementDeNouvellesActivitesEtEntreprises: $developpementDeNouvellesActivitesEtEntreprises, creationDemplois: $creationDemplois, maintienDeLemploi: $maintienDeLemploi)';
   }
 
   @override
@@ -4381,23 +4706,75 @@ class _$SynergieImpl implements _Synergie {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.modifiedAt, modifiedAt) ||
-                other.modifiedAt == modifiedAt));
+                other.modifiedAt == modifiedAt) &&
+            (identical(other.reductionTotaleDeLaConsommationMatiere, reductionTotaleDeLaConsommationMatiere) ||
+                other.reductionTotaleDeLaConsommationMatiere ==
+                    reductionTotaleDeLaConsommationMatiere) &&
+            (identical(other.reductionDeLaConsommationMatiereHorsInerte, reductionDeLaConsommationMatiereHorsInerte) ||
+                other.reductionDeLaConsommationMatiereHorsInerte ==
+                    reductionDeLaConsommationMatiereHorsInerte) &&
+            (identical(other.reductionTotaleDesDechets, reductionTotaleDesDechets) ||
+                other.reductionTotaleDesDechets == reductionTotaleDesDechets) &&
+            (identical(other.reductionDesDechetsNonInertes, reductionDesDechetsNonInertes) ||
+                other.reductionDesDechetsNonInertes ==
+                    reductionDesDechetsNonInertes) &&
+            (identical(other.ameliorationDeLaValorisationDesDechets, ameliorationDeLaValorisationDesDechets) ||
+                other.ameliorationDeLaValorisationDesDechets ==
+                    ameliorationDeLaValorisationDesDechets) &&
+            (identical(other.reductionDesConsommationsDenergie, reductionDesConsommationsDenergie) ||
+                other.reductionDesConsommationsDenergie ==
+                    reductionDesConsommationsDenergie) &&
+            (identical(other.productionDenergieRenouvelable, productionDenergieRenouvelable) ||
+                other.productionDenergieRenouvelable ==
+                    productionDenergieRenouvelable) &&
+            (identical(other.reductionDesConsommationsDeau, reductionDesConsommationsDeau) ||
+                other.reductionDesConsommationsDeau ==
+                    reductionDesConsommationsDeau) &&
+            (identical(other.reductionDesEmissionsDeGES, reductionDesEmissionsDeGES) ||
+                other.reductionDesEmissionsDeGES ==
+                    reductionDesEmissionsDeGES) &&
+            (identical(other.realisationDeconomiesFinancieres, realisationDeconomiesFinancieres) ||
+                other.realisationDeconomiesFinancieres ==
+                    realisationDeconomiesFinancieres) &&
+            (identical(other.chiffreDaffairesGenere, chiffreDaffairesGenere) ||
+                other.chiffreDaffairesGenere == chiffreDaffairesGenere) &&
+            (identical(other.investissementsRealises, investissementsRealises) ||
+                other.investissementsRealises == investissementsRealises) &&
+            (identical(other.developpementDeNouvellesActivitesEtEntreprises, developpementDeNouvellesActivitesEtEntreprises) || other.developpementDeNouvellesActivitesEtEntreprises == developpementDeNouvellesActivitesEtEntreprises) &&
+            (identical(other.creationDemplois, creationDemplois) || other.creationDemplois == creationDemplois) &&
+            (identical(other.maintienDeLemploi, maintienDeLemploi) || other.maintienDeLemploi == maintienDeLemploi));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      demarcheId,
-      nom,
-      commentaire,
-      commentaireDate,
-      statut,
-      type,
-      const DeepCollectionEquality().hash(_fluxIds),
-      createdAt,
-      modifiedAt);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        demarcheId,
+        nom,
+        commentaire,
+        commentaireDate,
+        statut,
+        type,
+        const DeepCollectionEquality().hash(_fluxIds),
+        createdAt,
+        modifiedAt,
+        reductionTotaleDeLaConsommationMatiere,
+        reductionDeLaConsommationMatiereHorsInerte,
+        reductionTotaleDesDechets,
+        reductionDesDechetsNonInertes,
+        ameliorationDeLaValorisationDesDechets,
+        reductionDesConsommationsDenergie,
+        productionDenergieRenouvelable,
+        reductionDesConsommationsDeau,
+        reductionDesEmissionsDeGES,
+        realisationDeconomiesFinancieres,
+        chiffreDaffairesGenere,
+        investissementsRealises,
+        developpementDeNouvellesActivitesEtEntreprises,
+        creationDemplois,
+        maintienDeLemploi
+      ]);
 
   /// Create a copy of Synergie
   /// with the given fields replaced by the non-null parameter values.
@@ -4417,16 +4794,45 @@ class _$SynergieImpl implements _Synergie {
 
 abstract class _Synergie implements Synergie {
   factory _Synergie(
-      {required final String id,
-      @JsonKey(name: 'demarche_id') required final String demarcheId,
-      @JsonKey(name: 'nom') final String nom,
-      @JsonKey(name: 'commentaire') final String commentaire,
-      @JsonKey(name: 'commentaire_date') final String? commentaireDate,
-      final SynergieStatut statut,
-      final SynergieType type,
-      @JsonKey(name: 'flux_ids') final List<String> fluxIds,
-      @JsonKey(name: 'created_at') final String? createdAt,
-      @JsonKey(name: 'modified_at') final String? modifiedAt}) = _$SynergieImpl;
+          {required final String id,
+          @JsonKey(name: 'demarche_id') required final String demarcheId,
+          @JsonKey(name: 'nom') final String nom,
+          @JsonKey(name: 'commentaire') final String commentaire,
+          @JsonKey(name: 'commentaire_date') final String? commentaireDate,
+          final SynergieStatut statut,
+          final SynergieType type,
+          @JsonKey(name: 'flux_ids') final List<String> fluxIds,
+          @JsonKey(name: 'created_at') final String? createdAt,
+          @JsonKey(name: 'modified_at') final String? modifiedAt,
+          @JsonKey(name: 'reduction_totale_de_la_consommation_matiere')
+          final num reductionTotaleDeLaConsommationMatiere,
+          @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte')
+          final num reductionDeLaConsommationMatiereHorsInerte,
+          @JsonKey(name: 'reduction_totale_des_dechets')
+          final num reductionTotaleDesDechets,
+          @JsonKey(name: 'reduction_des_dechets_non_inertes')
+          final num reductionDesDechetsNonInertes,
+          @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets')
+          final num ameliorationDeLaValorisationDesDechets,
+          @JsonKey(name: 'reduction_des_consommations_d_energie')
+          final num reductionDesConsommationsDenergie,
+          @JsonKey(name: 'production_d_energie_renouvelable')
+          final num productionDenergieRenouvelable,
+          @JsonKey(name: 'reduction_des_consommations_d_eau')
+          final num reductionDesConsommationsDeau,
+          @JsonKey(name: 'reduction_des_emissions_de_ges')
+          final num reductionDesEmissionsDeGES,
+          @JsonKey(name: 'realisation_d_economies_financieres')
+          final num realisationDeconomiesFinancieres,
+          @JsonKey(name: 'chiffre_d_affaires_genere')
+          final num chiffreDaffairesGenere,
+          @JsonKey(name: 'investissements_realises')
+          final num investissementsRealises,
+          @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
+          final num developpementDeNouvellesActivitesEtEntreprises,
+          @JsonKey(name: 'creation_d_emplois') final num creationDemplois,
+          @JsonKey(name: 'maintien_de_l_emploi') final num maintienDeLemploi}) =
+      _$SynergieImpl;
 
   factory _Synergie.fromJson(Map<String, dynamic> json) =
       _$SynergieImpl.fromJson;
@@ -4457,446 +4863,59 @@ abstract class _Synergie implements Synergie {
   String? get createdAt;
   @override
   @JsonKey(name: 'modified_at')
-  String? get modifiedAt;
+  String? get modifiedAt; // Synergie indicateurs
+// https://www.reseau-synapse.org/library/h/fiche-zoom-n-4-reporting-eit-et-indicateurs-synergies.html
+  @override
+  @JsonKey(name: 'reduction_totale_de_la_consommation_matiere')
+  num get reductionTotaleDeLaConsommationMatiere;
+  @override
+  @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte')
+  num get reductionDeLaConsommationMatiereHorsInerte;
+  @override
+  @JsonKey(name: 'reduction_totale_des_dechets')
+  num get reductionTotaleDesDechets;
+  @override
+  @JsonKey(name: 'reduction_des_dechets_non_inertes')
+  num get reductionDesDechetsNonInertes;
+  @override
+  @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets')
+  num get ameliorationDeLaValorisationDesDechets;
+  @override
+  @JsonKey(name: 'reduction_des_consommations_d_energie')
+  num get reductionDesConsommationsDenergie;
+  @override
+  @JsonKey(name: 'production_d_energie_renouvelable')
+  num get productionDenergieRenouvelable;
+  @override
+  @JsonKey(name: 'reduction_des_consommations_d_eau')
+  num get reductionDesConsommationsDeau;
+  @override
+  @JsonKey(name: 'reduction_des_emissions_de_ges')
+  num get reductionDesEmissionsDeGES;
+  @override
+  @JsonKey(name: 'realisation_d_economies_financieres')
+  num get realisationDeconomiesFinancieres;
+  @override
+  @JsonKey(name: 'chiffre_d_affaires_genere')
+  num get chiffreDaffairesGenere;
+  @override
+  @JsonKey(name: 'investissements_realises')
+  num get investissementsRealises;
+  @override
+  @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
+  num get developpementDeNouvellesActivitesEtEntreprises;
+  @override
+  @JsonKey(name: 'creation_d_emplois')
+  num get creationDemplois;
+  @override
+  @JsonKey(name: 'maintien_de_l_emploi')
+  num get maintienDeLemploi;
 
   /// Create a copy of Synergie
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SynergieImplCopyWith<_$SynergieImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SynergieIndicateur _$SynergieIndicateurFromJson(Map<String, dynamic> json) {
-  return _SynergieIndicateur.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SynergieIndicateur {
-  String get demarcheId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'reduction_de_la_consommation_matiere')
-  num get reductionDeLaConsommationMatiere =>
-      throw _privateConstructorUsedError;
-  @JsonKey(name: 'amelioration_des_dechets')
-  num get reductionDesDechets => throw _privateConstructorUsedError;
-  @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant')
-  num get reductionDesConsommationsDEnergieHorsCarburant =>
-      throw _privateConstructorUsedError;
-  @JsonKey(name: 'production_d_energie_renouvelable')
-  num get productionDEnergieRenouvelable => throw _privateConstructorUsedError;
-  @JsonKey(name: 'reduction_des_consommations_d_eau')
-  num get reductionDesConsommationsDEau => throw _privateConstructorUsedError;
-  @JsonKey(name: 'reduction_des_emissions_de_ges')
-  num get reductionDesEmissionsDeGes => throw _privateConstructorUsedError;
-  @JsonKey(name: 'realisation_d_economies_financieres')
-  num get realisationDEconomiesFinancieres =>
-      throw _privateConstructorUsedError;
-  @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
-  num get developpementDeNouvellesActivitesEtEntreprises =>
-      throw _privateConstructorUsedError;
-  @JsonKey(name: 'developpement_et_maintien_de_l_emploi')
-  num get developpementEtMaintienDeLEmploi =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this SynergieIndicateur to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SynergieIndicateur
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SynergieIndicateurCopyWith<SynergieIndicateur> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SynergieIndicateurCopyWith<$Res> {
-  factory $SynergieIndicateurCopyWith(
-          SynergieIndicateur value, $Res Function(SynergieIndicateur) then) =
-      _$SynergieIndicateurCopyWithImpl<$Res, SynergieIndicateur>;
-  @useResult
-  $Res call(
-      {String demarcheId,
-      @JsonKey(name: 'reduction_de_la_consommation_matiere')
-      num reductionDeLaConsommationMatiere,
-      @JsonKey(name: 'amelioration_des_dechets') num reductionDesDechets,
-      @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant')
-      num reductionDesConsommationsDEnergieHorsCarburant,
-      @JsonKey(name: 'production_d_energie_renouvelable')
-      num productionDEnergieRenouvelable,
-      @JsonKey(name: 'reduction_des_consommations_d_eau')
-      num reductionDesConsommationsDEau,
-      @JsonKey(name: 'reduction_des_emissions_de_ges')
-      num reductionDesEmissionsDeGes,
-      @JsonKey(name: 'realisation_d_economies_financieres')
-      num realisationDEconomiesFinancieres,
-      @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
-      num developpementDeNouvellesActivitesEtEntreprises,
-      @JsonKey(name: 'developpement_et_maintien_de_l_emploi')
-      num developpementEtMaintienDeLEmploi});
-}
-
-/// @nodoc
-class _$SynergieIndicateurCopyWithImpl<$Res, $Val extends SynergieIndicateur>
-    implements $SynergieIndicateurCopyWith<$Res> {
-  _$SynergieIndicateurCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SynergieIndicateur
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? demarcheId = null,
-    Object? reductionDeLaConsommationMatiere = null,
-    Object? reductionDesDechets = null,
-    Object? reductionDesConsommationsDEnergieHorsCarburant = null,
-    Object? productionDEnergieRenouvelable = null,
-    Object? reductionDesConsommationsDEau = null,
-    Object? reductionDesEmissionsDeGes = null,
-    Object? realisationDEconomiesFinancieres = null,
-    Object? developpementDeNouvellesActivitesEtEntreprises = null,
-    Object? developpementEtMaintienDeLEmploi = null,
-  }) {
-    return _then(_value.copyWith(
-      demarcheId: null == demarcheId
-          ? _value.demarcheId
-          : demarcheId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reductionDeLaConsommationMatiere: null == reductionDeLaConsommationMatiere
-          ? _value.reductionDeLaConsommationMatiere
-          : reductionDeLaConsommationMatiere // ignore: cast_nullable_to_non_nullable
-              as num,
-      reductionDesDechets: null == reductionDesDechets
-          ? _value.reductionDesDechets
-          : reductionDesDechets // ignore: cast_nullable_to_non_nullable
-              as num,
-      reductionDesConsommationsDEnergieHorsCarburant: null ==
-              reductionDesConsommationsDEnergieHorsCarburant
-          ? _value.reductionDesConsommationsDEnergieHorsCarburant
-          : reductionDesConsommationsDEnergieHorsCarburant // ignore: cast_nullable_to_non_nullable
-              as num,
-      productionDEnergieRenouvelable: null == productionDEnergieRenouvelable
-          ? _value.productionDEnergieRenouvelable
-          : productionDEnergieRenouvelable // ignore: cast_nullable_to_non_nullable
-              as num,
-      reductionDesConsommationsDEau: null == reductionDesConsommationsDEau
-          ? _value.reductionDesConsommationsDEau
-          : reductionDesConsommationsDEau // ignore: cast_nullable_to_non_nullable
-              as num,
-      reductionDesEmissionsDeGes: null == reductionDesEmissionsDeGes
-          ? _value.reductionDesEmissionsDeGes
-          : reductionDesEmissionsDeGes // ignore: cast_nullable_to_non_nullable
-              as num,
-      realisationDEconomiesFinancieres: null == realisationDEconomiesFinancieres
-          ? _value.realisationDEconomiesFinancieres
-          : realisationDEconomiesFinancieres // ignore: cast_nullable_to_non_nullable
-              as num,
-      developpementDeNouvellesActivitesEtEntreprises: null ==
-              developpementDeNouvellesActivitesEtEntreprises
-          ? _value.developpementDeNouvellesActivitesEtEntreprises
-          : developpementDeNouvellesActivitesEtEntreprises // ignore: cast_nullable_to_non_nullable
-              as num,
-      developpementEtMaintienDeLEmploi: null == developpementEtMaintienDeLEmploi
-          ? _value.developpementEtMaintienDeLEmploi
-          : developpementEtMaintienDeLEmploi // ignore: cast_nullable_to_non_nullable
-              as num,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SynergieIndicateurImplCopyWith<$Res>
-    implements $SynergieIndicateurCopyWith<$Res> {
-  factory _$$SynergieIndicateurImplCopyWith(_$SynergieIndicateurImpl value,
-          $Res Function(_$SynergieIndicateurImpl) then) =
-      __$$SynergieIndicateurImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String demarcheId,
-      @JsonKey(name: 'reduction_de_la_consommation_matiere')
-      num reductionDeLaConsommationMatiere,
-      @JsonKey(name: 'amelioration_des_dechets') num reductionDesDechets,
-      @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant')
-      num reductionDesConsommationsDEnergieHorsCarburant,
-      @JsonKey(name: 'production_d_energie_renouvelable')
-      num productionDEnergieRenouvelable,
-      @JsonKey(name: 'reduction_des_consommations_d_eau')
-      num reductionDesConsommationsDEau,
-      @JsonKey(name: 'reduction_des_emissions_de_ges')
-      num reductionDesEmissionsDeGes,
-      @JsonKey(name: 'realisation_d_economies_financieres')
-      num realisationDEconomiesFinancieres,
-      @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
-      num developpementDeNouvellesActivitesEtEntreprises,
-      @JsonKey(name: 'developpement_et_maintien_de_l_emploi')
-      num developpementEtMaintienDeLEmploi});
-}
-
-/// @nodoc
-class __$$SynergieIndicateurImplCopyWithImpl<$Res>
-    extends _$SynergieIndicateurCopyWithImpl<$Res, _$SynergieIndicateurImpl>
-    implements _$$SynergieIndicateurImplCopyWith<$Res> {
-  __$$SynergieIndicateurImplCopyWithImpl(_$SynergieIndicateurImpl _value,
-      $Res Function(_$SynergieIndicateurImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SynergieIndicateur
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? demarcheId = null,
-    Object? reductionDeLaConsommationMatiere = null,
-    Object? reductionDesDechets = null,
-    Object? reductionDesConsommationsDEnergieHorsCarburant = null,
-    Object? productionDEnergieRenouvelable = null,
-    Object? reductionDesConsommationsDEau = null,
-    Object? reductionDesEmissionsDeGes = null,
-    Object? realisationDEconomiesFinancieres = null,
-    Object? developpementDeNouvellesActivitesEtEntreprises = null,
-    Object? developpementEtMaintienDeLEmploi = null,
-  }) {
-    return _then(_$SynergieIndicateurImpl(
-      demarcheId: null == demarcheId
-          ? _value.demarcheId
-          : demarcheId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reductionDeLaConsommationMatiere: null == reductionDeLaConsommationMatiere
-          ? _value.reductionDeLaConsommationMatiere
-          : reductionDeLaConsommationMatiere // ignore: cast_nullable_to_non_nullable
-              as num,
-      reductionDesDechets: null == reductionDesDechets
-          ? _value.reductionDesDechets
-          : reductionDesDechets // ignore: cast_nullable_to_non_nullable
-              as num,
-      reductionDesConsommationsDEnergieHorsCarburant: null ==
-              reductionDesConsommationsDEnergieHorsCarburant
-          ? _value.reductionDesConsommationsDEnergieHorsCarburant
-          : reductionDesConsommationsDEnergieHorsCarburant // ignore: cast_nullable_to_non_nullable
-              as num,
-      productionDEnergieRenouvelable: null == productionDEnergieRenouvelable
-          ? _value.productionDEnergieRenouvelable
-          : productionDEnergieRenouvelable // ignore: cast_nullable_to_non_nullable
-              as num,
-      reductionDesConsommationsDEau: null == reductionDesConsommationsDEau
-          ? _value.reductionDesConsommationsDEau
-          : reductionDesConsommationsDEau // ignore: cast_nullable_to_non_nullable
-              as num,
-      reductionDesEmissionsDeGes: null == reductionDesEmissionsDeGes
-          ? _value.reductionDesEmissionsDeGes
-          : reductionDesEmissionsDeGes // ignore: cast_nullable_to_non_nullable
-              as num,
-      realisationDEconomiesFinancieres: null == realisationDEconomiesFinancieres
-          ? _value.realisationDEconomiesFinancieres
-          : realisationDEconomiesFinancieres // ignore: cast_nullable_to_non_nullable
-              as num,
-      developpementDeNouvellesActivitesEtEntreprises: null ==
-              developpementDeNouvellesActivitesEtEntreprises
-          ? _value.developpementDeNouvellesActivitesEtEntreprises
-          : developpementDeNouvellesActivitesEtEntreprises // ignore: cast_nullable_to_non_nullable
-              as num,
-      developpementEtMaintienDeLEmploi: null == developpementEtMaintienDeLEmploi
-          ? _value.developpementEtMaintienDeLEmploi
-          : developpementEtMaintienDeLEmploi // ignore: cast_nullable_to_non_nullable
-              as num,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$SynergieIndicateurImpl implements _SynergieIndicateur {
-  const _$SynergieIndicateurImpl(
-      {required this.demarcheId,
-      @JsonKey(name: 'reduction_de_la_consommation_matiere')
-      this.reductionDeLaConsommationMatiere = 0,
-      @JsonKey(name: 'amelioration_des_dechets') this.reductionDesDechets = 0,
-      @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant')
-      this.reductionDesConsommationsDEnergieHorsCarburant = 0,
-      @JsonKey(name: 'production_d_energie_renouvelable')
-      this.productionDEnergieRenouvelable = 0,
-      @JsonKey(name: 'reduction_des_consommations_d_eau')
-      this.reductionDesConsommationsDEau = 0,
-      @JsonKey(name: 'reduction_des_emissions_de_ges')
-      this.reductionDesEmissionsDeGes = 0,
-      @JsonKey(name: 'realisation_d_economies_financieres')
-      this.realisationDEconomiesFinancieres = 0,
-      @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
-      this.developpementDeNouvellesActivitesEtEntreprises = 0,
-      @JsonKey(name: 'developpement_et_maintien_de_l_emploi')
-      this.developpementEtMaintienDeLEmploi = 0});
-
-  factory _$SynergieIndicateurImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SynergieIndicateurImplFromJson(json);
-
-  @override
-  final String demarcheId;
-  @override
-  @JsonKey(name: 'reduction_de_la_consommation_matiere')
-  final num reductionDeLaConsommationMatiere;
-  @override
-  @JsonKey(name: 'amelioration_des_dechets')
-  final num reductionDesDechets;
-  @override
-  @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant')
-  final num reductionDesConsommationsDEnergieHorsCarburant;
-  @override
-  @JsonKey(name: 'production_d_energie_renouvelable')
-  final num productionDEnergieRenouvelable;
-  @override
-  @JsonKey(name: 'reduction_des_consommations_d_eau')
-  final num reductionDesConsommationsDEau;
-  @override
-  @JsonKey(name: 'reduction_des_emissions_de_ges')
-  final num reductionDesEmissionsDeGes;
-  @override
-  @JsonKey(name: 'realisation_d_economies_financieres')
-  final num realisationDEconomiesFinancieres;
-  @override
-  @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
-  final num developpementDeNouvellesActivitesEtEntreprises;
-  @override
-  @JsonKey(name: 'developpement_et_maintien_de_l_emploi')
-  final num developpementEtMaintienDeLEmploi;
-
-  @override
-  String toString() {
-    return 'SynergieIndicateur(demarcheId: $demarcheId, reductionDeLaConsommationMatiere: $reductionDeLaConsommationMatiere, reductionDesDechets: $reductionDesDechets, reductionDesConsommationsDEnergieHorsCarburant: $reductionDesConsommationsDEnergieHorsCarburant, productionDEnergieRenouvelable: $productionDEnergieRenouvelable, reductionDesConsommationsDEau: $reductionDesConsommationsDEau, reductionDesEmissionsDeGes: $reductionDesEmissionsDeGes, realisationDEconomiesFinancieres: $realisationDEconomiesFinancieres, developpementDeNouvellesActivitesEtEntreprises: $developpementDeNouvellesActivitesEtEntreprises, developpementEtMaintienDeLEmploi: $developpementEtMaintienDeLEmploi)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SynergieIndicateurImpl &&
-            (identical(other.demarcheId, demarcheId) ||
-                other.demarcheId == demarcheId) &&
-            (identical(other.reductionDeLaConsommationMatiere, reductionDeLaConsommationMatiere) ||
-                other.reductionDeLaConsommationMatiere ==
-                    reductionDeLaConsommationMatiere) &&
-            (identical(other.reductionDesDechets, reductionDesDechets) ||
-                other.reductionDesDechets == reductionDesDechets) &&
-            (identical(other.reductionDesConsommationsDEnergieHorsCarburant,
-                    reductionDesConsommationsDEnergieHorsCarburant) ||
-                other.reductionDesConsommationsDEnergieHorsCarburant ==
-                    reductionDesConsommationsDEnergieHorsCarburant) &&
-            (identical(other.productionDEnergieRenouvelable, productionDEnergieRenouvelable) ||
-                other.productionDEnergieRenouvelable ==
-                    productionDEnergieRenouvelable) &&
-            (identical(other.reductionDesConsommationsDEau, reductionDesConsommationsDEau) ||
-                other.reductionDesConsommationsDEau ==
-                    reductionDesConsommationsDEau) &&
-            (identical(other.reductionDesEmissionsDeGes, reductionDesEmissionsDeGes) ||
-                other.reductionDesEmissionsDeGes ==
-                    reductionDesEmissionsDeGes) &&
-            (identical(other.realisationDEconomiesFinancieres, realisationDEconomiesFinancieres) ||
-                other.realisationDEconomiesFinancieres ==
-                    realisationDEconomiesFinancieres) &&
-            (identical(other.developpementDeNouvellesActivitesEtEntreprises,
-                    developpementDeNouvellesActivitesEtEntreprises) ||
-                other.developpementDeNouvellesActivitesEtEntreprises ==
-                    developpementDeNouvellesActivitesEtEntreprises) &&
-            (identical(other.developpementEtMaintienDeLEmploi, developpementEtMaintienDeLEmploi) ||
-                other.developpementEtMaintienDeLEmploi ==
-                    developpementEtMaintienDeLEmploi));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      demarcheId,
-      reductionDeLaConsommationMatiere,
-      reductionDesDechets,
-      reductionDesConsommationsDEnergieHorsCarburant,
-      productionDEnergieRenouvelable,
-      reductionDesConsommationsDEau,
-      reductionDesEmissionsDeGes,
-      realisationDEconomiesFinancieres,
-      developpementDeNouvellesActivitesEtEntreprises,
-      developpementEtMaintienDeLEmploi);
-
-  /// Create a copy of SynergieIndicateur
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SynergieIndicateurImplCopyWith<_$SynergieIndicateurImpl> get copyWith =>
-      __$$SynergieIndicateurImplCopyWithImpl<_$SynergieIndicateurImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SynergieIndicateurImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _SynergieIndicateur implements SynergieIndicateur {
-  const factory _SynergieIndicateur(
-      {required final String demarcheId,
-      @JsonKey(name: 'reduction_de_la_consommation_matiere')
-      final num reductionDeLaConsommationMatiere,
-      @JsonKey(name: 'amelioration_des_dechets') final num reductionDesDechets,
-      @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant')
-      final num reductionDesConsommationsDEnergieHorsCarburant,
-      @JsonKey(name: 'production_d_energie_renouvelable')
-      final num productionDEnergieRenouvelable,
-      @JsonKey(name: 'reduction_des_consommations_d_eau')
-      final num reductionDesConsommationsDEau,
-      @JsonKey(name: 'reduction_des_emissions_de_ges')
-      final num reductionDesEmissionsDeGes,
-      @JsonKey(name: 'realisation_d_economies_financieres')
-      final num realisationDEconomiesFinancieres,
-      @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
-      final num developpementDeNouvellesActivitesEtEntreprises,
-      @JsonKey(name: 'developpement_et_maintien_de_l_emploi')
-      final num developpementEtMaintienDeLEmploi}) = _$SynergieIndicateurImpl;
-
-  factory _SynergieIndicateur.fromJson(Map<String, dynamic> json) =
-      _$SynergieIndicateurImpl.fromJson;
-
-  @override
-  String get demarcheId;
-  @override
-  @JsonKey(name: 'reduction_de_la_consommation_matiere')
-  num get reductionDeLaConsommationMatiere;
-  @override
-  @JsonKey(name: 'amelioration_des_dechets')
-  num get reductionDesDechets;
-  @override
-  @JsonKey(name: 'reduction_des_consommations_d_energie_hors_carburant')
-  num get reductionDesConsommationsDEnergieHorsCarburant;
-  @override
-  @JsonKey(name: 'production_d_energie_renouvelable')
-  num get productionDEnergieRenouvelable;
-  @override
-  @JsonKey(name: 'reduction_des_consommations_d_eau')
-  num get reductionDesConsommationsDEau;
-  @override
-  @JsonKey(name: 'reduction_des_emissions_de_ges')
-  num get reductionDesEmissionsDeGes;
-  @override
-  @JsonKey(name: 'realisation_d_economies_financieres')
-  num get realisationDEconomiesFinancieres;
-  @override
-  @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
-  num get developpementDeNouvellesActivitesEtEntreprises;
-  @override
-  @JsonKey(name: 'developpement_et_maintien_de_l_emploi')
-  num get developpementEtMaintienDeLEmploi;
-
-  /// Create a copy of SynergieIndicateur
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SynergieIndicateurImplCopyWith<_$SynergieIndicateurImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
