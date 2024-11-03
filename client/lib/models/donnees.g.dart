@@ -459,3 +459,29 @@ Map<String, dynamic> _$$ClassificationSynapseImplToJson(
       'unite': instance.unite,
       'tags': instance.tags,
     };
+
+_$AtelierRencontresImpl _$$AtelierRencontresImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AtelierRencontresImpl(
+      atelierId: json['atelier_id'] as String,
+      demarcheId: json['demarche_id'] as String,
+      excludedParticipantIds:
+          (json['excluded_participant_ids'] as List<dynamic>?)
+                  ?.map((e) => e as String)
+                  .toList() ??
+              const [],
+      turnCount: json['turn_count'] as num? ?? 10,
+      tableCount: json['table_count'] as num? ?? 10,
+      tableSeatCount: json['table_seat_count'] as num? ?? 2,
+    );
+
+Map<String, dynamic> _$$AtelierRencontresImplToJson(
+        _$AtelierRencontresImpl instance) =>
+    <String, dynamic>{
+      'atelier_id': instance.atelierId,
+      'demarche_id': instance.demarcheId,
+      'excluded_participant_ids': instance.excludedParticipantIds,
+      'turn_count': instance.turnCount,
+      'table_count': instance.tableCount,
+      'table_seat_count': instance.tableSeatCount,
+    };

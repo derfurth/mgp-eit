@@ -5168,3 +5168,306 @@ abstract class _ClassificationSynapse implements ClassificationSynapse {
   _$$ClassificationSynapseImplCopyWith<_$ClassificationSynapseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+AtelierRencontres _$AtelierRencontresFromJson(Map<String, dynamic> json) {
+  return _AtelierRencontres.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AtelierRencontres {
+  @JsonKey(name: 'atelier_id')
+  String get atelierId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'demarche_id')
+  String get demarcheId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'excluded_participant_ids')
+  List<String> get excludedParticipantIds =>
+      throw _privateConstructorUsedError; // ScheduleConfiguration
+// ----
+  @JsonKey(name: 'turn_count')
+  num get turnCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'table_count')
+  num get tableCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'table_seat_count')
+  num get tableSeatCount => throw _privateConstructorUsedError;
+
+  /// Serializes this AtelierRencontres to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of AtelierRencontres
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AtelierRencontresCopyWith<AtelierRencontres> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AtelierRencontresCopyWith<$Res> {
+  factory $AtelierRencontresCopyWith(
+          AtelierRencontres value, $Res Function(AtelierRencontres) then) =
+      _$AtelierRencontresCopyWithImpl<$Res, AtelierRencontres>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'atelier_id') String atelierId,
+      @JsonKey(name: 'demarche_id') String demarcheId,
+      @JsonKey(name: 'excluded_participant_ids')
+      List<String> excludedParticipantIds,
+      @JsonKey(name: 'turn_count') num turnCount,
+      @JsonKey(name: 'table_count') num tableCount,
+      @JsonKey(name: 'table_seat_count') num tableSeatCount});
+}
+
+/// @nodoc
+class _$AtelierRencontresCopyWithImpl<$Res, $Val extends AtelierRencontres>
+    implements $AtelierRencontresCopyWith<$Res> {
+  _$AtelierRencontresCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of AtelierRencontres
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? atelierId = null,
+    Object? demarcheId = null,
+    Object? excludedParticipantIds = null,
+    Object? turnCount = null,
+    Object? tableCount = null,
+    Object? tableSeatCount = null,
+  }) {
+    return _then(_value.copyWith(
+      atelierId: null == atelierId
+          ? _value.atelierId
+          : atelierId // ignore: cast_nullable_to_non_nullable
+              as String,
+      demarcheId: null == demarcheId
+          ? _value.demarcheId
+          : demarcheId // ignore: cast_nullable_to_non_nullable
+              as String,
+      excludedParticipantIds: null == excludedParticipantIds
+          ? _value.excludedParticipantIds
+          : excludedParticipantIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      turnCount: null == turnCount
+          ? _value.turnCount
+          : turnCount // ignore: cast_nullable_to_non_nullable
+              as num,
+      tableCount: null == tableCount
+          ? _value.tableCount
+          : tableCount // ignore: cast_nullable_to_non_nullable
+              as num,
+      tableSeatCount: null == tableSeatCount
+          ? _value.tableSeatCount
+          : tableSeatCount // ignore: cast_nullable_to_non_nullable
+              as num,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AtelierRencontresImplCopyWith<$Res>
+    implements $AtelierRencontresCopyWith<$Res> {
+  factory _$$AtelierRencontresImplCopyWith(_$AtelierRencontresImpl value,
+          $Res Function(_$AtelierRencontresImpl) then) =
+      __$$AtelierRencontresImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'atelier_id') String atelierId,
+      @JsonKey(name: 'demarche_id') String demarcheId,
+      @JsonKey(name: 'excluded_participant_ids')
+      List<String> excludedParticipantIds,
+      @JsonKey(name: 'turn_count') num turnCount,
+      @JsonKey(name: 'table_count') num tableCount,
+      @JsonKey(name: 'table_seat_count') num tableSeatCount});
+}
+
+/// @nodoc
+class __$$AtelierRencontresImplCopyWithImpl<$Res>
+    extends _$AtelierRencontresCopyWithImpl<$Res, _$AtelierRencontresImpl>
+    implements _$$AtelierRencontresImplCopyWith<$Res> {
+  __$$AtelierRencontresImplCopyWithImpl(_$AtelierRencontresImpl _value,
+      $Res Function(_$AtelierRencontresImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AtelierRencontres
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? atelierId = null,
+    Object? demarcheId = null,
+    Object? excludedParticipantIds = null,
+    Object? turnCount = null,
+    Object? tableCount = null,
+    Object? tableSeatCount = null,
+  }) {
+    return _then(_$AtelierRencontresImpl(
+      atelierId: null == atelierId
+          ? _value.atelierId
+          : atelierId // ignore: cast_nullable_to_non_nullable
+              as String,
+      demarcheId: null == demarcheId
+          ? _value.demarcheId
+          : demarcheId // ignore: cast_nullable_to_non_nullable
+              as String,
+      excludedParticipantIds: null == excludedParticipantIds
+          ? _value._excludedParticipantIds
+          : excludedParticipantIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      turnCount: null == turnCount
+          ? _value.turnCount
+          : turnCount // ignore: cast_nullable_to_non_nullable
+              as num,
+      tableCount: null == tableCount
+          ? _value.tableCount
+          : tableCount // ignore: cast_nullable_to_non_nullable
+              as num,
+      tableSeatCount: null == tableSeatCount
+          ? _value.tableSeatCount
+          : tableSeatCount // ignore: cast_nullable_to_non_nullable
+              as num,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AtelierRencontresImpl implements _AtelierRencontres {
+  _$AtelierRencontresImpl(
+      {@JsonKey(name: 'atelier_id') required this.atelierId,
+      @JsonKey(name: 'demarche_id') required this.demarcheId,
+      @JsonKey(name: 'excluded_participant_ids')
+      final List<String> excludedParticipantIds = const [],
+      @JsonKey(name: 'turn_count') this.turnCount = 10,
+      @JsonKey(name: 'table_count') this.tableCount = 10,
+      @JsonKey(name: 'table_seat_count') this.tableSeatCount = 2})
+      : _excludedParticipantIds = excludedParticipantIds;
+
+  factory _$AtelierRencontresImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AtelierRencontresImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'atelier_id')
+  final String atelierId;
+  @override
+  @JsonKey(name: 'demarche_id')
+  final String demarcheId;
+  final List<String> _excludedParticipantIds;
+  @override
+  @JsonKey(name: 'excluded_participant_ids')
+  List<String> get excludedParticipantIds {
+    if (_excludedParticipantIds is EqualUnmodifiableListView)
+      return _excludedParticipantIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_excludedParticipantIds);
+  }
+
+// ScheduleConfiguration
+// ----
+  @override
+  @JsonKey(name: 'turn_count')
+  final num turnCount;
+  @override
+  @JsonKey(name: 'table_count')
+  final num tableCount;
+  @override
+  @JsonKey(name: 'table_seat_count')
+  final num tableSeatCount;
+
+  @override
+  String toString() {
+    return 'AtelierRencontres(atelierId: $atelierId, demarcheId: $demarcheId, excludedParticipantIds: $excludedParticipantIds, turnCount: $turnCount, tableCount: $tableCount, tableSeatCount: $tableSeatCount)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AtelierRencontresImpl &&
+            (identical(other.atelierId, atelierId) ||
+                other.atelierId == atelierId) &&
+            (identical(other.demarcheId, demarcheId) ||
+                other.demarcheId == demarcheId) &&
+            const DeepCollectionEquality().equals(
+                other._excludedParticipantIds, _excludedParticipantIds) &&
+            (identical(other.turnCount, turnCount) ||
+                other.turnCount == turnCount) &&
+            (identical(other.tableCount, tableCount) ||
+                other.tableCount == tableCount) &&
+            (identical(other.tableSeatCount, tableSeatCount) ||
+                other.tableSeatCount == tableSeatCount));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      atelierId,
+      demarcheId,
+      const DeepCollectionEquality().hash(_excludedParticipantIds),
+      turnCount,
+      tableCount,
+      tableSeatCount);
+
+  /// Create a copy of AtelierRencontres
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AtelierRencontresImplCopyWith<_$AtelierRencontresImpl> get copyWith =>
+      __$$AtelierRencontresImplCopyWithImpl<_$AtelierRencontresImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AtelierRencontresImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AtelierRencontres implements AtelierRencontres {
+  factory _AtelierRencontres(
+          {@JsonKey(name: 'atelier_id') required final String atelierId,
+          @JsonKey(name: 'demarche_id') required final String demarcheId,
+          @JsonKey(name: 'excluded_participant_ids')
+          final List<String> excludedParticipantIds,
+          @JsonKey(name: 'turn_count') final num turnCount,
+          @JsonKey(name: 'table_count') final num tableCount,
+          @JsonKey(name: 'table_seat_count') final num tableSeatCount}) =
+      _$AtelierRencontresImpl;
+
+  factory _AtelierRencontres.fromJson(Map<String, dynamic> json) =
+      _$AtelierRencontresImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'atelier_id')
+  String get atelierId;
+  @override
+  @JsonKey(name: 'demarche_id')
+  String get demarcheId;
+  @override
+  @JsonKey(name: 'excluded_participant_ids')
+  List<String> get excludedParticipantIds; // ScheduleConfiguration
+// ----
+  @override
+  @JsonKey(name: 'turn_count')
+  num get turnCount;
+  @override
+  @JsonKey(name: 'table_count')
+  num get tableCount;
+  @override
+  @JsonKey(name: 'table_seat_count')
+  num get tableSeatCount;
+
+  /// Create a copy of AtelierRencontres
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AtelierRencontresImplCopyWith<_$AtelierRencontresImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

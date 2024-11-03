@@ -500,3 +500,22 @@ class ClassificationSynapse with _$ClassificationSynapse {
 }
 
 typedef Synapse = UnmodifiableListView<ClassificationSynapse>;
+
+
+@freezed
+class AtelierRencontres with _$AtelierRencontres {
+  factory AtelierRencontres({
+    @JsonKey(name: 'atelier_id') required String atelierId,
+    @JsonKey(name: 'demarche_id') required String demarcheId,
+    @JsonKey(name: 'excluded_participant_ids') @Default([]) List<String> excludedParticipantIds,
+
+    // ScheduleConfiguration
+    // ----
+    @JsonKey(name: 'turn_count') @Default(10) num turnCount,
+    @JsonKey(name: 'table_count') @Default(10) num tableCount,
+    @JsonKey(name: 'table_seat_count') @Default(2) num tableSeatCount,
+  }) = _AtelierRencontres;
+
+  factory AtelierRencontres.fromJson(Map<String, dynamic> json) =>
+      _$AtelierRencontresFromJson(json);
+}
