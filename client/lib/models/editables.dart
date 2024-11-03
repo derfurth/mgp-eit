@@ -751,3 +751,43 @@ class EditableSynergie extends Editable<Synergie> {
         update(value.copyWith(maintienDeLemploi: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 }
+
+/// La configuration de la partie rencontre de l'atelier.
+///
+/// Éditeur d'atelier.
+class EditableAtelierRencontres extends Editable<AtelierRencontres> {
+  EditableAtelierRencontres(super.rencontres);
+
+  void updateExcludedParticipantIds(List<String> ids) =>
+      update(value.copyWith(excludedParticipantIds: ids));
+
+  late final turnCount = Field<String?>(
+    label: 'Nombre de tours',
+    validator: IntegerValidator(
+      errorText: 'la quantité doit être un nombre de tours.',
+    ),
+    get: () => value.turnCount.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(turnCount: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final tableCount = Field<String?>(
+    label: 'Nombre de tables',
+    validator: IntegerValidator(
+      errorText: 'la quantité doit être un nombre de tables.',
+    ),
+    get: () => value.tableCount.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(tableCount: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+
+  late final tableSeatCount = Field<String?>(
+    label: 'Nombre de sièges par table',
+    validator: IntegerValidator(
+      errorText: 'la quantité doit être un nombre de sièges.',
+    ),
+    get: () => value.tableSeatCount.toString(),
+    update: (fieldValue) =>
+        update(value.copyWith(tableSeatCount: fieldValue == null ? 0 : num.parse(fieldValue))),
+  );
+}
