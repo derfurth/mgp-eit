@@ -343,6 +343,10 @@ class _SynergieSaveBar extends StatelessWidget {
         ElevatedButton(
           onPressed: () async {
             await blone.save(synergie.value);
+
+            // ferme la synergie
+            Navigator.pop(context, 'Supprimer');
+
             ShowMessageCommand()
                 .execute(const UIMessage.save('Synergie enregistrée'));
           },

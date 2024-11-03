@@ -14,7 +14,9 @@ Future<void> showNewSynergieUsingSelectionDialog(
 ) {
   final Demarche demarche = context.read();
   final SynergieCollectionBlone synergies = context.read();
-  final synergie = synergies.create(demarcheId: demarche.id);
+  final synergie = synergies
+      .create(demarcheId: demarche.id)
+      .copyWith(fluxIds: [for (final fiche in selection) fiche.flux.id]);
 
   final snippet = SynergieSnippet(
     synergie: synergie,
