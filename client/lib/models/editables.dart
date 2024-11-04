@@ -761,6 +761,11 @@ class EditableAtelierRencontres extends Editable<AtelierRencontres> {
   void updateExcludedParticipantIds(List<String> ids) =>
       update(value.copyWith(excludedParticipantIds: ids));
 
+  void excludeParticipant(String id) {
+    final ids = value.excludedParticipantIds.toSet()..add(id);
+    updateExcludedParticipantIds(ids.toList());
+  }
+
   late final turnCount = Field<String?>(
     label: 'Nombre de tours',
     validator: IntegerValidator(

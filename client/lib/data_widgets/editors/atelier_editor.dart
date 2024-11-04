@@ -2,14 +2,16 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:collection_providers/collection_providers.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Table;
 import 'package:lumberdash/lumberdash.dart';
 import 'package:mgp_client/blones/collection/entreprise_collection_blones.dart';
 import 'package:mgp_client/blones/collection/fiche_collection_blone.dart';
 import 'package:mgp_client/components/future_loader.dart';
+import 'package:mgp_client/models/editable.dart';
 import 'package:mgp_client/models/schedule.dart';
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:tuple/tuple.dart';
 
 import '../../blones/auth_blone.dart';
@@ -285,7 +287,8 @@ class AtelierParticipantLiveView extends StatelessWidget {
                   OutlinedButton.icon(
                     onPressed: () async {
                       final RapportBlone rapport = context.read();
-                      final csv = await rapport.fiches(demarche.id, atelier.atelier.id);
+                      final csv =
+                          await rapport.fiches(demarche.id, atelier.atelier.id);
                       DownloadCommand().execute(data: csv);
                     },
                     icon: const Icon(Icons.download),
@@ -679,30 +682,259 @@ class ScheduleEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FicheCollectionBlone fiches = context.watch();
-    final configuration =
-        ScheduleConfiguration(turnCount: 10, tableCount: 4, tableSeatCount: 4);
+
+    // todo get from a new blone.
+    final rencontres = AtelierRencontres(
+      demarcheId: atelier.atelier.demarcheId,
+      atelierId: atelier.atelier.id,
+    );
 
     return FutureLoader(
       future: fiches.getSnippetsForAtelier(atelierId: atelier.atelier.id),
       builder: (context, snapshot) {
         final fiches = snapshot.data;
-        final cards = [
-          for (final fiche in fiches)
-            ScheduleCard(
-              participant: fiche.contact.personne.displayName,
-              ressource: fiche.flux.resourceNom,
-              offre: fiche.flux.direction == FluxDirection.sortant,
-            )
-        ];
-        final schedule = Schedule(configuration: configuration, cards: cards);
+        final contacts = fiches
+            .map((fiche) => fiche.contact)
+            .groupFoldBy((snippet) => snippet.contact.id, (_, e) => e);
 
-        return FutureLoader(
-          future: schedule.compute(),
-          builder: (context, snapshot) {
-            return Text('$configuration\n\n$schedule');
-          },
+        return ChangeNotifierProvider<EditableAtelierRencontres>(
+          create: (_) => EditableAtelierRencontres(rencontres),
+          child: Builder(builder: (context) {
+            final EditableAtelierRencontres editable = context.watch();
+            final configuration = ScheduleConfiguration(
+              turnCount: editable.value.turnCount.toInt(),
+              tableCount: editable.value.tableCount.toInt(),
+              tableSeatCount: editable.value.tableSeatCount.toInt(),
+            );
+
+            final nonExcludedFiches = fiches.whereNot(
+              (fiche) => editable.value.excludedParticipantIds
+                  .contains(fiche.contact.contact.id),
+            );
+
+            final cards = [
+              for (final fiche in nonExcludedFiches)
+                ScheduleCard(
+                  participant: fiche.contact.contact.id,
+                  ressource: fiche.flux.resourceNom,
+                  offre: fiche.flux.direction == FluxDirection.sortant,
+                )
+            ];
+            final schedule =
+                Schedule(configuration: configuration, cards: cards);
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ContactAddBox(
+                  title: const Text('Participants exclus'),
+                  initialSelection: editable.value.excludedParticipantIds
+                      .map((id) => contacts[id])
+                      .whereNotNull()
+                      .toList(),
+                  onSelected: (selected) {
+                    editable.updateExcludedParticipantIds(
+                        selected.map((e) => e.contact.id).toList());
+                  },
+                ),
+                Leading.vSmall(),
+                Heading.h5('Configuration des tables'),
+                Leading.vHair(),
+                Row(
+                  children: [
+                    editable.turnCount.toTextFormField().expanded(),
+                    Leading.hSmall(),
+                    editable.tableCount.toTextFormField().expanded(),
+                    Leading.hSmall(),
+                    editable.tableSeatCount.toTextFormField().expanded(),
+                  ],
+                ),
+                Leading.vSmall(),
+                ScheduleDataGrid(
+                    schedule: schedule, editable: editable, contacts: contacts),
+              ],
+            );
+          }),
         );
       },
     );
+  }
+}
+
+class ScheduleDataGrid extends StatelessWidget {
+  final Schedule schedule;
+  final EditableAtelierRencontres editable;
+  final Map<String, ContactSnippet> contacts;
+
+  const ScheduleDataGrid({
+    super.key,
+    required this.schedule,
+    required this.editable,
+    required this.contacts,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final customColumnSizer = ScheduleColumnSizer(contacts: contacts);
+
+    return FutureLoader(
+      future: schedule.compute(),
+      builder: (context, snapshot) {
+        return SfDataGrid(
+          columnSizer: customColumnSizer,
+          columnWidthMode: ColumnWidthMode.lastColumnFill,
+          rowHeight: 24.0 + 32.0 * schedule.configuration.tableSeatCount,
+          source: ScheduleDataSource(
+            schedule: schedule,
+            editable: editable,
+            contacts: contacts,
+          ),
+          columns: [
+            GridColumn(
+              columnName: 'Table',
+              label: Container(
+                padding: const EdgeInsets.all(8.0),
+                alignment: Alignment.centerLeft,
+                child: const Text(''),
+              ),
+            ),
+            ...List.generate(
+                schedule.turns.length,
+                (i) => GridColumn(
+                      columnName: 'Tour ${i + 1}',
+                      label: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        alignment: Alignment.centerLeft,
+                        child: Text('Tour ${i + 1}'),
+                      ),
+                    )),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class ScheduleDataSource extends DataGridSource {
+  final Schedule schedule;
+  final EditableAtelierRencontres editable;
+  final Map<String, ContactSnippet> contacts;
+
+  List<DataGridRow> _rows = [];
+
+  ScheduleDataSource(
+      {required this.schedule,
+      required this.editable,
+      required this.contacts}) {
+    final maxTables = schedule.turns.map((turn) => turn.tables.length).max;
+
+    _rows = List<DataGridRow>.generate(
+      maxTables,
+      (tableIndex) => DataGridRow(
+        // For every row or table:
+        cells: [
+          // the first column shows the table name
+          DataGridCell<String>(
+            columnName: 'Table',
+            value: 'Table ${tableIndex + 1}',
+          ),
+          // the rest show tables
+          ...List.generate(
+            schedule.turns.length,
+            // for every turn or column:
+            (turnIndex) {
+              // get the table
+              final table = schedule.getBy(turnIndex, tableIndex);
+              if (table == null) {
+                return DataGridCell<String>(
+                  columnName: 'Tour ${turnIndex + 1}',
+                  value: '-',
+                );
+              } else {
+                return DataGridCell<Table>(
+                  columnName: 'Tour ${turnIndex + 1}',
+                  value: table,
+                );
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  List<DataGridRow> get rows => _rows;
+
+  @override
+  DataGridRowAdapter buildRow(DataGridRow row) {
+    return DataGridRowAdapter(
+      cells: row.getCells().map<Widget>((dataGridCell) {
+        final value = dataGridCell.value;
+        if (value is Table) {
+          final table = value;
+          return Container(
+            padding: const EdgeInsets.all(8.0),
+            constraints: const BoxConstraints(maxWidth: 100),
+            alignment: Alignment.topLeft,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('${table.ressources.join(', ')}:'),
+                Leading.vHair(),
+                ...table.participants
+                    .map((id) => contacts[id])
+                    .whereNotNull()
+                    .map((snippet) => Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text: '${snippet.personne.displayName} ',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              TextSpan(
+                                text:
+                                    snippet.entreprise.entreprise.denomination,
+                              ),
+                            ],
+                          ),
+                        )),
+              ],
+            ),
+          );
+        }
+        return Container(
+          padding: const EdgeInsets.all(8.0),
+          alignment: Alignment.centerLeft,
+          child: Text(value.toString()),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class ScheduleColumnSizer extends ColumnSizer {
+  final Map<String, ContactSnippet> contacts;
+
+  ScheduleColumnSizer({required this.contacts});
+
+  @override
+  double computeCellWidth(
+    GridColumn column,
+    DataGridRow row,
+    Object? cellValue,
+    TextStyle textStyle,
+  ) {
+    if (cellValue is Table) {
+      final textValue = cellValue.participants
+          .map((id) => contacts[id])
+          .whereNotNull()
+          .map((snippet) =>
+              '${snippet.personne.displayName} ${snippet.entreprise.entreprise.denomination}')
+          .join('\n');
+      return super.computeCellWidth(column, row, textValue, textStyle);
+    }
+    return super.computeCellWidth(column, row, cellValue, textStyle);
   }
 }
