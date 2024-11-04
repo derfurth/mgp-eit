@@ -90,6 +90,14 @@ class Schedule {
     ressources = cards.map((s) => s.ressource).toSet().toList();
   }
 
+  /// Get a table by turn and table index, useful for grid display.
+  Table? getBy(int turnIndex, int tableIndex) {
+    final turn = turns.elementAtOrNull(turnIndex);
+    if (turn == null) return null;
+    return turn.tables.elementAtOrNull(tableIndex);
+  }
+
+  /// Compute the [tables] and [turns] given the current [configuration].
   Future<List<Turn>> compute() async {
     // Group participants by resource.
     for (final ressource in ressources) {
@@ -156,7 +164,7 @@ class Schedule {
     // Keep the turns with the most tables.
     this.turns
       ..clear()
-      ..addAll(turns.take(configuration.tableCount));
+      ..addAll(turns.take(configuration.turnCount));
     return this.turns;
   }
 
