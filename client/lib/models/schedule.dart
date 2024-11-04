@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 
 /// The configuration for the schedule.
@@ -99,45 +101,84 @@ class Schedule {
 
   /// Compute the [tables] and [turns] given the current [configuration].
   Future<List<Turn>> compute() async {
+    makeTables();
+    mergeDuplicates();
+    makeTurns();
+
+    // Keep the turns with the most tables.
+    return turns.take(configuration.turnCount).toList();
+  }
+
+  /// Compute the participants distribution over tables.
+  void makeTables() {
+    // The maximum number of participants around a table
+    final seats = configuration.tableSeatCount;
+    if (seats < 2) return;
+
+    // For a stable table layout.
+    final random = Random(seats);
+
     // Group participants by resource.
     for (final ressource in ressources) {
-      final participants = cards
-          .where((card) => card.ressource == ressource)
-          .map((card) => card.participant)
-          .toSet();
+      final ressourceCards =
+          cards.where((card) => card.ressource == ressource).toSet();
 
-      // A table should have at least one participant.
-      if (participants.length <= 1) {
-        continue;
-      }
-      // Our participants can all fit around a table.
-      else if (participants.length <= configuration.tableSeatCount) {
-        tables.add(Table(participants: participants, ressources: {ressource}));
-      }
-      // They do not fit around a table so we need to split them around.
-      else {
-        int seatCount = configuration.tableSeatCount;
-        while (participants.length % seatCount == 1 && seatCount > 1) {
-          seatCount--;
+      final offers = ressourceCards.where((card) => card.offre).toList();
+      final needs = ressourceCards.where((card) => card.besoin).toList();
+
+      // we cannot form a couple of participants over ressources.
+      if (needs.isEmpty || offers.isEmpty) continue;
+
+      // Our ressources tables.
+      final ressourceTables = <Table>[];
+      final needsPerOffer = max(1, needs.length / ~offers.length).toInt();
+
+      while (needs.isNotEmpty && offers.isNotEmpty) {
+        if (offers.isEmpty) {
+          offers.add(ressourceCards
+              .where((card) => card.offre)
+              .sample(1, random)
+              .first);
         }
-        tables
-            .addAll(participants.slices(seatCount).map((participants) => Table(
-                  participants: participants.toSet(),
-                  ressources: {ressource},
-                )));
-      }
-    }
+        if (needs.isEmpty) {
+          needs.addAll(ressourceCards
+              .where((card) => card.besoin)
+              .sample(min(seats - 1, needsPerOffer), random));
+        }
+        final tableOffers = offers.sample(1, random);
+        final tableNeeds = needs.sample(min(seats - 1, needsPerOffer), random);
 
-    // Merge tables with the same participants.
+        needs.removeWhere((card) => tableNeeds.contains(card));
+        offers.removeWhere((card) => tableOffers.contains(card));
+
+        ressourceTables.add(
+          Table(
+              participants: [
+                ...tableOffers,
+                ...tableNeeds,
+              ].map((card) => card.participant).toSet(),
+              ressources: {ressource}),
+        );
+      }
+
+      tables.addAll(ressourceTables);
+    }
+  }
+
+  // Merge tables with the same participants.
+  void mergeDuplicates() {
+    const eq = SetEquality(IdentityEquality());
     for (final table in tables) {
       final duplicates = tables.where((other) =>
-          other != table && other.participants == table.participants);
+          other != table && eq.equals(other.participants, table.participants));
       for (final duplicate in duplicates) {
         table.ressources.addAll(duplicate.ressources);
         tables.remove(duplicate);
       }
     }
+  }
 
+  void makeTurns() {
     // Sort tables by the number of participants in descending order.
     tables
         .sort((a, b) => b.participants.length.compareTo(a.participants.length));
@@ -165,7 +206,6 @@ class Schedule {
     this.turns
       ..clear()
       ..addAll(turns.take(configuration.turnCount));
-    return this.turns;
   }
 
   @override
