@@ -63,6 +63,7 @@ dependencies:
   async: ^2.11.0
   quiver: ^3.2.2
   collection_providers: ^0.2.2
+  syncfusion_flutter_datagrid: ^27.1.57
 
 dev_dependencies:
   flutter_test:
