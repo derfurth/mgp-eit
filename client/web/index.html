@@ -32,7 +32,36 @@
         "download",
         function (e) {
             let data = e.detail;
-            let name = 'export.csv';
+            let name = e.name ?? 'export.csv';
+            if (window.navigator.msSaveBlob) {
+                let byteString = atob(data.split(',')[1]);
+                let mimeString = data.split(',')[0].split(':')[1].split(';')[0]
+                let ab = new ArrayBuffer(byteString.length);
+                let ia = new Uint8Array(ab);
+
+                for (let i = 0; i < byteString.length; i++) {
+                    ia[i] = byteString.charCodeAt(i);
+                }
+
+                let blob = new Blob([ab], {type: mimeString});
+                window.navigator.msSaveBlob(blob, name);
+                return;
+            }
+            let link = document.createElement("a");
+            link.download = name;
+            link.href = data;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        },
+    );
+</script>
+<script>
+    window.addEventListener(
+        "download_excel",
+        function (e) {
+            let data = e.detail;
+            let name = e.name ?? 'export.xlsx';
             if (window.navigator.msSaveBlob) {
                 let byteString = atob(data.split(',')[1]);
                 let mimeString = data.split(',')[0].split(':')[1].split(';')[0]

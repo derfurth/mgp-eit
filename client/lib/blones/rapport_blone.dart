@@ -1,5 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../commands/download_command.dart';
 import '../models/donnees.dart';
 import '../models/snippets.dart';

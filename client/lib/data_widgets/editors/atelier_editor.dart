@@ -12,6 +12,7 @@ import 'package:mgp_client/models/schedule.dart';
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:syncfusion_flutter_datagrid_export/export.dart';
 import 'package:tuple/tuple.dart';
 
 import '../../blones/auth_blone.dart';
@@ -765,8 +766,9 @@ class ScheduleDataGrid extends StatelessWidget {
   final Schedule schedule;
   final EditableAtelierRencontres editable;
   final Map<String, ContactSnippet> contacts;
+  final dataGridKey = GlobalKey<SfDataGridState>();
 
-  const ScheduleDataGrid({
+  ScheduleDataGrid({
     super.key,
     required this.schedule,
     required this.editable,
@@ -777,40 +779,64 @@ class ScheduleDataGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final customColumnSizer = ScheduleColumnSizer(contacts: contacts);
 
-    return FutureLoader(
-      future: schedule.compute(),
-      builder: (context, snapshot) {
-        return SfDataGrid(
-          columnSizer: customColumnSizer,
-          columnWidthMode: ColumnWidthMode.lastColumnFill,
-          rowHeight: 24.0 + 32.0 * schedule.configuration.tableSeatCount,
-          source: ScheduleDataSource(
-            schedule: schedule,
-            editable: editable,
-            contacts: contacts,
-          ),
-          columns: [
-            GridColumn(
-              columnName: 'Table',
-              label: Container(
-                padding: const EdgeInsets.all(8.0),
-                alignment: Alignment.centerLeft,
-                child: const Text(''),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Leading.vHair(),
+        OutlinedButton.icon(
+          onPressed: () async {
+            await ExportGridToExcelCommand().execute(
+              state: dataGridKey.currentState!,
+              contacts: contacts,
+            );
+          },
+          icon: const Icon(Icons.download),
+          label: const Text('Tableau des rencontres'),
+        ),
+        Leading.vHair(),
+        FutureLoader(
+          future: schedule.compute(),
+          builder: (context, snapshot) {
+            final maxTables = schedule.turns.map((turn) => turn.tables.length).maxOrNull ?? 0;
+            final rowHeight = 24.0 + 20.0 * schedule.configuration.tableSeatCount;
+            return SizedBox(
+              height: rowHeight * (min(maxTables, 8) + 1),
+              child: SfDataGrid(
+                key: dataGridKey,
+                columnSizer: customColumnSizer,
+                columnWidthMode: ColumnWidthMode.auto,
+                rowHeight: rowHeight,
+                frozenColumnsCount: 1,
+                source: ScheduleDataSource(
+                  schedule: schedule,
+                  editable: editable,
+                  contacts: contacts,
+                ),
+                columns: [
+                  GridColumn(
+                    columnName: 'Table',
+                    label: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      alignment: Alignment.centerLeft,
+                      child: const Text(''),
+                    ),
+                  ),
+                  ...List.generate(
+                      schedule.turns.length,
+                      (i) => GridColumn(
+                            columnName: 'Tour ${i + 1}',
+                            label: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              alignment: Alignment.centerLeft,
+                              child: Text('Tour ${i + 1}'),
+                            ),
+                          )),
+                ],
               ),
-            ),
-            ...List.generate(
-                schedule.turns.length,
-                (i) => GridColumn(
-                      columnName: 'Tour ${i + 1}',
-                      label: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        alignment: Alignment.centerLeft,
-                        child: Text('Tour ${i + 1}'),
-                      ),
-                    )),
-          ],
-        );
-      },
+            );
+          },
+        ),
+      ],
     );
   }
 }
@@ -822,11 +848,12 @@ class ScheduleDataSource extends DataGridSource {
 
   List<DataGridRow> _rows = [];
 
-  ScheduleDataSource(
-      {required this.schedule,
-      required this.editable,
-      required this.contacts}) {
-    final maxTables = schedule.turns.map((turn) => turn.tables.length).max;
+  ScheduleDataSource({
+    required this.schedule,
+    required this.editable,
+    required this.contacts,
+  }) {
+    final maxTables = schedule.turns.map((turn) => turn.tables.length).maxOrNull ?? 0;
 
     _rows = List<DataGridRow>.generate(
       maxTables,
@@ -873,10 +900,8 @@ class ScheduleDataSource extends DataGridSource {
         final value = dataGridCell.value;
         if (value is Table) {
           final table = value;
-          return Container(
-            padding: const EdgeInsets.all(8.0),
-            constraints: const BoxConstraints(maxWidth: 100),
-            alignment: Alignment.topLeft,
+          return Padding(
+            padding: const EdgeInsets.only(left: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
