@@ -242,7 +242,7 @@ class FicheChipList extends StatelessWidget {
 /// Build a short text to be displayed in a chip representing a Fiche.
 String shortDescription(FicheSnippet snippet) {
   final flux = snippet.flux;
-  final verb = flux.direction == FluxDirection.entrant ? 'Je veux' : "J'offre";
+  final verb = flux.direction == FluxDirection.entrant ? 'J\'ai besoin' : "J'offre";
   final what = '${flux.quantite} ${flux.unite} de ${flux.resourceNom}';
   return '$verb $what';
 }
