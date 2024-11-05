@@ -157,7 +157,8 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
           contactId: mirrorFlux.contactId,
           fluxId: mirrorFlux.id,
           commentaire:
-              '«Lien de ${contactB.entreprise.entreprise.denomination}»',
+              'Lien de ${contactB.entreprise.entreprise.denomination}: '
+                  '${lien.nature.value ?? ''}',
         );
         await save(mirrorFiche);
 
