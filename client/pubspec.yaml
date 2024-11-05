@@ -51,7 +51,7 @@ dependencies:
   lumberdash: any
   colorize_lumberdash: any
   shimmer_animation: any
-  dropdown_search: any
+  dropdown_search: ^5.0.6
   date_format: any
   supabase: ^2.0.6
   supabase_flutter: ^2.3.1
