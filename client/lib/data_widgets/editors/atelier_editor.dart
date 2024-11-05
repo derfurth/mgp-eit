@@ -92,9 +92,9 @@ class AtelierEditor extends StatelessWidget {
               tabs: [
                 Tab(text: 'Description'),
                 Tab(text: 'Fiches ressources'),
-                Tab(text: 'Fiches liées'),
                 Tab(text: 'Thématiques'),
                 Tab(text: 'Rencontres'),
+                Tab(text: 'Fiches liées'),
               ],
             ),
           ),
@@ -115,13 +115,13 @@ class AtelierEditor extends StatelessWidget {
                       PaddedSingleChildScrollable(
                         child: AtelierParticipantLiveView(atelier: atelier),
                       ),
-                      AtelierFicheLieesLiveView(atelier: atelier),
                       PaddedSingleChildScrollable(
                         child: AtelierThematiqueLiveView(atelier: atelier),
                       ),
                       PaddedSingleChildScrollable(
                         child: ScheduleEditor(atelier: atelier),
                       ),
+                      AtelierFicheLieesLiveView(atelier: atelier),
                     ],
                   ),
                 );
