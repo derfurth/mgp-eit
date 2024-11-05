@@ -12,7 +12,6 @@ import 'package:mgp_client/models/schedule.dart';
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-import 'package:syncfusion_flutter_datagrid_export/export.dart';
 import 'package:tuple/tuple.dart';
 
 import '../../blones/auth_blone.dart';
@@ -229,6 +228,21 @@ class AtelierDescriptionForm extends StatelessWidget {
                 selected.map((e) => e.coAnimateur.id).toList(),
               );
             },
+          ),
+          OverflowBar(
+            children: [
+              OutlinedButton.icon(
+                onPressed: () async {
+                  final Demarche demarche = context.read();
+                  final RapportBlone rapport = context.read();
+                  final csv =
+                  await rapport.participants(demarche.id, atelier.atelier.id);
+                  DownloadCommand().execute(data: csv);
+                },
+                icon: const Icon(Icons.download),
+                label: const Text('Carnet d\'adresse'),
+              ),
+            ],
           ),
           _AtelierSaveBar(),
         ],
