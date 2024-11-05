@@ -334,7 +334,7 @@ class _LienFichesEditorState extends State<LienFichesEditor> {
 
     return Wrapper.form(
       children: [
-        Heading.h6('Fiche liées'),
+        Heading.h6('Fiches liées'),
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -399,7 +399,7 @@ class LienFicheForm extends StatelessWidget {
       for (final participant in atelier.participants)
         DropdownMenuEntry<ContactSnippet>(
           value: participant,
-          label: participant.personne.displayName,
+          label: '${participant.personne.displayName} / ${participant.entreprise.entreprise.denomination}',
         )
     ];
 
