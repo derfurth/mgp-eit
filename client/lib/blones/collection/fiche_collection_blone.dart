@@ -58,11 +58,11 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
   Future<Iterable<FicheSnippet>> getSnippetsForAtelier({
     required String atelierId,
   }) async {
-    final fiches = await getByAtelier(atelierId: atelierId);
+    final data = await client.rpc('atelier_fiche_snippets', params: {
+      'atelier_id': atelierId,
+    });
 
-    final snippets = [
-      for (final fiche in fiches) await getSnippet(ficheId: fiche.id)
-    ];
+    final snippets = [for (final json in data) FicheSnippet.fromJson(json)];
     return snippets;
   }
 
@@ -95,9 +95,10 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
     final snippet = await snippetCache.get(
       ficheId,
       ifAbsent: (id) async {
-        final data = await client.rpc('fiche_snippet', params: {
-          'fiche_id': ficheId,
-        }).single();
+        final data = await client.rpc(
+          'fiche_snippet',
+          params: {'fiche_id': ficheId},
+        ).single();
         return FicheSnippet.fromJson(data);
       },
     );
@@ -158,7 +159,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
           fluxId: mirrorFlux.id,
           commentaire:
               'Lien de ${contactB.entreprise.entreprise.denomination}: '
-                  '${lien.nature.value ?? ''}',
+              '${lien.nature.value ?? ''}',
         );
         await save(mirrorFiche);
 
