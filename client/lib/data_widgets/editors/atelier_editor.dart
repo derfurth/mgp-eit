@@ -187,9 +187,7 @@ class AtelierDescriptionForm extends StatelessWidget {
           Builder(builder: (context) {
             final ValueNotifier<List<String>> participantIds = context.read();
             return ContactAddBox(
-              title: Text(atelier.participantsWithFiche.isNotEmpty
-                  ? 'Participants sans fiche'
-                  : 'Participants'),
+              title: const Text('Participants'),
               initialSelection: atelier.participantsWithoutFiche,
               onSelected: (selected) {
                 participantIds.value =
@@ -201,7 +199,7 @@ class AtelierDescriptionForm extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Heading.h5('Participants avec fiche'),
+                Heading.h5('Participants avec fiche ressource'),
                 Leading.vSmall(),
                 Wrap(
                   spacing: 5,
