@@ -18,29 +18,11 @@ class RapportBlone with ChildBlone<AppBlone> {
         .getForAtelier(demarcheId: demarcheId, atelierId: atelierId);
     final rows = <List>[];
 
-    void fillFichesLiees(
-        String ficheId, Set<String> visited, List<FicheSnippet> fichesLiees) {
-      if (visited.contains(ficheId)) return; // To prevent cycles
-      visited.add(ficheId);
-
-      for (final lien in liens) {
-        final otherId = lien.ficheBId == ficheId
-            ? lien.ficheAId
-            : lien.ficheAId == ficheId
-                ? lien.ficheBId
-                : null;
-        if (otherId != null) {
-          final ficheSnippet = fiches.firstWhere((f) => f.fiche.id == otherId);
-          fichesLiees.add(ficheSnippet);
-          fillFichesLiees(otherId, visited, fichesLiees); // Recursive call
-        }
-      }
-    }
-
     for (final fiche in fiches) {
       final ficheId = fiche.fiche.id;
-      final fichesLiees = <FicheSnippet>[];
-      fillFichesLiees(ficheId, <String>{}, fichesLiees);
+      final relatedFicheIds = LienFiche.getRelatedFicheIds(ficheId, liens);
+      final fichesLiees =
+          fiches.where((fiche) => relatedFicheIds.contains(fiche.fiche.id));
 
       final row = [
         fiche.contact.entreprise.entreprise.denomination,
