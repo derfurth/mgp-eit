@@ -220,8 +220,7 @@ class LienFiche with _$LienFiche {
     @JsonKey(name: 'nature') @Default('') String nature,
     @JsonKey(name: 'fiche_a_id') required String ficheAId,
     @JsonKey(name: 'contact_a_id') required String contactAId,
-    @JsonKey(name: 'flux_direction_a')
-    required FluxDirection directionA,
+    @JsonKey(name: 'flux_direction_a') required FluxDirection directionA,
     @JsonKey(name: 'quantite_a') required num quantiteA,
     @JsonKey(name: 'fiche_b_id') String? ficheBId,
     @JsonKey(name: 'contact_b_id') String? contactBId,
@@ -233,6 +232,48 @@ class LienFiche with _$LienFiche {
 
   factory LienFiche.fromJson(Map<String, dynamic> json) =>
       _$LienFicheFromJson(json);
+
+  static Set<String> getRelatedFicheIds(
+      String ficheId, Iterable<LienFiche> liens) {
+    final related = getRelatedLiens(ficheId, liens);
+    final ids = <String>{};
+    for (var lien in related) {
+      ids.add(lien.ficheAId);
+      if (lien.ficheBId != null) ids.add(lien.ficheBId!);
+    }
+    ids.remove(ficheId);
+    return ids;
+  }
+
+  static List<LienFiche> getRelatedLiens(
+      String ficheId, Iterable<LienFiche> liens) {
+    Set<String> relatedFiches = {ficheId};
+    Queue<String> toProcess = Queue.of([ficheId]);
+
+    while (toProcess.isNotEmpty) {
+      String currentId = toProcess.removeFirst();
+
+      for (var lien in liens) {
+        String? otherId;
+        if (lien.ficheAId == currentId) {
+          otherId = lien.ficheBId;
+        } else if (lien.ficheBId == currentId) {
+          otherId = lien.ficheAId;
+        }
+
+        if (otherId != null && !relatedFiches.contains(otherId)) {
+          relatedFiches.add(otherId);
+          toProcess.add(otherId);
+        }
+      }
+    }
+
+    return liens
+        .where((lien) =>
+            relatedFiches.contains(lien.ficheAId) ||
+            (lien.ficheBId != null && relatedFiches.contains(lien.ficheBId)))
+        .toList();
+  }
 }
 
 /// Thématique
@@ -468,19 +509,45 @@ class Synergie with _$Synergie, Storable {
 
     // Synergie indicateurs
     // https://www.reseau-synapse.org/library/h/fiche-zoom-n-4-reporting-eit-et-indicateurs-synergies.html
-    @JsonKey(name: 'reduction_totale_de_la_consommation_matiere') @Default(0) num reductionTotaleDeLaConsommationMatiere,
-    @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte') @Default(0) num reductionDeLaConsommationMatiereHorsInerte,
-    @JsonKey(name: 'reduction_totale_des_dechets') @Default(0) num reductionTotaleDesDechets,
-    @JsonKey(name: 'reduction_des_dechets_non_inertes') @Default(0) num reductionDesDechetsNonInertes,
-    @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets') @Default(0) num ameliorationDeLaValorisationDesDechets,
-    @JsonKey(name: 'reduction_des_consommations_d_energie') @Default(0) num reductionDesConsommationsDenergie,
-    @JsonKey(name: 'production_d_energie_renouvelable') @Default(0) num productionDenergieRenouvelable,
-    @JsonKey(name: 'reduction_des_consommations_d_eau') @Default(0) num reductionDesConsommationsDeau,
-    @JsonKey(name: 'reduction_des_emissions_de_ges') @Default(0) num reductionDesEmissionsDeGES,
-    @JsonKey(name: 'realisation_d_economies_financieres') @Default(0) num realisationDeconomiesFinancieres,
-    @JsonKey(name: 'chiffre_d_affaires_genere') @Default(0) num chiffreDaffairesGenere,
-    @JsonKey(name: 'investissements_realises') @Default(0) num investissementsRealises,
-    @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises') @Default(0) num developpementDeNouvellesActivitesEtEntreprises,
+    @JsonKey(name: 'reduction_totale_de_la_consommation_matiere')
+    @Default(0)
+    num reductionTotaleDeLaConsommationMatiere,
+    @JsonKey(name: 'reduction_de_la_consommation_matiere_hors_inerte')
+    @Default(0)
+    num reductionDeLaConsommationMatiereHorsInerte,
+    @JsonKey(name: 'reduction_totale_des_dechets')
+    @Default(0)
+    num reductionTotaleDesDechets,
+    @JsonKey(name: 'reduction_des_dechets_non_inertes')
+    @Default(0)
+    num reductionDesDechetsNonInertes,
+    @JsonKey(name: 'amelioration_de_la_valorisation_des_dechets')
+    @Default(0)
+    num ameliorationDeLaValorisationDesDechets,
+    @JsonKey(name: 'reduction_des_consommations_d_energie')
+    @Default(0)
+    num reductionDesConsommationsDenergie,
+    @JsonKey(name: 'production_d_energie_renouvelable')
+    @Default(0)
+    num productionDenergieRenouvelable,
+    @JsonKey(name: 'reduction_des_consommations_d_eau')
+    @Default(0)
+    num reductionDesConsommationsDeau,
+    @JsonKey(name: 'reduction_des_emissions_de_ges')
+    @Default(0)
+    num reductionDesEmissionsDeGES,
+    @JsonKey(name: 'realisation_d_economies_financieres')
+    @Default(0)
+    num realisationDeconomiesFinancieres,
+    @JsonKey(name: 'chiffre_d_affaires_genere')
+    @Default(0)
+    num chiffreDaffairesGenere,
+    @JsonKey(name: 'investissements_realises')
+    @Default(0)
+    num investissementsRealises,
+    @JsonKey(name: 'developpement_de_nouvelles_activites_et_entreprises')
+    @Default(0)
+    num developpementDeNouvellesActivitesEtEntreprises,
     @JsonKey(name: 'creation_d_emplois') @Default(0) num creationDemplois,
     @JsonKey(name: 'maintien_de_l_emploi') @Default(0) num maintienDeLemploi,
   }) = _Synergie;
@@ -488,7 +555,6 @@ class Synergie with _$Synergie, Storable {
   factory Synergie.fromJson(Map<String, dynamic> json) =>
       _$SynergieFromJson(json);
 }
-
 
 /// class Classification(BaseModel):
 ///     categorie: str
@@ -512,13 +578,14 @@ class ClassificationSynapse with _$ClassificationSynapse {
 
 typedef Synapse = UnmodifiableListView<ClassificationSynapse>;
 
-
 @freezed
 class AtelierRencontres with _$AtelierRencontres {
   factory AtelierRencontres({
     @JsonKey(name: 'atelier_id') required String atelierId,
     @JsonKey(name: 'demarche_id') required String demarcheId,
-    @JsonKey(name: 'excluded_participant_ids') @Default([]) List<String> excludedParticipantIds,
+    @JsonKey(name: 'excluded_participant_ids')
+    @Default([])
+    List<String> excludedParticipantIds,
 
     // ScheduleConfiguration
     // ----
