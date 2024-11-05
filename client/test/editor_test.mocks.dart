@@ -1521,6 +1521,20 @@ class MockAtelierCollectionBlone extends _i1.Mock
       ) as String);
 
   @override
+  _i2.MapCache<String, _i6.AtelierSnippet> get snippetCache =>
+      (super.noSuchMethod(
+        Invocation.getter(#snippetCache),
+        returnValue: _FakeMapCache_0<String, _i6.AtelierSnippet>(
+          this,
+          Invocation.getter(#snippetCache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i6.AtelierSnippet>(
+          this,
+          Invocation.getter(#snippetCache),
+        ),
+      ) as _i2.MapCache<String, _i6.AtelierSnippet>);
+
+  @override
   _i2.MapCache<String, _i5.Atelier> get cache => (super.noSuchMethod(
         Invocation.getter(#cache),
         returnValue: _FakeMapCache_0<String, _i5.Atelier>(
@@ -1876,6 +1890,54 @@ class MockFicheCollectionBlone extends _i1.Mock
       ) as String);
 
   @override
+  _i2.MapCache<String, Iterable<_i5.Fiche>> get contactFicheCache =>
+      (super.noSuchMethod(
+        Invocation.getter(#contactFicheCache),
+        returnValue: _FakeMapCache_0<String, Iterable<_i5.Fiche>>(
+          this,
+          Invocation.getter(#contactFicheCache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, Iterable<_i5.Fiche>>(
+          this,
+          Invocation.getter(#contactFicheCache),
+        ),
+      ) as _i2.MapCache<String, Iterable<_i5.Fiche>>);
+
+  @override
+  set filter(String? _filter) => super.noSuchMethod(
+        Invocation.setter(
+          #filter,
+          _filter,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  set fichesStreamController(
+          _i3.SupabaseStreamBuilder? _fichesStreamController) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #fichesStreamController,
+          _fichesStreamController,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i2.MapCache<String, _i6.FicheSnippet> get snippetCache =>
+      (super.noSuchMethod(
+        Invocation.getter(#snippetCache),
+        returnValue: _FakeMapCache_0<String, _i6.FicheSnippet>(
+          this,
+          Invocation.getter(#snippetCache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i6.FicheSnippet>(
+          this,
+          Invocation.getter(#snippetCache),
+        ),
+      ) as _i2.MapCache<String, _i6.FicheSnippet>);
+
+  @override
   _i2.MapCache<String, _i5.Fiche> get cache => (super.noSuchMethod(
         Invocation.getter(#cache),
         returnValue: _FakeMapCache_0<String, _i5.Fiche>(
@@ -2022,14 +2084,14 @@ class MockFicheCollectionBlone extends _i1.Mock
       ) as _i5.Fiche);
 
   @override
-  _i9.Stream<Iterable<_i6.FicheSnippet>> watchSnippetsForContactAndAtelier({
+  _i9.Future<Iterable<_i6.FicheSnippet>> getSnippetsForContactAndAtelier({
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
-          #watchSnippetsForContactAndAtelier,
+          #getSnippetsForContactAndAtelier,
           [],
           {
             #atelierId: atelierId,
@@ -2037,20 +2099,36 @@ class MockFicheCollectionBlone extends _i1.Mock
             #demarcheId: demarcheId,
           },
         ),
-        returnValue: _i9.Stream<Iterable<_i6.FicheSnippet>>.empty(),
+        returnValue:
+            _i9.Future<Iterable<_i6.FicheSnippet>>.value(<_i6.FicheSnippet>[]),
         returnValueForMissingStub:
-            _i9.Stream<Iterable<_i6.FicheSnippet>>.empty(),
-      ) as _i9.Stream<Iterable<_i6.FicheSnippet>>);
+            _i9.Future<Iterable<_i6.FicheSnippet>>.value(<_i6.FicheSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.FicheSnippet>>);
 
   @override
-  _i9.Stream<Iterable<_i5.Fiche>> watchForContactAndAtelier({
+  _i9.Future<Iterable<_i6.FicheSnippet>> getSnippetsForAtelier(
+          {required String? atelierId}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getSnippetsForAtelier,
+          [],
+          {#atelierId: atelierId},
+        ),
+        returnValue:
+            _i9.Future<Iterable<_i6.FicheSnippet>>.value(<_i6.FicheSnippet>[]),
+        returnValueForMissingStub:
+            _i9.Future<Iterable<_i6.FicheSnippet>>.value(<_i6.FicheSnippet>[]),
+      ) as _i9.Future<Iterable<_i6.FicheSnippet>>);
+
+  @override
+  _i9.Future<Iterable<_i5.Fiche>> getFichesForContactAndAtelier({
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
-          #watchForContactAndAtelier,
+          #getFichesForContactAndAtelier,
           [],
           {
             #atelierId: atelierId,
@@ -2058,9 +2136,10 @@ class MockFicheCollectionBlone extends _i1.Mock
             #demarcheId: demarcheId,
           },
         ),
-        returnValue: _i9.Stream<Iterable<_i5.Fiche>>.empty(),
-        returnValueForMissingStub: _i9.Stream<Iterable<_i5.Fiche>>.empty(),
-      ) as _i9.Stream<Iterable<_i5.Fiche>>);
+        returnValue: _i9.Future<Iterable<_i5.Fiche>>.value(<_i5.Fiche>[]),
+        returnValueForMissingStub:
+            _i9.Future<Iterable<_i5.Fiche>>.value(<_i5.Fiche>[]),
+      ) as _i9.Future<Iterable<_i5.Fiche>>);
 
   @override
   _i9.Future<_i6.FicheSnippet> getSnippet({required String? ficheId}) =>
@@ -2090,7 +2169,7 @@ class MockFicheCollectionBlone extends _i1.Mock
       ) as _i9.Future<_i6.FicheSnippet>);
 
   @override
-  _i9.Stream<_i6.FicheSnippet> createSnippet({
+  _i9.Future<_i6.FicheSnippet> createSnippet({
     required String? demarcheId,
     required String? atelierId,
     required String? contactId,
@@ -2107,30 +2186,34 @@ class MockFicheCollectionBlone extends _i1.Mock
             #etablissementId: etablissementId,
           },
         ),
-        returnValue: _i9.Stream<_i6.FicheSnippet>.empty(),
-        returnValueForMissingStub: _i9.Stream<_i6.FicheSnippet>.empty(),
-      ) as _i9.Stream<_i6.FicheSnippet>);
-
-  @override
-  _i9.Future<void> createMirrors(
-    _i5.Fiche? fiche,
-    _i5.Flux? flux,
-    _i6.ContactSnippet? contact,
-    List<_i6.ContactSnippet>? participants,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #createMirrors,
-          [
-            fiche,
-            flux,
-            contact,
-            participants,
-          ],
-        ),
-        returnValue: _i9.Future<void>.value(),
-        returnValueForMissingStub: _i9.Future<void>.value(),
-      ) as _i9.Future<void>);
+        returnValue: _i9.Future<_i6.FicheSnippet>.value(_FakeFicheSnippet_13(
+          this,
+          Invocation.method(
+            #createSnippet,
+            [],
+            {
+              #demarcheId: demarcheId,
+              #atelierId: atelierId,
+              #contactId: contactId,
+              #etablissementId: etablissementId,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i9.Future<_i6.FicheSnippet>.value(_FakeFicheSnippet_13(
+          this,
+          Invocation.method(
+            #createSnippet,
+            [],
+            {
+              #demarcheId: demarcheId,
+              #atelierId: atelierId,
+              #contactId: contactId,
+              #etablissementId: etablissementId,
+            },
+          ),
+        )),
+      ) as _i9.Future<_i6.FicheSnippet>);
 
   @override
   _i9.Future<void> saveLiens(
@@ -2207,6 +2290,30 @@ class MockFicheCollectionBlone extends _i1.Mock
             #contact: contact,
             #liens: liens,
             #meta: meta,
+          },
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<void> invalidate({
+    required String? demarcheId,
+    required String? atelierId,
+    required String? contactId,
+    String? ficheId,
+    bool? notify = true,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #invalidate,
+          [],
+          {
+            #demarcheId: demarcheId,
+            #atelierId: atelierId,
+            #contactId: contactId,
+            #ficheId: ficheId,
+            #notify: notify,
           },
         ),
         returnValue: _i9.Future<void>.value(),
@@ -2998,6 +3105,20 @@ class MockContactCollectionBlone extends _i1.Mock
           Invocation.getter(#tableName),
         ),
       ) as String);
+
+  @override
+  _i2.MapCache<String, _i6.ContactSnippet> get snippetCache =>
+      (super.noSuchMethod(
+        Invocation.getter(#snippetCache),
+        returnValue: _FakeMapCache_0<String, _i6.ContactSnippet>(
+          this,
+          Invocation.getter(#snippetCache),
+        ),
+        returnValueForMissingStub: _FakeMapCache_0<String, _i6.ContactSnippet>(
+          this,
+          Invocation.getter(#snippetCache),
+        ),
+      ) as _i2.MapCache<String, _i6.ContactSnippet>);
 
   @override
   _i2.MapCache<String, _i5.Contact> get cache => (super.noSuchMethod(
