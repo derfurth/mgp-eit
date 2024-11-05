@@ -320,6 +320,17 @@ enum FluxDirection {
   sortant,
 }
 
+extension PrettyDirection on FluxDirection {
+  String get nom {
+    switch (this) {
+      case FluxDirection.sortant:
+        return 'Offre';
+      case FluxDirection.entrant:
+        return 'Besoin';
+    }
+  }
+}
+
 /// Nature de la fréquence du flux.
 enum FluxNature {
   @JsonValue('continu')

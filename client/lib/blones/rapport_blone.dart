@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import '../commands/download_command.dart';
 import '../models/donnees.dart';
 import '../models/snippets.dart';
@@ -12,16 +14,21 @@ class RapportBlone with ChildBlone<AppBlone> {
 
   Future<CSV> fiches(String demarcheId, String atelierId) async {
     final fiches = await _fiches(atelierId);
-    final liens = await parent.liensFiches.getForAtelier(
-        demarcheId: demarcheId, atelierId: atelierId);
+    final liens = await parent.liensFiches
+        .getForAtelier(demarcheId: demarcheId, atelierId: atelierId);
     final rows = <List>[];
 
-    void fillFichesLiees(String ficheId, Set<String> visited, List<FicheSnippet> fichesLiees) {
+    void fillFichesLiees(
+        String ficheId, Set<String> visited, List<FicheSnippet> fichesLiees) {
       if (visited.contains(ficheId)) return; // To prevent cycles
       visited.add(ficheId);
 
       for (final lien in liens) {
-        final otherId = lien.ficheBId == ficheId ? lien.ficheAId : lien.ficheAId == ficheId ? lien.ficheBId : null;
+        final otherId = lien.ficheBId == ficheId
+            ? lien.ficheAId
+            : lien.ficheAId == ficheId
+                ? lien.ficheBId
+                : null;
         if (otherId != null) {
           final ficheSnippet = fiches.firstWhere((f) => f.fiche.id == otherId);
           fichesLiees.add(ficheSnippet);
@@ -40,10 +47,7 @@ class RapportBlone with ChildBlone<AppBlone> {
         fiche.contact.entreprise.etablissements
             .firstWhere((e) => e.id == fiche.contact.contact.etablissementId)
             .siret,
-        fiche.contact.personne.displayName,
-        fiche.contact.personne.email,
-        fiche.fiche.thematiqueIds.join(' '),
-        fiche.flux.direction.name,
+        fiche.flux.direction.nom,
         fiche.flux.designation,
         fiche.fiche.commentaire,
         fiche.flux.resourceNom,
@@ -53,15 +57,19 @@ class RapportBlone with ChildBlone<AppBlone> {
       ];
 
       for (final ficheLiee in fichesLiees) {
-        row.add('lien');
-        row.add(ficheLiee.contact.entreprise.entreprise.denomination);
-        row.add(ficheLiee.flux.direction.name);
+        var cell =
+            '${ficheLiee.flux.direction.nom}: ${ficheLiee.contact.entreprise.entreprise.denomination}';
+        if (ficheLiee.flux.quantite > 0) {
+          cell += ' ${ficheLiee.flux.quantite} ${ficheLiee.flux.unite}';
+        }
+        row.add(cell);
       }
 
       rows.add(row);
     }
 
-    final maxLength = rows.fold<int>(0, (max, row) => row.length > max ? row.length : max);
+    final maxLength =
+        rows.fold<int>(0, (max, row) => row.length > max ? row.length : max);
     for (final row in rows) {
       while (row.length < maxLength) {
         row.add('');
@@ -79,7 +87,8 @@ class RapportBlone with ChildBlone<AppBlone> {
         .toList();
   }
 
-  Future<CSV> participant(String atelierId, String participantId) async {
+  Future<CSV> fichesByParticipant(
+      String atelierId, String participantId) async {
     final fiches = await _fiches(atelierId);
     return fiches
         .where((f) => f.fiche.contactId == participantId)
@@ -107,6 +116,28 @@ class RapportBlone with ChildBlone<AppBlone> {
     final results =
         await parent.synergies.search(demarcheId: demarcheId, needle: needle);
     return results.map((s) => s.getCsvRow).toList();
+  }
+
+  Future<CSV> participants(String demarcheId, String atelierId) async {
+    final fiches = await _fiches(atelierId);
+    final contacts = fiches
+        .map((fiche) => fiche.contact)
+        .groupFoldBy(
+          (c) => c.contact.id,
+          (_, c) => c,
+        )
+        .values;
+    return [
+      for (final contact in contacts)
+        [
+          contact.entreprise.entreprise.denomination,
+          contact.entreprise.etablissements
+              .firstWhere((e) => e.id == contact.contact.etablissementId)
+              .siret,
+          contact.personne.displayName,
+          contact.personne.email,
+        ]
+    ];
   }
 }
 
