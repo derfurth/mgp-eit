@@ -233,8 +233,8 @@ class AtelierDescriptionForm extends StatelessWidget {
                 onPressed: () async {
                   final Demarche demarche = context.read();
                   final RapportBlone rapport = context.read();
-                  final csv =
-                  await rapport.participants(demarche.id, atelier.atelier.id);
+                  final csv = await rapport.participants(
+                      demarche.id, atelier.atelier.id);
                   DownloadCommand().execute(data: csv);
                 },
                 icon: const Icon(Icons.download),
@@ -362,38 +362,30 @@ class AtelierFicheLieesLiveView extends StatelessWidget {
                         .personne
                         .displayName)
                     .toList();
-
-                return FutureLoader(
-                  future: participantMetas.getByAtelier(
-                      atelierId: atelier.atelier.id),
-                  builder: (context, snapshot) {
-                    return Column(
-                      children: [
-                        for (final (i, lien) in sortedLiens.indexed)
-                          Row(
-                            children: [
-                              Card(
-                                elevation: 2,
-                                child: LienFicheSide(
-                                    atelier: atelier, lien: lien, showA: true),
-                              ).flexible(),
-                              Card(
-                                elevation: 2,
-                                child: LienFicheSide(
-                                    atelier: atelier, lien: lien, showA: false),
-                              ).flexible(),
-                            ],
-                          ).padding(
-                            bottom:
-                                sortedLiens[min(i + 1, sortedLiens.length - 1)]
-                                            .contactAId ==
-                                        lien.contactAId
-                                    ? 0
-                                    : 32,
-                          ),
-                      ],
-                    );
-                  },
+                return Column(
+                  children: [
+                    for (final (i, lien) in sortedLiens.indexed)
+                      Row(
+                        children: [
+                          Card(
+                            elevation: 2,
+                            child: LienFicheSide(
+                                atelier: atelier, lien: lien, showA: true),
+                          ).flexible(),
+                          Card(
+                            elevation: 2,
+                            child: LienFicheSide(
+                                atelier: atelier, lien: lien, showA: false),
+                          ).flexible(),
+                        ],
+                      ).padding(
+                        bottom: sortedLiens[min(i + 1, sortedLiens.length - 1)]
+                                    .contactAId ==
+                                lien.contactAId
+                            ? 0
+                            : 32,
+                      ),
+                  ],
                 );
               },
             ),
@@ -809,8 +801,10 @@ class ScheduleDataGrid extends StatelessWidget {
         FutureLoader(
           future: schedule.compute(),
           builder: (context, snapshot) {
-            final maxTables = schedule.turns.map((turn) => turn.tables.length).maxOrNull ?? 0;
-            final rowHeight = 24.0 + 20.0 * schedule.configuration.tableSeatCount;
+            final maxTables =
+                schedule.turns.map((turn) => turn.tables.length).maxOrNull ?? 0;
+            final rowHeight =
+                24.0 + 20.0 * schedule.configuration.tableSeatCount;
             return SizedBox(
               height: rowHeight * (min(maxTables, 8) + 1),
               child: SfDataGrid(
@@ -865,7 +859,8 @@ class ScheduleDataSource extends DataGridSource {
     required this.editable,
     required this.contacts,
   }) {
-    final maxTables = schedule.turns.map((turn) => turn.tables.length).maxOrNull ?? 0;
+    final maxTables =
+        schedule.turns.map((turn) => turn.tables.length).maxOrNull ?? 0;
 
     _rows = List<DataGridRow>.generate(
       maxTables,
