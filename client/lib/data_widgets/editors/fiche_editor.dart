@@ -442,9 +442,11 @@ class LienFicheForm extends StatelessWidget {
             filled: true,
             contentPadding: EdgeInsets.symmetric(vertical: 5.0),
           ),
-          onSelected: readOnly ? null : (ContactSnippet? contact) {
-            if (contact != null) updateContact(contact.contact.id);
-          },
+          onSelected: readOnly
+              ? null
+              : (ContactSnippet? contact) {
+                  if (contact != null) updateContact(contact.contact.id);
+                },
           dropdownMenuEntries: dropdownMenuEntries,
         ).padding(right: theme.grid * 2).flexible(flex: 2),
         editable.nature
@@ -465,11 +467,13 @@ class LienFicheForm extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(vertical: 5.0),
           ),
           initialSelection: initialDirection,
-          onSelected: readOnly ? null : (FluxDirection? direction) {
-            if (direction != null) {
-              updateDirection(direction);
-            }
-          },
+          onSelected: readOnly
+              ? null
+              : (FluxDirection? direction) {
+                  if (direction != null) {
+                    updateDirection(direction);
+                  }
+                },
           dropdownMenuEntries: const [
             DropdownMenuEntry(value: FluxDirection.entrant, label: 'Besoin'),
             DropdownMenuEntry(value: FluxDirection.sortant, label: 'Offre'),
@@ -528,8 +532,15 @@ class _FicheAndFluxSaveBar extends StatelessWidget {
                     // ferme la modale d'édition
                     Navigator.pop(context, 'Supprimer');
 
-                    // Supprimer le flux entraine la suppression de la fiche.
-                    fluxes.delete(flux.value.id);
+                    // Supprimer le flux entraine la suppression de la fiche dans la base.
+                    fluxes.delete(flux.value.id).then(
+                        // On invalide aussi le cache de la fiche.
+                        (_) => fiches.invalidate(
+                              demarcheId: fiche.value.demarcheId,
+                              atelierId: fiche.value.atelierId,
+                              contactId: fiche.value.contactId,
+                              ficheId: fiche.value.id,
+                            ));
                   },
                   child: const Text('Supprimer'),
                 ),
