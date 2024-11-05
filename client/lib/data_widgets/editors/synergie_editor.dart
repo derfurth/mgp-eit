@@ -153,7 +153,7 @@ class SynergieForm extends StatelessWidget {
               ),
             ],
           ),
-          editable.commentaire.toTextFormField(maxLines: 3).flexible(),
+          editable.commentaire.toTextFormField(maxLines: 3),
           const SynergieIndicators(),
           FluxAddBox(
             initialSelection: synergie.flux,
