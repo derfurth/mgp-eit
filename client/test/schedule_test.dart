@@ -7,13 +7,24 @@ Future<void> main() async {
   test('Compute a simple schedule', () async {
     final schedule = Schedule(
       cards: [
-        ScheduleCard(participant: 'Alice', ressource: 'Stone', offre: true),
-        ScheduleCard(participant: 'Alice', ressource: 'Wood', offre: true),
-        ScheduleCard(participant: 'Bob', ressource: 'Wood', offre: false),
-        ScheduleCard(participant: 'Clara', ressource: 'Stone', offre: false),
+        ScheduleCard(
+            ficheId: 'a',
+            participant: 'Alice',
+            ressource: 'Stone',
+            offre: true),
+        ScheduleCard(
+            ficheId: 'b', participant: 'Alice', ressource: 'Wood', offre: true),
+        ScheduleCard(
+            ficheId: 'c', participant: 'Bob', ressource: 'Wood', offre: false),
+        ScheduleCard(
+            ficheId: 'd',
+            participant: 'Clara',
+            ressource: 'Stone',
+            offre: false),
       ],
       configuration:
           ScheduleConfiguration(turnCount: 2, tableCount: 2, tableSeatCount: 2),
+      liens: [],
     );
     await schedule.compute();
     expect(schedule.turns, isNotEmpty);
@@ -27,6 +38,7 @@ Future<void> main() async {
     final cards = List.generate(
         40,
         (_) => ScheduleCard(
+              ficheId: faker.guid.guid(),
               participant: participants.random(),
               ressource: ressources.random(),
               offre: faker.randomGenerator.boolean(),
@@ -39,6 +51,7 @@ Future<void> main() async {
         tableCount: 4,
         tableSeatCount: 6,
       ),
+      liens: [],
     );
     await schedule.compute();
     expect(schedule.turns, isNotEmpty);

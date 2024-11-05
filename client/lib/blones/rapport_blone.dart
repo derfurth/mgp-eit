@@ -20,7 +20,7 @@ class RapportBlone with ChildBlone<AppBlone> {
 
     for (final fiche in fiches) {
       final ficheId = fiche.fiche.id;
-      final relatedFicheIds = LienFiche.getRelatedFicheIds(ficheId, liens);
+      final relatedFicheIds = LienFiche.getRelatedFicheIds([ficheId], liens);
       final fichesLiees =
           fiches.where((fiche) => relatedFicheIds.contains(fiche.fiche.id));
 

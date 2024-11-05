@@ -686,7 +686,9 @@ class ScheduleEditor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Demarche demarche = context.watch();
     final FicheCollectionBlone fiches = context.watch();
+    final LienFicheCollectionBlone liens = context.watch();
 
     // todo get from a new blone.
     final rencontres = AtelierRencontres(
@@ -695,9 +697,15 @@ class ScheduleEditor extends StatelessWidget {
     );
 
     return FutureLoader(
-      future: fiches.getSnippetsForAtelier(atelierId: atelier.atelier.id),
+      future: Future.wait([
+        fiches.getSnippetsForAtelier(atelierId: atelier.atelier.id),
+        liens.getForAtelier(
+            demarcheId: demarche.id, atelierId: atelier.atelier.id),
+      ]),
       builder: (context, snapshot) {
-        final fiches = snapshot.data;
+        final fiches = snapshot.data[0] as Iterable<FicheSnippet>;
+        final liens = snapshot.data[1] as Iterable<LienFiche>;
+
         final contacts = fiches
             .map((fiche) => fiche.contact)
             .groupFoldBy((snippet) => snippet.contact.id, (_, e) => e);
@@ -720,13 +728,17 @@ class ScheduleEditor extends StatelessWidget {
             final cards = [
               for (final fiche in nonExcludedFiches)
                 ScheduleCard(
+                  ficheId: fiche.fiche.id,
                   participant: fiche.contact.contact.id,
                   ressource: fiche.flux.resourceNom,
                   offre: fiche.flux.direction == FluxDirection.sortant,
                 )
             ];
-            final schedule =
-                Schedule(configuration: configuration, cards: cards);
+            final schedule = Schedule(
+              configuration: configuration,
+              cards: cards,
+              liens: liens.toList(),
+            );
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,

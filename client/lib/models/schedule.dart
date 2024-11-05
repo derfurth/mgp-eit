@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:collection/collection.dart';
+import 'package:mgp_client/models/donnees.dart';
 
 /// The configuration for the schedule.
 ///
@@ -34,18 +35,18 @@ class ScheduleConfiguration {
 /// [lien] is an optional unique id, where a card is filled, other participant
 /// may add a the same [lien] to their card if they want to be on the table.
 class ScheduleCard {
+  final String ficheId;
   final String participant;
   final String ressource;
   final bool offre;
-  final String? lien;
 
   bool get besoin => !offre;
 
   ScheduleCard({
+    required this.ficheId,
     required this.participant,
     required this.ressource,
     required this.offre,
-    this.lien,
   });
 }
 
@@ -81,13 +82,18 @@ class Turn {
 class Schedule {
   final ScheduleConfiguration configuration;
   final List<ScheduleCard> cards;
+  final List<LienFiche> liens;
   late final List<String> participants;
   late final List<String> ressources;
 
   final tables = <Table>[];
   final turns = <Turn>[];
 
-  Schedule({required this.configuration, required this.cards}) {
+  Schedule({
+    required this.configuration,
+    required this.cards,
+    required this.liens,
+  }) {
     participants = cards.map((s) => s.participant).toSet().toList();
     ressources = cards.map((s) => s.ressource).toSet().toList();
   }
@@ -101,8 +107,11 @@ class Schedule {
 
   /// Compute the [tables] and [turns] given the current [configuration].
   Future<List<Turn>> compute() async {
+    tables.clear();
+    turns.clear();
+
     makeTables();
-    mergeDuplicates();
+    mergeDuplicateTables();
     makeTurns();
 
     // Keep the turns with the most tables.
@@ -118,10 +127,51 @@ class Schedule {
     // For a stable table layout.
     final random = Random(seats);
 
-    // Group participants by resource.
+    // Keep track of assigned tables to avoid duplicates.
+    final assigned = <ScheduleCard>{};
+
+    // First pass: group participant by liens.
+    for (final lien in liens) {
+      final relatedCards = LienFiche.getRelatedFicheIds(
+        [lien.ficheAId, if (lien.ficheBId != null) lien.ficheBId!],
+        liens,
+      )
+          .map((id) => cards.firstWhereOrNull((card) => card.ficheId == id))
+          .whereNotNull()
+          .toSet();
+
+      final offers = relatedCards.where((card) => card.offre).toList();
+      final needs = relatedCards.where((card) => card.besoin).toList();
+      final needsPerOffer = max(1, needs.length / ~offers.length).toInt();
+
+      final lienTables = <Table>[];
+
+      while (relatedCards.isNotEmpty) {
+        final tableOffers = offers.sample(1, random);
+        final tableNeeds = needs.sample(min(seats - 1, needsPerOffer), random);
+
+        needs.removeWhere((card) => tableNeeds.contains(card));
+        offers.removeWhere((card) => tableOffers.contains(card));
+
+        final tableCards = [...tableOffers, ...tableNeeds];
+        lienTables.add(
+          Table(
+            participants: tableCards.map((card) => card.participant).toSet(),
+            ressources: tableCards.map((card) => card.ressource).toSet(),
+          ),
+        );
+        assigned.addAll(tableCards);
+        relatedCards.removeAll(tableCards);
+      }
+      tables.addAll(lienTables);
+    }
+
+    // Second pass: group participants by resource.
     for (final ressource in ressources) {
-      final ressourceCards =
-          cards.where((card) => card.ressource == ressource).toSet();
+      final ressourceCards = cards
+          .where(
+              (card) => card.ressource == ressource && !assigned.contains(card))
+          .toSet();
 
       final offers = ressourceCards.where((card) => card.offre).toList();
       final needs = ressourceCards.where((card) => card.besoin).toList();
@@ -166,7 +216,7 @@ class Schedule {
   }
 
   // Merge tables with the same participants.
-  void mergeDuplicates() {
+  void mergeDuplicateTables() {
     final merged = <Table>[];
     final dupes = <Table>[];
     for (final table in tables) {

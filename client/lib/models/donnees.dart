@@ -234,21 +234,21 @@ class LienFiche with _$LienFiche {
       _$LienFicheFromJson(json);
 
   static Set<String> getRelatedFicheIds(
-      String ficheId, Iterable<LienFiche> liens) {
-    final related = getRelatedLiens(ficheId, liens);
+      List<String> fichesIds, Iterable<LienFiche> liens) {
+    final related = getRelatedLiens(fichesIds, liens);
     final ids = <String>{};
     for (var lien in related) {
       ids.add(lien.ficheAId);
       if (lien.ficheBId != null) ids.add(lien.ficheBId!);
     }
-    ids.remove(ficheId);
+    ids.removeAll(fichesIds);
     return ids;
   }
 
   static List<LienFiche> getRelatedLiens(
-      String ficheId, Iterable<LienFiche> liens) {
-    Set<String> relatedFiches = {ficheId};
-    Queue<String> toProcess = Queue.of([ficheId]);
+      List<String> fichesIds, Iterable<LienFiche> liens) {
+    Set<String> relatedFiches = {...fichesIds};
+    Queue<String> toProcess = Queue.of(fichesIds);
 
     while (toProcess.isNotEmpty) {
       String currentId = toProcess.removeFirst();
