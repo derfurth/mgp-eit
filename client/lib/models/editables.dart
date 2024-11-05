@@ -215,10 +215,10 @@ class EditableLienFiche extends Editable<LienFiche> {
 
   /// The comment explaining the nature of the link.
   late final nature = Field<String?>(
-    label: 'La nature du lien',
+    label: 'description',
     validator: MaxLengthValidator(
       256,
-      errorText: 'Le nature doit faire moins de 256 caractères.',
+      errorText: 'La description doit faire moins de 256 caractères.',
     ),
     get: () => value.nature,
     update: (fieldValue) => update(value.copyWith(nature: fieldValue ?? '')),
