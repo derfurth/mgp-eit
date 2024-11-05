@@ -167,15 +167,22 @@ class Schedule {
 
   // Merge tables with the same participants.
   void mergeDuplicates() {
-    const eq = SetEquality(IdentityEquality());
+    final merged = <Table>[];
+    final dupes = <Table>[];
     for (final table in tables) {
-      final duplicates = tables.where((other) =>
-          other != table && eq.equals(other.participants, table.participants));
-      for (final duplicate in duplicates) {
+      if (merged.contains(table)) continue;
+      if (dupes.contains(table)) continue;
+      final sameParticipants = tables.where((other) =>
+          table != other &&
+          table.participants.length == other.participants.length &&
+          table.participants.containsAll(other.participants));
+      if (sameParticipants.isNotEmpty) merged.add(table);
+      for (final duplicate in sameParticipants) {
         table.ressources.addAll(duplicate.ressources);
-        tables.remove(duplicate);
+        dupes.add(duplicate);
       }
     }
+    tables.removeWhere((table) => dupes.contains(table));
   }
 
   void makeTurns() {
