@@ -16,6 +16,7 @@ import 'package:tuple/tuple.dart';
 
 import '../../blones/auth_blone.dart';
 import '../../blones/collection/atelier_collection_blones.dart';
+import '../../blones/collection/atelier_rencontres_collection_blone.dart';
 import '../../blones/collection/lien_fiche_collection_blone.dart';
 import '../../blones/rapport_blone.dart';
 import '../../commands/download_command.dart';
@@ -689,22 +690,26 @@ class ScheduleEditor extends StatelessWidget {
     final Demarche demarche = context.watch();
     final FicheCollectionBlone fiches = context.watch();
     final LienFicheCollectionBlone liens = context.watch();
-
-    // todo get from a new blone.
-    final rencontres = AtelierRencontres(
-      demarcheId: atelier.atelier.demarcheId,
-      atelierId: atelier.atelier.id,
-    );
+    final AtelierRencontresCollectionBlone rencontres = context.read();
 
     return FutureLoader(
       future: Future.wait([
-        fiches.getSnippetsForAtelier(atelierId: atelier.atelier.id),
+        rencontres.getForAtelier(
+          demarcheId: demarche.id,
+          atelierId: atelier.atelier.id,
+        ),
+        fiches.getSnippetsForAtelier(
+          atelierId: atelier.atelier.id,
+        ),
         liens.getForAtelier(
-            demarcheId: demarche.id, atelierId: atelier.atelier.id),
+          demarcheId: demarche.id,
+          atelierId: atelier.atelier.id,
+        ),
       ]),
       builder: (context, snapshot) {
-        final fiches = snapshot.data[0] as Iterable<FicheSnippet>;
-        final liens = snapshot.data[1] as Iterable<LienFiche>;
+        final rencontres = snapshot.data[0] as AtelierRencontres;
+        final fiches = snapshot.data[1] as Iterable<FicheSnippet>;
+        final liens = snapshot.data[2] as Iterable<LienFiche>;
 
         final contacts = fiches
             .map((fiche) => fiche.contact)
@@ -794,20 +799,32 @@ class ScheduleDataGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final customColumnSizer = ScheduleColumnSizer(contacts: contacts);
+    final AtelierRencontresCollectionBlone rencontres = context.read();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Leading.vHair(),
-        OutlinedButton.icon(
-          onPressed: () async {
-            await ExportGridToExcelCommand().execute(
-              state: dataGridKey.currentState!,
-              contacts: contacts,
-            );
-          },
-          icon: const Icon(Icons.download),
-          label: const Text('Tableau des rencontres'),
+        OverflowBar(
+          spacing: 8,
+          children: [
+            ElevatedButton.icon(
+              onPressed: () async {
+                await ExportGridToExcelCommand().execute(
+                  state: dataGridKey.currentState!,
+                  contacts: contacts,
+                );
+              },
+              icon: const Icon(Icons.download),
+              label: const Text('Tableau des rencontres'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await rencontres.save(editable.value);
+              },
+              child: const Text('Enregistrer'),
+            ),
+          ],
         ),
         Leading.vHair(),
         FutureLoader(
