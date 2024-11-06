@@ -9,6 +9,7 @@ import 'blone.dart';
 import 'collection/administrateur_collection_blone.dart';
 import 'collection/animation_collection_blones.dart';
 import 'collection/atelier_collection_blones.dart';
+import 'collection/atelier_rencontres_collection_blone.dart';
 import 'collection/demarche_collection_blone.dart';
 import 'collection/entreprise_collection_blones.dart';
 import 'collection/fiche_collection_blone.dart';
@@ -41,6 +42,7 @@ class AppBlone extends ChangeNotifier with ParentBlone {
   final participantMeta = ParticipantMetaCollectionBlone();
   final fiches = FicheCollectionBlone();
   final liensFiches = LienFicheCollectionBlone();
+  final rencontres = AtelierRencontresCollectionBlone();
 
   // Entreprises
   final entreprises = EntrepriseCollectionBlone();
@@ -76,6 +78,7 @@ class AppBlone extends ChangeNotifier with ParentBlone {
       participantMeta,
       fiches,
       liensFiches,
+      rencontres,
       entreprises,
       etablissements,
       contacts,

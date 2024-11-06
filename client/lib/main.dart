@@ -66,6 +66,7 @@ class _MainAppState extends State<MainApp> {
         ChangeNotifierProvider.value(value: widget.app.participantMeta),
         ChangeNotifierProvider.value(value: widget.app.fiches),
         ChangeNotifierProvider.value(value: widget.app.liensFiches),
+        ChangeNotifierProvider.value(value: widget.app.rencontres),
         ChangeNotifierProvider.value(value: widget.app.entreprises),
         ChangeNotifierProvider.value(value: widget.app.etablissements),
         ChangeNotifierProvider.value(value: widget.app.contacts),
