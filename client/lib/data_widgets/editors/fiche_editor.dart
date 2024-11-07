@@ -443,6 +443,7 @@ class LienFicheForm extends StatelessWidget {
             filled: true,
             contentPadding: EdgeInsets.symmetric(vertical: 5.0),
           ),
+          enabled: !readOnly,
           onSelected: readOnly
               ? null
               : (ContactSnippet? contact) {
@@ -450,10 +451,11 @@ class LienFicheForm extends StatelessWidget {
                 },
           dropdownMenuEntries: dropdownMenuEntries,
         ).padding(right: theme.grid * 2).flexible(flex: 2),
-        editable.nature
-            .toTextFormField(maxLines: 1, enabled: !readOnly)
-            .padding(right: theme.grid * 2)
-            .flexible(flex: 2),
+        if (!readOnly)
+          editable.nature
+              .toTextFormField(maxLines: 1, enabled: !readOnly)
+              .padding(right: theme.grid * 2)
+              .flexible(flex: 2),
         (editingA ? editable.quantiteB : editable.quantiteA)
             .toTextFormField(maxLines: 1, enabled: !readOnly)
             .padding(right: theme.grid * 2)
@@ -468,6 +470,7 @@ class LienFicheForm extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(vertical: 5.0),
           ),
           initialSelection: initialDirection,
+          enabled: !readOnly,
           onSelected: readOnly
               ? null
               : (FluxDirection? direction) {

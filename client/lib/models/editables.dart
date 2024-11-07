@@ -215,7 +215,7 @@ class EditableLienFiche extends Editable<LienFiche> {
 
   /// The comment explaining the nature of the link.
   late final nature = Field<String?>(
-    label: 'description',
+    label: 'commentaire',
     validator: MaxLengthValidator(
       256,
       errorText: 'La description doit faire moins de 256 caractères.',
