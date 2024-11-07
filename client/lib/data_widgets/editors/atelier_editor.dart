@@ -274,7 +274,7 @@ class AtelierParticipantLiveView extends StatelessWidget {
     return FutureLoader<Iterable<ParticipantMeta>>(
       future: participantMetas.getByAtelier(atelierId: atelier.atelier.id),
       builder: (context, snapshot) {
-        final metas = snapshot.data;
+        final metas = snapshot.data.toList().sortedBy((meta) => meta.contactId);
         return Stack(
           children: [
             Column(children: [
