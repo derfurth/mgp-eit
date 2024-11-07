@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:lumberdash/lumberdash.dart';
 import 'package:mgp_client/models/editables.dart';
@@ -78,7 +79,10 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
         await contactFicheCache.get(filter, ifAbsent: (filter) async {
       final data =
           await fromTable.select().eq('realtime_contact_filter', filter);
-      final fiches = data.map((e) => elementFromJson(e));
+      final fiches = data
+          .map((e) => elementFromJson(e))
+          .whereNot((fiche) => fiche.isEmpty)
+          .toList();
       return fiches;
     });
     return fiches!;
@@ -141,8 +145,8 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
       if (lien.contactBId == null) continue;
       // if Fiche B is null, we insert.
       if (lien.ficheBId == null) {
-        final contactB = participants.firstWhere(
-            (snippet) => snippet.contact.id == lien.contactBId);
+        final contactB = participants
+            .firstWhere((snippet) => snippet.contact.id == lien.contactBId);
 
         final mirrorFlux = flux.copyWith(
           id: SupabaseCollection.uuid.v4(),
