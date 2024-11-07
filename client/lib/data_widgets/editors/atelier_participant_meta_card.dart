@@ -1,5 +1,8 @@
+import 'package:collection/collection.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mgp_client/commands/download_command.dart';
 import 'package:mgp_client/components/future_loader.dart';
 import 'package:mgp_client/models/donnees.dart';
 import 'package:mgp_client/models/editable.dart';
@@ -217,7 +220,8 @@ class FicheChipList extends StatelessWidget {
             demarcheId: demarche.id,
           ),
           builder: (context, snapshot) {
-            final snippets = snapshot.data;
+            final snippets =
+                snapshot.data.toList().sortedBy((s) => s.flux.resourceNom);
 
             return Wrapper(size: .5, children: [
               for (final snippet in snippets)
@@ -242,7 +246,8 @@ class FicheChipList extends StatelessWidget {
 /// Build a short text to be displayed in a chip representing a Fiche.
 String shortDescription(FicheSnippet snippet) {
   final flux = snippet.flux;
-  final verb = flux.direction == FluxDirection.entrant ? 'J\'ai besoin' : "J'offre";
+  final verb =
+      flux.direction == FluxDirection.entrant ? 'J\'ai besoin' : "J'offre";
   final what = '${flux.quantite} ${flux.unite} de ${flux.resourceNom}';
   return '$verb $what';
 }
