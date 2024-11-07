@@ -444,14 +444,14 @@ class EditableFlux extends Editable<Flux> {
     }
   }
 
-  // Resource
+  // Ressource
   // --------
 
   late final resourceNom = Field<String?>(
-    label: 'Nom de la resource',
+    label: 'Nom de la ressource',
     validator: MaxLengthValidator(
       128,
-      errorText: 'le nom de la resource doit faire moins de 128 caractères.',
+      errorText: 'le nom de la ressource doit faire moins de 128 caractères.',
     ),
     get: () => value.resourceNom,
     update: (fieldValue) =>
@@ -459,11 +459,11 @@ class EditableFlux extends Editable<Flux> {
   );
 
   late final resourceDescription = Field<String?>(
-    label: 'Description de la resource',
+    label: 'Description de la ressource',
     validator: MaxLengthValidator(
       256,
       errorText:
-          'la description de la resource doit faire moins de 256 caractères.',
+          'la description de la ressource doit faire moins de 256 caractères.',
     ),
     get: () => value.resourceDescription,
     update: (fieldValue) =>
