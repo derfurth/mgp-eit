@@ -169,23 +169,6 @@ class ParticipantMetaCollectionBlone extends SupabaseCollection<ParticipantMeta>
     }
   }
 
-  Stream<Iterable<ParticipantMeta>> subscribeByAtelier({
-    required String atelierId,
-  }) async* {
-    try {
-      final existingParticipants =
-          await fromTable.select().eq('atelier_id', atelierId);
-      yield [for (var e in existingParticipants) elementFromJson(e)];
-    } on PostgrestException catch (_) {}
-
-    final changes = fromTable.stream(
-        primaryKey: ['atelier_id', 'contact_id']).eq('atelier_id', atelierId);
-
-    await for (var participants in changes) {
-      yield [for (var e in participants) elementFromJson(e)];
-    }
-  }
-
   Future<void> setParticipants({
     required String demarcheId,
     required String atelierId,

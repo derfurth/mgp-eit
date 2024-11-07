@@ -306,35 +306,6 @@ void main() {
 
           expect(retrieved, edited);
         });
-
-        test('subscribe and create', () async {
-          final demarche = db.demarches.first;
-          final atelier = db.ateliers.first;
-          final contact = db.contacts.first;
-          final stream =
-              app.participantMeta.subscribeByAtelier(atelierId: atelier.id);
-
-          final queue = StreamQueue(stream);
-          // final empty = await queue.next;
-          // expect(empty, isEmpty);
-
-          final metas = await queue.next;
-          expect(metas, isNotEmpty);
-
-          final edited = app.participantMeta
-              .create(
-                demarcheId: demarche.id,
-                atelierId: atelier.id,
-                contactId: contact.id,
-              )
-              .copyWith(champLibre: 'Hello, see you later in the stream');
-          app.participantMeta.save(edited);
-
-          var retrieved = await queue.next;
-          retrieved = await queue.next;
-          retrieved = await queue.next;
-          expect(retrieved, contains(edited));
-        });
       });
     });
 
@@ -354,36 +325,6 @@ void main() {
         );
         final fiche = snippet.fiche;
         expect(fiche.atelierId, db.ateliers.first.id);
-      });
-    });
-
-    group('fiche and meta streaming', () {
-      test('meta stream should emit when a champ libre is changed', () async {
-        final demarche = db.demarches.first;
-        final atelier = db.ateliers.first;
-        final contact = db.contacts.first;
-        final stream =
-            app.participantMeta.subscribeByAtelier(atelierId: atelier.id);
-        final queue = StreamQueue(stream);
-        var metas = await queue.next;
-
-        final meta = app.participantMeta
-            .create(
-              demarcheId: demarche.id,
-              atelierId: atelier.id,
-              contactId: contact.id,
-            )
-            .copyWith(champLibre: 'Hello dodo');
-        app.participantMeta.save(meta);
-
-        metas = await queue.next;
-        metas = await queue.next;
-        expect(metas.where((m) => m.champLibre == 'Hello dodo'), isNotEmpty);
-
-        final updated = meta.copyWith(champLibre: 'Yolo dodo');
-        app.participantMeta.save(updated);
-        metas = await queue.next;
-        expect(metas.where((m) => m.champLibre == 'Yolo dodo'), isNotEmpty);
       });
     });
 
