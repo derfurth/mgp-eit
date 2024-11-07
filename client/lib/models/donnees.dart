@@ -241,7 +241,6 @@ class LienFiche with _$LienFiche {
       ids.add(lien.ficheAId);
       if (lien.ficheBId != null) ids.add(lien.ficheBId!);
     }
-    ids.removeAll(fichesIds);
     return ids;
   }
 

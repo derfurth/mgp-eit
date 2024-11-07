@@ -48,6 +48,9 @@ class ScheduleCard {
     required this.ressource,
     required this.offre,
   });
+
+  String toString() =>
+      '$participant ${offre ? 'offre' : 'a besoin de'} $ressource';
 }
 
 /// The table where [participants] will gather to talk about [ressources].
@@ -63,7 +66,8 @@ class Table {
 
   @override
   String toString() =>
-      '${participants.length} participants au sujet de ${ressources.join(', ')}: ${participants.join(', ')}';
+      '${participants.length} participants au sujet de ${ressources.join(
+          ', ')}: ${participants.join(', ')}';
 }
 
 /// The turn is a list of [tables] where [participants] will discuss.
@@ -110,6 +114,12 @@ class Schedule {
     tables.clear();
     turns.clear();
 
+    final grouped = cards.groupListsBy((card) => card.ressource);
+    for (var ressource in grouped.keys) {
+      final cards = grouped[ressource];
+      print('---\n$ressource\n${cards!.map((card) => card.participant).join(' / ')}\n\n');
+    }
+
     makeTables();
     mergeDuplicateTables();
     makeTurns();
@@ -139,29 +149,52 @@ class Schedule {
           .map((id) => cards.firstWhereOrNull((card) => card.ficheId == id))
           .whereNotNull()
           .toSet();
+      print('-------');
+      print('${relatedCards.length} related: ${relatedCards.toString()}');
 
       final offers = relatedCards.where((card) => card.offre).toList();
       final needs = relatedCards.where((card) => card.besoin).toList();
       final needsPerOffer = max(1, needs.length / ~offers.length).toInt();
+      print('offers ${offers}, needs ${needs}');
 
       final lienTables = <Table>[];
 
-      while (relatedCards.isNotEmpty) {
-        final tableOffers = offers.sample(1, random);
-        final tableNeeds = needs.sample(min(seats - 1, needsPerOffer), random);
+      while (needs.isNotEmpty || offers.isNotEmpty) {
+        final tableOffers = needs.isEmpty
+        // no needs, take max offers
+            ? offers.sample(seats, random)
+        // there are matching needs, take a single offer
+            : offers.sample(1, random);
+        final tableNeeds = offers.isEmpty
+        // no offer, take max needs
+            ? needs.sample(seats, random)
+        // there is at least a matching offer
+            : needs.sample(min(seats - 1, needsPerOffer), random);
 
         needs.removeWhere((card) => tableNeeds.contains(card));
         offers.removeWhere((card) => tableOffers.contains(card));
-
         final tableCards = [...tableOffers, ...tableNeeds];
+
+        if (tableCards.length == 1) {
+          final remaining = tableCards.first;
+          tableCards.add(
+            relatedCards.firstWhere(
+                  (card) => card.offre != remaining.offre,
+              orElse: () =>
+                  relatedCards
+                      .firstWhere((card) => card.ficheId != remaining.ficheId),
+            ),
+          );
+        }
+
         lienTables.add(
           Table(
             participants: tableCards.map((card) => card.participant).toSet(),
             ressources: tableCards.map((card) => card.ressource).toSet(),
           ),
         );
+
         assigned.addAll(tableCards);
-        relatedCards.removeAll(tableCards);
       }
       tables.addAll(lienTables);
     }
@@ -223,7 +256,7 @@ class Schedule {
       if (merged.contains(table)) continue;
       if (dupes.contains(table)) continue;
       final sameParticipants = tables.where((other) =>
-          table != other &&
+      table != other &&
           table.participants.length == other.participants.length &&
           table.participants.containsAll(other.participants));
       if (sameParticipants.isNotEmpty) merged.add(table);
@@ -247,12 +280,13 @@ class Schedule {
       // Find a turn to add the table
       turns
           .firstWhere((turn) =>
-              // - where all tables are not assigned
-              turn.tables.length < configuration.tableCount &&
-              // - no tables have a participant from our table
-              !turn.tables.any((other) => other.participants
-                  .intersection(table.participants)
-                  .isNotEmpty))
+      // - where all tables are not assigned
+      turn.tables.length < configuration.tableCount &&
+          // - no tables have a participant from our table
+          !turn.tables.any((other) =>
+          other.participants
+              .intersection(table.participants)
+              .isNotEmpty))
           .tables
           .add(table);
       // sort turns to keep empty turns at the end.
