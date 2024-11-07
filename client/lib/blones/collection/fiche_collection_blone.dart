@@ -133,23 +133,23 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
   Future<void> saveLiens(
     Fiche fiche,
     Flux flux,
-    Iterable<EditableLienFiche> liens,
+    Iterable<LienFiche> liens,
     Iterable<ContactSnippet> participants,
   ) async {
     for (final lien in liens) {
       // B contact wasn't set.
-      if (lien.value.contactBId == null) continue;
+      if (lien.contactBId == null) continue;
       // if Fiche B is null, we insert.
-      if (lien.value.ficheBId == null) {
+      if (lien.ficheBId == null) {
         final contactB = participants.firstWhere(
-            (snippet) => snippet.contact.id == lien.value.contactBId);
+            (snippet) => snippet.contact.id == lien.contactBId);
 
         final mirrorFlux = flux.copyWith(
           id: SupabaseCollection.uuid.v4(),
           contactId: contactB.contact.id,
           etablissementId: contactB.contact.etablissementId,
-          quantite: lien.value.quantiteB ?? 0,
-          direction: lien.value.directionB ?? FluxDirection.entrant,
+          quantite: lien.quantiteB ?? 0,
+          direction: lien.directionB ?? FluxDirection.entrant,
         );
         await parent.flux.save(mirrorFlux);
 
@@ -159,7 +159,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
           fluxId: mirrorFlux.id,
           commentaire:
               'Lien de ${contactB.entreprise.entreprise.denomination}: '
-              '${lien.nature.value ?? ''}',
+              '${lien.nature ?? ''}',
         );
         await save(mirrorFiche);
 
@@ -174,7 +174,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
         ]);
         await parent.participantMeta.save(participantMeta);
 
-        final value = lien.value.copyWith(
+        final value = lien.copyWith(
           quantiteA: flux.quantite,
           directionA: flux.direction,
           ficheBId: mirrorFiche.id,
@@ -190,7 +190,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
       }
 
       // Else we update the quantité
-      else if (lien.value.ficheAId == fiche.id) {
+      else if (lien.ficheAId == fiche.id) {
         // update fiche A quantité
         await parent.liensFiches.fromTable
             .update({'quantite_a': flux.quantite})
@@ -199,22 +199,22 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
         await invalidate(
           demarcheId: fiche.demarcheId,
           atelierId: fiche.atelierId,
-          contactId: lien.value.contactAId,
-          ficheId: lien.value.ficheAId,
+          contactId: lien.contactAId,
+          ficheId: lien.ficheAId,
           notify: false,
         );
-      } else if (lien.value.ficheBId == fiche.id) {
+      } else if (lien.ficheBId == fiche.id) {
         // update fiche B quantité
         await parent.liensFiches.fromTable
             .update({'quantite_b': flux.quantite})
             .eq('fiche_b_id', fiche.id)
             .eq('demarche_id', fiche.demarcheId);
-        if (lien.value.contactBId != null) {
+        if (lien.contactBId != null) {
           await invalidate(
             demarcheId: fiche.demarcheId,
             atelierId: fiche.atelierId,
-            contactId: lien.value.contactBId!,
-            ficheId: lien.value.ficheBId,
+            contactId: lien.contactBId!,
+            ficheId: lien.ficheBId,
             notify: false,
           );
         }
@@ -252,7 +252,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
     required EditableFiche fiche,
     required EditableFlux flux,
     required ContactSnippet contact,
-    required Iterable<EditableLienFiche> liens,
+    required Iterable<LienFiche> liens,
     EditableParticipantMeta? meta,
   }) async {
     meta?.updateThematiqueIds([

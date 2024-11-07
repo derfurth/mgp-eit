@@ -399,7 +399,8 @@ class LienFicheForm extends StatelessWidget {
       for (final participant in atelier.participants)
         DropdownMenuEntry<ContactSnippet>(
           value: participant,
-          label: '${participant.personne.displayName} / ${participant.entreprise.entreprise.denomination}',
+          label:
+              '${participant.personne.displayName} / ${participant.entreprise.entreprise.denomination}',
         )
     ];
 
@@ -566,13 +567,13 @@ class _FicheAndFluxSaveBar extends StatelessWidget {
           child: const Text('Annuler'),
         ),
         ElevatedButton(
-          onPressed: () async {
+          onPressed: () {
             fiches.saveEditables(
               atelier: atelier,
               fiche: fiche,
               flux: flux,
               contact: snippet.contact,
-              liens: liens,
+              liens: [for (var editable in liens) editable.value],
               meta: editableMeta,
             );
 
