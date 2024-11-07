@@ -1,8 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mgp_client/commands/download_command.dart';
 import 'package:mgp_client/components/future_loader.dart';
 import 'package:mgp_client/models/donnees.dart';
 import 'package:mgp_client/models/editable.dart';
