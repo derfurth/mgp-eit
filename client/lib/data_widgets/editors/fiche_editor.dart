@@ -1,8 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:collection_providers/collection_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:mgp_client/blones/collection/entreprise_collection_blones.dart';
 import 'package:mgp_client/blones/rapport_blone.dart';
 import 'package:mgp_client/commands/download_command.dart';
+import 'package:mgp_client/data_widgets/editors/atelier_editor.dart' show showFicheFunction;
 import 'package:provider/provider.dart';
 import 'package:styled_widget/styled_widget.dart';
 
@@ -132,7 +134,6 @@ class FicheEditor extends StatelessWidget {
                                 const FicheForm(),
                                 Leading.vSmall(),
                                 FluxInlineForm(flux: flux),
-                                // _MirrorContactSelector(),
                                 Leading.vSmall(),
                                 const LienFichesEditor(),
                                 _FicheAndFluxSaveBar(
@@ -321,9 +322,25 @@ class _LienFichesEditorState extends State<LienFichesEditor> {
     super.dispose();
   }
 
+  void goToLien(Fiche fiche, LienFiche lien) async {
+    final Demarche demarche = context.read();
+    final AtelierSnippet atelier = context.read();
+
+    final ContactCollectionBlone contacts = context.read();
+
+    final contactId =
+        fiche.id == lien.ficheAId ? lien.contactBId : lien.contactAId;
+    final ficheId = fiche.id == lien.ficheAId ? lien.ficheBId : lien.ficheAId;
+    if (contactId == null) return;
+    final contact = await contacts.getById(contactId);
+    final function = showFicheFunction(demarche, atelier, contact);
+    if (mounted) function(context: context, ficheId: ficheId);
+  }
+
   @override
   Widget build(BuildContext context) {
     final LienFicheCollectionBlone blone = context.read();
+    final ContactCollectionBlone contacts = context.read();
     final FicheSnippet fiche = context.read();
     final AtelierSnippet atelier = context.watch();
     final liens = CollectionProvider.of<ListChangeNotifier<EditableLienFiche>>(
@@ -332,49 +349,47 @@ class _LienFichesEditorState extends State<LienFichesEditor> {
     );
     listen(liens);
 
-    return Wrapper.form(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Heading.h6('Fiches liées'),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Create a ListView.builder to display existing linked fiches
-            for (final lien in liens)
-              ChangeNotifierProvider.value(
-                value: lien,
-                child: LienFicheForm(
-                  onDelete: () {
-                    final ficheAId = lien.value.ficheAId;
-                    final ficheBId = lien.value.ficheBId;
-                    if (ficheBId != null) {
-                      blone.deleteForFiches(ficheAId, ficheBId);
-                    }
-                    liens.remove(lien);
-                  },
-                ),
-              ),
-            // Create a button to add a new LinkedFicheForm
-            ElevatedButton(
-              onPressed: () {
-                liens.add(EditableLienFiche(LienFiche(
-                  demarcheId: atelier.atelier.demarcheId,
-                  atelierId: atelier.atelier.id,
-                  ficheAId: fiche.fiche.id,
-                  contactAId: fiche.contact.contact.id,
-                  directionA: fiche.flux.direction,
-                  quantiteA: fiche.flux.quantite,
-                  // Placeholders
-                  ficheBId: null,
-                  contactBId: null,
-                  directionB: FluxDirection.sortant,
-                  quantiteB: 0,
-                  nature: '',
-                )));
+        // Create a ListView.builder to display existing linked fiches
+        for (final lien in liens)
+          ChangeNotifierProvider.value(
+            value: lien,
+            child: LienFicheForm(
+              onDelete: () {
+                final ficheAId = lien.value.ficheAId;
+                final ficheBId = lien.value.ficheBId;
+                if (ficheBId != null) {
+                  blone.deleteForFiches(ficheAId, ficheBId);
+                }
+                liens.remove(lien);
               },
-              child: const Text('Ajouter une fiche liée'),
-            ).alignment(AlignmentDirectional.bottomStart),
-          ],
-        ),
+              onOpen: () => goToLien(fiche.fiche, lien.value)
+              ,
+            ),
+          ),
+        // Create a button to add a new LinkedFicheForm
+        ElevatedButton(
+          onPressed: () {
+            liens.add(EditableLienFiche(LienFiche(
+              demarcheId: atelier.atelier.demarcheId,
+              atelierId: atelier.atelier.id,
+              ficheAId: fiche.fiche.id,
+              contactAId: fiche.contact.contact.id,
+              directionA: fiche.flux.direction,
+              quantiteA: fiche.flux.quantite,
+              // Placeholders
+              ficheBId: null,
+              contactBId: null,
+              directionB: FluxDirection.sortant,
+              quantiteB: 0,
+              nature: '',
+            )));
+          },
+          child: const Text('Ajouter une fiche liée'),
+        ).alignment(AlignmentDirectional.bottomStart),
       ],
     );
   }
@@ -382,10 +397,12 @@ class _LienFichesEditorState extends State<LienFichesEditor> {
 
 class LienFicheForm extends StatelessWidget {
   final VoidCallback onDelete;
+  final VoidCallback onOpen;
 
   const LienFicheForm({
     super.key,
     required this.onDelete,
+    required this.onOpen,
   });
 
   @override
@@ -431,6 +448,7 @@ class LienFicheForm extends StatelessWidget {
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         DropdownMenu<ContactSnippet?>(
           enableFilter: true,
@@ -450,15 +468,13 @@ class LienFicheForm extends StatelessWidget {
                   if (contact != null) updateContact(contact.contact.id);
                 },
           dropdownMenuEntries: dropdownMenuEntries,
-        ).padding(right: theme.grid * 2).flexible(flex: 2),
+        ).flexible(flex: 2),
         if (!readOnly)
           editable.nature
               .toTextFormField(maxLines: 1, enabled: !readOnly)
-              .padding(right: theme.grid * 2)
               .flexible(flex: 2),
         (editingA ? editable.quantiteB : editable.quantiteA)
             .toTextFormField(maxLines: 1, enabled: !readOnly)
-            .padding(right: theme.grid * 2)
             .flexible(flex: 1),
         DropdownMenu<FluxDirection?>(
           enableFilter: false,
@@ -482,7 +498,12 @@ class LienFicheForm extends StatelessWidget {
             DropdownMenuEntry(value: FluxDirection.entrant, label: 'Besoin'),
             DropdownMenuEntry(value: FluxDirection.sortant, label: 'Offre'),
           ],
-        ).padding(right: theme.grid * 2).flexible(flex: 1),
+        ).flexible(flex: 1),
+        if (readOnly)
+          IconButton(
+            onPressed: onOpen,
+            icon: const Icon(Icons.open_in_browser),
+          ),
         IconButton(
           onPressed: onDelete,
           icon: const Icon(Icons.delete),
