@@ -493,7 +493,8 @@ class LienFicheSide extends StatelessWidget {
                                 editableMeta:
                                     EditableParticipantMeta(participantMeta),
                                 ficheId: ficheId),
-                        child: Chip(label: Text(shortDescription(snippet)))),
+                        child: Chip(
+                            label: Text(shortDescription(snippet)))).flexible(),
                     Checkbox(
                       value: selection.contains(snippet),
                       onChanged: (selected) => selected == true
