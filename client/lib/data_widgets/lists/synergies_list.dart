@@ -122,6 +122,7 @@ class _SearchableSynergieListState extends State<SearchableSynergieList> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListView.builder(
+                        controller: controller,
                         itemCount: list.length,
                         itemBuilder: (BuildContext context, int index) {
                           return SynergieItem(

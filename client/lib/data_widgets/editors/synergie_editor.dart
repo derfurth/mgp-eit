@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:mgp_client/chauffeur/routemaster.dart';
 import 'package:mgp_client/models/editable.dart';
 import 'package:mgp_client/styled_widgets/heading.dart';
 import 'package:mgp_client/utils/time_utils.dart';
@@ -83,10 +84,12 @@ class SynergieEditor extends StatelessWidget {
 /// Sets properties like name, animateurs, participants.
 class SynergieForm extends StatelessWidget {
   final SynergieSnippet synergie;
+  final bool inModal;
 
   const SynergieForm({
     super.key,
     required this.synergie,
+    this.inModal = false,
   });
 
   @override
@@ -161,7 +164,7 @@ class SynergieForm extends StatelessWidget {
               editable.updateFluxIds([for (final flux in fluxes) flux.id]);
             },
           ),
-          _SynergieSaveBar(),
+          _SynergieSaveBar(inModal: inModal),
         ],
       ),
     );
@@ -301,6 +304,10 @@ class SynergieIndicators extends StatelessWidget {
 }
 
 class _SynergieSaveBar extends StatelessWidget {
+  final bool inModal;
+
+  const _SynergieSaveBar({super.key, required this.inModal});
+
   @override
   Widget build(BuildContext context) {
     final SynergieCollectionBlone synergies = context.read();
@@ -323,11 +330,13 @@ class _SynergieSaveBar extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    // ferme l'AlertDialog
-                    Navigator.pop(context, 'Supprimer');
-
-                    // ferme la synergie
-                    Navigator.pop(context, 'Supprimer');
+                    if (inModal) {
+                      Navigator.pop(context, 'close');
+                      Navigator.pop(context, 'Supprimer');
+                    } else {
+                      Navigator.pop(context, 'close');
+                      routeMaster.popRoute();
+                    }
 
                     // Supprimer le flux entraine la suppression de la fiche.
                     synergies.delete(synergie.value.id);
@@ -340,18 +349,27 @@ class _SynergieSaveBar extends StatelessWidget {
           icon: const Icon(Icons.delete),
           label: const Text('supprimer'),
         ),
+        if (inModal)
+          TextButton(
+            onPressed: () async {
+              Navigator.pop(context, 'Pop');
+            },
+            child: const Text('Annuler'),
+          ),
         ElevatedButton(
           onPressed: () async {
+            if (inModal) {
+              Navigator.pop(context, 'Save');
+            } else {
+              routeMaster.popRoute();
+            }
             await blone.save(synergie.value);
-
-            // ferme la synergie
-            Navigator.pop(context, 'Supprimer');
-
             ShowMessageCommand()
                 .execute(const UIMessage.save('Synergie enregistrée'));
           },
           child: const Text('Enregistrer'),
         ),
+
       ],
     );
   }

@@ -40,7 +40,10 @@ Future<void> showNewSynergieUsingSelectionDialog(
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: SynergieForm(synergie: snippet),
+                child: SynergieForm(
+                  synergie: snippet,
+                  inModal: true,
+                ),
               ),
             ),
           ),
