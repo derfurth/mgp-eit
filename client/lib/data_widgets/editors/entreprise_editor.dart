@@ -254,7 +254,35 @@ class _EnterpriseSaveBarState extends State<_EnterpriseSaveBar> {
     final Demarche demarche = context.watch();
 
     return OverflowBar(
+      spacing: 8,
+      alignment: MainAxisAlignment.end,
       children: [
+        TextButton.icon(
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Suppression de l\'entreprise'),
+              content: const Text('Souhaitez-vous supprimer cette entreprise ? '
+                  'Les données de l\'entreprise, comme les fiches ressources, seront conservées.'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Annuler'),
+                  child: const Text('Annuler'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    Navigator.pop(context, 'Suppression');
+                    await entreprises.delete(entreprise.value.id);
+                    chauffeur.contactsAndEntreprises(demarche.id);
+                  },
+                  child: const Text('Supprimer'),
+                ),
+              ],
+            ),
+          ),
+          icon: const Icon(Icons.delete),
+          label: const Text('supprimer'),
+        ),
         ElevatedButton(
           onPressed: () => chauffeur.contactsAndEntreprises(demarche.id),
           child: const Text('Annuler'),
@@ -276,7 +304,7 @@ class _EnterpriseSaveBarState extends State<_EnterpriseSaveBar> {
                     saving = false;
                   });
                 },
-          child: const Text('OK'),
+          child: const Text('Enregistrer'),
         ),
       ],
     );

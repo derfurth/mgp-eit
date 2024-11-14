@@ -315,6 +315,7 @@ class _SynergieSaveBar extends StatelessWidget {
     final SynergieCollectionBlone blone = context.watch();
 
     return OverflowBar(
+      spacing: 8,
       alignment: MainAxisAlignment.end,
       children: [
         TextButton.icon(

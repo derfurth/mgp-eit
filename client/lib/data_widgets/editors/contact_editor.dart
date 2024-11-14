@@ -114,6 +114,7 @@ class ContactForm extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => EditableContact(contact.contact)),
       ],
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const PersonneForm(),
           Leading.vMedium(),
@@ -185,13 +186,42 @@ class EtablissementPicker extends StatelessWidget {
 class _ContactSaveBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Demarche demarche = context.watch();
     final EditablePersonne personne = context.watch();
     final EditableContact contact = context.watch();
     final PersonneCollectionBlone personnes = context.watch();
     final ContactCollectionBlone contacts = context.watch();
 
     return OverflowBar(
+      alignment: MainAxisAlignment.end,
+      spacing: 8,
       children: [
+        TextButton.icon(
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Suppression du contact'),
+              content: const Text('Souhaitez-vous supprimer ce contact ? '
+                  'Les données du contact, comme les fiches ressources, seront conservées.'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Annuler'),
+                  child: const Text('Annuler'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    Navigator.pop(context, 'Suppression');
+                    await contacts.delete(contact.value.id);
+                    chauffeur.contactsAndEntreprises(demarche.id);
+                  },
+                  child: const Text('Supprimer'),
+                ),
+              ],
+            ),
+          ),
+          icon: const Icon(Icons.delete),
+          label: const Text('supprimer'),
+        ),
         ElevatedButton(
           onPressed: chauffeur.routeMaster.history.back,
           child: const Text('Annuler'),
@@ -202,7 +232,7 @@ class _ContactSaveBar extends StatelessWidget {
             await contacts.save(contact.value);
             chauffeur.routeMaster.history.back();
           },
-          child: const Text('OK'),
+          child: const Text('Enregistrer'),
         ),
       ],
     );
