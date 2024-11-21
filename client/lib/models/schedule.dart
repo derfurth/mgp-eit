@@ -122,6 +122,7 @@ class Schedule {
 
     makeTables();
     mergeDuplicateTables();
+    removeSoloTables();
     makeTurns();
 
     // Keep the turns with the most tables.
@@ -248,7 +249,7 @@ class Schedule {
     }
   }
 
-  // Merge tables with the same participants.
+  /// Merge tables with the same participants.
   void mergeDuplicateTables() {
     final merged = <Table>[];
     final dupes = <Table>[];
@@ -266,6 +267,11 @@ class Schedule {
       }
     }
     tables.removeWhere((table) => dupes.contains(table));
+  }
+
+  /// Remove tables with only one participant.
+  void removeSoloTables() {
+    tables.removeWhere((table) => table.participants.length < 2);
   }
 
   void makeTurns() {
