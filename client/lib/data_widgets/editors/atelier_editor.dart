@@ -834,11 +834,13 @@ class ScheduleDataGrid extends StatelessWidget {
             final maxTables =
                 schedule.turns.map((turn) => turn.tables.length).maxOrNull ?? 0;
             final rowHeight =
-                24.0 + 20.0 * schedule.configuration.tableSeatCount;
+                44.0 + 20.0 * schedule.configuration.tableSeatCount;
             return SizedBox(
-              height: rowHeight * (min(maxTables, 8) + 1),
+              height: rowHeight * (min(maxTables, 7) + 1),
               child: SfDataGrid(
                 key: dataGridKey,
+                showHorizontalScrollbar: true,
+                isScrollbarAlwaysShown: true,
                 columnSizer: customColumnSizer,
                 columnWidthMode: ColumnWidthMode.auto,
                 rowHeight: rowHeight,
