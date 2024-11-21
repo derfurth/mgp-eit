@@ -2141,6 +2141,8 @@ mixin _$LienFiche {
   FluxDirection get directionA => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantite_a')
   num get quantiteA => throw _privateConstructorUsedError;
+  @JsonKey(name: 'flux_unite_a')
+  String get uniteA => throw _privateConstructorUsedError;
   @JsonKey(name: 'fiche_b_id')
   String? get ficheBId => throw _privateConstructorUsedError;
   @JsonKey(name: 'contact_b_id')
@@ -2149,6 +2151,8 @@ mixin _$LienFiche {
   FluxDirection? get directionB => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantite_b')
   num? get quantiteB => throw _privateConstructorUsedError;
+  @JsonKey(name: 'flux_unite_b')
+  String get uniteB => throw _privateConstructorUsedError;
 
   /// Serializes this LienFiche to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2173,10 +2177,12 @@ abstract class $LienFicheCopyWith<$Res> {
       @JsonKey(name: 'contact_a_id') String contactAId,
       @JsonKey(name: 'flux_direction_a') FluxDirection directionA,
       @JsonKey(name: 'quantite_a') num quantiteA,
+      @JsonKey(name: 'flux_unite_a') String uniteA,
       @JsonKey(name: 'fiche_b_id') String? ficheBId,
       @JsonKey(name: 'contact_b_id') String? contactBId,
       @JsonKey(name: 'flux_direction_b') FluxDirection? directionB,
-      @JsonKey(name: 'quantite_b') num? quantiteB});
+      @JsonKey(name: 'quantite_b') num? quantiteB,
+      @JsonKey(name: 'flux_unite_b') String uniteB});
 }
 
 /// @nodoc
@@ -2201,10 +2207,12 @@ class _$LienFicheCopyWithImpl<$Res, $Val extends LienFiche>
     Object? contactAId = null,
     Object? directionA = null,
     Object? quantiteA = null,
+    Object? uniteA = null,
     Object? ficheBId = freezed,
     Object? contactBId = freezed,
     Object? directionB = freezed,
     Object? quantiteB = freezed,
+    Object? uniteB = null,
   }) {
     return _then(_value.copyWith(
       demarcheId: null == demarcheId
@@ -2235,6 +2243,10 @@ class _$LienFicheCopyWithImpl<$Res, $Val extends LienFiche>
           ? _value.quantiteA
           : quantiteA // ignore: cast_nullable_to_non_nullable
               as num,
+      uniteA: null == uniteA
+          ? _value.uniteA
+          : uniteA // ignore: cast_nullable_to_non_nullable
+              as String,
       ficheBId: freezed == ficheBId
           ? _value.ficheBId
           : ficheBId // ignore: cast_nullable_to_non_nullable
@@ -2251,6 +2263,10 @@ class _$LienFicheCopyWithImpl<$Res, $Val extends LienFiche>
           ? _value.quantiteB
           : quantiteB // ignore: cast_nullable_to_non_nullable
               as num?,
+      uniteB: null == uniteB
+          ? _value.uniteB
+          : uniteB // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -2271,10 +2287,12 @@ abstract class _$$LienFicheImplCopyWith<$Res>
       @JsonKey(name: 'contact_a_id') String contactAId,
       @JsonKey(name: 'flux_direction_a') FluxDirection directionA,
       @JsonKey(name: 'quantite_a') num quantiteA,
+      @JsonKey(name: 'flux_unite_a') String uniteA,
       @JsonKey(name: 'fiche_b_id') String? ficheBId,
       @JsonKey(name: 'contact_b_id') String? contactBId,
       @JsonKey(name: 'flux_direction_b') FluxDirection? directionB,
-      @JsonKey(name: 'quantite_b') num? quantiteB});
+      @JsonKey(name: 'quantite_b') num? quantiteB,
+      @JsonKey(name: 'flux_unite_b') String uniteB});
 }
 
 /// @nodoc
@@ -2297,10 +2315,12 @@ class __$$LienFicheImplCopyWithImpl<$Res>
     Object? contactAId = null,
     Object? directionA = null,
     Object? quantiteA = null,
+    Object? uniteA = null,
     Object? ficheBId = freezed,
     Object? contactBId = freezed,
     Object? directionB = freezed,
     Object? quantiteB = freezed,
+    Object? uniteB = null,
   }) {
     return _then(_$LienFicheImpl(
       demarcheId: null == demarcheId
@@ -2331,6 +2351,10 @@ class __$$LienFicheImplCopyWithImpl<$Res>
           ? _value.quantiteA
           : quantiteA // ignore: cast_nullable_to_non_nullable
               as num,
+      uniteA: null == uniteA
+          ? _value.uniteA
+          : uniteA // ignore: cast_nullable_to_non_nullable
+              as String,
       ficheBId: freezed == ficheBId
           ? _value.ficheBId
           : ficheBId // ignore: cast_nullable_to_non_nullable
@@ -2347,6 +2371,10 @@ class __$$LienFicheImplCopyWithImpl<$Res>
           ? _value.quantiteB
           : quantiteB // ignore: cast_nullable_to_non_nullable
               as num?,
+      uniteB: null == uniteB
+          ? _value.uniteB
+          : uniteB // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -2362,11 +2390,13 @@ class _$LienFicheImpl extends _LienFiche {
       @JsonKey(name: 'contact_a_id') required this.contactAId,
       @JsonKey(name: 'flux_direction_a') required this.directionA,
       @JsonKey(name: 'quantite_a') required this.quantiteA,
+      @JsonKey(name: 'flux_unite_a') this.uniteA = '',
       @JsonKey(name: 'fiche_b_id') this.ficheBId,
       @JsonKey(name: 'contact_b_id') this.contactBId,
       @JsonKey(name: 'flux_direction_b')
       this.directionB = FluxDirection.entrant,
-      @JsonKey(name: 'quantite_b') this.quantiteB})
+      @JsonKey(name: 'quantite_b') this.quantiteB,
+      @JsonKey(name: 'flux_unite_b') this.uniteB = ''})
       : super._();
 
   factory _$LienFicheImpl.fromJson(Map<String, dynamic> json) =>
@@ -2394,6 +2424,9 @@ class _$LienFicheImpl extends _LienFiche {
   @JsonKey(name: 'quantite_a')
   final num quantiteA;
   @override
+  @JsonKey(name: 'flux_unite_a')
+  final String uniteA;
+  @override
   @JsonKey(name: 'fiche_b_id')
   final String? ficheBId;
   @override
@@ -2405,10 +2438,13 @@ class _$LienFicheImpl extends _LienFiche {
   @override
   @JsonKey(name: 'quantite_b')
   final num? quantiteB;
+  @override
+  @JsonKey(name: 'flux_unite_b')
+  final String uniteB;
 
   @override
   String toString() {
-    return 'LienFiche(demarcheId: $demarcheId, atelierId: $atelierId, nature: $nature, ficheAId: $ficheAId, contactAId: $contactAId, directionA: $directionA, quantiteA: $quantiteA, ficheBId: $ficheBId, contactBId: $contactBId, directionB: $directionB, quantiteB: $quantiteB)';
+    return 'LienFiche(demarcheId: $demarcheId, atelierId: $atelierId, nature: $nature, ficheAId: $ficheAId, contactAId: $contactAId, directionA: $directionA, quantiteA: $quantiteA, uniteA: $uniteA, ficheBId: $ficheBId, contactBId: $contactBId, directionB: $directionB, quantiteB: $quantiteB, uniteB: $uniteB)';
   }
 
   @override
@@ -2429,6 +2465,7 @@ class _$LienFicheImpl extends _LienFiche {
                 other.directionA == directionA) &&
             (identical(other.quantiteA, quantiteA) ||
                 other.quantiteA == quantiteA) &&
+            (identical(other.uniteA, uniteA) || other.uniteA == uniteA) &&
             (identical(other.ficheBId, ficheBId) ||
                 other.ficheBId == ficheBId) &&
             (identical(other.contactBId, contactBId) ||
@@ -2436,7 +2473,8 @@ class _$LienFicheImpl extends _LienFiche {
             (identical(other.directionB, directionB) ||
                 other.directionB == directionB) &&
             (identical(other.quantiteB, quantiteB) ||
-                other.quantiteB == quantiteB));
+                other.quantiteB == quantiteB) &&
+            (identical(other.uniteB, uniteB) || other.uniteB == uniteB));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2450,10 +2488,12 @@ class _$LienFicheImpl extends _LienFiche {
       contactAId,
       directionA,
       quantiteA,
+      uniteA,
       ficheBId,
       contactBId,
       directionB,
-      quantiteB);
+      quantiteB,
+      uniteB);
 
   /// Create a copy of LienFiche
   /// with the given fields replaced by the non-null parameter values.
@@ -2481,10 +2521,12 @@ abstract class _LienFiche extends LienFiche {
       @JsonKey(name: 'flux_direction_a')
       required final FluxDirection directionA,
       @JsonKey(name: 'quantite_a') required final num quantiteA,
+      @JsonKey(name: 'flux_unite_a') final String uniteA,
       @JsonKey(name: 'fiche_b_id') final String? ficheBId,
       @JsonKey(name: 'contact_b_id') final String? contactBId,
       @JsonKey(name: 'flux_direction_b') final FluxDirection? directionB,
-      @JsonKey(name: 'quantite_b') final num? quantiteB}) = _$LienFicheImpl;
+      @JsonKey(name: 'quantite_b') final num? quantiteB,
+      @JsonKey(name: 'flux_unite_b') final String uniteB}) = _$LienFicheImpl;
   const _LienFiche._() : super._();
 
   factory _LienFiche.fromJson(Map<String, dynamic> json) =
@@ -2512,6 +2554,9 @@ abstract class _LienFiche extends LienFiche {
   @JsonKey(name: 'quantite_a')
   num get quantiteA;
   @override
+  @JsonKey(name: 'flux_unite_a')
+  String get uniteA;
+  @override
   @JsonKey(name: 'fiche_b_id')
   String? get ficheBId;
   @override
@@ -2523,6 +2568,9 @@ abstract class _LienFiche extends LienFiche {
   @override
   @JsonKey(name: 'quantite_b')
   num? get quantiteB;
+  @override
+  @JsonKey(name: 'flux_unite_b')
+  String get uniteB;
 
   /// Create a copy of LienFiche
   /// with the given fields replaced by the non-null parameter values.

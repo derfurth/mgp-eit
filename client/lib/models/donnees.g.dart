@@ -181,12 +181,14 @@ _$LienFicheImpl _$$LienFicheImplFromJson(Map<String, dynamic> json) =>
       contactAId: json['contact_a_id'] as String,
       directionA: $enumDecode(_$FluxDirectionEnumMap, json['flux_direction_a']),
       quantiteA: json['quantite_a'] as num,
+      uniteA: json['flux_unite_a'] as String? ?? '',
       ficheBId: json['fiche_b_id'] as String?,
       contactBId: json['contact_b_id'] as String?,
       directionB: $enumDecodeNullable(
               _$FluxDirectionEnumMap, json['flux_direction_b']) ??
           FluxDirection.entrant,
       quantiteB: json['quantite_b'] as num?,
+      uniteB: json['flux_unite_b'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$LienFicheImplToJson(_$LienFicheImpl instance) =>
@@ -198,10 +200,12 @@ Map<String, dynamic> _$$LienFicheImplToJson(_$LienFicheImpl instance) =>
       'contact_a_id': instance.contactAId,
       'flux_direction_a': _$FluxDirectionEnumMap[instance.directionA]!,
       'quantite_a': instance.quantiteA,
+      'flux_unite_a': instance.uniteA,
       'fiche_b_id': instance.ficheBId,
       'contact_b_id': instance.contactBId,
       'flux_direction_b': _$FluxDirectionEnumMap[instance.directionB],
       'quantite_b': instance.quantiteB,
+      'flux_unite_b': instance.uniteB,
     };
 
 const _$FluxDirectionEnumMap = {

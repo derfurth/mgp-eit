@@ -222,12 +222,13 @@ class LienFiche with _$LienFiche {
     @JsonKey(name: 'contact_a_id') required String contactAId,
     @JsonKey(name: 'flux_direction_a') required FluxDirection directionA,
     @JsonKey(name: 'quantite_a') required num quantiteA,
+    @JsonKey(name: 'flux_unite_a') @Default('') String uniteA,
     @JsonKey(name: 'fiche_b_id') String? ficheBId,
     @JsonKey(name: 'contact_b_id') String? contactBId,
     @Default(FluxDirection.entrant)
-    @JsonKey(name: 'flux_direction_b')
-    FluxDirection? directionB,
+    @JsonKey(name: 'flux_direction_b') FluxDirection? directionB,
     @JsonKey(name: 'quantite_b') num? quantiteB,
+    @JsonKey(name: 'flux_unite_b') @Default('') String uniteB,
   }) = _LienFiche;
 
   factory LienFiche.fromJson(Map<String, dynamic> json) =>
