@@ -476,6 +476,9 @@ class LienFicheForm extends StatelessWidget {
         (editingA ? editable.quantiteB : editable.quantiteA)
             .toTextFormField(maxLines: 1, enabled: !readOnly)
             .flexible(flex: 1),
+        (editingA ? editable.uniteB : editable.uniteA)
+            .toTextFormField(maxLines: 1, enabled: !readOnly)
+            .flexible(flex: 1),
         DropdownMenu<FluxDirection?>(
           enableFilter: false,
           enableSearch: false,

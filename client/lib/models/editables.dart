@@ -244,6 +244,22 @@ class EditableLienFiche extends Editable<LienFiche> {
         quantiteB: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
+  late final uniteA = Field<String?>(
+    label: 'unité',
+    validator: MaxLengthValidator(16,
+        errorText: "L'unité doit faire moins de 16 caractères."),
+    get: () => value.uniteA.toString(),
+    update: (fieldValue) => update(value.copyWith(uniteA: fieldValue ?? '')),
+  );
+
+  late final uniteB = Field<String?>(
+    label: 'unité',
+    validator: MaxLengthValidator(16,
+        errorText: "L'unité doit faire moins de 16 caractères."),
+    get: () => value.uniteB.toString(),
+    update: (fieldValue) => update(value.copyWith(uniteB: fieldValue ?? '')),
+  );
+
   void updateFicheAId(String id) => update(value.copyWith(ficheAId: id));
 
   void updateContactAId(String id) => update(value.copyWith(contactAId: id));
@@ -607,8 +623,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
     get: () => value.reductionTotaleDeLaConsommationMatiere.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(reductionTotaleDeLaConsommationMatiere: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        reductionTotaleDeLaConsommationMatiere:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final reductionDeLaConsommationMatiereHorsInerte = Field<String?>(
@@ -617,8 +634,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
     get: () => value.reductionDeLaConsommationMatiereHorsInerte.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(reductionDeLaConsommationMatiereHorsInerte: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        reductionDeLaConsommationMatiereHorsInerte:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final reductionTotaleDesDechets = Field<String?>(
@@ -627,8 +645,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
     get: () => value.reductionTotaleDesDechets.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(reductionTotaleDesDechets: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        reductionTotaleDesDechets:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final reductionDesDechetsNonInertes = Field<String?>(
@@ -637,8 +656,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
     get: () => value.reductionDesDechetsNonInertes.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(reductionDesDechetsNonInertes: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        reductionDesDechetsNonInertes:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final ameliorationDeLaValorisationDesDechets = Field<String?>(
@@ -647,8 +667,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de tonnes / an.',
     ),
     get: () => value.ameliorationDeLaValorisationDesDechets.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(ameliorationDeLaValorisationDesDechets: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        ameliorationDeLaValorisationDesDechets:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final reductionDesConsommationsDenergie = Field<String?>(
@@ -657,8 +678,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de MWh / an.',
     ),
     get: () => value.reductionDesConsommationsDenergie.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(reductionDesConsommationsDenergie: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        reductionDesConsommationsDenergie:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final productionDenergieRenouvelable = Field<String?>(
@@ -667,8 +689,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de MWh / an.',
     ),
     get: () => value.productionDenergieRenouvelable.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(productionDenergieRenouvelable: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        productionDenergieRenouvelable:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final reductionDesConsommationsDeau = Field<String?>(
@@ -677,8 +700,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de m3 / an.',
     ),
     get: () => value.reductionDesConsommationsDeau.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(reductionDesConsommationsDeau: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        reductionDesConsommationsDeau:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final reductionDesEmissionsDeGES = Field<String?>(
@@ -687,8 +711,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de eqC02.',
     ),
     get: () => value.reductionDesEmissionsDeGES.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(reductionDesEmissionsDeGES: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        reductionDesEmissionsDeGES:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final realisationDeconomiesFinancieres = Field<String?>(
@@ -697,8 +722,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de k€ / an.',
     ),
     get: () => value.realisationDeconomiesFinancieres.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(realisationDeconomiesFinancieres: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        realisationDeconomiesFinancieres:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final chiffreDaffairesGenere = Field<String?>(
@@ -707,8 +733,9 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de k€ / an.',
     ),
     get: () => value.chiffreDaffairesGenere.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(chiffreDaffairesGenere: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        chiffreDaffairesGenere:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final investissementsRealises = Field<String?>(
@@ -717,18 +744,21 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre de k€ / an.',
     ),
     get: () => value.investissementsRealises.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(investissementsRealises: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        investissementsRealises:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final developpementDeNouvellesActivitesEtEntreprises = Field<String?>(
-    label: 'Développement de nouvelles activités et entreprises (Nouvelles activités)',
+    label:
+        'Développement de nouvelles activités et entreprises (Nouvelles activités)',
     validator: NumericValidator(
       errorText: 'la quantité doit être un nombre de nouveautés.',
     ),
     get: () => value.developpementDeNouvellesActivitesEtEntreprises.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(developpementDeNouvellesActivitesEtEntreprises: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        developpementDeNouvellesActivitesEtEntreprises:
+            fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final creationDemplois = Field<String?>(
@@ -737,8 +767,8 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre d\'ETP.',
     ),
     get: () => value.creationDemplois.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(creationDemplois: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        creationDemplois: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final maintienDeLemploi = Field<String?>(
@@ -747,8 +777,8 @@ class EditableSynergie extends Editable<Synergie> {
       errorText: 'la quantité doit être un nombre d\'ETP.',
     ),
     get: () => value.maintienDeLemploi.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(maintienDeLemploi: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        maintienDeLemploi: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 }
 
@@ -772,8 +802,8 @@ class EditableAtelierRencontres extends Editable<AtelierRencontres> {
       errorText: 'la quantité doit être un nombre de tours.',
     ),
     get: () => value.turnCount.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(turnCount: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        turnCount: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final tableCount = Field<String?>(
@@ -782,8 +812,8 @@ class EditableAtelierRencontres extends Editable<AtelierRencontres> {
       errorText: 'la quantité doit être un nombre de tables.',
     ),
     get: () => value.tableCount.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(tableCount: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        tableCount: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 
   late final tableSeatCount = Field<String?>(
@@ -792,7 +822,7 @@ class EditableAtelierRencontres extends Editable<AtelierRencontres> {
       errorText: 'la quantité doit être un nombre de sièges.',
     ),
     get: () => value.tableSeatCount.toString(),
-    update: (fieldValue) =>
-        update(value.copyWith(tableSeatCount: fieldValue == null ? 0 : num.parse(fieldValue))),
+    update: (fieldValue) => update(value.copyWith(
+        tableSeatCount: fieldValue == null ? 0 : num.parse(fieldValue))),
   );
 }

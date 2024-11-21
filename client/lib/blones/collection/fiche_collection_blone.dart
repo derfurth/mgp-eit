@@ -6,7 +6,6 @@ import 'package:lumberdash/lumberdash.dart';
 import 'package:mgp_client/models/editables.dart';
 import 'package:quiver/cache.dart';
 import 'package:supabase/supabase.dart';
-
 import 'package:mgp_client/models/donnees.dart';
 import 'package:mgp_client/models/snippets.dart';
 import 'package:mgp_client/blones/app_blone.dart';
@@ -154,6 +153,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
           etablissementId: contactB.contact.etablissementId,
           quantite: lien.quantiteB ?? 0,
           direction: lien.directionB ?? FluxDirection.entrant,
+          unite: lien.uniteB,
         );
         await parent.flux.save(mirrorFlux);
 
@@ -182,6 +182,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
           quantiteA: flux.quantite,
           directionA: flux.direction,
           ficheBId: mirrorFiche.id,
+          uniteA: flux.unite,
         );
         await parent.liensFiches.save(value);
 
@@ -197,7 +198,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
       else if (lien.ficheAId == fiche.id) {
         // update fiche A quantité
         await parent.liensFiches.fromTable
-            .update({'quantite_a': flux.quantite})
+            .update({'quantite_a': flux.quantite, 'flux_unite_a': flux.unite})
             .eq('fiche_a_id', fiche.id)
             .eq('demarche_id', fiche.demarcheId);
         await invalidate(
@@ -210,7 +211,7 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
       } else if (lien.ficheBId == fiche.id) {
         // update fiche B quantité
         await parent.liensFiches.fromTable
-            .update({'quantite_b': flux.quantite})
+            .update({'quantite_b': flux.quantite, 'flux_unite_b': flux.unite})
             .eq('fiche_b_id', fiche.id)
             .eq('demarche_id', fiche.demarcheId);
         if (lien.contactBId != null) {

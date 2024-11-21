@@ -656,7 +656,7 @@ ShowFiche showFicheFunction(
               borderRadius: BorderRadius.circular(16),
             ),
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 800),
+              constraints: const BoxConstraints(maxWidth: 1000),
               child: PaddedSingleChildScrollable(
                 child: FicheEditor(
                   ficheId: ficheId,
