@@ -2219,7 +2219,7 @@ class MockFicheCollectionBlone extends _i1.Mock
   _i9.Future<void> saveLiens(
     _i5.Fiche? fiche,
     _i5.Flux? flux,
-    Iterable<_i16.EditableLienFiche>? liens,
+    Iterable<_i5.LienFiche>? liens,
     Iterable<_i6.ContactSnippet>? participants,
   ) =>
       (super.noSuchMethod(
@@ -2276,7 +2276,7 @@ class MockFicheCollectionBlone extends _i1.Mock
     required _i16.EditableFiche? fiche,
     required _i16.EditableFlux? flux,
     required _i6.ContactSnippet? contact,
-    required Iterable<_i16.EditableLienFiche>? liens,
+    required Iterable<_i5.LienFiche>? liens,
     _i16.EditableParticipantMeta? meta,
   }) =>
       (super.noSuchMethod(
