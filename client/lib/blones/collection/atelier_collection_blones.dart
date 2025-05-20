@@ -117,6 +117,45 @@ class AtelierCollectionBlone extends SupabaseCollection<Atelier>
     snippetCache.invalidate(value.id);
     return success;
   }
+
+  /// Save atelier and update participants in a single atomic operation
+  /// This uses the new RPC function update_atelier_with_participants
+  Future<bool> saveAtelierWithParticipants({
+    required Atelier atelier,
+    required List<String> participantIds,
+  }) async {
+    // Validate participant list to prevent accidental data loss
+    if (participantIds.isEmpty) {
+      try {
+        final snippet = await getSnippet(atelierId: atelier.id);
+        if (snippet.participants.isNotEmpty) {
+          parent.showMessage(const UIMessage.plain(
+            "La liste des participants semble vide alors que l'atelier en contient. Aucune modification n'a été effectuée."
+          ));
+          return false;
+        }
+      } catch (e) {
+        logError("Error fetching atelier snippet: $e");
+      }
+    }
+
+    try {
+      await client.rpc(
+        'update_atelier_with_participants',
+        params: {
+          'atelier_data': elementToJson(atelier),
+          'new_participants': participantIds,
+        },
+      );
+
+      parent.showMessage(const UIMessage.save("L'atelier et ses participants ont bien été enregistrés"));
+      snippetCache.invalidate(atelier.id);
+      return true;
+    } on PostgrestException catch (e) {
+      parent.showMessage(UIMessage.error("Erreur lors de la mise à jour de l'atelier : ${e.message}"));
+      return false;
+    }
+  }
 }
 
 /// Metadata par atelier pour chaque participant
@@ -169,19 +208,37 @@ class ParticipantMetaCollectionBlone extends SupabaseCollection<ParticipantMeta>
     }
   }
 
-  Future<void> setParticipants({
+  Future<bool> setParticipants({
     required String demarcheId,
     required String atelierId,
     required List<String> participantIds,
   }) async {
-    await client.rpc(
-      'set_atelier_participants',
-      params: {
-        'demarche_id': demarcheId,
-        'atelier_id': atelierId,
-        'new_participants': participantIds,
-      },
-    ).select();
+    // Client-side protection against empty participant lists
+    if (participantIds.isEmpty) {
+      // Fetch current participants to verify if this is a potential data loss
+      final currentParticipants = await getByAtelier(atelierId: atelierId);
+      if (currentParticipants.isNotEmpty) {
+        parent.showMessage(const UIMessage.saveError(
+          "La liste des participants semble vide. Aucune modification n'a été effectuée pour éviter la perte de données."
+        ));
+        return false;
+      }
+    }
+
+    try {
+      await client.rpc(
+        'set_atelier_participants',
+        params: {
+          'demarche_id': demarcheId,
+          'atelier_id': atelierId,
+          'new_participants': participantIds,
+        },
+      ).select();
+      return true;
+    } on PostgrestException catch (e) {
+      parent.showMessage(UIMessage.error("Erreur lors de la mise à jour des participants : ${e.message}"));
+      return false;
+    }
   }
 
   Future<ParticipantMeta> getByAtelierAndContact({

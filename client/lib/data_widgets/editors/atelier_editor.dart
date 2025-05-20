@@ -603,7 +603,14 @@ class AtelierThematiqueLiveView extends StatelessWidget {
   }
 }
 
-class _AtelierSaveBar extends StatelessWidget {
+class _AtelierSaveBar extends StatefulWidget {
+  @override
+  State<_AtelierSaveBar> createState() => _AtelierSaveBarState();
+}
+
+class _AtelierSaveBarState extends State<_AtelierSaveBar> {
+  bool _isSaving = false;
+
   @override
   Widget build(BuildContext context) {
     final EditableAtelier atelier = context.watch();
@@ -615,17 +622,35 @@ class _AtelierSaveBar extends StatelessWidget {
     return OverflowBar(
       children: [
         ElevatedButton(
-          onPressed: () {
-            logMessage(atelier.value.toString());
-            ateliers.save(atelier.value);
-            logMessage(participantIds.toString());
-            metas.setParticipants(
-              demarcheId: atelier.value.demarcheId,
-              atelierId: atelier.value.id,
-              participantIds: participantIds.value,
-            );
-          },
-          child: const Text('Enregistrer'),
+          onPressed: _isSaving 
+            ? null 
+            : () async {
+              setState(() {
+                _isSaving = true;
+              });
+
+              try {
+                logMessage(atelier.value.toString());
+                logMessage(participantIds.toString());
+
+                // Use the new atomic operation to save both atelier and participants
+                await ateliers.saveAtelierWithParticipants(
+                  atelier: atelier.value,
+                  participantIds: participantIds.value,
+                );
+              } finally {
+                setState(() {
+                  _isSaving = false;
+                });
+              }
+            },
+          child: _isSaving 
+            ? const SizedBox(
+                width: 20, 
+                height: 20, 
+                child: CircularProgressIndicator(strokeWidth: 2)
+              ) 
+            : const Text('Enregistrer'),
         ),
       ],
     );
