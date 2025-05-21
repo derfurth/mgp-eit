@@ -165,6 +165,9 @@ abstract class AddBox<T> extends StatelessWidget {
         );
 
         return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: SizedBox(
             width: 600,
             child: snippetList.padding(all: 10),
@@ -216,6 +219,13 @@ class _SearchableListState<T> extends State<_SearchableItemList<T>> {
             itemBuilder: widget.itemBuilder,
           ),
         ),
+        Leading.vSmall(),
+        OverflowBar(
+          alignment: MainAxisAlignment.end,
+          children: [
+            ElevatedButton(onPressed: ()=> Navigator.pop(context), child: const Text('Fermer')),
+          ],
+        )
       ],
     );
   }

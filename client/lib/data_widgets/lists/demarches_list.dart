@@ -124,6 +124,7 @@ class AdminDemarcheItem extends StatelessWidget {
             title: Text(demarche.denomination),
             subtitle: Text(demarche.champLibre)),
         OverflowBar(
+          alignment: MainAxisAlignment.end,
           children: [
             TextButton(
               onPressed: () => chauffeur.editDemarche(demarche.id),
