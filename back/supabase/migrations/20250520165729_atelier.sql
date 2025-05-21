@@ -46,23 +46,22 @@ create or replace function
 as
 $$
 declare
-    v_atelier_id uuid;
+    v_atelier_id  uuid;
     v_demarche_id uuid;
-    result json;
+    result        json;
 begin
     -- Extract IDs from atelier data
-    v_atelier_id := (atelier_data->>'id')::uuid;
-    v_demarche_id := (atelier_data->>'demarche_id')::uuid;
+    v_atelier_id := (atelier_data ->> 'id')::uuid;
+    v_demarche_id := (atelier_data ->> 'demarche_id')::uuid;
 
     -- Update atelier
     update atelier
-    set 
-        demarche_id = (atelier_data->>'demarche_id')::uuid,
-        animateur_ids = ARRAY(SELECT jsonb_array_elements_text(atelier_data->'animateur_ids')::uuid),
-        co_animateur_ids = ARRAY(SELECT jsonb_array_elements_text(atelier_data->'co_animateur_ids')::uuid),
-        lieu = atelier_data->>'lieu',
-        organisateur = atelier_data->>'organisateur',
-        date_ms = (atelier_data->>'date_ms')::bigint
+    set demarche_id      = (atelier_data ->> 'demarche_id')::uuid,
+        animateur_ids    = array(select jsonb_array_elements_text(atelier_data -> 'animateur_ids')::uuid),
+        co_animateur_ids = array(select jsonb_array_elements_text(atelier_data -> 'co_animateur_ids')::uuid),
+        lieu             = atelier_data ->> 'lieu',
+        organisateur     = atelier_data ->> 'organisateur',
+        date_ms          = (atelier_data ->> 'date_ms')::bigint
     where id = v_atelier_id
     returning to_json(atelier.*) into result;
 
@@ -70,8 +69,8 @@ begin
     if array_length(new_participants, 1) > 0 then
         -- Insert new participants
         insert into participant_meta (demarche_id, atelier_id, contact_id)
-        select v_demarche_id, 
-               v_atelier_id, 
+        select v_demarche_id,
+               v_atelier_id,
                participant_id
         from unnest(new_participants) as participant_id
         on conflict do nothing;
@@ -108,3 +107,4 @@ create index if not exists idx_atelier_co_animateur_ids
 create index if not exists idx_flux_animateur_ids on flux using gin (animateur_ids);
 create index if not exists idx_flux_co_animateur_ids on flux using gin (co_animateur_ids);
 create index if not exists idx_fiche_atelier_id_flux_id on fiche (atelier_id, flux_id);
+create index idx_fiche_realtime_contact_filter on fiche (realtime_contact_filter);
