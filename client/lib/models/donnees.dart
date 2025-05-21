@@ -160,6 +160,7 @@ class Atelier with _$Atelier, Storable {
     @Default('') String lieu,
     @Default('') String organisateur,
     @JsonKey(name: 'date_ms') @Default(0) num dateMs,
+    @JsonKey(name: 'latest_fiche_modified_at') String? latestFicheModifiedAt,
   }) = _Atelier;
 
   factory Atelier.fromJson(Map<String, dynamic> json) =>

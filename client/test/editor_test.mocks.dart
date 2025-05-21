@@ -1774,6 +1774,24 @@ class MockAtelierCollectionBlone extends _i1.Mock
       ) as _i9.Future<bool>);
 
   @override
+  _i9.Future<bool> saveAtelierWithParticipants({
+    required _i5.Atelier? atelier,
+    required List<String>? participantIds,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAtelierWithParticipants,
+          [],
+          {
+            #atelier: atelier,
+            #participantIds: participantIds,
+          },
+        ),
+        returnValue: _i9.Future<bool>.value(false),
+        returnValueForMissingStub: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
+
+  @override
   _i9.Future<bool> insert(List<_i5.Atelier>? values) => (super.noSuchMethod(
         Invocation.method(
           #insert,
@@ -2088,6 +2106,7 @@ class MockFicheCollectionBlone extends _i1.Mock
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
+    String? latestFicheModifiedAt,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -2097,6 +2116,7 @@ class MockFicheCollectionBlone extends _i1.Mock
             #atelierId: atelierId,
             #contactId: contactId,
             #demarcheId: demarcheId,
+            #latestFicheModifiedAt: latestFicheModifiedAt,
           },
         ),
         returnValue:
@@ -2125,6 +2145,7 @@ class MockFicheCollectionBlone extends _i1.Mock
     required String? atelierId,
     required String? contactId,
     required String? demarcheId,
+    required String? latestFicheModifiedAt,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -2134,6 +2155,7 @@ class MockFicheCollectionBlone extends _i1.Mock
             #atelierId: atelierId,
             #contactId: contactId,
             #demarcheId: demarcheId,
+            #latestFicheModifiedAt: latestFicheModifiedAt,
           },
         ),
         returnValue: _i9.Future<Iterable<_i5.Fiche>>.value(<_i5.Fiche>[]),

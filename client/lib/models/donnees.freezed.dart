@@ -1228,6 +1228,8 @@ mixin _$Atelier {
   String get organisateur => throw _privateConstructorUsedError;
   @JsonKey(name: 'date_ms')
   num get dateMs => throw _privateConstructorUsedError;
+  @JsonKey(name: 'latest_fiche_modified_at')
+  String? get latestFicheModifiedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Atelier to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1250,7 +1252,9 @@ abstract class $AtelierCopyWith<$Res> {
       @JsonKey(name: 'co_animateur_ids') List<String> coAnimateurIds,
       String lieu,
       String organisateur,
-      @JsonKey(name: 'date_ms') num dateMs});
+      @JsonKey(name: 'date_ms') num dateMs,
+      @JsonKey(name: 'latest_fiche_modified_at')
+      String? latestFicheModifiedAt});
 }
 
 /// @nodoc
@@ -1275,6 +1279,7 @@ class _$AtelierCopyWithImpl<$Res, $Val extends Atelier>
     Object? lieu = null,
     Object? organisateur = null,
     Object? dateMs = null,
+    Object? latestFicheModifiedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -1305,6 +1310,10 @@ class _$AtelierCopyWithImpl<$Res, $Val extends Atelier>
           ? _value.dateMs
           : dateMs // ignore: cast_nullable_to_non_nullable
               as num,
+      latestFicheModifiedAt: freezed == latestFicheModifiedAt
+          ? _value.latestFicheModifiedAt
+          : latestFicheModifiedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -1323,7 +1332,9 @@ abstract class _$$AtelierImplCopyWith<$Res> implements $AtelierCopyWith<$Res> {
       @JsonKey(name: 'co_animateur_ids') List<String> coAnimateurIds,
       String lieu,
       String organisateur,
-      @JsonKey(name: 'date_ms') num dateMs});
+      @JsonKey(name: 'date_ms') num dateMs,
+      @JsonKey(name: 'latest_fiche_modified_at')
+      String? latestFicheModifiedAt});
 }
 
 /// @nodoc
@@ -1346,6 +1357,7 @@ class __$$AtelierImplCopyWithImpl<$Res>
     Object? lieu = null,
     Object? organisateur = null,
     Object? dateMs = null,
+    Object? latestFicheModifiedAt = freezed,
   }) {
     return _then(_$AtelierImpl(
       id: null == id
@@ -1376,6 +1388,10 @@ class __$$AtelierImplCopyWithImpl<$Res>
           ? _value.dateMs
           : dateMs // ignore: cast_nullable_to_non_nullable
               as num,
+      latestFicheModifiedAt: freezed == latestFicheModifiedAt
+          ? _value.latestFicheModifiedAt
+          : latestFicheModifiedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1392,7 +1408,8 @@ class _$AtelierImpl implements _Atelier {
       final List<String> coAnimateurIds = const [],
       this.lieu = '',
       this.organisateur = '',
-      @JsonKey(name: 'date_ms') this.dateMs = 0})
+      @JsonKey(name: 'date_ms') this.dateMs = 0,
+      @JsonKey(name: 'latest_fiche_modified_at') this.latestFicheModifiedAt})
       : _animateurIds = animateurIds,
         _coAnimateurIds = coAnimateurIds;
 
@@ -1431,10 +1448,13 @@ class _$AtelierImpl implements _Atelier {
   @override
   @JsonKey(name: 'date_ms')
   final num dateMs;
+  @override
+  @JsonKey(name: 'latest_fiche_modified_at')
+  final String? latestFicheModifiedAt;
 
   @override
   String toString() {
-    return 'Atelier(id: $id, demarcheId: $demarcheId, animateurIds: $animateurIds, coAnimateurIds: $coAnimateurIds, lieu: $lieu, organisateur: $organisateur, dateMs: $dateMs)';
+    return 'Atelier(id: $id, demarcheId: $demarcheId, animateurIds: $animateurIds, coAnimateurIds: $coAnimateurIds, lieu: $lieu, organisateur: $organisateur, dateMs: $dateMs, latestFicheModifiedAt: $latestFicheModifiedAt)';
   }
 
   @override
@@ -1452,7 +1472,9 @@ class _$AtelierImpl implements _Atelier {
             (identical(other.lieu, lieu) || other.lieu == lieu) &&
             (identical(other.organisateur, organisateur) ||
                 other.organisateur == organisateur) &&
-            (identical(other.dateMs, dateMs) || other.dateMs == dateMs));
+            (identical(other.dateMs, dateMs) || other.dateMs == dateMs) &&
+            (identical(other.latestFicheModifiedAt, latestFicheModifiedAt) ||
+                other.latestFicheModifiedAt == latestFicheModifiedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1465,7 +1487,8 @@ class _$AtelierImpl implements _Atelier {
       const DeepCollectionEquality().hash(_coAnimateurIds),
       lieu,
       organisateur,
-      dateMs);
+      dateMs,
+      latestFicheModifiedAt);
 
   /// Create a copy of Atelier
   /// with the given fields replaced by the non-null parameter values.
@@ -1491,7 +1514,9 @@ abstract class _Atelier implements Atelier {
       @JsonKey(name: 'co_animateur_ids') final List<String> coAnimateurIds,
       final String lieu,
       final String organisateur,
-      @JsonKey(name: 'date_ms') final num dateMs}) = _$AtelierImpl;
+      @JsonKey(name: 'date_ms') final num dateMs,
+      @JsonKey(name: 'latest_fiche_modified_at')
+      final String? latestFicheModifiedAt}) = _$AtelierImpl;
 
   factory _Atelier.fromJson(Map<String, dynamic> json) = _$AtelierImpl.fromJson;
 
@@ -1513,6 +1538,9 @@ abstract class _Atelier implements Atelier {
   @override
   @JsonKey(name: 'date_ms')
   num get dateMs;
+  @override
+  @JsonKey(name: 'latest_fiche_modified_at')
+  String? get latestFicheModifiedAt;
 
   /// Create a copy of Atelier
   /// with the given fields replaced by the non-null parameter values.

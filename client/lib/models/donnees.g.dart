@@ -110,6 +110,7 @@ _$AtelierImpl _$$AtelierImplFromJson(Map<String, dynamic> json) =>
       lieu: json['lieu'] as String? ?? '',
       organisateur: json['organisateur'] as String? ?? '',
       dateMs: json['date_ms'] as num? ?? 0,
+      latestFicheModifiedAt: json['latest_fiche_modified_at'] as String?,
     );
 
 Map<String, dynamic> _$$AtelierImplToJson(_$AtelierImpl instance) =>
@@ -121,6 +122,7 @@ Map<String, dynamic> _$$AtelierImplToJson(_$AtelierImpl instance) =>
       'lieu': instance.lieu,
       'organisateur': instance.organisateur,
       'date_ms': instance.dateMs,
+      'latest_fiche_modified_at': instance.latestFicheModifiedAt,
     };
 
 _$ParticipantMetaImpl _$$ParticipantMetaImplFromJson(
