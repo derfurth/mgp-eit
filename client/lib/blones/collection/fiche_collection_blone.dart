@@ -42,13 +42,14 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
     required String atelierId,
     required String contactId,
     required String demarcheId,
+    String? latestFicheModifiedAt,
   }) async {
     final fiches = await getFichesForContactAndAtelier(
       atelierId: atelierId,
       contactId: contactId,
       demarcheId: demarcheId,
+      latestFicheModifiedAt: latestFicheModifiedAt,
     );
-
     final snippets = [
       for (final fiche in fiches) await getSnippet(ficheId: fiche.id)
     ];
@@ -72,10 +73,11 @@ class FicheCollectionBlone extends SupabaseCollection<Fiche>
     required String atelierId,
     required String contactId,
     required String demarcheId,
+    required String? latestFicheModifiedAt,
   }) async {
     final filter = demarcheId + atelierId + contactId;
-    final fiches =
-        await contactFicheCache.get(filter, ifAbsent: (filter) async {
+    final key = '$filter/$latestFicheModifiedAt';
+    final fiches = await contactFicheCache.get(key, ifAbsent: (key) async {
       final data =
           await fromTable.select().eq('realtime_contact_filter', filter);
       final fiches = data

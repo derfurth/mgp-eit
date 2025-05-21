@@ -213,6 +213,7 @@ class FicheChipList extends StatelessWidget {
       children: [
         FutureLoader<Iterable<FicheSnippet>>(
           future: fiches.getSnippetsForContactAndAtelier(
+            latestFicheModifiedAt: atelier.atelier.latestFicheModifiedAt,
             atelierId: atelier.atelier.id,
             contactId: contact.contact.id,
             demarcheId: demarche.id,
