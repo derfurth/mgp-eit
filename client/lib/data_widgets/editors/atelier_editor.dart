@@ -148,6 +148,15 @@ class AtelierDescriptionForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EditableAtelier editable = context.watch();
+    final participantsKey = 'pwf${atelier.participantsWithoutFiche
+        .map((e) => e.personne.id)
+        .join('/')}';
+    final animateursKey = 'a${atelier.animateurs
+        .map((e) => e.personne.id)
+        .join('/')}';
+    final coAnimateursKey = 'co${atelier.coAnimateurs
+        .map((e) => e.personne.id)
+        .join('/')}';
 
     return ChangeNotifierProvider(
       create: (_) => ValueNotifier<List<String>>([]),
@@ -188,6 +197,7 @@ class AtelierDescriptionForm extends StatelessWidget {
           Builder(builder: (context) {
             final ValueNotifier<List<String>> participantIds = context.read();
             return ContactAddBox(
+              key: Key(participantsKey),
               title: const Text('Participants'),
               initialSelection: atelier.participantsWithoutFiche,
               onSelected: (selected) {
@@ -203,6 +213,7 @@ class AtelierDescriptionForm extends StatelessWidget {
                 Heading.h5('Participants avec fiche ressource'),
                 Leading.vSmall(),
                 Wrap(
+                  key: Key(participantsKey),
                   spacing: 5,
                   children: [
                     for (var p in atelier.participantsWithFiche)
@@ -213,6 +224,7 @@ class AtelierDescriptionForm extends StatelessWidget {
             ),
           Leading.vSmall(),
           AnimateurAddBox(
+            key: Key(animateursKey),
             initialSelection: atelier.animateurs,
             onSelected: (selected) {
               editable.updateAnimateurIds(
@@ -221,6 +233,7 @@ class AtelierDescriptionForm extends StatelessWidget {
             },
           ),
           CoAnimateurAddBox(
+            key: Key(coAnimateursKey),
             initialSelection: atelier.coAnimateurs,
             onSelected: (selected) {
               editable.updateCoAnimateurIds(
@@ -484,17 +497,17 @@ class LienFicheSide extends StatelessWidget {
                 return Row(
                   children: [
                     InkWell(
-                        onTap: () => showFicheFunction(
-                              demarche,
-                              atelier,
-                              contactSnippet.contact,
-                            ).call(
-                                context: context,
-                                editableMeta:
-                                    EditableParticipantMeta(participantMeta),
-                                ficheId: ficheId),
-                        child: Chip(
-                            label: Text(shortDescription(snippet)))).flexible(),
+                            onTap: () => showFicheFunction(
+                                  demarche,
+                                  atelier,
+                                  contactSnippet.contact,
+                                ).call(
+                                    context: context,
+                                    editableMeta: EditableParticipantMeta(
+                                        participantMeta),
+                                    ficheId: ficheId),
+                            child: Chip(label: Text(shortDescription(snippet))))
+                        .flexible(),
                     Checkbox(
                       value: selection.contains(snippet),
                       onChanged: (selected) => selected == true
@@ -620,37 +633,37 @@ class _AtelierSaveBarState extends State<_AtelierSaveBar> {
     final ParticipantMetaCollectionBlone metas = context.watch();
 
     return OverflowBar(
+      alignment: MainAxisAlignment.end,
       children: [
         ElevatedButton(
-          onPressed: _isSaving 
-            ? null 
-            : () async {
-              setState(() {
-                _isSaving = true;
-              });
+          onPressed: _isSaving
+              ? null
+              : () async {
+                  setState(() {
+                    _isSaving = true;
+                  });
 
-              try {
-                logMessage(atelier.value.toString());
-                logMessage(participantIds.toString());
+                  try {
+                    logMessage(atelier.value.toString());
+                    logMessage(participantIds.toString());
 
-                // Use the new atomic operation to save both atelier and participants
-                await ateliers.saveAtelierWithParticipants(
-                  atelier: atelier.value,
-                  participantIds: participantIds.value,
-                );
-              } finally {
-                setState(() {
-                  _isSaving = false;
-                });
-              }
-            },
-          child: _isSaving 
-            ? const SizedBox(
-                width: 20, 
-                height: 20, 
-                child: CircularProgressIndicator(strokeWidth: 2)
-              ) 
-            : const Text('Enregistrer'),
+                    // Use the new atomic operation to save both atelier and participants
+                    await ateliers.saveAtelierWithParticipants(
+                      atelier: atelier.value,
+                      participantIds: participantIds.value,
+                    );
+                  } finally {
+                    setState(() {
+                      _isSaving = false;
+                    });
+                  }
+                },
+          child: _isSaving
+              ? const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2))
+              : const Text('Enregistrer'),
         ),
       ],
     );
