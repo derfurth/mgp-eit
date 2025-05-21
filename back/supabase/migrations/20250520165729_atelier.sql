@@ -91,3 +91,20 @@ begin
     return result;
 end
 $$;
+
+create index if not exists idx_participant_meta_atelier_id
+    on participant_meta (atelier_id);
+
+create index if not exists idx_fiche_contact_id_atelier_id
+    on fiche (contact_id, atelier_id);
+
+create index if not exists idx_atelier_animateur_ids
+    on atelier using gin (animateur_ids);
+
+create index if not exists idx_atelier_co_animateur_ids
+    on atelier using gin (co_animateur_ids);
+
+
+create index if not exists idx_flux_animateur_ids on flux using gin (animateur_ids);
+create index if not exists idx_flux_co_animateur_ids on flux using gin (co_animateur_ids);
+create index if not exists idx_fiche_atelier_id_flux_id on fiche (atelier_id, flux_id);
